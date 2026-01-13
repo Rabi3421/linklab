@@ -96,6 +96,12 @@ export function HomeURLShortener() {
     e.preventDefault()
     if (!url.trim()) return
 
+    // Check if user is authenticated, if not show sign-in modal
+    if (!user) {
+      setAuthModal('signin')
+      return
+    }
+
     setLoading(true)
     setError('')
     setResult(null)
@@ -104,49 +110,26 @@ export function HomeURLShortener() {
       // Validate URL
       const urlObj = new URL(url)
 
-      if (user) {
-        // Authenticated user - use API
-        const response = await fetch('/api/urls', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ originalUrl: url })
-        })
+      // Authenticated user - use API
+      const response = await fetch('/api/urls', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ originalUrl: url })
+      })
 
-        if (!response.ok) {
-          const errorData = await response.json()
-          throw new Error(errorData.error || 'Failed to create short link')
-        }
-
-        const newUrl = await response.json()
-        setResult({
-          shortCode: newUrl.shortCode,
-          shortUrl: newUrl.shortUrl,
-          originalUrl: newUrl.originalUrl,
-          qrCodeUrl: newUrl.qrCodeUrl,
-          title: newUrl.title
-        })
-      } else {
-        // Non-authenticated user - use demo API
-        const response = await fetch('/api/demo-shorten', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ originalUrl: url })
-        })
-
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}))
-          throw new Error(errorData.error || 'Failed to create short link')
-        }
-
-        const demoResult = await response.json()
-        setResult({
-          shortCode: demoResult.shortCode,
-          shortUrl: demoResult.shortUrl,
-          originalUrl: demoResult.originalUrl,
-          qrCodeUrl: demoResult.qrCodeUrl,
-          title: demoResult.title
-        })
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to create short link')
       }
+
+      const newUrl = await response.json()
+      setResult({
+        shortCode: newUrl.shortCode,
+        shortUrl: newUrl.shortUrl,
+        originalUrl: newUrl.originalUrl,
+        qrCodeUrl: newUrl.qrCodeUrl,
+        title: newUrl.title
+      })
 
       setUrl('')
     } catch (err) {
@@ -343,9 +326,9 @@ export function HomeURLShortener() {
 
             {/* Features List */}
             <div className="flex items-center justify-center gap-8 text-sm">
-              <div className="flex items-center gap-2 text-green-400">
-                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span>No registration required</span>
+              <div className="flex items-center gap-2 text-orange-400">
+                <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                <span>Authentication required</span>
               </div>
               <div className="flex items-center gap-2 text-blue-400">
                 <div className="w-2 h-2 bg-blue-400 rounded-full"></div>

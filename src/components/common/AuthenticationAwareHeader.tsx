@@ -58,7 +58,13 @@ const AuthenticationAwareHeader = ({ isAuthenticated = false }: AuthenticationAw
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-100 bg-card shadow-md" style={{ borderBottom: '1px solid rgba(200,205,220,0.12)' }}>
+    <header
+      className="fixed top-0 left-0 right-0 z-[120] shadow-md backdrop-blur-xl"
+      style={{
+        background: 'rgba(37,40,48,0.92)',
+        borderBottom: '1px solid rgba(200,205,220,0.12)',
+      }}
+    >
       <div className="max-w-[1280px] mx-auto">
         <div className="flex items-center justify-between h-[60px] px-4">
           <Link 
@@ -132,7 +138,7 @@ const AuthenticationAwareHeader = ({ isAuthenticated = false }: AuthenticationAw
 
       {isMobileMenuOpen && (
         <div 
-          className="fixed inset-0 top-[60px] bg-background z-150 lg:hidden"
+          className="fixed inset-0 top-[60px] bg-background z-[130] lg:hidden"
           onClick={closeMobileMenu}
         >
           <nav className="flex flex-col p-6 gap-2">

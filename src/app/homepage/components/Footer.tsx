@@ -21,7 +21,7 @@ const Footer = () => {
     Company: [
       { label: 'About', href: '/about' },
       { label: 'Developers', href: '/developers' },
-      { label: 'Blog', href: '/homepage' },
+      { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: '/homepage' },
     ],
     Legal: [

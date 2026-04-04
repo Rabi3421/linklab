@@ -15,13 +15,13 @@ const Footer = () => {
     Product: [
       { label: 'Features', href: '/homepage' },
       { label: 'Analytics', href: '/link-analytics' },
-      { label: 'API', href: '/homepage' },
+      { label: 'API', href: '/developers' },
       { label: 'Pricing', href: '/pricing' },
     ],
     Company: [
       { label: 'About', href: '/about' },
+      { label: 'Developers', href: '/developers' },
       { label: 'Blog', href: '/homepage' },
-      { label: 'Careers', href: '/homepage' },
       { label: 'Contact', href: '/homepage' },
     ],
     Legal: [

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import AuthenticationAwareHeader from '@/components/common/AuthenticationAwareHeader';
-import BreadcrumbNavigation from '@/components/common/BreadcrumbNavigation';
+import AuthenticatedAppShell from '@/components/common/AuthenticatedAppShell';
 import LinkAnalyticsInteractive from './components/LinkAnalyticsInteractive';
 import { getServerAuthenticatedUser } from '@/lib/auth/server';
 
@@ -23,15 +22,13 @@ export default async function LinkAnalyticsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <AuthenticationAwareHeader isAuthenticated={true} />
-      
-      <main className="pt-[60px]">
-        <div className="max-w-[1280px] mx-auto px-4 py-8">
-          <BreadcrumbNavigation customItems={breadcrumbItems} />
-          <LinkAnalyticsInteractive linkCode="abc123" />
-        </div>
-      </main>
-    </div>
+    <AuthenticatedAppShell
+      title="Link Analytics"
+      description="View detailed performance trends, referrers, geographies, and device breakdowns for each link."
+      breadcrumbItems={breadcrumbItems}
+      maxWidthClassName="max-w-[1400px]"
+    >
+      <LinkAnalyticsInteractive linkCode="abc123" />
+    </AuthenticatedAppShell>
   );
 }

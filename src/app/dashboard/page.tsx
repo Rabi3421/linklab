@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import AuthenticationAwareHeader from '@/components/common/AuthenticationAwareHeader';
-import DashboardSidebar from '@/components/common/DashboardSidebar';
-import BreadcrumbNavigation from '@/components/common/BreadcrumbNavigation';
+import AuthenticatedAppShell from '@/components/common/AuthenticatedAppShell';
 import DashboardInteractive from './components/DashboardInteractive';
 import { getServerAuthenticatedUser } from '@/lib/auth/server';
 
@@ -19,24 +17,11 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <AuthenticationAwareHeader isAuthenticated={true} />
-      <DashboardSidebar />
-      
-      <main className="lg:ml-[240px] pt-[60px] pb-[80px] lg:pb-8">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <BreadcrumbNavigation />
-          
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-foreground mb-2">Dashboard</h1>
-            <p className="text-base text-muted-foreground">
-              Manage your links, track performance, and create new short URLs
-            </p>
-          </div>
-
-          <DashboardInteractive />
-        </div>
-      </main>
-    </div>
+    <AuthenticatedAppShell
+      title="Dashboard"
+      description="Manage your links, track performance, and create new short URLs."
+    >
+      <DashboardInteractive />
+    </AuthenticatedAppShell>
   );
 }

@@ -74,7 +74,7 @@ const DashboardSidebar = ({ isCollapsed = false }: DashboardSidebarProps) => {
     <>
       <aside 
         className={`hidden lg:fixed lg:flex flex-col top-[60px] left-0 bottom-0 bg-card border-r border-border transition-all duration-350 ease-smooth z-50 ${
-          collapsed ? 'w-[72px]' : 'w-[240px]'
+          collapsed ? 'w-[84px]' : 'w-[240px]'
         }`}
       >
         <div className="flex items-center justify-between p-4 border-b border-border">
@@ -101,13 +101,23 @@ const DashboardSidebar = ({ isCollapsed = false }: DashboardSidebarProps) => {
                 key={item.path}
                 href={item.path}
                 title={collapsed ? item.tooltip : undefined}
-                className={`flex items-center gap-3 font-body font-medium text-sm py-3 px-4 rounded-md transition-all duration-250 ease-smooth hover:bg-muted hover:-translate-y-[1px] ${
+                className={`flex items-center gap-3 font-body font-medium text-sm rounded-md transition-all duration-250 ease-smooth hover:bg-muted hover:-translate-y-[1px] ${
                   isActivePath(item.path) 
                     ? 'text-primary bg-muted shadow-sm' 
                     : 'text-foreground'
-                } ${collapsed ? 'justify-center' : ''}`}
+                } ${collapsed ? 'justify-center px-2 py-3 min-h-[56px]' : 'px-4 py-3'}`}
               >
-                <Icon name={item.icon as any} size={20} variant="outline" />
+                <span
+                  className={`flex items-center justify-center rounded-xl transition-all duration-250 ${
+                    collapsed
+                      ? isActivePath(item.path)
+                        ? 'h-11 w-11 bg-primary/14'
+                        : 'h-11 w-11 bg-muted/60'
+                      : 'h-9 w-9'
+                  }`}
+                >
+                  <Icon name={item.icon as any} size={collapsed ? 22 : 20} variant="outline" />
+                </span>
                 {!collapsed && <span>{item.label}</span>}
               </Link>
             ))}
@@ -117,12 +127,14 @@ const DashboardSidebar = ({ isCollapsed = false }: DashboardSidebarProps) => {
         <div className="p-4 border-t border-border">
           <button
             onClick={handleLogout}
-            className={`w-full flex items-center gap-3 font-body font-medium text-sm text-foreground py-3 px-4 rounded-md transition-all duration-250 ease-smooth hover:bg-muted hover:-translate-y-[1px] ${
-              collapsed ? 'justify-center' : ''
+            className={`w-full flex items-center gap-3 font-body font-medium text-sm text-foreground rounded-md transition-all duration-250 ease-smooth hover:bg-muted hover:-translate-y-[1px] ${
+              collapsed ? 'justify-center px-2 py-3 min-h-[56px]' : 'px-4 py-3'
             }`}
             title={collapsed ? 'Logout' : undefined}
           >
-            <Icon name="ArrowRightOnRectangleIcon" size={20} variant="outline" />
+            <span className={`flex items-center justify-center rounded-xl ${collapsed ? 'h-11 w-11 bg-muted/60' : 'h-9 w-9'}`}>
+              <Icon name="ArrowRightOnRectangleIcon" size={collapsed ? 22 : 20} variant="outline" />
+            </span>
             {!collapsed && <span>Logout</span>}
           </button>
         </div>

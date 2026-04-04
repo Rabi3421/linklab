@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import AuthenticationAwareHeader from '@/components/common/AuthenticationAwareHeader';
 import RegistrationForm from './components/RegistrationForm';
+import { getServerAuthenticatedUser } from '@/lib/auth/server';
 
 export const metadata: Metadata = {
   title: 'Create Account - LinkLab',
   description: 'Sign up for LinkLab to start shortening URLs, tracking link analytics, and managing your link portfolio with our comprehensive URL shortener platform.',
 };
 
-export default function RegisterPage() {
+export default async function RegisterPage() {
+  const authenticatedUser = await getServerAuthenticatedUser();
+
+  if (authenticatedUser) {
+    redirect('/dashboard');
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <AuthenticationAwareHeader isAuthenticated={false} />

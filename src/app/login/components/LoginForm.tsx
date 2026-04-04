@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface LoginFormProps {
   onSubmit?: (email: string, password: string, rememberMe: boolean) => void;
@@ -17,6 +18,7 @@ interface FormErrors {
 
 const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const router = useRouter();
+  const { signIn } = useAuth();
   const [isHydrated, setIsHydrated] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -89,24 +91,17 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
     setErrors({});
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const { error } = await signIn(email, password, rememberMe);
 
-      const mockCredentials = {
-        email: 'demo@linklab.com',
-        password: 'Demo@123'
-      };
-
-      if (email === mockCredentials.email && password === mockCredentials.password) {
-        if (onSubmit) {
-          onSubmit(email, password, rememberMe);
-        }
+      if (!error) {
+        onSubmit?.(email, password, rememberMe);
         router.push('/dashboard');
       } else {
         setErrors({
-          general: 'Invalid email or password. Please use demo@linklab.com / Demo@123'
+          general: error.message,
         });
       }
-    } catch (error) {
+    } catch {
       setErrors({
         general: 'An error occurred during login. Please try again.'
       });

@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Icon from '@/components/ui/AppIcon';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface SidebarItem {
   label: string;
@@ -19,6 +20,8 @@ interface DashboardSidebarProps {
 const DashboardSidebar = ({ isCollapsed = false }: DashboardSidebarProps) => {
   const [collapsed, setCollapsed] = useState(isCollapsed);
   const pathname = usePathname();
+  const router = useRouter();
+  const { signOut } = useAuth();
 
   const sidebarItems: SidebarItem[] = [
     { 
@@ -59,6 +62,12 @@ const DashboardSidebar = ({ isCollapsed = false }: DashboardSidebarProps) => {
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);
+  };
+
+  const handleLogout = async () => {
+    await signOut();
+    router.push('/homepage');
+    router.refresh();
   };
 
   return (
@@ -107,7 +116,7 @@ const DashboardSidebar = ({ isCollapsed = false }: DashboardSidebarProps) => {
 
         <div className="p-4 border-t border-border">
           <button
-            onClick={() => {}}
+            onClick={handleLogout}
             className={`w-full flex items-center gap-3 font-body font-medium text-sm text-foreground py-3 px-4 rounded-md transition-all duration-250 ease-smooth hover:bg-muted hover:-translate-y-[1px] ${
               collapsed ? 'justify-center' : ''
             }`}

@@ -1,15 +1,23 @@
 import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import AuthenticationAwareHeader from '@/components/common/AuthenticationAwareHeader';
 import LoginForm from './components/LoginForm';
 import SocialProofSection from './components/SocialProofSection';
 import FeatureHighlights from './components/FeatureHighlights';
+import { getServerAuthenticatedUser } from '@/lib/auth/server';
 
 export const metadata: Metadata = {
   title: 'Login - LinkLab',
   description: 'Sign in to your LinkLab account to access your dashboard, manage shortened links, and view detailed analytics for your URL campaigns.',
 };
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const authenticatedUser = await getServerAuthenticatedUser();
+
+  if (authenticatedUser) {
+    redirect('/dashboard');
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <AuthenticationAwareHeader isAuthenticated={false} />

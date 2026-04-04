@@ -31,6 +31,20 @@ A modern Next.js 14 application built with TypeScript and Tailwind CSS.
   ```
 3. Open [http://localhost:4028](http://localhost:4028) with your browser to see the result.
 
+## 🔐 Authentication Setup
+
+This project now uses MongoDB-backed authentication with JWT access and refresh tokens stored in secure HTTP-only cookies.
+
+Create a local environment file with:
+
+```bash
+MONGODB_URI=your-mongodb-connection-string
+JWT_ACCESS_SECRET=replace-with-a-long-random-secret
+JWT_REFRESH_SECRET=replace-with-a-different-long-random-secret
+```
+
+Access tokens are short-lived, refresh tokens are rotated on refresh, and dashboard routes require a valid authenticated session.
+
 ## 📁 Project Structure
 
 ```

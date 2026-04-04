@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Icon from '@/components/ui/AppIcon';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface FormData {
   email: string;
@@ -28,6 +29,7 @@ interface PasswordStrength {
 
 const RegistrationForm = () => {
   const router = useRouter();
+  const { signUp } = useAuth();
   const [isHydrated, setIsHydrated] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     email: '',
@@ -39,7 +41,6 @@ const RegistrationForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState<PasswordStrength>({
     score: 0,
     label: '',
@@ -49,13 +50,6 @@ const RegistrationForm = () => {
   useEffect(() => {
     setIsHydrated(true);
   }, []);
-
-  const existingEmails = [
-    'john.doe@example.com',
-    'jane.smith@example.com',
-    'admin@linklab.com',
-    'test@example.com',
-  ];
 
   const calculatePasswordStrength = (password: string): PasswordStrength => {
     let score = 0;
@@ -76,9 +70,6 @@ const RegistrationForm = () => {
     if (!email) return 'Email is required';
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) return 'Please enter a valid email address';
-    if (existingEmails.includes(email.toLowerCase())) {
-      return 'This email is already registered. Please login instead.';
-    }
     return undefined;
   };
 
@@ -147,14 +138,20 @@ const RegistrationForm = () => {
     setIsSubmitting(true);
     setErrors({});
     
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setRegistrationSuccess(true);
-  };
+    try {
+      const { error } = await signUp(formData.email, formData.password);
 
-  const handleResendVerification = () => {
-    alert('Verification email has been resent to ' + formData.email);
+      if (error) {
+        setErrors({ submit: error.message });
+        setIsSubmitting(false);
+        return;
+      }
+
+      router.push('/dashboard');
+    } catch {
+      setErrors({ submit: 'Unable to create your account right now. Please try again.' });
+      setIsSubmitting(false);
+    }
   };
 
   if (!isHydrated) {
@@ -167,52 +164,6 @@ const RegistrationForm = () => {
             <div className="h-12 bg-muted rounded animate-pulse" />
             <div className="h-12 bg-muted rounded animate-pulse" />
             <div className="h-12 bg-muted rounded animate-pulse" />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (registrationSuccess) {
-    return (
-      <div className="w-full max-w-md mx-auto bg-card rounded-lg shadow-lg p-8">
-        <div className="text-center space-y-6">
-          <div className="flex justify-center">
-            <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center">
-              <Icon name="CheckCircleIcon" size={32} variant="solid" className="text-success" />
-            </div>
-          </div>
-          
-          <div className="space-y-2">
-            <h2 className="font-heading font-semibold text-2xl text-foreground">
-              Check Your Email
-            </h2>
-            <p className="font-body text-base text-muted-foreground">
-              We've sent a verification link to
-            </p>
-            <p className="font-body font-medium text-base text-foreground">
-              {formData.email}
-            </p>
-          </div>
-          
-          <div className="space-y-4">
-            <p className="font-body text-sm text-muted-foreground">
-              Please click the verification link in your email to activate your account. The link will expire in 24 hours.
-            </p>
-            
-            <button
-              onClick={handleResendVerification}
-              className="w-full font-body font-medium text-sm text-primary py-3 px-4 rounded-md border border-border transition-all duration-250 ease-smooth hover:bg-muted hover:-translate-y-[1px] active:scale-[0.97]"
-            >
-              Resend Verification Email
-            </button>
-            
-            <Link
-              href="/login"
-              className="block w-full font-body font-medium text-sm text-primary-foreground bg-primary py-3 px-4 rounded-md shadow-sm transition-all duration-250 ease-smooth hover:shadow-md hover:-translate-y-[1px] active:scale-[0.97] text-center"
-            >
-              Go to Login
-            </Link>
           </div>
         </div>
       </div>

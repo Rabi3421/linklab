@@ -1,132 +1,189 @@
 'use client';
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { supabase } from '../lib/supabase';
-import { User, Session } from '@supabase/supabase-js';
 
-interface UserProfile {
-  id: string
-  name?: string
-  email?: string
-  [key: string]: any
-}
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import type { AuthResponse, AuthUser } from '@/lib/auth/types';
 
 interface AuthContextType {
-  user: User | null
-  userProfile: UserProfile | null
-  loading: boolean
-  profileLoading: boolean
-  signIn: (email: string, password: string) => Promise<any>
-  signOut: () => Promise<any>
-  updateProfile: (updates: Partial<UserProfile>) => Promise<any>
-  isAuthenticated: boolean
+  user: AuthUser | null;
+  loading: boolean;
+  signIn: (email: string, password: string, rememberMe?: boolean) => Promise<{ error?: { message: string } }>;
+  signUp: (email: string, password: string) => Promise<{ error?: { message: string } }>;
+  signOut: () => Promise<{ error?: { message: string } }>;
+  refreshSession: () => Promise<boolean>;
+  isAuthenticated: boolean;
 }
 
-const AuthContext = createContext<AuthContextType | null>(null)
+const AuthContext = createContext<AuthContextType | null>(null);
+
+const getErrorMessage = async (response: Response, fallbackMessage: string) => {
+  try {
+    const data = (await response.json()) as { message?: string };
+    return data.message || fallbackMessage;
+  } catch {
+    return fallbackMessage;
+  }
+};
 
 export const useAuth = () => {
-  const context = useContext(AuthContext)
-  if (!context) throw new Error('useAuth must be used within AuthProvider')
-  return context
-}
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error('useAuth must be used within AuthProvider');
+  }
+
+  return context;
+};
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null)
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [profileLoading, setProfileLoading] = useState(false)
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const profileOperations = {
-    async load(userId: string) {
-      if (!userId) return
-      setProfileLoading(true)
-      try {
-        const { data, error } = await supabase
-          .from('user_profiles')
-          .select('*')
-          .eq('id', userId)
-          .single()
-        if (!error) setUserProfile(data)
-      } catch (error) {
-        console.error('Profile load error:', error)
-      } finally {
-        setProfileLoading(false)
+  const loadUser = useCallback(async () => {
+    const response = await fetch('/api/auth/me', {
+      method: 'GET',
+      credentials: 'include',
+      cache: 'no-store',
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = (await response.json()) as AuthResponse;
+    return data.user;
+  }, []);
+
+  const refreshSession = useCallback(async () => {
+    const response = await fetch('/api/auth/refresh', {
+      method: 'POST',
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      setUser(null);
+      return false;
+    }
+
+    const data = (await response.json()) as AuthResponse;
+    setUser(data.user);
+    return true;
+  }, []);
+
+  const syncSession = useCallback(async () => {
+    setLoading(true);
+
+    try {
+      const currentUser = await loadUser();
+
+      if (currentUser) {
+        setUser(currentUser);
+        return;
       }
-    },
-    clear() {
-      setUserProfile(null)
-      setProfileLoading(false)
-    },
-  }
 
-  const authStateHandlers = {
-    onChange: (_event: string | null, session: Session | null) => {
-      setUser(session?.user ?? null)
-      setLoading(false)
-      if (session?.user) profileOperations.load(session.user.id)
-      else profileOperations.clear()
-    },
-  }
+      const refreshed = await refreshSession();
+
+      if (!refreshed) {
+        setUser(null);
+      }
+    } catch {
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  }, [loadUser, refreshSession]);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      authStateHandlers.onChange(null, session)
-    })
+    void syncSession();
+  }, [syncSession]);
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(authStateHandlers.onChange)
-
-    return () => subscription?.unsubscribe()
-  }, [])
-
-  const signIn = async (email: string, password: string) => {
+  const signIn = useCallback(async (email: string, password: string, rememberMe?: boolean) => {
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-      return { data, error }
-    } catch {
-      return { error: { message: 'Network error. Please try again.' } }
-    }
-  }
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ email, password, rememberMe }),
+      });
 
-  const signOut = async () => {
-    try {
-      const { error } = await supabase.auth.signOut()
-      if (!error) {
-        setUser(null)
-        profileOperations.clear()
+      if (!response.ok) {
+        return {
+          error: {
+            message: await getErrorMessage(response, 'Unable to sign in right now.'),
+          },
+        };
       }
-      return { error }
-    } catch {
-      return { error: { message: 'Network error. Please try again.' } }
-    }
-  }
 
-  const updateProfile = async (updates: Partial<UserProfile>) => {
-    if (!user) return { error: { message: 'No user logged in' } }
+      const data = (await response.json()) as AuthResponse;
+      setUser(data.user);
+
+      return {};
+    } catch {
+      return { error: { message: 'Network error. Please try again.' } };
+    }
+  }, []);
+
+  const signUp = useCallback(async (email: string, password: string) => {
     try {
-      const { data, error } = await supabase
-        .from('user_profiles')
-        .update(updates)
-        .eq('id', user.id)
-        .select()
-        .single()
-      if (!error) setUserProfile(data)
-      return { data, error }
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        return {
+          error: {
+            message: await getErrorMessage(response, 'Unable to create your account right now.'),
+          },
+        };
+      }
+
+      const data = (await response.json()) as AuthResponse;
+      setUser(data.user);
+
+      return {};
     } catch {
-      return { error: { message: 'Network error. Please try again.' } }
+      return { error: { message: 'Network error. Please try again.' } };
     }
-  }
+  }, []);
 
-  const value: AuthContextType = {
-    user,
-    userProfile,
-    loading,
-    profileLoading,
-    signIn,
-    signOut,
-    updateProfile,
-    isAuthenticated: !!user,
-  }
+  const signOut = useCallback(async () => {
+    try {
+      const response = await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-}
+      setUser(null);
+
+      if (!response.ok) {
+        return { error: { message: 'Unable to sign out right now.' } };
+      }
+
+      return {};
+    } catch {
+      setUser(null);
+      return { error: { message: 'Network error. Please try again.' } };
+    }
+  }, []);
+
+  const value = useMemo<AuthContextType>(
+    () => ({
+      user,
+      loading,
+      signIn,
+      signUp,
+      signOut,
+      refreshSession,
+      isAuthenticated: !!user,
+    }),
+    [loading, refreshSession, signIn, signOut, signUp, user],
+  );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};

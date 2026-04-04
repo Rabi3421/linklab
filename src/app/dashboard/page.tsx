@@ -1,15 +1,23 @@
 import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import AuthenticationAwareHeader from '@/components/common/AuthenticationAwareHeader';
 import DashboardSidebar from '@/components/common/DashboardSidebar';
 import BreadcrumbNavigation from '@/components/common/BreadcrumbNavigation';
 import DashboardInteractive from './components/DashboardInteractive';
+import { getServerAuthenticatedUser } from '@/lib/auth/server';
 
 export const metadata: Metadata = {
   title: 'Dashboard - LinkLab',
   description: 'Manage your shortened links, track analytics, and create new short URLs from your centralized dashboard.',
 };
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const authenticatedUser = await getServerAuthenticatedUser();
+
+  if (!authenticatedUser) {
+    redirect('/login');
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <AuthenticationAwareHeader isAuthenticated={true} />

@@ -1,0 +1,143 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import Icon from '@/components/ui/AppIcon';
+
+interface SidebarItem {
+  label: string;
+  path: string;
+  icon: string;
+  tooltip?: string;
+}
+
+interface DashboardSidebarProps {
+  isCollapsed?: boolean;
+}
+
+const DashboardSidebar = ({ isCollapsed = false }: DashboardSidebarProps) => {
+  const [collapsed, setCollapsed] = useState(isCollapsed);
+  const pathname = usePathname();
+
+  const sidebarItems: SidebarItem[] = [
+    { 
+      label: 'Dashboard', 
+      path: '/dashboard', 
+      icon: 'HomeIcon',
+      tooltip: 'View your dashboard overview'
+    },
+    { 
+      label: 'Link Analytics', 
+      path: '/link-analytics', 
+      icon: 'ChartBarIcon',
+      tooltip: 'Analyze link performance'
+    },
+    { 
+      label: 'Create Link', 
+      path: '/create-link', 
+      icon: 'PlusCircleIcon',
+      tooltip: 'Create a new short link'
+    },
+    { 
+      label: 'My Links', 
+      path: '/my-links', 
+      icon: 'LinkIcon',
+      tooltip: 'Manage all your links'
+    },
+    { 
+      label: 'Settings', 
+      path: '/settings', 
+      icon: 'Cog6ToothIcon',
+      tooltip: 'Account settings'
+    },
+  ];
+
+  const isActivePath = (path: string) => {
+    return pathname === path;
+  };
+
+  const toggleCollapse = () => {
+    setCollapsed(!collapsed);
+  };
+
+  return (
+    <>
+      <aside 
+        className={`hidden lg:fixed lg:flex flex-col top-[60px] left-0 bottom-0 bg-card border-r border-border transition-all duration-350 ease-smooth z-50 ${
+          collapsed ? 'w-[72px]' : 'w-[240px]'
+        }`}
+      >
+        <div className="flex items-center justify-between p-4 border-b border-border">
+          {!collapsed && (
+            <span className="font-heading font-semibold text-base text-foreground">Navigation</span>
+          )}
+          <button
+            onClick={toggleCollapse}
+            className="p-2 rounded-md transition-all duration-250 ease-smooth hover:bg-muted active:scale-[0.97]"
+            aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          >
+            <Icon 
+              name={collapsed ? 'ChevronRightIcon' : 'ChevronLeftIcon'} 
+              size={20} 
+              variant="outline" 
+            />
+          </button>
+        </div>
+
+        <nav className="flex-1 overflow-y-auto custom-scrollbar p-4">
+          <div className="flex flex-col gap-2">
+            {sidebarItems.map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                title={collapsed ? item.tooltip : undefined}
+                className={`flex items-center gap-3 font-body font-medium text-sm py-3 px-4 rounded-md transition-all duration-250 ease-smooth hover:bg-muted hover:-translate-y-[1px] ${
+                  isActivePath(item.path) 
+                    ? 'text-primary bg-muted shadow-sm' 
+                    : 'text-foreground'
+                } ${collapsed ? 'justify-center' : ''}`}
+              >
+                <Icon name={item.icon as any} size={20} variant="outline" />
+                {!collapsed && <span>{item.label}</span>}
+              </Link>
+            ))}
+          </div>
+        </nav>
+
+        <div className="p-4 border-t border-border">
+          <button
+            onClick={() => {}}
+            className={`w-full flex items-center gap-3 font-body font-medium text-sm text-foreground py-3 px-4 rounded-md transition-all duration-250 ease-smooth hover:bg-muted hover:-translate-y-[1px] ${
+              collapsed ? 'justify-center' : ''
+            }`}
+            title={collapsed ? 'Logout' : undefined}
+          >
+            <Icon name="ArrowRightOnRectangleIcon" size={20} variant="outline" />
+            {!collapsed && <span>Logout</span>}
+          </button>
+        </div>
+      </aside>
+
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-border z-100 shadow-lg">
+        <div className="flex items-center justify-around py-2">
+          {sidebarItems.slice(0, 4).map((item) => (
+            <Link
+              key={item.path}
+              href={item.path}
+              className={`flex flex-col items-center gap-1 py-2 px-3 rounded-md transition-all duration-250 ease-smooth active:scale-[0.97] ${
+                isActivePath(item.path) 
+                  ? 'text-primary' :'text-foreground'
+              }`}
+            >
+              <Icon name={item.icon as any} size={24} variant="outline" />
+              <span className="font-caption text-xs">{item.label}</span>
+            </Link>
+          ))}
+        </div>
+      </nav>
+    </>
+  );
+};
+
+export default DashboardSidebar;

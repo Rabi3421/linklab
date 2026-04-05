@@ -21,19 +21,31 @@ export default function QuickCreateForm({ onSubmit }: QuickCreateFormProps) {
   const [qrStyle, setQrStyle] = useState<QrStyleConfig>(DEFAULT_QR_STYLE);
 
   const validateUrl = (value: string): boolean => {
-    if (!value) {
+    const trimmedValue = value.trim();
+
+    if (!trimmedValue) {
       setUrlError('URL is required');
       return false;
     }
-    
-    const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-    if (!urlPattern.test(value)) {
+
+    const normalizedValue = /^https?:\/\//i.test(trimmedValue)
+      ? trimmedValue
+      : `https://${trimmedValue}`;
+
+    try {
+      const parsedUrl = new URL(normalizedValue);
+
+      if (!['http:', 'https:'].includes(parsedUrl.protocol) || !parsedUrl.hostname) {
+        setUrlError('Please enter a valid URL');
+        return false;
+      }
+
+      setUrlError('');
+      return true;
+    } catch {
       setUrlError('Please enter a valid URL');
       return false;
     }
-    
-    setUrlError('');
-    return true;
   };
 
   const validateAlias = (value: string): boolean => {
@@ -60,17 +72,21 @@ export default function QuickCreateForm({ onSubmit }: QuickCreateFormProps) {
     
     if (isUrlValid && isAliasValid) {
       setIsSubmitting(true);
-      const result = await onSubmit({ url, customAlias, expirationDate, qrStyle });
+      try {
+        const result = await onSubmit({ url, customAlias, expirationDate, qrStyle });
 
-      if (result.success) {
-        setUrl('');
-        setCustomAlias('');
-        setExpirationDate('');
-      } else if (result.message) {
-        setSubmitError(result.message);
+        if (result.success) {
+          setUrl('');
+          setCustomAlias('');
+          setExpirationDate('');
+        } else if (result.message) {
+          setSubmitError(result.message);
+        }
+      } catch {
+        setSubmitError('Unable to create the short link right now. Please try again.');
+      } finally {
+        setIsSubmitting(false);
       }
-
-      setIsSubmitting(false);
     }
   };
 

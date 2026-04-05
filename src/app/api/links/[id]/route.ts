@@ -5,10 +5,7 @@ import type { QrStyleConfig } from '@/lib/links/types';
 
 export const runtime = 'nodejs';
 
-export async function PATCH(
-  request: Request,
-  { params }: { params: { id: string } },
-) {
+export async function PATCH(request: Request, { params }: { params: { id: string } }) {
   const authenticatedUser = await getServerAuthenticatedUser();
 
   if (!authenticatedUser) {
@@ -28,7 +25,10 @@ export async function PATCH(
       customAlias: body.customAlias,
       expirationDate: body.expirationDate,
       qrStyle: body.qrStyle,
-      baseUrl: new URL(request.url).origin,
+      baseUrl:
+        request.headers.get('x-forwarded-host') && request.headers.get('x-forwarded-proto')
+          ? `${request.headers.get('x-forwarded-proto')}://${request.headers.get('x-forwarded-host')}`
+          : new URL(request.url).origin,
     });
 
     if (!updatedLink) {
@@ -39,15 +39,12 @@ export async function PATCH(
   } catch (error) {
     return NextResponse.json(
       { message: error instanceof Error ? error.message : 'Unable to update this link right now.' },
-      { status: 400 },
+      { status: 400 }
     );
   }
 }
 
-export async function DELETE(
-  _request: Request,
-  { params }: { params: { id: string } },
-) {
+export async function DELETE(_request: Request, { params }: { params: { id: string } }) {
   const authenticatedUser = await getServerAuthenticatedUser();
 
   if (!authenticatedUser) {

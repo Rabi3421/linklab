@@ -6,14 +6,24 @@ import QuickCreateForm from './QuickCreateForm';
 import FilterControls from './FilterControls';
 import LinksTable from './LinksTable';
 import type { ManagedLinkRecord } from '@/lib/links/types';
+import type { LinkCreationApiResponse } from '@/lib/links/types';
 import RecentQrCodesPanel from '@/components/common/RecentQrCodesPanel';
 import type { QrStyleConfig } from '@/lib/links/types';
+import type { BillingUsageSnapshot } from '@/lib/billing/types';
+import SubscriptionUsagePanel from '@/components/common/SubscriptionUsagePanel';
 
-export default function DashboardInteractive({ initialLinks }: { initialLinks: ManagedLinkRecord[] }) {
+export default function DashboardInteractive({
+  initialLinks,
+  initialQuota,
+}: {
+  initialLinks: ManagedLinkRecord[];
+  initialQuota: BillingUsageSnapshot;
+}) {
   const [isHydrated, setIsHydrated] = useState(false);
   const [links, setLinks] = useState<ManagedLinkRecord[]>(initialLinks);
   const [filteredLinks, setFilteredLinks] = useState<ManagedLinkRecord[]>(initialLinks);
   const [showCopyNotification, setShowCopyNotification] = useState(false);
+  const [quota, setQuota] = useState<BillingUsageSnapshot>(initialQuota);
 
   useEffect(() => {
     setIsHydrated(true);
@@ -22,9 +32,15 @@ export default function DashboardInteractive({ initialLinks }: { initialLinks: M
   useEffect(() => {
     setLinks(initialLinks);
     setFilteredLinks(initialLinks);
-  }, [initialLinks]);
+    setQuota(initialQuota);
+  }, [initialLinks, initialQuota]);
 
-  const handleCreateLink = async (data: { url: string; customAlias: string; expirationDate: string; qrStyle: QrStyleConfig }) => {
+  const handleCreateLink = async (data: {
+    url: string;
+    customAlias: string;
+    expirationDate: string;
+    qrStyle: QrStyleConfig;
+  }) => {
     const response = await fetch('/api/links', {
       method: 'POST',
       headers: {
@@ -40,13 +56,25 @@ export default function DashboardInteractive({ initialLinks }: { initialLinks: M
     });
 
     if (!response.ok) {
-      const payload = (await response.json().catch(() => ({ message: 'Unable to create the short link right now.' }))) as { message?: string };
-      return { success: false, message: payload.message || 'Unable to create the short link right now.' };
+      const payload = (await response
+        .json()
+        .catch(() => ({ message: 'Unable to create the short link right now.' }))) as {
+        message?: string;
+        quota?: BillingUsageSnapshot;
+      };
+      if (payload.quota) {
+        setQuota(payload.quota);
+      }
+      return {
+        success: false,
+        message: payload.message || 'Unable to create the short link right now.',
+      };
     }
 
-    const newLink = (await response.json()) as ManagedLinkRecord;
-    setLinks((previousLinks) => [newLink, ...previousLinks]);
-    setFilteredLinks((previousLinks) => [newLink, ...previousLinks]);
+    const payload = (await response.json()) as LinkCreationApiResponse;
+    setLinks((previousLinks) => [payload.link, ...previousLinks]);
+    setFilteredLinks((previousLinks) => [payload.link, ...previousLinks]);
+    setQuota(payload.quota);
     return { success: true };
   };
 
@@ -58,23 +86,24 @@ export default function DashboardInteractive({ initialLinks }: { initialLinks: M
     let filtered = [...links];
 
     if (filters.status !== 'all') {
-      filtered = filtered.filter(link => link.status === filters.status);
+      filtered = filtered.filter((link) => link.status === filters.status);
     }
 
     if (filters.search) {
       const searchLower = filters.search.toLowerCase();
-      filtered = filtered.filter(link => 
-        link.originalUrl.toLowerCase().includes(searchLower) ||
-        link.shortCode.toLowerCase().includes(searchLower) ||
-        link.customAlias.toLowerCase().includes(searchLower)
+      filtered = filtered.filter(
+        (link) =>
+          link.originalUrl.toLowerCase().includes(searchLower) ||
+          link.shortCode.toLowerCase().includes(searchLower) ||
+          link.customAlias.toLowerCase().includes(searchLower)
       );
     }
 
     if (filters.dateRange.start && filters.dateRange.end) {
       const startDate = new Date(filters.dateRange.start);
       const endDate = new Date(filters.dateRange.end);
-      
-      filtered = filtered.filter(link => {
+
+      filtered = filtered.filter((link) => {
         const linkDate = new Date(link.createdAt);
         return linkDate >= startDate && linkDate <= endDate;
       });
@@ -134,12 +163,24 @@ export default function DashboardInteractive({ initialLinks }: { initialLinks: M
       }
 
       const updatedLink = (await response.json()) as ManagedLinkRecord;
-      setLinks((previousLinks) => previousLinks.map((link) => (link.id === id ? updatedLink : link)));
-      setFilteredLinks((previousLinks) => previousLinks.map((link) => (link.id === id ? updatedLink : link)));
+      setLinks((previousLinks) =>
+        previousLinks.map((link) => (link.id === id ? updatedLink : link))
+      );
+      setFilteredLinks((previousLinks) =>
+        previousLinks.map((link) => (link.id === id ? updatedLink : link))
+      );
     })();
   };
 
-  const handleEditLink = async (id: string, data: { originalUrl: string; customAlias: string; expirationDate: string; qrStyle: QrStyleConfig }) => {
+  const handleEditLink = async (
+    id: string,
+    data: {
+      originalUrl: string;
+      customAlias: string;
+      expirationDate: string;
+      qrStyle: QrStyleConfig;
+    }
+  ) => {
     const response = await fetch(`/api/links/${id}`, {
       method: 'PATCH',
       headers: {
@@ -150,21 +191,30 @@ export default function DashboardInteractive({ initialLinks }: { initialLinks: M
     });
 
     if (!response.ok) {
-      const payload = (await response.json().catch(() => ({ message: 'Unable to update this link right now.' }))) as { message?: string };
-      return { success: false, message: payload.message || 'Unable to update this link right now.' };
+      const payload = (await response
+        .json()
+        .catch(() => ({ message: 'Unable to update this link right now.' }))) as {
+        message?: string;
+      };
+      return {
+        success: false,
+        message: payload.message || 'Unable to update this link right now.',
+      };
     }
 
     const updatedLink = (await response.json()) as ManagedLinkRecord;
     setLinks((previousLinks) => previousLinks.map((link) => (link.id === id ? updatedLink : link)));
-    setFilteredLinks((previousLinks) => previousLinks.map((link) => (link.id === id ? updatedLink : link)));
+    setFilteredLinks((previousLinks) =>
+      previousLinks.map((link) => (link.id === id ? updatedLink : link))
+    );
     return { success: true };
   };
 
   const stats = {
     totalLinks: links.length,
     totalClicks: links.reduce((sum, link) => sum + link.clicks, 0),
-    topPerforming: links.filter(link => link.clicks > 1000).length,
-    activeLinks: links.filter(link => link.status === 'active').length
+    topPerforming: links.filter((link) => link.clicks > 1000).length,
+    activeLinks: links.filter((link) => link.status === 'active').length,
   };
 
   if (!isHydrated) {
@@ -192,11 +242,16 @@ export default function DashboardInteractive({ initialLinks }: { initialLinks: M
   return (
     <>
       <div className="space-y-6">
+        <SubscriptionUsagePanel usage={quota} />
         <DashboardStats stats={stats} />
         <QuickCreateForm onSubmit={handleCreateLink} />
-        <RecentQrCodesPanel links={links} title="Recent QR Codes" description="Download or share QR codes for the short links you created most recently." />
+        <RecentQrCodesPanel
+          links={links}
+          title="Recent QR Codes"
+          description="Download or share QR codes for the short links you created most recently."
+        />
         <FilterControls onFilterChange={handleFilterChange} />
-        <LinksTable 
+        <LinksTable
           links={filteredLinks}
           onCopy={handleCopyLink}
           onDelete={handleDeleteLink}

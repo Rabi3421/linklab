@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { BillingLimitExceededError } from '@/lib/billing/service';
 import { createShortLinkForCurrentRequest } from '@/lib/links/service';
 import type { QrStyleConfig } from '@/lib/links/types';
 
@@ -26,9 +27,19 @@ export async function POST(request: Request) {
 
     return NextResponse.json(createdLink, { status: 201 });
   } catch (error) {
+    if (error instanceof BillingLimitExceededError) {
+      return NextResponse.json(
+        {
+          message: error.message,
+          quota: error.snapshot,
+        },
+        { status: 402 }
+      );
+    }
+
     return NextResponse.json(
       { message: error instanceof Error ? error.message : 'Unable to shorten the URL right now.' },
-      { status: 400 },
+      { status: 400 }
     );
   }
 }

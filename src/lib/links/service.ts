@@ -3,6 +3,7 @@ import { ObjectId, type WithId } from 'mongodb';
 import QRCode from 'qrcode';
 import { getDatabase } from '@/lib/mongodb';
 import { getServerAuthenticatedUser } from '@/lib/auth/server';
+import type { AuthUser } from '@/lib/auth/types';
 import {
   assertCanCreateLinkForRequest,
   consumeLinkQuotaForRequest,
@@ -707,6 +708,24 @@ export const getLinkAnalyticsForUser = async (
   };
 };
 
+export const getLinkAnalyticsByIdForUser = async (
+  ownerId: string,
+  linkId: string
+): Promise<LinkAnalyticsView | null> => {
+  if (!ObjectId.isValid(linkId)) {
+    return null;
+  }
+
+  const linksCollection = await getLinksCollection();
+  const link = await linksCollection.findOne({ _id: new ObjectId(linkId), ownerId });
+
+  if (!link) {
+    return null;
+  }
+
+  return getLinkAnalyticsForUser(ownerId, link.code);
+};
+
 export const getLinkAnalyticsForCurrentUser = async (code?: string) => {
   const authenticatedUser = await getServerAuthenticatedUser();
 
@@ -734,21 +753,22 @@ export const createShortLinkForCurrentRequest = async (
     customAlias?: string;
     expirationDate?: string;
     qrStyle?: LinkCreationResult['qrStyle'];
-  }
+  },
+  authenticatedUser?: AuthUser | null
 ) => {
-  const authenticatedUser = await getServerAuthenticatedUser();
+  const resolvedUser = authenticatedUser ?? (await getServerAuthenticatedUser());
   const baseUrl = getBaseUrl(request);
 
-  await assertCanCreateLinkForRequest(request, authenticatedUser);
+  await assertCanCreateLinkForRequest(request, resolvedUser);
 
   const link = await createShortLink({
     ...body,
-    ownerId: authenticatedUser?.id,
-    ownerEmail: authenticatedUser?.email,
+    ownerId: resolvedUser?.id,
+    ownerEmail: resolvedUser?.email,
     baseUrl,
   });
 
-  const quota = await consumeLinkQuotaForRequest(request, authenticatedUser);
+  const quota = await consumeLinkQuotaForRequest(request, resolvedUser);
 
   return {
     link,

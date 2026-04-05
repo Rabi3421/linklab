@@ -8,12 +8,12 @@ import DevelopersDocsPanel from './components/DevelopersDocsPanel';
 export const metadata: Metadata = {
   title: 'Developers - LinkLab Documentation',
   description:
-    'Read LinkLab developer documentation for quickstart setup, authentication, API patterns, rate limits, analytics, and webhook integration.',
+    'Read LinkLab developer documentation for API key setup, link creation, analytics access, plan-based quotas, and production integration guidance.',
 };
 
 const noiseOverlayStyle = {
   backgroundImage:
-    'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")',
+    "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")",
   opacity: 0.022,
 } as const;
 
@@ -55,23 +55,23 @@ const sidebarLinks = [
 
 const docsHighlights = [
   {
-    title: 'Quickstart-first structure',
+    title: 'Real API quickstart',
     description:
-      'Inspired by docs systems like Dub and Supabase, the page starts with setup, then expands into auth, endpoints, SDKs, and operational guidance.',
+      'Generate one API key from Settings, create one short link, and reuse the returned link ID for analytics requests.',
     icon: 'RocketLaunchIcon',
     gradient: 'linear-gradient(135deg, #f59e0b, #ef4444)',
   },
   {
-    title: 'Reference + concepts',
+    title: 'Current endpoint surface',
     description:
-      'Good developer docs pair copyable endpoint examples with explanations of rate limits, retention, and event models.',
+      'The docs now describe the actual endpoints available today: API key management, link creation, and owner-scoped analytics.',
     icon: 'CodeBracketSquareIcon',
     gradient: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
   },
   {
-    title: 'Operational trust',
+    title: 'Plan-aware automation',
     description:
-      'Modern API docs also make room for webhook retries, auth models, error semantics, and predictable support expectations.',
+      'API requests automatically inherit the owner account’s pricing plan, monthly limits, and analytics access controls.',
     icon: 'ShieldCheckIcon',
     gradient: 'linear-gradient(135deg, #10b981, #059669)',
   },
@@ -82,23 +82,32 @@ const endpointCards = [
     method: 'POST',
     path: '/v1/links',
     title: 'Create a branded short link',
-    description: 'Create a short link with UTM parameters, tags, and a custom slug in a single request.',
+    description:
+      'Create a short link with UTM parameters, tags, and a custom slug in a single request.',
   },
   {
     method: 'GET',
     path: '/v1/links/{id}/analytics',
     title: 'Fetch analytics',
-    description: 'Retrieve clicks, referrers, geo, devices, and hourly traffic patterns for a link or campaign.',
+    description:
+      'Retrieve clicks, referrers, geo, devices, and hourly traffic patterns for a link or campaign.',
   },
   {
     method: 'POST',
     path: '/v1/webhooks',
     title: 'Subscribe to events',
-    description: 'Register delivery URLs for click, link.updated, and link.disabled events with retry guarantees.',
+    description:
+      'Register delivery URLs for click, link.updated, and link.disabled events with retry guarantees.',
   },
 ] as const;
 
-const sdkList = ['JavaScript / TypeScript', 'Node.js server SDK', 'Python client', 'REST over cURL', 'Webhook verification helpers'] as const;
+const sdkList = [
+  'JavaScript / TypeScript',
+  'Node.js server SDK',
+  'Python client',
+  'REST over cURL',
+  'Webhook verification helpers',
+] as const;
 
 const curlExample = `curl -X POST https://api.linklab.dev/v1/links \\
   -H "Authorization: Bearer ll_live_xxxxxxxxx" \\
@@ -167,14 +176,18 @@ export default function DevelopersPage() {
           <div
             className="absolute inset-0 pointer-events-none z-0 opacity-[0.025]"
             style={{
-              backgroundImage: 'radial-gradient(circle, rgba(200,205,220,0.35) 1px, transparent 1px)',
+              backgroundImage:
+                'radial-gradient(circle, rgba(200,205,220,0.35) 1px, transparent 1px)',
               backgroundSize: '40px 40px',
             }}
           />
 
           <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-24">
             <div className="max-w-[900px]">
-              <div className="inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 mb-8" style={labelChipStyle}>
+              <div
+                className="inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 mb-8"
+                style={labelChipStyle}
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                 <span className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-amber-300/80">
                   Developer documentation
@@ -189,17 +202,28 @@ export default function DevelopersPage() {
               </h1>
 
               <p className="max-w-[760px] font-body text-lg lg:text-xl leading-relaxed text-white/58 mb-10">
-                This page is structured using patterns common in modern developer docs: quickstart first, clear authentication, copyable API examples, webhook semantics, SDK guidance, and operational constraints like rate limits and retries.
+                Generate an API key from LinkLab Settings, create short links from your backend, and
+                fetch owner-scoped analytics with the same plan limits shown in your dashboard.
               </p>
 
               <div className="grid gap-4 md:grid-cols-3">
                 {docsHighlights.map((item) => (
                   <div key={item.title} className="rounded-2xl p-5" style={glassCardSoftStyle}>
-                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4" style={{ background: item.gradient }}>
-                      <Icon name={item.icon as never} size={22} variant="solid" className="text-white" />
+                    <div
+                      className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4"
+                      style={{ background: item.gradient }}
+                    >
+                      <Icon
+                        name={item.icon as never}
+                        size={22}
+                        variant="solid"
+                        className="text-white"
+                      />
                     </div>
                     <h2 className="font-heading text-xl font-bold mb-2">{item.title}</h2>
-                    <p className="font-body text-sm leading-relaxed text-white/52">{item.description}</p>
+                    <p className="font-body text-sm leading-relaxed text-white/52">
+                      {item.description}
+                    </p>
                   </div>
                 ))}
               </div>

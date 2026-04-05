@@ -4,10 +4,12 @@ import AuthenticatedAppShell from '@/components/common/AuthenticatedAppShell';
 import { getServerAuthenticatedUser } from '@/lib/auth/server';
 import CreateLinkWorkspace from './components/CreateLinkWorkspace';
 import { getManagedLinksForUser } from '@/lib/links/service';
+import { getBillingUsageSnapshotForUser } from '@/lib/billing/service';
 
 export const metadata: Metadata = {
   title: 'Create Link - LinkLab',
-  description: 'Create branded short links, set custom aliases, and manage expirations from your LinkLab workspace.',
+  description:
+    'Create branded short links, set custom aliases, and manage expirations from your LinkLab workspace.',
 };
 
 export default async function CreateLinkPage() {
@@ -18,6 +20,10 @@ export default async function CreateLinkPage() {
   }
 
   const initialLinks = await getManagedLinksForUser(authenticatedUser.id, 10);
+  const initialQuota = await getBillingUsageSnapshotForUser(
+    authenticatedUser.id,
+    authenticatedUser.email
+  );
 
   return (
     <AuthenticatedAppShell
@@ -28,7 +34,7 @@ export default async function CreateLinkPage() {
         { label: 'Create Link', path: '/create-link' },
       ]}
     >
-      <CreateLinkWorkspace initialLinks={initialLinks} />
+      <CreateLinkWorkspace initialLinks={initialLinks} initialQuota={initialQuota} />
     </AuthenticatedAppShell>
   );
 }

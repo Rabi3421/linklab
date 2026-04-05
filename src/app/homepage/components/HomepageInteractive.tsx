@@ -8,6 +8,7 @@ import SocialProofSection from './SocialProofSection';
 import FAQSection from './FAQSection';
 import CTASection from './CTASection';
 import Footer from './Footer';
+import type { LinkCreationApiResponse } from '@/lib/links/types';
 
 interface ShortenedLink {
   originalUrl: string;
@@ -37,12 +38,16 @@ const HomepageInteractive = () => {
     });
 
     if (!response.ok) {
-      const data = (await response.json().catch(() => ({ message: 'Unable to shorten this URL right now.' }))) as { message?: string };
+      const data = (await response
+        .json()
+        .catch(() => ({ message: 'Unable to shorten this URL right now.' }))) as {
+        message?: string;
+      };
       throw new Error(data.message || 'Unable to shorten this URL right now.');
     }
 
-    const createdLink = (await response.json()) as ShortenedLink;
-    setShortenedLink(createdLink);
+    const payload = (await response.json()) as LinkCreationApiResponse;
+    setShortenedLink(payload.link);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -56,7 +61,10 @@ const HomepageInteractive = () => {
       <div className="min-h-screen bg-[#1e2129]">
         <div className="h-screen flex items-center justify-center">
           <div className="animate-pulse text-center">
-            <div className="w-12 h-12 rounded-xl mx-auto mb-4" style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)' }} />
+            <div
+              className="w-12 h-12 rounded-xl mx-auto mb-4"
+              style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)' }}
+            />
             <div className="h-3 w-24 bg-white/10 rounded mx-auto" />
           </div>
         </div>

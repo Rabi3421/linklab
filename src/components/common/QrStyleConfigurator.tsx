@@ -52,42 +52,43 @@ export default function QrStyleConfigurator({
     previewUrl,
   ].join('|');
 
-  const optimizeLogoFile = (file: File) => new Promise<string>((resolve, reject) => {
-    const objectUrl = URL.createObjectURL(file);
-    const image = new Image();
+  const optimizeLogoFile = (file: File) =>
+    new Promise<string>((resolve, reject) => {
+      const objectUrl = URL.createObjectURL(file);
+      const image = new Image();
 
-    image.onload = () => {
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
+      image.onload = () => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
 
-      if (!context) {
+        if (!context) {
+          URL.revokeObjectURL(objectUrl);
+          reject(new Error('Unable to prepare the logo canvas.'));
+          return;
+        }
+
+        const maxSide = 96;
+        const scale = Math.min(1, maxSide / Math.max(image.width, image.height));
+        const width = Math.max(1, Math.round(image.width * scale));
+        const height = Math.max(1, Math.round(image.height * scale));
+
+        canvas.width = width;
+        canvas.height = height;
+        context.clearRect(0, 0, width, height);
+        context.drawImage(image, 0, 0, width, height);
+
+        const optimizedDataUrl = canvas.toDataURL('image/png', 0.92);
         URL.revokeObjectURL(objectUrl);
-        reject(new Error('Unable to prepare the logo canvas.'));
-        return;
-      }
+        resolve(optimizedDataUrl);
+      };
 
-      const maxSide = 96;
-      const scale = Math.min(1, maxSide / Math.max(image.width, image.height));
-      const width = Math.max(1, Math.round(image.width * scale));
-      const height = Math.max(1, Math.round(image.height * scale));
+      image.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        reject(new Error('Unable to read the selected logo image.'));
+      };
 
-      canvas.width = width;
-      canvas.height = height;
-      context.clearRect(0, 0, width, height);
-      context.drawImage(image, 0, 0, width, height);
-
-      const optimizedDataUrl = canvas.toDataURL('image/png', 0.92);
-      URL.revokeObjectURL(objectUrl);
-      resolve(optimizedDataUrl);
-    };
-
-    image.onerror = () => {
-      URL.revokeObjectURL(objectUrl);
-      reject(new Error('Unable to read the selected logo image.'));
-    };
-
-    image.src = objectUrl;
-  });
+      image.src = objectUrl;
+    });
 
   const handlePresetChange = (presetId: string) => {
     const preset = getQrPreset(presetId);
@@ -127,7 +128,9 @@ export default function QrStyleConfigurator({
       const optimizedLogo = await optimizeLogoFile(selectedFile);
 
       if (!isValidQrLogoDataUrl(optimizedLogo)) {
-        setLogoError('This image could not be optimized for QR logo embedding. Try a simpler icon.');
+        setLogoError(
+          'This image could not be optimized for QR logo embedding. Try a simpler icon.'
+        );
         event.target.value = '';
         setIsProcessingLogo(false);
         return;
@@ -177,7 +180,9 @@ export default function QrStyleConfigurator({
             imageClassName="border border-border bg-background p-2"
           />
           <div className="mt-4 rounded-xl bg-muted/40 p-3">
-            <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Preview link</p>
+            <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+              Preview link
+            </p>
             <p className="mt-1 truncate text-sm font-medium text-foreground">{previewUrl}</p>
           </div>
         </div>
@@ -198,12 +203,23 @@ export default function QrStyleConfigurator({
                     className={`rounded-xl border p-3 text-left transition-all duration-250 ${isActive ? 'border-primary bg-primary/10 shadow-sm' : 'border-border bg-card hover:bg-muted/40'}`}
                   >
                     <div className="mb-3 flex items-center gap-2">
-                      <span className="h-4 w-4 rounded-full" style={{ backgroundColor: preset.config.foregroundColor }} />
-                      <span className="h-4 w-4 rounded-full" style={{ backgroundColor: preset.config.cornerColor }} />
-                      <span className="h-4 w-4 rounded-full border border-border" style={{ backgroundColor: preset.config.backgroundColor }} />
+                      <span
+                        className="h-4 w-4 rounded-full"
+                        style={{ backgroundColor: preset.config.foregroundColor }}
+                      />
+                      <span
+                        className="h-4 w-4 rounded-full"
+                        style={{ backgroundColor: preset.config.cornerColor }}
+                      />
+                      <span
+                        className="h-4 w-4 rounded-full border border-border"
+                        style={{ backgroundColor: preset.config.backgroundColor }}
+                      />
                     </div>
                     <p className="text-sm font-semibold text-foreground">{preset.name}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{preset.description}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                      {preset.description}
+                    </p>
                   </button>
                 );
               })}
@@ -221,7 +237,9 @@ export default function QrStyleConfigurator({
                   onChange={(event) => handleFieldChange('foregroundColor', event.target.value)}
                   className="h-11 w-12 rounded border border-border bg-background"
                 />
-                <span className="text-sm text-muted-foreground">{resolvedValue.foregroundColor}</span>
+                <span className="text-sm text-muted-foreground">
+                  {resolvedValue.foregroundColor}
+                </span>
               </div>
             </label>
 
@@ -249,7 +267,9 @@ export default function QrStyleConfigurator({
                   onChange={(event) => handleFieldChange('backgroundColor', event.target.value)}
                   className="h-11 w-12 rounded border border-border bg-background"
                 />
-                <span className="text-sm text-muted-foreground">{resolvedValue.backgroundColor}</span>
+                <span className="text-sm text-muted-foreground">
+                  {resolvedValue.backgroundColor}
+                </span>
               </div>
             </label>
           </div>
@@ -258,7 +278,10 @@ export default function QrStyleConfigurator({
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <p className="text-sm font-medium text-foreground">Center logo</p>
-                <p className="text-sm text-muted-foreground">Upload your brand mark to embed it in the QR center. Keep the file lightweight for better scan reliability.</p>
+                <p className="text-sm text-muted-foreground">
+                  Upload your brand mark to embed it in the QR center. Keep the file lightweight for
+                  better scan reliability.
+                </p>
               </div>
               <div className="flex items-center gap-3">
                 <input
@@ -275,8 +298,17 @@ export default function QrStyleConfigurator({
                   disabled={disabled || isProcessingLogo}
                   className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all duration-250 hover:shadow-md disabled:opacity-60"
                 >
-                  <Icon name={isProcessingLogo ? 'ArrowPathIcon' : 'ArrowUpTrayIcon'} size={16} variant="outline" className={isProcessingLogo ? 'animate-spin' : ''} />
-                  {isProcessingLogo ? 'Optimizing...' : resolvedValue.logoDataUrl ? 'Replace logo' : 'Upload logo'}
+                  <Icon
+                    name={isProcessingLogo ? 'ArrowPathIcon' : 'ArrowUpTrayIcon'}
+                    size={16}
+                    variant="outline"
+                    className={isProcessingLogo ? 'animate-spin' : ''}
+                  />
+                  {isProcessingLogo
+                    ? 'Optimizing...'
+                    : resolvedValue.logoDataUrl
+                      ? 'Replace logo'
+                      : 'Upload logo'}
                 </button>
                 {resolvedValue.logoDataUrl && (
                   <button
@@ -295,14 +327,28 @@ export default function QrStyleConfigurator({
             <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center">
               <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted/40">
                 {resolvedValue.logoDataUrl ? (
-                  <img src={resolvedValue.logoDataUrl} alt="QR logo preview" className="h-full w-full object-contain p-2" />
+                  <img
+                    src={resolvedValue.logoDataUrl}
+                    alt="QR logo preview"
+                    className="h-full w-full object-contain p-2"
+                  />
                 ) : (
-                  <Icon name="PhotoIcon" size={24} variant="outline" className="text-muted-foreground" />
+                  <Icon
+                    name="PhotoIcon"
+                    size={24}
+                    variant="outline"
+                    className="text-muted-foreground"
+                  />
                 )}
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-medium text-foreground">Recommended: square logo, transparent background</p>
-                <p className="text-sm text-muted-foreground">Best results come from simple icons under 350 KB. Uploaded logos are automatically resized for faster QR preview rendering.</p>
+                <p className="text-sm font-medium text-foreground">
+                  Recommended: square logo, transparent background
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Best results come from simple icons under 350 KB. Uploaded logos are automatically
+                  resized for faster QR preview rendering.
+                </p>
                 {logoError && <p className="mt-2 text-sm text-error">{logoError}</p>}
               </div>
             </div>
@@ -318,7 +364,9 @@ export default function QrStyleConfigurator({
                 className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {QR_DOT_STYLES.map((dotStyle) => (
-                  <option key={dotStyle} value={dotStyle}>{dotStyle}</option>
+                  <option key={dotStyle} value={dotStyle}>
+                    {dotStyle}
+                  </option>
                 ))}
               </select>
             </label>
@@ -332,13 +380,17 @@ export default function QrStyleConfigurator({
                 className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {QR_CORNER_STYLES.map((cornerStyle) => (
-                  <option key={cornerStyle} value={cornerStyle}>{cornerStyle}</option>
+                  <option key={cornerStyle} value={cornerStyle}>
+                    {cornerStyle}
+                  </option>
                 ))}
               </select>
             </label>
 
             <label>
-              <span className="mb-2 block text-sm font-medium text-foreground">Frame treatment</span>
+              <span className="mb-2 block text-sm font-medium text-foreground">
+                Frame treatment
+              </span>
               <select
                 value={resolvedValue.frameStyle}
                 disabled={disabled}
@@ -346,7 +398,9 @@ export default function QrStyleConfigurator({
                 className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {QR_FRAME_STYLES.map((frameStyle) => (
-                  <option key={frameStyle} value={frameStyle}>{frameStyle}</option>
+                  <option key={frameStyle} value={frameStyle}>
+                    {frameStyle}
+                  </option>
                 ))}
               </select>
             </label>

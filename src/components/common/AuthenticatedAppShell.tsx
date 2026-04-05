@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import AuthenticationAwareHeader from '@/components/common/AuthenticationAwareHeader';
+import AuthenticatedWorkspaceHeader from '@/components/common/AuthenticatedWorkspaceHeader';
 import DashboardSidebar from '@/components/common/DashboardSidebar';
 import BreadcrumbNavigation from '@/components/common/BreadcrumbNavigation';
 
@@ -25,10 +25,10 @@ export default function AuthenticatedAppShell({
 }: AuthenticatedAppShellProps) {
   return (
     <div className="min-h-screen bg-background">
-      <AuthenticationAwareHeader isAuthenticated={true} />
+      <AuthenticatedWorkspaceHeader title={title} description={description} />
       <DashboardSidebar />
 
-      <main className="lg:ml-[240px] pt-[60px] pb-[80px] lg:pb-8">
+      <main className="lg:ml-[240px] pt-[72px] pb-[80px] lg:pb-8">
         <div className={`${maxWidthClassName} mx-auto px-4 sm:px-6 lg:px-8 py-8`}>
           <BreadcrumbNavigation customItems={breadcrumbItems} />
 

@@ -73,7 +73,7 @@ const DashboardSidebar = ({ isCollapsed = false }: DashboardSidebarProps) => {
   return (
     <>
       <aside 
-        className={`hidden lg:fixed lg:flex flex-col top-[60px] left-0 bottom-0 bg-card border-r border-border transition-all duration-350 ease-smooth z-50 ${
+        className={`hidden lg:fixed lg:flex flex-col top-[72px] left-0 bottom-0 bg-card border-r border-border transition-all duration-350 ease-smooth z-50 ${
           collapsed ? 'w-[84px]' : 'w-[240px]'
         }`}
       >

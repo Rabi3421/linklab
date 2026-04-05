@@ -3,8 +3,19 @@ import { ObjectId, type WithId } from 'mongodb';
 import QRCode from 'qrcode';
 import { getDatabase } from '@/lib/mongodb';
 import { getServerAuthenticatedUser } from '@/lib/auth/server';
+import {
+  assertCanCreateLinkForRequest,
+  consumeLinkQuotaForRequest,
+  getBillingUsageSnapshotForUser,
+} from '@/lib/billing/service';
 import { resolveQrStyleConfig } from './qr-style';
-import type { LinkAnalyticsView, LinkCreationResult, LinkStatus, ManagedLinkRecord } from './types';
+import type {
+  LinkAnalyticsView,
+  LinkCreationApiResponse,
+  LinkCreationResult,
+  LinkStatus,
+  ManagedLinkRecord,
+} from './types';
 
 interface LinkDocument {
   _id: ObjectId;
@@ -73,7 +84,56 @@ const countryFlags: Record<string, string> = {
   Unknown: '🌍',
 };
 
-const getBaseUrl = () => process.env.NEXT_PUBLIC_APP_URL || DEFAULT_BASE_URL;
+const normalizeBaseUrl = (value?: string | null) => {
+  if (!value) {
+    return null;
+  }
+
+  const trimmedValue = value.trim();
+
+  if (!trimmedValue) {
+    return null;
+  }
+
+  const normalizedValue = /^https?:\/\//i.test(trimmedValue)
+    ? trimmedValue
+    : `https://${trimmedValue}`;
+
+  try {
+    return new URL(normalizedValue).origin;
+  } catch {
+    return null;
+  }
+};
+
+const getBaseUrlFromRequest = (request: Request) => {
+  const forwardedHost = request.headers.get('x-forwarded-host');
+  const host = forwardedHost?.split(',')[0]?.trim() || request.headers.get('host')?.trim();
+  const forwardedProto = request.headers.get('x-forwarded-proto');
+  const protocol = forwardedProto?.split(',')[0]?.trim() || 'https';
+
+  if (!host) {
+    return null;
+  }
+
+  return normalizeBaseUrl(`${protocol}://${host}`);
+};
+
+const getBaseUrl = (request?: Request) => {
+  const requestBaseUrl = request ? getBaseUrlFromRequest(request) : null;
+
+  if (requestBaseUrl) {
+    return requestBaseUrl;
+  }
+
+  return (
+    normalizeBaseUrl(process.env.NEXT_PUBLIC_APP_URL) ||
+    normalizeBaseUrl(process.env.APP_URL) ||
+    normalizeBaseUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL) ||
+    normalizeBaseUrl(process.env.VERCEL_URL) ||
+    DEFAULT_BASE_URL
+  );
+};
 
 const getLinksCollection = async () => {
   const database = await getDatabase();
@@ -107,7 +167,10 @@ const determineStatus = (expirationDate?: Date): LinkStatus => {
   return 'active';
 };
 
-const mapLinkToRecord = (link: WithId<LinkDocument>, baseUrl = getBaseUrl()): ManagedLinkRecord => ({
+const mapLinkToRecord = (
+  link: WithId<LinkDocument>,
+  baseUrl = getBaseUrl()
+): ManagedLinkRecord => ({
   id: link._id.toHexString(),
   originalUrl: link.originalUrl,
   shortCode: link.code,
@@ -123,7 +186,9 @@ const mapLinkToRecord = (link: WithId<LinkDocument>, baseUrl = getBaseUrl()): Ma
 
 const randomCode = (length = 8) => {
   const alphabet = 'abcdefghjkmnpqrstuvwxyz23456789';
-  return Array.from({ length }, () => alphabet[Math.floor(Math.random() * alphabet.length)]).join('');
+  return Array.from({ length }, () => alphabet[Math.floor(Math.random() * alphabet.length)]).join(
+    ''
+  );
 };
 
 const createUniqueCode = async (preferredCode?: string) => {
@@ -231,7 +296,8 @@ const detectSource = (referrer: string) => {
   }
 };
 
-const percentage = (value: number, total: number) => (total > 0 ? Number(((value / total) * 100).toFixed(1)) : 0);
+const percentage = (value: number, total: number) =>
+  total > 0 ? Number(((value / total) * 100).toFixed(1)) : 0;
 
 const trendPercentage = (current: number, previous: number) => {
   if (previous === 0) {
@@ -321,7 +387,7 @@ export const updateLinkForUser = async (
     expirationDate?: string;
     baseUrl?: string;
     qrStyle?: LinkCreationResult['qrStyle'];
-  },
+  }
 ) => {
   if (!ObjectId.isValid(linkId)) {
     return null;
@@ -334,23 +400,32 @@ export const updateLinkForUser = async (
     return null;
   }
 
-  const requestedAlias = input.customAlias !== undefined ? input.customAlias.trim().toLowerCase() : undefined;
-  const nextCode = requestedAlias === undefined || requestedAlias === '' || requestedAlias === existingLink.code
-    ? existingLink.code
-    : await createUniqueCode(requestedAlias);
+  const requestedAlias =
+    input.customAlias !== undefined ? input.customAlias.trim().toLowerCase() : undefined;
+  const nextCode =
+    requestedAlias === undefined || requestedAlias === '' || requestedAlias === existingLink.code
+      ? existingLink.code
+      : await createUniqueCode(requestedAlias);
 
   const baseUrl = input.baseUrl || getBaseUrl();
   const shortUrl = `${baseUrl}/${nextCode}`;
-  const normalizedUrl = input.originalUrl ? normalizeUrl(input.originalUrl) : existingLink.normalizedUrl;
+  const normalizedUrl = input.originalUrl
+    ? normalizeUrl(input.originalUrl)
+    : existingLink.normalizedUrl;
   const qrStyle = input.qrStyle ? resolveQrStyleConfig(input.qrStyle) : existingLink.qrStyle;
-  const shouldRegenerateQr = nextCode !== existingLink.code || JSON.stringify(qrStyle) !== JSON.stringify(existingLink.qrStyle);
-  const qrCodeDataUrl = shouldRegenerateQr ? await generateQrCode(shortUrl, qrStyle) : existingLink.qrCodeDataUrl;
+  const shouldRegenerateQr =
+    nextCode !== existingLink.code ||
+    JSON.stringify(qrStyle) !== JSON.stringify(existingLink.qrStyle);
+  const qrCodeDataUrl = shouldRegenerateQr
+    ? await generateQrCode(shortUrl, qrStyle)
+    : existingLink.qrCodeDataUrl;
 
-  const expirationDate = input.expirationDate === ''
-    ? undefined
-    : input.expirationDate
-      ? new Date(input.expirationDate)
-      : existingLink.expirationDate;
+  const expirationDate =
+    input.expirationDate === ''
+      ? undefined
+      : input.expirationDate
+        ? new Date(input.expirationDate)
+        : existingLink.expirationDate;
 
   await linksCollection.updateOne(
     { _id: existingLink._id },
@@ -365,7 +440,7 @@ export const updateLinkForUser = async (
         qrStyle,
         updatedAt: new Date(),
       },
-    },
+    }
   );
 
   const updatedLink = await linksCollection.findOne({ _id: existingLink._id });
@@ -403,7 +478,11 @@ export const getLinkByCode = async (code: string) => {
 
 export const getManagedLinksForUser = async (ownerId: string, limit = 50) => {
   const linksCollection = await getLinksCollection();
-  const links = await linksCollection.find({ ownerId }).sort({ createdAt: -1 }).limit(limit).toArray();
+  const links = await linksCollection
+    .find({ ownerId })
+    .sort({ createdAt: -1 })
+    .limit(limit)
+    .toArray();
   return links.map((link) => mapLinkToRecord(link));
 };
 
@@ -450,13 +529,16 @@ export const recordLinkClick = async (link: WithId<LinkDocument>, request: Reque
         updatedAt: new Date(),
         lastClickedAt: clickDocument.clickedAt,
       },
-    },
+    }
   );
 
   return { expired: false };
 };
 
-export const getLinkAnalyticsForUser = async (ownerId: string, code?: string): Promise<LinkAnalyticsView | null> => {
+export const getLinkAnalyticsForUser = async (
+  ownerId: string,
+  code?: string
+): Promise<LinkAnalyticsView | null> => {
   const linksCollection = await getLinksCollection();
   const clicksCollection = await getClicksCollection();
 
@@ -468,7 +550,10 @@ export const getLinkAnalyticsForUser = async (ownerId: string, code?: string): P
     return null;
   }
 
-  const clicks = await clicksCollection.find({ linkId: selectedLink._id }).sort({ clickedAt: 1 }).toArray();
+  const clicks = await clicksCollection
+    .find({ linkId: selectedLink._id })
+    .sort({ clickedAt: 1 })
+    .toArray();
   const now = new Date();
   const last7DaysStart = new Date(now);
   last7DaysStart.setDate(now.getDate() - 6);
@@ -480,14 +565,18 @@ export const getLinkAnalyticsForUser = async (ownerId: string, code?: string): P
 
   const currentPeriodClicks = clicks.filter((click) => click.clickedAt >= last7DaysStart).length;
   const previousPeriodClicks = clicks.filter(
-    (click) => click.clickedAt >= previous7DaysStart && click.clickedAt < previous7DaysEnd,
+    (click) => click.clickedAt >= previous7DaysStart && click.clickedAt < previous7DaysEnd
   ).length;
 
   const currentUniqueVisitors = new Set(
-    clicks.filter((click) => click.clickedAt >= last7DaysStart).map((click) => click.visitorFingerprint),
+    clicks
+      .filter((click) => click.clickedAt >= last7DaysStart)
+      .map((click) => click.visitorFingerprint)
   ).size;
 
-  const last30DaysClicks = clicks.filter((click) => click.clickedAt >= new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000));
+  const last30DaysClicks = clicks.filter(
+    (click) => click.clickedAt >= new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
+  );
   const directClicks = clicks.filter((click) => click.source === 'Direct Traffic').length;
   const mobileClicks = clicks.filter((click) => click.deviceType === 'Mobile').length;
 
@@ -496,7 +585,7 @@ export const getLinkAnalyticsForUser = async (ownerId: string, code?: string): P
     date.setDate(last7DaysStart.getDate() + offset);
     const dateLabel = date.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' });
     const clicksOnDay = clicks.filter(
-      (click) => click.clickedAt.toDateString() === date.toDateString(),
+      (click) => click.clickedAt.toDateString() === date.toDateString()
     );
 
     return {
@@ -521,8 +610,11 @@ export const getLinkAnalyticsForUser = async (ownerId: string, code?: string): P
     Tablet: '#10B981',
   };
 
-  const devices = summarizeCounts(clicks.map((click) => click.deviceType))
-    .map(([name, value]) => ({ name, value, color: deviceColors[name] || '#8B5CF6' }));
+  const devices = summarizeCounts(clicks.map((click) => click.deviceType)).map(([name, value]) => ({
+    name,
+    value,
+    color: deviceColors[name] || '#8B5CF6',
+  }));
 
   const countries = summarizeCounts(clicks.map((click) => click.country))
     .slice(0, 5)
@@ -543,7 +635,10 @@ export const getLinkAnalyticsForUser = async (ownerId: string, code?: string): P
     }));
 
   const peakHours = getPeakHourBuckets(clicks);
-  const topHour = peakHours.reduce((best, current) => (current.clicks > best.clicks ? current : best), peakHours[0] || { hour: '12AM', clicks: 0 });
+  const topHour = peakHours.reduce(
+    (best, current) => (current.clicks > best.clicks ? current : best),
+    peakHours[0] || { hour: '12AM', clicks: 0 }
+  );
 
   return {
     selectedCode: selectedLink.code,
@@ -552,7 +647,10 @@ export const getLinkAnalyticsForUser = async (ownerId: string, code?: string): P
         title: 'Total Clicks',
         value: clicks.length.toLocaleString(),
         subtitle: `${currentPeriodClicks.toLocaleString()} in the last 7 days`,
-        trend: { value: Math.abs(trendPercentage(currentPeriodClicks, previousPeriodClicks)), isPositive: trendPercentage(currentPeriodClicks, previousPeriodClicks) >= 0 },
+        trend: {
+          value: Math.abs(trendPercentage(currentPeriodClicks, previousPeriodClicks)),
+          isPositive: trendPercentage(currentPeriodClicks, previousPeriodClicks) >= 0,
+        },
       },
       {
         title: 'Unique Visitors',
@@ -631,15 +729,39 @@ export const getLinkForRedirect = async (code: string) => {
 
 export const createShortLinkForCurrentRequest = async (
   request: Request,
-  body: { originalUrl: string; customAlias?: string; expirationDate?: string; qrStyle?: LinkCreationResult['qrStyle'] },
+  body: {
+    originalUrl: string;
+    customAlias?: string;
+    expirationDate?: string;
+    qrStyle?: LinkCreationResult['qrStyle'];
+  }
 ) => {
   const authenticatedUser = await getServerAuthenticatedUser();
-  const baseUrl = new URL(request.url).origin;
+  const baseUrl = getBaseUrl(request);
 
-  return createShortLink({
+  await assertCanCreateLinkForRequest(request, authenticatedUser);
+
+  const link = await createShortLink({
     ...body,
     ownerId: authenticatedUser?.id,
     ownerEmail: authenticatedUser?.email,
     baseUrl,
   });
+
+  const quota = await consumeLinkQuotaForRequest(request, authenticatedUser);
+
+  return {
+    link,
+    quota,
+  } satisfies LinkCreationApiResponse;
+};
+
+export const getBillingUsageForCurrentUser = async () => {
+  const authenticatedUser = await getServerAuthenticatedUser();
+
+  if (!authenticatedUser) {
+    return null;
+  }
+
+  return getBillingUsageSnapshotForUser(authenticatedUser.id, authenticatedUser.email);
 };

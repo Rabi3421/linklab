@@ -1,8 +1,23 @@
+import type { BillingUsageSnapshot } from '@/lib/billing/types';
+
 export type LinkStatus = 'active' | 'expired';
 
-export type QrDotsStyle = 'rounded' | 'dots' | 'classy' | 'classy-rounded' | 'square' | 'extra-rounded';
+export type QrDotsStyle =
+  | 'rounded'
+  | 'dots'
+  | 'classy'
+  | 'classy-rounded'
+  | 'square'
+  | 'extra-rounded';
 
-export type QrCornerStyle = 'dot' | 'square' | 'extra-rounded' | 'rounded' | 'dots' | 'classy' | 'classy-rounded';
+export type QrCornerStyle =
+  | 'dot'
+  | 'square'
+  | 'extra-rounded'
+  | 'rounded'
+  | 'dots'
+  | 'classy'
+  | 'classy-rounded';
 
 export type QrFrameStyle = 'soft' | 'glass' | 'outline';
 
@@ -43,6 +58,11 @@ export interface LinkCreationResult {
   clicks: number;
   status: LinkStatus;
   qrStyle?: QrStyleConfig;
+}
+
+export interface LinkCreationApiResponse {
+  link: ManagedLinkRecord;
+  quota: BillingUsageSnapshot;
 }
 
 export interface LinkAnalyticsView {

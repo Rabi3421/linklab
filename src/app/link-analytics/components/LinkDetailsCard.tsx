@@ -1,7 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import StyledQrCode from '@/components/common/StyledQrCode';
 import Icon from '@/components/ui/AppIcon';
+import { downloadStyledQrCode } from '@/lib/links/qr-style-client';
+import type { QrStyleConfig } from '@/lib/links/types';
 
 interface LinkDetailsCardProps {
   originalUrl: string;
@@ -10,6 +13,8 @@ interface LinkDetailsCardProps {
   createdDate: string;
   expiryDate?: string;
   status: 'active' | 'expired';
+  qrCodeDataUrl: string;
+  qrStyle?: QrStyleConfig;
 }
 
 export default function LinkDetailsCard({
@@ -18,7 +23,9 @@ export default function LinkDetailsCard({
   shortCode,
   createdDate,
   expiryDate,
-  status
+  status,
+  qrCodeDataUrl,
+  qrStyle,
 }: LinkDetailsCardProps) {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
@@ -26,6 +33,23 @@ export default function LinkDetailsCard({
     navigator.clipboard.writeText(text);
     setCopiedField(field);
     setTimeout(() => setCopiedField(null), 2000);
+  };
+
+  const handleDownload = async () => {
+    if (qrStyle) {
+      await downloadStyledQrCode({
+        data: shortUrl,
+        style: qrStyle,
+        name: `${shortCode}-styled-qr`,
+        extension: 'png',
+      });
+      return;
+    }
+
+    const anchor = document.createElement('a');
+    anchor.href = qrCodeDataUrl;
+    anchor.download = `${shortCode}-qr.png`;
+    anchor.click();
   };
 
   return (
@@ -95,15 +119,27 @@ export default function LinkDetailsCard({
           )}
         </div>
 
-        <div className="flex gap-3 pt-4">
-          <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md font-body font-medium text-sm transition-all duration-250 ease-smooth hover:shadow-md hover:-translate-y-[1px] active:scale-95">
-            <Icon name="QrCodeIcon" size={18} variant="outline" />
-            Generate QR Code
-          </button>
-          <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-md font-body font-medium text-sm transition-all duration-250 ease-smooth hover:shadow-md hover:-translate-y-[1px] active:scale-95">
-            <Icon name="PencilIcon" size={18} variant="outline" />
-            Edit Link
-          </button>
+        <div className="pt-4 border-t border-border">
+          <label className="font-body text-sm text-muted-foreground mb-3 block">QR Code</label>
+          <div className="rounded-lg bg-muted border border-border p-4 flex flex-col items-center gap-4">
+            <StyledQrCode data={shortUrl} qrCodeDataUrl={qrCodeDataUrl} qrStyle={qrStyle} size={160} imageClassName="border border-border bg-background p-2" />
+            <div className="flex w-full gap-3">
+              <button
+                onClick={handleDownload}
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md font-body font-medium text-sm transition-all duration-250 ease-smooth hover:shadow-md hover:-translate-y-[1px] active:scale-95"
+              >
+                <Icon name="ArrowDownTrayIcon" size={18} variant="outline" />
+                Download PNG
+              </button>
+              <button
+                onClick={() => handleCopy(shortUrl, 'share')}
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-md font-body font-medium text-sm transition-all duration-250 ease-smooth hover:shadow-md hover:-translate-y-[1px] active:scale-95"
+              >
+                <Icon name={copiedField === 'share' ? 'CheckIcon' : 'ShareIcon'} size={18} variant="outline" />
+                {copiedField === 'share' ? 'Copied' : 'Share Link'}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

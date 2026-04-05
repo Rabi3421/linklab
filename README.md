@@ -7,6 +7,9 @@ A modern Next.js 14 application built with TypeScript and Tailwind CSS.
 - **Next.js 14** - Latest version with improved performance and features
 - **React 18** - Latest React version with enhanced capabilities
 - **Tailwind CSS** - Utility-first CSS framework for rapid UI development
+- **JWT + MongoDB Auth** - Secure access and refresh token authentication with protected app routes
+- **Real URL Shortening** - Persistent short links, redirects, analytics, and QR code generation
+- **Styled QR Builder** - Preset-based branded QR customization with editable colors, dot styles, corner styles, and SVG export
 
 ## 📋 Prerequisites
 

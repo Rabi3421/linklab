@@ -12,6 +12,8 @@ import Footer from './Footer';
 interface ShortenedLink {
   originalUrl: string;
   shortCode: string;
+  shortUrl: string;
+  qrCodeDataUrl: string;
 }
 
 const HomepageInteractive = () => {
@@ -22,19 +24,25 @@ const HomepageInteractive = () => {
     setIsHydrated(true);
   }, []);
 
-  const generateShortCode = (): string => {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < 6; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
-  };
-
-  const handleShortenUrl = (url: string) => {
+  const handleShortenUrl = async (url: string) => {
     if (!isHydrated) return;
-    const shortCode = generateShortCode();
-    setShortenedLink({ originalUrl: url, shortCode });
+
+    const response = await fetch('/api/links', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({ originalUrl: url }),
+    });
+
+    if (!response.ok) {
+      const data = (await response.json().catch(() => ({ message: 'Unable to shorten this URL right now.' }))) as { message?: string };
+      throw new Error(data.message || 'Unable to shorten this URL right now.');
+    }
+
+    const createdLink = (await response.json()) as ShortenedLink;
+    setShortenedLink(createdLink);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -64,6 +72,8 @@ const HomepageInteractive = () => {
             <ShortenedResult
               originalUrl={shortenedLink.originalUrl}
               shortCode={shortenedLink.shortCode}
+              shortUrl={shortenedLink.shortUrl}
+              qrCodeDataUrl={shortenedLink.qrCodeDataUrl}
               onClose={handleCloseResult}
             />
           </div>

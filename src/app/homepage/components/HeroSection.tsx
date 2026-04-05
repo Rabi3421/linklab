@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Icon from '@/components/ui/AppIcon';
 
 interface HeroSectionProps {
-  onShortenUrl: (url: string) => void;
+  onShortenUrl: (url: string) => Promise<void>;
 }
 
 const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
@@ -41,16 +41,21 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     if (!url.trim()) { setError('Paste a URL to shorten'); return; }
     if (!validateUrl(url)) { setError("That doesn't look like a valid URL"); return; }
     setIsLoading(true);
-    setTimeout(() => {
+
+    try {
+      await onShortenUrl(url);
+      setUrl('');
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Unable to shorten that URL right now');
+    } finally {
       setIsLoading(false);
-      onShortenUrl(url);
-    }, 600);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

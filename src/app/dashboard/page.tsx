@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import AuthenticatedAppShell from '@/components/common/AuthenticatedAppShell';
 import DashboardInteractive from './components/DashboardInteractive';
 import { getServerAuthenticatedUser } from '@/lib/auth/server';
+import { getManagedLinksForUser } from '@/lib/links/service';
 
 export const metadata: Metadata = {
   title: 'Dashboard - LinkLab',
@@ -16,12 +17,14 @@ export default async function DashboardPage() {
     redirect('/login');
   }
 
+  const initialLinks = await getManagedLinksForUser(authenticatedUser.id);
+
   return (
     <AuthenticatedAppShell
       title="Dashboard"
       description="Manage your links, track performance, and create new short URLs."
     >
-      <DashboardInteractive />
+      <DashboardInteractive initialLinks={initialLinks} />
     </AuthenticatedAppShell>
   );
 }

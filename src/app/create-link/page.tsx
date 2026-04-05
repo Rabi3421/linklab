@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import AuthenticatedAppShell from '@/components/common/AuthenticatedAppShell';
 import { getServerAuthenticatedUser } from '@/lib/auth/server';
 import CreateLinkWorkspace from './components/CreateLinkWorkspace';
+import { getManagedLinksForUser } from '@/lib/links/service';
 
 export const metadata: Metadata = {
   title: 'Create Link - LinkLab',
@@ -16,6 +17,8 @@ export default async function CreateLinkPage() {
     redirect('/login');
   }
 
+  const initialLinks = await getManagedLinksForUser(authenticatedUser.id, 10);
+
   return (
     <AuthenticatedAppShell
       title="Create Link"
@@ -25,7 +28,7 @@ export default async function CreateLinkPage() {
         { label: 'Create Link', path: '/create-link' },
       ]}
     >
-      <CreateLinkWorkspace />
+      <CreateLinkWorkspace initialLinks={initialLinks} />
     </AuthenticatedAppShell>
   );
 }

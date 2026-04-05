@@ -5,22 +5,14 @@ import DashboardStats from './DashboardStats';
 import QuickCreateForm from './QuickCreateForm';
 import FilterControls from './FilterControls';
 import LinksTable from './LinksTable';
+import type { ManagedLinkRecord } from '@/lib/links/types';
+import RecentQrCodesPanel from '@/components/common/RecentQrCodesPanel';
+import type { QrStyleConfig } from '@/lib/links/types';
 
-interface LinkData {
-  id: string;
-  originalUrl: string;
-  shortCode: string;
-  customAlias: string;
-  createdAt: string;
-  clicks: number;
-  status: 'active' | 'expired' | 'inactive';
-  expirationDate: string;
-}
-
-export default function DashboardInteractive() {
+export default function DashboardInteractive({ initialLinks }: { initialLinks: ManagedLinkRecord[] }) {
   const [isHydrated, setIsHydrated] = useState(false);
-  const [links, setLinks] = useState<LinkData[]>([]);
-  const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
+  const [links, setLinks] = useState<ManagedLinkRecord[]>(initialLinks);
+  const [filteredLinks, setFilteredLinks] = useState<ManagedLinkRecord[]>(initialLinks);
   const [showCopyNotification, setShowCopyNotification] = useState(false);
 
   useEffect(() => {
@@ -28,109 +20,34 @@ export default function DashboardInteractive() {
   }, []);
 
   useEffect(() => {
-    if (isHydrated) {
-      const mockLinks: LinkData[] = [
-        {
-          id: '1',
-          originalUrl: 'https://www.example.com/blog/how-to-create-effective-marketing-campaigns-2024',
-          shortCode: 'mkt2024',
-          customAlias: 'marketing-guide',
-          createdAt: '12/15/2024',
-          clicks: 1247,
-          status: 'active',
-          expirationDate: '06/15/2025'
-        },
-        {
-          id: '2',
-          originalUrl: 'https://shop.example.com/products/winter-collection-sale?utm_source=email',
-          shortCode: 'wtr-sale',
-          customAlias: 'winter-deals',
-          createdAt: '12/10/2024',
-          clicks: 3892,
-          status: 'active',
-          expirationDate: '01/31/2025'
-        },
-        {
-          id: '3',
-          originalUrl: 'https://docs.example.com/api/v2/authentication-guide',
-          shortCode: 'api-auth',
-          customAlias: '',
-          createdAt: '12/05/2024',
-          clicks: 567,
-          status: 'active',
-          expirationDate: ''
-        },
-        {
-          id: '4',
-          originalUrl: 'https://events.example.com/webinar/digital-transformation-2024',
-          shortCode: 'webinar24',
-          customAlias: 'dt-webinar',
-          createdAt: '11/28/2024',
-          clicks: 2134,
-          status: 'expired',
-          expirationDate: '12/01/2024'
-        },
-        {
-          id: '5',
-          originalUrl: 'https://support.example.com/help/getting-started-guide',
-          shortCode: 'help-start',
-          customAlias: '',
-          createdAt: '11/20/2024',
-          clicks: 892,
-          status: 'active',
-          expirationDate: ''
-        },
-        {
-          id: '6',
-          originalUrl: 'https://newsletter.example.com/subscribe?campaign=holiday2024',
-          shortCode: 'nl-holiday',
-          customAlias: 'holiday-news',
-          createdAt: '11/15/2024',
-          clicks: 1567,
-          status: 'active',
-          expirationDate: '12/31/2024'
-        },
-        {
-          id: '7',
-          originalUrl: 'https://careers.example.com/jobs/senior-developer-remote',
-          shortCode: 'job-dev',
-          customAlias: '',
-          createdAt: '11/10/2024',
-          clicks: 423,
-          status: 'inactive',
-          expirationDate: ''
-        },
-        {
-          id: '8',
-          originalUrl: 'https://blog.example.com/2024/trends-in-artificial-intelligence',
-          shortCode: 'ai-trends',
-          customAlias: 'ai-2024',
-          createdAt: '11/05/2024',
-          clicks: 2891,
-          status: 'active',
-          expirationDate: ''
-        }
-      ];
+    setLinks(initialLinks);
+    setFilteredLinks(initialLinks);
+  }, [initialLinks]);
 
-      setLinks(mockLinks);
-      setFilteredLinks(mockLinks);
+  const handleCreateLink = async (data: { url: string; customAlias: string; expirationDate: string; qrStyle: QrStyleConfig }) => {
+    const response = await fetch('/api/links', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        originalUrl: data.url,
+        customAlias: data.customAlias,
+        expirationDate: data.expirationDate,
+        qrStyle: data.qrStyle,
+      }),
+    });
+
+    if (!response.ok) {
+      const payload = (await response.json().catch(() => ({ message: 'Unable to create the short link right now.' }))) as { message?: string };
+      return { success: false, message: payload.message || 'Unable to create the short link right now.' };
     }
-  }, [isHydrated]);
 
-  const handleCreateLink = (data: { url: string; customAlias: string; expirationDate: string }) => {
-    const newLink: LinkData = {
-      id: Date.now().toString(),
-      originalUrl: data.url,
-      shortCode: data.customAlias || Math.random().toString(36).substring(2, 8),
-      customAlias: data.customAlias,
-      createdAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }),
-      clicks: 0,
-      status: 'active',
-      expirationDate: data.expirationDate ? new Date(data.expirationDate).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }) : ''
-    };
-
-    setLinks([newLink, ...links]);
-    setFilteredLinks([newLink, ...filteredLinks]);
+    const newLink = (await response.json()) as ManagedLinkRecord;
+    setLinks((previousLinks) => [newLink, ...previousLinks]);
+    setFilteredLinks((previousLinks) => [newLink, ...previousLinks]);
+    return { success: true };
   };
 
   const handleFilterChange = (filters: {
@@ -175,19 +92,72 @@ export default function DashboardInteractive() {
   };
 
   const handleDeleteLink = (id: string) => {
-    if (window.confirm('Are you sure you want to delete this link?')) {
-      setLinks(links.filter(link => link.id !== id));
-      setFilteredLinks(filteredLinks.filter(link => link.id !== id));
-    }
+    return (async () => {
+      const response = await fetch(`/api/links/${id}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        return;
+      }
+
+      setLinks((previousLinks) => previousLinks.filter((link) => link.id !== id));
+      setFilteredLinks((previousLinks) => previousLinks.filter((link) => link.id !== id));
+    })();
   };
 
   const handleStatusChange = (id: string, status: string) => {
-    setLinks(links.map(link => 
-      link.id === id ? { ...link, status: status as 'active' | 'expired' | 'inactive' } : link
-    ));
-    setFilteredLinks(filteredLinks.map(link => 
-      link.id === id ? { ...link, status: status as 'active' | 'expired' | 'inactive' } : link
-    ));
+    return (async () => {
+      const targetLink = links.find((link) => link.id === id);
+
+      if (!targetLink) {
+        return;
+      }
+
+      const expirationDate = status === 'expired' ? new Date().toISOString().split('T')[0] : '';
+      const response = await fetch(`/api/links/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          originalUrl: targetLink.originalUrl,
+          customAlias: targetLink.customAlias,
+          expirationDate,
+        }),
+      });
+
+      if (!response.ok) {
+        return;
+      }
+
+      const updatedLink = (await response.json()) as ManagedLinkRecord;
+      setLinks((previousLinks) => previousLinks.map((link) => (link.id === id ? updatedLink : link)));
+      setFilteredLinks((previousLinks) => previousLinks.map((link) => (link.id === id ? updatedLink : link)));
+    })();
+  };
+
+  const handleEditLink = async (id: string, data: { originalUrl: string; customAlias: string; expirationDate: string; qrStyle: QrStyleConfig }) => {
+    const response = await fetch(`/api/links/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const payload = (await response.json().catch(() => ({ message: 'Unable to update this link right now.' }))) as { message?: string };
+      return { success: false, message: payload.message || 'Unable to update this link right now.' };
+    }
+
+    const updatedLink = (await response.json()) as ManagedLinkRecord;
+    setLinks((previousLinks) => previousLinks.map((link) => (link.id === id ? updatedLink : link)));
+    setFilteredLinks((previousLinks) => previousLinks.map((link) => (link.id === id ? updatedLink : link)));
+    return { success: true };
   };
 
   const stats = {
@@ -224,12 +194,14 @@ export default function DashboardInteractive() {
       <div className="space-y-6">
         <DashboardStats stats={stats} />
         <QuickCreateForm onSubmit={handleCreateLink} />
+        <RecentQrCodesPanel links={links} title="Recent QR Codes" description="Download or share QR codes for the short links you created most recently." />
         <FilterControls onFilterChange={handleFilterChange} />
         <LinksTable 
           links={filteredLinks}
           onCopy={handleCopyLink}
           onDelete={handleDeleteLink}
           onStatusChange={handleStatusChange}
+          onEdit={handleEditLink}
         />
       </div>
 

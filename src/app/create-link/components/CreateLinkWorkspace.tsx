@@ -3,53 +3,35 @@
 import { useMemo, useState } from 'react';
 import Icon from '@/components/ui/AppIcon';
 import QuickCreateForm from '@/app/dashboard/components/QuickCreateForm';
+import type { ManagedLinkRecord, QrStyleConfig } from '@/lib/links/types';
 
-interface CreatedLink {
-  id: string;
-  originalUrl: string;
-  shortUrl: string;
-  customAlias: string;
-  createdAt: string;
-  expirationDate: string;
-}
-
-export default function CreateLinkWorkspace() {
-  const [createdLinks, setCreatedLinks] = useState<CreatedLink[]>([
-    {
-      id: '1',
-      originalUrl: 'https://linklab.so/resources/launch-playbook',
-      shortUrl: 'https://lnk.lab/launch-playbook',
-      customAlias: 'launch-playbook',
-      createdAt: '04/04/2026',
-      expirationDate: '',
-    },
-    {
-      id: '2',
-      originalUrl: 'https://linklab.so/pricing?source=campaign',
-      shortUrl: 'https://lnk.lab/pricing-india',
-      customAlias: 'pricing-india',
-      createdAt: '04/03/2026',
-      expirationDate: '05/03/2026',
-    },
-  ]);
+export default function CreateLinkWorkspace({ initialLinks }: { initialLinks: ManagedLinkRecord[] }) {
+  const [createdLinks, setCreatedLinks] = useState<ManagedLinkRecord[]>(initialLinks);
   const [copiedLinkId, setCopiedLinkId] = useState<string | null>(null);
 
-  const handleCreateLink = (data: { url: string; customAlias: string; expirationDate: string }) => {
-    const slug = data.customAlias || Math.random().toString(36).slice(2, 8);
-    const createdAt = new Date().toLocaleDateString('en-US');
+  const handleCreateLink = async (data: { url: string; customAlias: string; expirationDate: string; qrStyle: QrStyleConfig }) => {
+    const response = await fetch('/api/links', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        originalUrl: data.url,
+        customAlias: data.customAlias,
+        expirationDate: data.expirationDate,
+        qrStyle: data.qrStyle,
+      }),
+    });
 
-    const nextLink: CreatedLink = {
-      id: Date.now().toString(),
-      originalUrl: data.url,
-      shortUrl: `https://lnk.lab/${slug}`,
-      customAlias: data.customAlias,
-      createdAt,
-      expirationDate: data.expirationDate
-        ? new Date(data.expirationDate).toLocaleDateString('en-US')
-        : '',
-    };
+    if (!response.ok) {
+      const payload = (await response.json().catch(() => ({ message: 'Unable to create the short link right now.' }))) as { message?: string };
+      return { success: false, message: payload.message || 'Unable to create the short link right now.' };
+    }
 
-    setCreatedLinks((previousLinks) => [nextLink, ...previousLinks]);
+    const createdLink = (await response.json()) as ManagedLinkRecord;
+    setCreatedLinks((previousLinks) => [createdLink, ...previousLinks]);
+    return { success: true };
   };
 
   const handleCopy = async (linkId: string, shortUrl: string) => {
@@ -66,7 +48,7 @@ export default function CreateLinkWorkspace() {
     () => [
       {
         label: 'Links created today',
-        value: createdLinks.length > 2 ? '3' : '2',
+        value: createdLinks.length.toString(),
         note: 'Keep campaign names consistent for cleaner reporting.',
       },
       {

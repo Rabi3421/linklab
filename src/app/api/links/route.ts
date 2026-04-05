@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getRequestAuthenticatedUser } from '@/lib/auth/request';
 import { BillingLimitExceededError } from '@/lib/billing/service';
 import { createShortLinkForCurrentRequest } from '@/lib/links/service';
 import type { QrStyleConfig } from '@/lib/links/types';
@@ -7,6 +8,12 @@ export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
   try {
+    const { user, invalidApiKey } = await getRequestAuthenticatedUser(request);
+
+    if (invalidApiKey) {
+      return NextResponse.json({ message: 'Invalid API key.' }, { status: 401 });
+    }
+
     const body = (await request.json()) as {
       originalUrl?: string;
       customAlias?: string;
@@ -18,12 +25,16 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: 'Original URL is required.' }, { status: 400 });
     }
 
-    const createdLink = await createShortLinkForCurrentRequest(request, {
-      originalUrl: body.originalUrl,
-      customAlias: body.customAlias,
-      expirationDate: body.expirationDate,
-      qrStyle: body.qrStyle,
-    });
+    const createdLink = await createShortLinkForCurrentRequest(
+      request,
+      {
+        originalUrl: body.originalUrl,
+        customAlias: body.customAlias,
+        expirationDate: body.expirationDate,
+        qrStyle: body.qrStyle,
+      },
+      user
+    );
 
     return NextResponse.json(createdLink, { status: 201 });
   } catch (error) {

@@ -195,7 +195,7 @@ export default function AuthenticatedWorkspaceHeader({
 
         return {
           label:
-            path === '/homepage'
+            path === '/'
               ? 'Homepage'
               : path.split('/').filter(Boolean).join(' / ') || 'Home',
           description: 'Return to a recently visited workspace destination.',
@@ -479,7 +479,7 @@ export default function AuthenticatedWorkspaceHeader({
 
   const handleSignOut = async () => {
     await signOut();
-    router.push('/homepage');
+    router.push('/');
     router.refresh();
   };
 

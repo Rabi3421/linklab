@@ -82,7 +82,7 @@ const MobileNavigationDrawer = ({
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between p-6 border-b border-border">
             <Link 
-              href={isAuthenticated ? '/dashboard' : '/homepage'} 
+              href={isAuthenticated ? '/dashboard' : '/'} 
               className="flex items-center gap-3"
               onClick={onClose}
             >

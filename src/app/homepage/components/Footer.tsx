@@ -13,7 +13,7 @@ const Footer = () => {
 
   const links = {
     Product: [
-      { label: 'Features', href: '/homepage' },
+      { label: 'Features', href: '/' },
       { label: 'Analytics', href: '/link-analytics' },
       { label: 'API', href: '/developers' },
       { label: 'Pricing', href: '/pricing' },
@@ -22,12 +22,12 @@ const Footer = () => {
       { label: 'About', href: '/about' },
       { label: 'Developers', href: '/developers' },
       { label: 'Blog', href: '/blog' },
-      { label: 'Contact', href: '/homepage' },
+      { label: 'Contact', href: '/' },
     ],
     Legal: [
-      { label: 'Privacy Policy', href: '/homepage' },
-      { label: 'Terms of Service', href: '/homepage' },
-      { label: 'Cookie Policy', href: '/homepage' },
+      { label: 'Privacy Policy', href: '/' },
+      { label: 'Terms of Service', href: '/' },
+      { label: 'Cookie Policy', href: '/' },
     ],
   };
 
@@ -70,7 +70,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2">
-            <Link href="/homepage" className="flex items-center gap-2.5 mb-4">
+            <Link href="/" className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center"
                 style={{ background: 'linear-gradient(135deg, #f59e0b, #ef4444)' }}>
                 <Icon name="LinkIcon" size={16} variant="solid" className="text-white" />
@@ -78,7 +78,7 @@ const Footer = () => {
               <span className="font-heading font-bold text-lg text-white">LinkLab</span>
             </Link>
             <p className="font-body text-sm text-white/35 max-w-[240px] leading-relaxed mb-6">
-              The complete URL management platform for teams that care about their data.
+              A URL shortener and link management platform for branded links, QR codes, analytics, custom domains, and team workflows.
             </p>
             <div className="flex items-center gap-2">
               {[

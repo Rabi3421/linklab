@@ -98,7 +98,7 @@ const CTASection = () => {
             </div>
 
             <h2 className="font-heading font-bold text-4xl lg:text-6xl text-white leading-tight mb-6">
-              Your links deserve
+              Your URL shortener should do more than shorten
               <br />
               <span style={{
                 background: 'linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #ef4444 100%)',
@@ -106,12 +106,12 @@ const CTASection = () => {
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text'
               }}>
-                better data
+                better links, QR codes, and analytics
               </span>
             </h2>
 
             <p className="font-body text-lg text-white/50 mb-10 max-w-[520px] mx-auto">
-              Join 500,000+ marketers and developers who use LinkLab to understand their audience and grow their reach.
+              Join teams using LinkLab to shorten URLs, create branded links, track campaign clicks, manage custom domains, and scale link workflows without switching platforms.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

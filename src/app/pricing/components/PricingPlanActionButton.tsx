@@ -33,6 +33,11 @@ export default function PricingPlanActionButton({
       return;
     }
 
+    if (planId === 'enterprise') {
+      router.push('mailto:hello@linklab.in?subject=Enterprise%20Plan%20Enquiry');
+      return;
+    }
+
     if (!isAuthenticated) {
       router.push('/register');
       return;

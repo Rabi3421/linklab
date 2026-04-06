@@ -132,7 +132,7 @@ const SocialProofSection = () => {
       <div className="relative z-10 py-10" style={{ borderBottom: '1px solid rgba(200,205,220,0.12)' }}>
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <p className="font-body text-xs text-white/25 uppercase tracking-widest text-center mb-8">
-            Trusted by teams at
+            Trusted URL shortener for teams at
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
             {logos.map((logo, i) => (
@@ -150,7 +150,7 @@ const SocialProofSection = () => {
           <div className="text-center mb-16">
             <p className="font-body text-sm font-semibold text-amber-400 uppercase tracking-widest mb-3">Customer stories</p>
             <h2 className="font-heading font-bold text-4xl lg:text-5xl text-white leading-tight">
-              Real results from real teams
+              Real results from teams using branded links and analytics
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

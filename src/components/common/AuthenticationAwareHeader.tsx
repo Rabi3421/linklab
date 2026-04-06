@@ -127,7 +127,7 @@ const AuthenticationAwareHeader = ({ isAuthenticated = false }: AuthenticationAw
     await signOut();
     setIsProfileMenuOpen(false);
     closeMobileMenu();
-    router.push('/homepage');
+    router.push('/');
     router.refresh();
   };
 
@@ -142,7 +142,7 @@ const AuthenticationAwareHeader = ({ isAuthenticated = false }: AuthenticationAw
       <div className="max-w-[1280px] mx-auto">
         <div className="flex items-center justify-between h-[60px] px-4">
           <Link 
-            href={showsAuthenticatedNavigation ? '/dashboard' : '/homepage'} 
+            href={showsAuthenticatedNavigation ? '/dashboard' : '/'} 
             className="flex items-center gap-3 transition-transform duration-250 ease-smooth hover:scale-105"
             onClick={closeMobileMenu}
           >

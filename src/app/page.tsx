@@ -81,9 +81,40 @@ const homepageFaqStructuredData = {
   })),
 };
 
+const organizationStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'LinkLab',
+  url: homepageUrl,
+  logo: `${appUrl}/favicon.ico`,
+  description:
+    'LinkLab is a URL shortener and link management platform for branded links, custom domains, QR codes, analytics, and developer workflows.',
+};
+
+const websiteStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'LinkLab',
+  url: homepageUrl,
+  description:
+    'Shorten URLs, create branded links, generate QR codes, and track clicks with LinkLab.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'LinkLab',
+  },
+};
+
 export default function Homepage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteStructuredData) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSoftwareStructuredData) }}

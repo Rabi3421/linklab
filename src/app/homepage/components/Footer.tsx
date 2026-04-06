@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
+import BrandLogo from '@/components/ui/BrandLogo';
 
 const Footer = () => {
   const [currentYear, setCurrentYear] = useState('2025');
@@ -71,11 +72,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #f59e0b, #ef4444)' }}>
-                <Icon name="LinkIcon" size={16} variant="solid" className="text-white" />
-              </div>
-              <span className="font-heading font-bold text-lg text-white">LinkLab</span>
+              <BrandLogo size="sm" labelClassName="text-white" />
             </Link>
             <p className="font-body text-sm text-white/35 max-w-[240px] leading-relaxed mb-6">
               A URL shortener and link management platform for branded links, QR codes, analytics, custom domains, and team workflows.

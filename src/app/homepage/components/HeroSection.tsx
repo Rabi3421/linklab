@@ -192,7 +192,7 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
             <div className="anim-1 inline-flex items-center gap-2.5 self-start px-3.5 py-1.5 rounded-full label-chip mb-7">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 glow-pulse" />
               <span className="text-amber-300/80 text-xs font-medium tracking-wide uppercase" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                10M+ links shortened this month
+                URL shortener, branded links & analytics
               </span>
             </div>
 
@@ -205,7 +205,7 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
                 color: '#f5f5f0',
               }}
             >
-              Every link tells{' '}
+              URL shortener for{' '}
               <span
                 style={{
                   background: 'linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #ef4444 100%)',
@@ -214,11 +214,11 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
                   backgroundClip: 'text',
                 }}
               >
-                a story.
+                branded links.
               </span>
               <br />
-              Make yours{' '}
-              <span style={{ color: 'rgba(245,245,240,0.45)' }}>count.</span>
+              Track every click with{' '}
+              <span style={{ color: 'rgba(245,245,240,0.45)' }}>clarity.</span>
             </h1>
 
             {/* Sub-copy */}
@@ -230,7 +230,9 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
                 color: 'rgba(245,245,240,0.45)',
               }}
             >
-              Shorten, brand, and track your links with click-level precision. Know exactly who clicked, from where, and on what device — before your next campaign debrief.
+              Shorten URLs, create branded short links, generate QR-code-ready links, and use
+              short link analytics to track clicks, devices, locations, and campaign performance
+              from one link management dashboard.
             </p>
 
             {/* URL Input */}
@@ -242,7 +244,7 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
                     type="text"
                     value={url}
                     onChange={handleInputChange}
-                    placeholder="Paste your long URL here…"
+                    placeholder="Paste a long URL to create a short link…"
                     className="w-full py-3.5 bg-transparent text-white/85 placeholder-white/25 focus:outline-none text-[0.95rem]"
                     style={{ fontFamily: 'DM Sans, sans-serif' }}
                     aria-label="URL input"
@@ -278,7 +280,7 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
               className="anim-4 mb-12 pl-2"
               style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', color: 'rgba(245,245,240,0.28)' }}
             >
-              Free forever · No credit card · SSL on every link
+              Free URL shortener · No credit card · SSL on every link
             </p>
 
             {/* Stats row */}

@@ -66,7 +66,7 @@ const DashboardSidebar = ({ isCollapsed = false }: DashboardSidebarProps) => {
 
   const handleLogout = async () => {
     await signOut();
-    router.push('/homepage');
+    router.push('/');
     router.refresh();
   };
 

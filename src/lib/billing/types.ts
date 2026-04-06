@@ -1,4 +1,4 @@
-export type SubscriptionPlanId = 'free' | 'launch' | 'growth' | 'scale';
+export type SubscriptionPlanId = 'free' | 'starter' | 'launch' | 'growth' | 'scale' | 'pro' | 'enterprise';
 
 export type SubscriptionStatus = 'free' | 'active' | 'expired' | 'canceled';
 
@@ -25,8 +25,8 @@ export interface BillingPlanDefinition {
   name: string;
   badge: string;
   usd: string;
-  inr: string;
   cadence: string;
+  isCustomPricing?: boolean;
   seats: string;
   cta: string;
   accent: string;
@@ -48,4 +48,16 @@ export interface SubscriptionActivationResult {
   paymentStatus: 'paid' | 'unpaid';
   paymentProvider: string;
   message: string;
+}
+
+export interface LinkPackDefinition {
+  id: string;
+  name: string;
+  badge: string;
+  price: string;
+  links: string;
+  cta: string;
+  description: string;
+  perks: string[];
+  highlighted: boolean;
 }

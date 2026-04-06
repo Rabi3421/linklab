@@ -67,10 +67,10 @@ const FeaturesSection = () => {
         <div className="max-w-[560px] mb-16">
           <p className="font-body text-sm font-semibold text-amber-400 uppercase tracking-widest mb-3">Platform capabilities</p>
           <h2 className="font-heading font-bold text-4xl lg:text-5xl text-white leading-tight mb-4">
-            Built for teams that move fast
+            Everything you need from a modern URL shortener
           </h2>
           <p className="font-body text-lg text-white/50">
-            Every tool you need to create, manage, and measure your links — in one place.
+            Create branded links, manage custom domains, launch QR-code campaigns, track link analytics, and automate link management from one platform.
           </p>
         </div>
 
@@ -90,9 +90,9 @@ const FeaturesSection = () => {
                 style={{ background: 'linear-gradient(135deg, #4f46e5, #7c3aed)' }}>
                 <Icon name="ChartBarIcon" size={24} variant="solid" className="text-white" />
               </div>
-              <h3 className="font-heading font-bold text-2xl text-white mb-3">Deep-dive analytics</h3>
+              <h3 className="font-heading font-bold text-2xl text-white mb-3">Short link analytics</h3>
               <p className="font-body text-white/50 mb-8 max-w-[400px]">
-                See exactly who clicked, from where, on what device, and at what time. Geo-heatmaps, referrer breakdowns, and hourly traffic patterns — all in real-time.
+                See exactly who clicked, from where, on what device, and at what time. Monitor campaign performance with location data, referrer breakdowns, and real-time traffic patterns.
               </p>
               {/* Mini chart mockup */}
               <div className="flex items-end gap-1.5 h-16">
@@ -122,7 +122,7 @@ const FeaturesSection = () => {
               </div>
               <h3 className="font-heading font-bold text-xl text-white mb-3">Branded short links</h3>
               <p className="font-body text-white/50 text-sm mb-6">
-                Replace random strings with memorable aliases. Your brand, your URL.
+                Replace generic URLs with custom aliases and branded short links that build trust and improve click-through rates.
               </p>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 px-3 py-2 rounded-lg" style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(200,205,220,0.14)' }}>
@@ -146,9 +146,9 @@ const FeaturesSection = () => {
                 style={{ background: 'linear-gradient(135deg, #10b981, #059669)' }}>
                 <Icon name="CodeBracketIcon" size={24} variant="solid" className="text-white" />
               </div>
-              <h3 className="font-heading font-bold text-xl text-white mb-3">Developer-first API</h3>
+              <h3 className="font-heading font-bold text-xl text-white mb-3">URL shortener API</h3>
               <p className="font-body text-white/50 text-sm mb-6">
-                Full REST API with SDKs, webhooks, and comprehensive docs. Automate everything.
+                Automate bulk short URLs, campaign links, redirects, and tracking workflows with REST APIs, webhooks, and developer-friendly docs.
               </p>
               <div className="rounded-lg p-3 font-mono text-xs" style={{ background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(200,205,220,0.12)' }}>
                 <span className="text-purple-400">POST</span>
@@ -177,9 +177,9 @@ const FeaturesSection = () => {
                   style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}>
                   <Icon name="ShieldCheckIcon" size={24} variant="solid" className="text-white" />
                 </div>
-                <h3 className="font-heading font-bold text-xl text-white mb-3">Enterprise security</h3>
+                <h3 className="font-heading font-bold text-xl text-white mb-3">Enterprise-grade security</h3>
                 <p className="font-body text-white/50 text-sm">
-                  SSL on every link, spam detection, phishing protection, and 99.9% uptime SLA backed by global edge infrastructure.
+                  Protect branded links and QR-code campaigns with SSL on every redirect, spam checks, phishing protection, and reliable global uptime.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {['SSL', 'SOC 2', 'GDPR', '99.9% SLA']?.map(tag => (
@@ -194,9 +194,9 @@ const FeaturesSection = () => {
                   style={{ background: 'linear-gradient(135deg, #ec4899, #be185d)' }}>
                   <Icon name="UserGroupIcon" size={24} variant="solid" className="text-white" />
                 </div>
-                <h3 className="font-heading font-bold text-xl text-white mb-3">Team workspaces</h3>
+                <h3 className="font-heading font-bold text-xl text-white mb-3">Link management for teams</h3>
                 <p className="font-body text-white/50 text-sm">
-                  Shared dashboards, role-based permissions, and audit logs. Manage links across your entire organization without the chaos.
+                  Use shared dashboards, role-based permissions, and workspace controls to manage links across teams, clients, and campaigns without the chaos.
                 </p>
                 <div className="mt-4 flex -space-x-2">
                   {['#f59e0b','#0ea5e9','#10b981','#ef4444']?.map((c, i) => (
@@ -219,9 +219,9 @@ const FeaturesSection = () => {
                 style={{ background: 'linear-gradient(135deg, #f97316, #ea580c)' }}>
                 <Icon name="BoltIcon" size={24} variant="solid" className="text-white" />
               </div>
-              <h3 className="font-heading font-bold text-xl text-white mb-3">Edge-speed redirects</h3>
+              <h3 className="font-heading font-bold text-xl text-white mb-3">Fast global redirects</h3>
               <p className="font-body text-white/50 text-sm mb-6">
-                Sub-50ms redirects from 200+ edge nodes worldwide. Your audience never waits.
+                Deliver fast short-link redirects worldwide so social, SMS, email, and offline QR-code traffic all reach the right destination instantly.
               </p>
               <div className="flex items-center gap-3">
                 <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: 'rgba(200,205,220,0.15)' }}>

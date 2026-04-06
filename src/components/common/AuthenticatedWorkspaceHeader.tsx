@@ -11,6 +11,7 @@ import {
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import Icon from '@/components/ui/AppIcon';
+import BrandLogo from '@/components/ui/BrandLogo';
 import { useAuth } from '@/contexts/AuthContext';
 
 interface AuthenticatedWorkspaceHeaderProps {
@@ -491,9 +492,7 @@ export default function AuthenticatedWorkspaceHeader({
         <div className="flex h-[72px] items-center">
           <div className="hidden h-full w-[240px] items-center border-r border-border/80 px-6 lg:flex">
             <Link href="/dashboard" className="flex min-w-0 items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                <Icon name="BoltIcon" size={18} variant="solid" />
-              </span>
+              <BrandLogo size="md" showWordmark={false} />
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <p className="truncate text-sm font-semibold text-foreground">LinkLab</p>
@@ -508,9 +507,7 @@ export default function AuthenticatedWorkspaceHeader({
 
           <div className="flex min-w-0 flex-1 items-center gap-3 px-4 sm:px-6 lg:px-8">
             <Link href="/dashboard" className="flex min-w-0 items-center gap-3 lg:hidden">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                <Icon name="BoltIcon" size={18} variant="solid" />
-              </span>
+              <BrandLogo size="md" showWordmark={false} />
               <div className="min-w-0">
                 <p className="truncate text-sm font-semibold text-foreground">{title}</p>
                 <p className="truncate text-xs text-muted-foreground">LinkLab Workspace</p>

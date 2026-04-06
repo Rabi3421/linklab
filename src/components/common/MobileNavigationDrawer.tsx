@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Icon from '@/components/ui/AppIcon';
+import BrandLogo from '@/components/ui/BrandLogo';
 
 interface NavigationItem {
   label: string;
@@ -86,12 +87,7 @@ const MobileNavigationDrawer = ({
               className="flex items-center gap-3"
               onClick={onClose}
             >
-              <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="36" height="36" rx="8" fill="var(--color-primary)" />
-                <path d="M12 18L16 22L24 14" stroke="var(--color-primary-foreground)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M18 10V26M10 18H26" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-              <span className="font-heading font-semibold text-lg text-foreground">LinkLab</span>
+              <BrandLogo size="sm" />
             </Link>
             
             <button

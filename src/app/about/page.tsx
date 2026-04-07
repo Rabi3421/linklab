@@ -4,10 +4,46 @@ import Footer from '@/app/homepage/components/Footer';
 import CTASection from '@/app/homepage/components/CTASection';
 import Icon from '@/components/ui/AppIcon';
 
+const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.linklab.in';
+const aboutUrl = new URL('/about', appUrl).toString();
+
 export const metadata: Metadata = {
-  title: 'About LinkLab - Built for Better Link Intelligence',
+  metadataBase: new URL(appUrl),
+  title: 'About LinkLab | URL Shortener, Branded Links, Analytics & API',
   description:
-    'Learn about LinkLab, our mission, and the team principles behind a modern URL platform built for growth, clarity, and dependable analytics.',
+    'Learn about LinkLab, the team behind a modern URL shortener for branded links, QR codes, link analytics, custom domains, and API-driven link management with plans starting at $1.',
+  keywords: [
+    'about linklab',
+    'linklab company',
+    'url shortener company',
+    'branded links platform',
+    'short link analytics platform',
+    'url shortener api',
+    'custom domains for short links',
+    'qr code link generator',
+    'low cost url shortener',
+    'url shortener starting at $1',
+    'link management platform',
+    'link analytics software',
+    'enterprise url shortener',
+  ],
+  alternates: {
+    canonical: aboutUrl,
+  },
+  openGraph: {
+    title: 'About LinkLab | URL Shortener, Branded Links, Analytics & API',
+    description:
+      'Meet the team and product philosophy behind LinkLab — a URL shortener built for branded links, analytics, QR codes, custom domains, and developer workflows.',
+    url: aboutUrl,
+    siteName: 'LinkLab',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About LinkLab | URL Shortener, Branded Links, Analytics & API',
+    description:
+      'Learn what LinkLab is, who it serves, and how it helps teams with branded links, analytics, QR codes, API workflows, and affordable pricing.',
+  },
 };
 
 const noiseOverlayStyle = {
@@ -84,9 +120,156 @@ const principles = [
   },
 ];
 
+const platformCapabilities = [
+  {
+    title: 'Branded short links',
+    description:
+      'LinkLab helps teams replace long, generic URLs with branded short links, memorable aliases, and custom domains that improve trust and click-through rates.',
+    icon: 'SparklesIcon',
+    gradient: 'linear-gradient(135deg, #f59e0b, #ef4444)',
+  },
+  {
+    title: 'Short link analytics',
+    description:
+      'Every short link comes with practical analytics including clicks, countries, devices, browsers, referral sources, and traffic trends so teams can measure performance clearly.',
+    icon: 'ChartBarSquareIcon',
+    gradient: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+  },
+  {
+    title: 'QR codes and offline journeys',
+    description:
+      'LinkLab creates QR-code-ready links for packaging, printed materials, events, menus, posters, and retail campaigns so offline traffic can still be measured.',
+    icon: 'QrCodeIcon',
+    gradient: 'linear-gradient(135deg, #0ea5e9, #2563eb)',
+  },
+  {
+    title: 'Developer API and automation',
+    description:
+      'Developers can create and manage short links programmatically through the LinkLab API, making bulk link creation and analytics retrieval part of product workflows.',
+    icon: 'CodeBracketIcon',
+    gradient: 'linear-gradient(135deg, #10b981, #059669)',
+  },
+  {
+    title: 'Affordable pricing',
+    description:
+      'We believe modern link management should be accessible. LinkLab includes a free tier, paid plans starting at $1 per month, and no-expiry one-time link credit packs for occasional use.',
+    icon: 'CurrencyDollarIcon',
+    gradient: 'linear-gradient(135deg, #fb923c, #f59e0b)',
+  },
+  {
+    title: 'Built for growing teams',
+    description:
+      'From solo creators to agencies and enterprise teams, LinkLab is designed to support shared workflows, custom domains, governance, and dependable infrastructure as usage grows.',
+    icon: 'BuildingOffice2Icon',
+    gradient: 'linear-gradient(135deg, #ec4899, #be185d)',
+  },
+] as const;
+
+const audiences = [
+  {
+    title: 'Marketing teams',
+    description: 'Track campaign traffic, compare channels, and manage branded links from one dashboard.',
+    icon: 'MegaphoneIcon',
+  },
+  {
+    title: 'Developers',
+    description: 'Use the REST API for automated link creation, analytics retrieval, and product integrations.',
+    icon: 'CommandLineIcon',
+  },
+  {
+    title: 'Agencies',
+    description: 'Organise client links, measure campaign performance, and scale reporting across accounts.',
+    icon: 'BriefcaseIcon',
+  },
+  {
+    title: 'Commerce brands',
+    description: 'Shorten product links, add QR codes to packaging, and connect offline scans to online performance.',
+    icon: 'ShoppingBagIcon',
+  },
+] as const;
+
+const aboutPageStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About LinkLab',
+  url: aboutUrl,
+  description:
+    'Learn about LinkLab, the modern URL shortener for branded links, custom domains, QR codes, short link analytics, and API-driven link workflows.',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'LinkLab',
+    url: appUrl,
+  },
+  about: {
+    '@type': 'Organization',
+    name: 'LinkLab',
+    url: appUrl,
+    logo: `${appUrl}/favicon.ico`,
+    description:
+      'LinkLab is a link management platform for branded links, QR codes, analytics, custom domains, affordable pricing, and API automation.',
+  },
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'LinkLab',
+    url: appUrl,
+    slogan: 'URL shortener, branded links, analytics, QR codes, and API workflows in one platform.',
+  },
+};
+
+const aboutBreadcrumbStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: appUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'About',
+      item: aboutUrl,
+    },
+  ],
+};
+
+const aboutOrganizationStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'LinkLab',
+  url: appUrl,
+  logo: `${appUrl}/favicon.ico`,
+  description:
+    'LinkLab is a URL shortener and link management platform built for branded links, short link analytics, QR codes, custom domains, and developer-friendly API workflows.',
+  sameAs: [appUrl],
+  knowsAbout: [
+    'URL shortener',
+    'Branded links',
+    'Short link analytics',
+    'QR code generation',
+    'Custom domains',
+    'URL shortener API',
+    'Link management',
+  ],
+};
+
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutOrganizationStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumbStructuredData) }}
+      />
       <AuthenticationAwareHeader isAuthenticated={false} />
       <main className="min-h-screen bg-[#1e2129] pt-[60px] text-white">
         <section className="relative overflow-hidden">
@@ -126,7 +309,8 @@ export default function AboutPage() {
 
                 <p className="max-w-[640px] font-body text-lg lg:text-xl leading-relaxed text-white/58 mb-10">
                   LinkLab was created for modern teams that need more than a short URL. We combine branded link creation,
-                  fast infrastructure, and practical analytics so marketing, product, and operations can move from traffic to insight.
+                  fast infrastructure, practical analytics, QR-code-ready sharing, custom domains, and API automation so marketing,
+                  product, engineering, and operations teams can move from traffic to insight.
                 </p>
 
                 <div className="grid gap-4 sm:grid-cols-3">
@@ -220,6 +404,32 @@ export default function AboutPage() {
 
         <section className="relative overflow-hidden py-24 lg:py-28" style={{ borderTop: '1px solid rgba(200,205,220,0.08)' }}>
           <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[760px] mb-14">
+              <p className="font-body text-sm font-semibold uppercase tracking-[0.18em] text-amber-400 mb-3">What LinkLab does</p>
+              <h2 className="font-heading text-4xl lg:text-5xl font-bold text-white mb-4">
+                A modern URL shortener with the product depth teams actually need
+              </h2>
+              <p className="font-body text-lg text-white/52 leading-relaxed">
+                Search engines should understand that LinkLab is more than an about page with brand story. We are a URL shortener and link management platform with branded links, short link analytics, QR codes, custom domains, affordable pricing, and developer APIs for scalable automation.
+              </p>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {platformCapabilities.map((capability) => (
+                <div key={capability.title} className="rounded-3xl p-7 h-full" style={glassCardSoftStyle}>
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style={{ background: capability.gradient }}>
+                    <Icon name={capability.icon as never} size={24} variant="solid" className="text-white" />
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-white mb-3">{capability.title}</h3>
+                  <p className="font-body text-sm leading-relaxed text-white/52">{capability.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden py-24 lg:py-28" style={{ borderTop: '1px solid rgba(200,205,220,0.08)' }}>
+          <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
               <div>
                 <p className="font-body text-sm font-semibold uppercase tracking-[0.18em] text-amber-400 mb-3">How we think</p>
@@ -241,6 +451,47 @@ export default function AboutPage() {
                         <p className="font-body text-base leading-relaxed text-white/52">{principle.copy}</p>
                       </div>
                     </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden py-24 lg:py-28" style={{ borderTop: '1px solid rgba(200,205,220,0.08)' }}>
+          <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start">
+              <div>
+                <p className="font-body text-sm font-semibold uppercase tracking-[0.18em] text-amber-400 mb-3">Who we build for</p>
+                <h2 className="font-heading text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
+                  Built for teams that need links to be measurable, brand-safe, and affordable.
+                </h2>
+                <p className="font-body text-lg leading-relaxed text-white/52 max-w-[560px] mb-8">
+                  LinkLab serves marketers, developers, agencies, e-commerce brands, and operations teams that need a low-cost URL shortener with clear analytics, branded links, API workflows, and room to scale from a free plan to enterprise controls.
+                </p>
+                <div className="rounded-3xl p-6 lg:p-7" style={glassCardStyle}>
+                  <div className="flex items-start gap-4">
+                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center bg-gradient-to-br from-amber-400 to-red-500">
+                      <Icon name="CurrencyDollarIcon" size={22} variant="solid" className="text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-2xl font-bold text-white mb-2">Accessible pricing is part of the mission</h3>
+                      <p className="font-body text-base leading-relaxed text-white/52">
+                        Many teams need link tracking and branded URLs without expensive software overhead. That is why LinkLab starts free, monthly plans start at $1, and one-time link credit packs are available for occasional or seasonal usage.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {audiences.map((audience) => (
+                  <div key={audience.title} className="rounded-3xl p-6 lg:p-7" style={glassCardStyle}>
+                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-5 bg-white/5 border border-white/10">
+                      <Icon name={audience.icon as never} size={22} variant="solid" className="text-amber-300" />
+                    </div>
+                    <h3 className="font-heading text-2xl font-bold text-white mb-2">{audience.title}</h3>
+                    <p className="font-body text-base leading-relaxed text-white/52">{audience.description}</p>
                   </div>
                 ))}
               </div>

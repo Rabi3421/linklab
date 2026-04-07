@@ -15,6 +15,7 @@ const Footer = () => {
   const links = {
     Product: [
       { label: 'Features', href: '/' },
+      { label: 'QR Generator', href: '/qr-code-generator' },
       { label: 'Analytics', href: '/link-analytics' },
       { label: 'API', href: '/developers' },
       { label: 'Pricing', href: '/pricing' },

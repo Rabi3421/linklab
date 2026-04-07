@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import HeroSection from './HeroSection';
 import ShortenedResult from './ShortenedResult';
 import FeaturesSection from './FeaturesSection';
+import HowItWorksSection from './HowItWorksSection';
+import UseCasesSection from './UseCasesSection';
+import PricingSnippetSection from './PricingSnippetSection';
 import SocialProofSection from './SocialProofSection';
 import FAQSection from './FAQSection';
 import CTASection from './CTASection';
@@ -88,6 +91,9 @@ const HomepageInteractive = () => {
         )}
         <HeroSection onShortenUrl={handleShortenUrl} />
         <FeaturesSection />
+        <HowItWorksSection />
+        <UseCasesSection />
+        <PricingSnippetSection />
         <SocialProofSection />
         <FAQSection />
         <CTASection />

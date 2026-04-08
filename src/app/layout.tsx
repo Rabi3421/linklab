@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import '../styles/index.css';
 import { AuthProvider } from '@/contexts/AuthContext';
+import GoogleAnalytics from '@/components/common/GoogleAnalytics';
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.linklab.in';
 const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
@@ -68,6 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body>
+        <GoogleAnalytics />
         <AuthProvider>{children}</AuthProvider>
 
         <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Flinklab7067back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.17" />

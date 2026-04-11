@@ -156,255 +156,222 @@ export default function QrStyleConfigurator({
   };
 
   return (
-    <div className="rounded-2xl border border-border bg-muted/20 p-4 md:p-5">
-      <div className="mb-5 flex items-start justify-between gap-4">
-        <div>
-          <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-            <Icon name="SparklesIcon" size={14} variant="solid" />
+    <div className="overflow-hidden rounded-[24px] border border-white/10 bg-[#141922] shadow-[0_24px_60px_rgba(0,0,0,0.40)]">
+      {/* Header */}
+      <div className="border-b border-white/8 bg-[#0e1520] px-5 py-4 md:px-6">
+        <div className="flex items-center gap-2.5">
+          <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-amber-400">
+            <Icon name="SparklesIcon" size={12} variant="solid" />
             Styled QR
           </div>
-          <h3 className="text-lg font-semibold text-foreground">{title}</h3>
-          <p className="text-sm text-muted-foreground">{description}</p>
         </div>
+        <h3 className="mt-2 text-base font-semibold text-white">{title}</h3>
+        <p className="text-xs text-white/45">{description}</p>
       </div>
 
-      <div className="grid gap-5 xl:grid-cols-[260px_minmax(0,1fr)]">
-        <div className="rounded-2xl border border-border bg-card p-4">
-          <StyledQrCode
-            key={previewSignature}
-            data={previewUrl}
-            qrCodeDataUrl={fallbackQrCodeDataUrl || ''}
-            qrStyle={resolvedValue}
-            size={200}
-            className="mx-auto"
-            imageClassName="border border-border bg-background p-2"
-          />
-          <div className="mt-4 rounded-xl bg-muted/40 p-3">
-            <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
-              Preview link
-            </p>
-            <p className="mt-1 truncate text-sm font-medium text-foreground">{previewUrl}</p>
-          </div>
-        </div>
+      {/* Two-panel layout: config left, live preview right */}
+      <div className="grid lg:grid-cols-[minmax(0,1fr)_300px] xl:grid-cols-[minmax(0,1fr)_320px]">
 
-        <div className="space-y-5">
+        {/* LEFT — config */}
+        <div className="space-y-5 border-r border-white/8 bg-[#141922] px-5 py-5 md:px-6">
+
+          {/* Preset styles */}
           <div>
-            <p className="mb-3 text-sm font-medium text-foreground">Preset styles</p>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <p className="mb-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Preset styles</p>
+            <div className="grid grid-cols-2 gap-2">
               {QR_STYLE_PRESETS.map((preset) => {
                 const isActive = resolvedValue.presetId === preset.id;
-
+                const previewStyle = resolveQrStyleConfig(preset.config);
                 return (
                   <button
                     key={preset.id}
                     type="button"
                     disabled={disabled}
                     onClick={() => handlePresetChange(preset.id)}
-                    className={`rounded-xl border p-3 text-left transition-all duration-250 ${isActive ? 'border-primary bg-primary/10 shadow-sm' : 'border-border bg-card hover:bg-muted/40'}`}
+                    className={`flex items-center gap-2.5 rounded-xl border px-3 py-2.5 text-left text-xs font-medium transition-all disabled:opacity-50 ${
+                      isActive
+                        ? 'border-amber-500/60 bg-amber-500/10 text-amber-300 shadow-sm'
+                        : 'border-white/10 bg-white/4 text-white/60 hover:border-white/20 hover:bg-white/8 hover:text-white/90'
+                    }`}
                   >
-                    <div className="mb-3 flex items-center gap-2">
-                      <span
-                        className="h-4 w-4 rounded-full"
-                        style={{ backgroundColor: preset.config.foregroundColor }}
-                      />
-                      <span
-                        className="h-4 w-4 rounded-full"
-                        style={{ backgroundColor: preset.config.cornerColor }}
-                      />
-                      <span
-                        className="h-4 w-4 rounded-full border border-border"
-                        style={{ backgroundColor: preset.config.backgroundColor }}
-                      />
-                    </div>
-                    <p className="text-sm font-semibold text-foreground">{preset.name}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                      {preset.description}
-                    </p>
+                    <span
+                      className="h-5 w-5 flex-shrink-0 rounded-md border border-white/15"
+                      style={{ background: previewStyle.foregroundColor }}
+                    />
+                    {preset.name}
                   </button>
                 );
               })}
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
-            <label className="rounded-xl border border-border bg-card p-3">
-              <span className="mb-2 block text-sm font-medium text-foreground">Dots color</span>
-              <div className="flex items-center gap-3">
-                <input
-                  type="color"
-                  value={resolvedValue.foregroundColor}
-                  disabled={disabled}
-                  onChange={(event) => handleFieldChange('foregroundColor', event.target.value)}
-                  className="h-11 w-12 rounded border border-border bg-background"
-                />
-                <span className="text-sm text-muted-foreground">
-                  {resolvedValue.foregroundColor}
-                </span>
-              </div>
-            </label>
-
-            <label className="rounded-xl border border-border bg-card p-3">
-              <span className="mb-2 block text-sm font-medium text-foreground">Corners color</span>
-              <div className="flex items-center gap-3">
-                <input
-                  type="color"
-                  value={resolvedValue.cornerColor}
-                  disabled={disabled}
-                  onChange={(event) => handleFieldChange('cornerColor', event.target.value)}
-                  className="h-11 w-12 rounded border border-border bg-background"
-                />
-                <span className="text-sm text-muted-foreground">{resolvedValue.cornerColor}</span>
-              </div>
-            </label>
-
-            <label className="rounded-xl border border-border bg-card p-3">
-              <span className="mb-2 block text-sm font-medium text-foreground">Background</span>
-              <div className="flex items-center gap-3">
-                <input
-                  type="color"
-                  value={resolvedValue.backgroundColor}
-                  disabled={disabled}
-                  onChange={(event) => handleFieldChange('backgroundColor', event.target.value)}
-                  className="h-11 w-12 rounded border border-border bg-background"
-                />
-                <span className="text-sm text-muted-foreground">
-                  {resolvedValue.backgroundColor}
-                </span>
-              </div>
-            </label>
+          {/* Colors */}
+          <div>
+            <p className="mb-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Colors</p>
+            <div className="grid gap-2 sm:grid-cols-3">
+              {[
+                { label: 'QR color', field: 'foregroundColor' as const, value: resolvedValue.foregroundColor },
+                { label: 'Corner color', field: 'cornerColor' as const, value: resolvedValue.cornerColor },
+                { label: 'Background', field: 'backgroundColor' as const, value: resolvedValue.backgroundColor },
+              ].map(({ label, field, value }) => (
+                <label key={field} className={`flex cursor-pointer flex-col gap-1.5 ${disabled ? 'opacity-50 pointer-events-none' : ''}`}>
+                  <span className="text-xs font-medium text-white/50">{label}</span>
+                  <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/6 px-3 py-2">
+                    <input
+                      type="color"
+                      value={value}
+                      disabled={disabled}
+                      onChange={(e) => handleFieldChange(field, e.target.value)}
+                      className="h-5 w-5 cursor-pointer rounded border-0 bg-transparent p-0"
+                    />
+                    <span className="font-mono text-xs uppercase text-white/65">{value}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
           </div>
 
-          <div className="rounded-2xl border border-border bg-card p-4">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-              <div>
-                <p className="text-sm font-medium text-foreground">Center logo</p>
-                <p className="text-sm text-muted-foreground">
-                  Upload your brand mark to embed it in the QR center. Keep the file lightweight for
-                  better scan reliability.
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/png,image/jpeg,image/webp,image/svg+xml"
-                  onChange={handleLogoUpload}
-                  disabled={disabled || isProcessingLogo}
-                  className="hidden"
+          {/* Dot style */}
+          <div>
+            <p className="mb-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Dot style</p>
+            <div className="flex flex-wrap gap-1.5">
+              {QR_DOT_STYLES.map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  disabled={disabled}
+                  onClick={() => handleFieldChange('dotStyle', s)}
+                  className={`rounded-xl border px-3 py-1.5 text-xs font-medium capitalize transition-all disabled:opacity-50 ${
+                    resolvedValue.dotStyle === s
+                      ? 'border-amber-500/60 bg-amber-500/10 text-amber-300'
+                      : 'border-white/10 bg-white/4 text-white/55 hover:border-white/20 hover:text-white/85'
+                  }`}
+                >
+                  {s.replace(/-/g, ' ')}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Corner style */}
+          <div>
+            <p className="mb-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Corner style</p>
+            <div className="flex flex-wrap gap-1.5">
+              {QR_CORNER_STYLES.map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  disabled={disabled}
+                  onClick={() => handleFieldChange('cornerStyle', s)}
+                  className={`rounded-xl border px-3 py-1.5 text-xs font-medium capitalize transition-all disabled:opacity-50 ${
+                    resolvedValue.cornerStyle === s
+                      ? 'border-amber-500/60 bg-amber-500/10 text-amber-300'
+                      : 'border-white/10 bg-white/4 text-white/55 hover:border-white/20 hover:text-white/85'
+                  }`}
+                >
+                  {s.replace(/-/g, ' ')}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Frame style */}
+          <div>
+            <p className="mb-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Frame style</p>
+            <div className="flex flex-wrap gap-1.5">
+              {QR_FRAME_STYLES.map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  disabled={disabled}
+                  onClick={() => handleFieldChange('frameStyle', s)}
+                  className={`rounded-xl border px-3 py-1.5 text-xs font-medium capitalize transition-all disabled:opacity-50 ${
+                    resolvedValue.frameStyle === s
+                      ? 'border-amber-500/60 bg-amber-500/10 text-amber-300'
+                      : 'border-white/10 bg-white/4 text-white/55 hover:border-white/20 hover:text-white/85'
+                  }`}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Logo upload */}
+          <div>
+            <p className="mb-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">Logo (optional)</p>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/png,image/jpeg,image/webp,image/svg+xml"
+              onChange={handleLogoUpload}
+              disabled={disabled || isProcessingLogo}
+              className="hidden"
+            />
+            {resolvedValue.logoDataUrl ? (
+              <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/6 p-3">
+                <img
+                  src={resolvedValue.logoDataUrl}
+                  alt="QR logo"
+                  className="h-10 w-10 rounded-lg border border-white/15 object-contain"
                 />
+                <span className="flex-1 text-xs text-white/50">Logo embedded in QR center</span>
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
                   disabled={disabled || isProcessingLogo}
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all duration-250 hover:shadow-md disabled:opacity-60"
+                  className="rounded-lg border border-white/10 bg-white/6 px-3 py-1.5 text-xs font-medium text-white/60 hover:bg-white/10 hover:text-white transition disabled:opacity-50"
                 >
-                  <Icon
-                    name={isProcessingLogo ? 'ArrowPathIcon' : 'ArrowUpTrayIcon'}
-                    size={16}
-                    variant="outline"
-                    className={isProcessingLogo ? 'animate-spin' : ''}
-                  />
-                  {isProcessingLogo
-                    ? 'Optimizing...'
-                    : resolvedValue.logoDataUrl
-                      ? 'Replace logo'
-                      : 'Upload logo'}
+                  Replace
                 </button>
-                {resolvedValue.logoDataUrl && (
-                  <button
-                    type="button"
-                    onClick={handleRemoveLogo}
-                    disabled={disabled || isProcessingLogo}
-                    className="inline-flex items-center gap-2 rounded-xl bg-muted px-4 py-2 text-sm font-medium text-foreground transition-all duration-250 hover:bg-muted/80 disabled:opacity-60"
-                  >
-                    <Icon name="TrashIcon" size={16} variant="outline" />
-                    Remove
-                  </button>
-                )}
+                <button
+                  type="button"
+                  onClick={handleRemoveLogo}
+                  disabled={disabled || isProcessingLogo}
+                  className="rounded-lg border border-white/10 bg-white/6 px-3 py-1.5 text-xs font-medium text-white/60 hover:border-red-400/30 hover:bg-red-500/10 hover:text-red-400 transition disabled:opacity-50"
+                >
+                  Remove
+                </button>
               </div>
-            </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={disabled || isProcessingLogo}
+                className={`flex w-full cursor-pointer items-center gap-3 rounded-xl border border-dashed border-white/14 bg-white/4 px-4 py-3 text-left transition hover:border-amber-500/40 hover:bg-amber-500/5 disabled:opacity-50`}
+              >
+                <Icon name="PhotoIcon" size={18} variant="solid" className="text-white/35 flex-shrink-0" />
+                <span className="text-xs text-white/50">
+                  {isProcessingLogo ? 'Optimizing…' : 'Upload a logo (PNG, JPG, SVG — max 350 KB)'}
+                </span>
+              </button>
+            )}
+            {logoError && <p className="mt-2 text-xs text-red-400">{logoError}</p>}
+          </div>
+        </div>
 
-            <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted/40">
-                {resolvedValue.logoDataUrl ? (
-                  <img
-                    src={resolvedValue.logoDataUrl}
-                    alt="QR logo preview"
-                    className="h-full w-full object-contain p-2"
-                  />
-                ) : (
-                  <Icon
-                    name="PhotoIcon"
-                    size={24}
-                    variant="outline"
-                    className="text-muted-foreground"
-                  />
-                )}
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-medium text-foreground">
-                  Recommended: square logo, transparent background
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Best results come from simple icons under 350 KB. Uploaded logos are automatically
-                  resized for faster QR preview rendering.
-                </p>
-                {logoError && <p className="mt-2 text-sm text-error">{logoError}</p>}
-              </div>
+        {/* RIGHT — live preview */}
+        <div className="flex flex-col bg-[#0e1520] px-5 py-5 md:px-6">
+          <p className="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-amber-400/70">Live preview</p>
+          <p className="mb-4 text-xs text-white/40">Updates instantly as you configure.</p>
+
+          <div className="flex flex-1 flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-5">
+            <StyledQrCode
+              key={previewSignature}
+              data={previewUrl}
+              qrCodeDataUrl={fallbackQrCodeDataUrl || ''}
+              qrStyle={resolvedValue}
+              size={180}
+              className="mx-auto"
+              imageClassName="rounded-2xl border border-white/10"
+            />
+            <div className="mt-4 w-full rounded-xl border border-white/8 bg-white/5 px-3 py-2.5">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/35">Destination</p>
+              <p className="mt-0.5 truncate text-xs font-medium text-white/70">{previewUrl}</p>
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
-            <label>
-              <span className="mb-2 block text-sm font-medium text-foreground">Dots style</span>
-              <select
-                value={resolvedValue.dotStyle}
-                disabled={disabled}
-                onChange={(event) => handleFieldChange('dotStyle', event.target.value)}
-                className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              >
-                {QR_DOT_STYLES.map((dotStyle) => (
-                  <option key={dotStyle} value={dotStyle}>
-                    {dotStyle}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label>
-              <span className="mb-2 block text-sm font-medium text-foreground">Corner style</span>
-              <select
-                value={resolvedValue.cornerStyle}
-                disabled={disabled}
-                onChange={(event) => handleFieldChange('cornerStyle', event.target.value)}
-                className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              >
-                {QR_CORNER_STYLES.map((cornerStyle) => (
-                  <option key={cornerStyle} value={cornerStyle}>
-                    {cornerStyle}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label>
-              <span className="mb-2 block text-sm font-medium text-foreground">
-                Frame treatment
-              </span>
-              <select
-                value={resolvedValue.frameStyle}
-                disabled={disabled}
-                onChange={(event) => handleFieldChange('frameStyle', event.target.value)}
-                className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              >
-                {QR_FRAME_STYLES.map((frameStyle) => (
-                  <option key={frameStyle} value={frameStyle}>
-                    {frameStyle}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
+          <p className="mt-3 text-center text-[10px] leading-relaxed text-white/30">Saved with every new short link</p>
         </div>
       </div>
     </div>

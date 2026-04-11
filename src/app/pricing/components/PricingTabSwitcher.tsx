@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Icon from '@/components/ui/AppIcon';
 import { billingPlans, linkPacks } from '@/lib/billing/plans';
 import PricingPlanActionButton from './PricingPlanActionButton';
+import PricingPackButton from './PricingPackButton';
 
 const glassCardStyle = {
   background: 'linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%)',
@@ -186,6 +187,7 @@ export default function PricingTabSwitcher() {
 
               <PricingPlanActionButton
                 planId={plan.id}
+                planName={plan.name}
                 cta={plan.cta}
                 featured={plan.featured}
                 accent={plan.accent}
@@ -301,18 +303,7 @@ export default function PricingTabSwitcher() {
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  className="w-full rounded-xl px-4 py-3 font-body text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5"
-                  style={{
-                    background: pack.highlighted
-                      ? 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)'
-                      : 'rgba(99,102,241,0.18)',
-                    border: pack.highlighted ? 'none' : '1px solid rgba(99,102,241,0.28)',
-                  }}
-                >
-                  {pack.cta}
-                </button>
+                <PricingPackButton pack={pack} />
 
                 <div className="mt-5 pt-5 space-y-2.5" style={{ borderTop: '1px solid rgba(200,205,220,0.08)' }}>
                   {pack.perks.map((perk) => (
@@ -339,8 +330,8 @@ export default function PricingTabSwitcher() {
                 Creating links regularly?
               </div>
               <p className="font-body text-xs text-white/45 leading-relaxed">
-                A monthly subscription gives you more short links per dollar plus branded domains,
-                analytics, team seats, QR code workflows, and API access — starting at just $1/mo.
+                A monthly subscription gives you more short links per rupee plus branded domains,
+                analytics, team seats, QR code workflows, and API access — starting at just ₹99/mo.
               </p>
             </div>
             <button

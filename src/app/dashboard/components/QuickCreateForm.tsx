@@ -182,6 +182,15 @@ export default function QuickCreateForm({ onSubmit }: QuickCreateFormProps) {
           </div>
         </div>
 
+        <QrStyleConfigurator
+          value={qrStyle}
+          onChange={setQrStyle}
+          previewUrl={`https://linklab.in/${customAlias.trim() || 'launch-2026'}`}
+          title="Styled QR builder"
+          description="Pick a preset, adjust colors, and save a branded QR with every new short link."
+          disabled={isSubmitting}
+        />
+
         {submitError && (
           <p className="text-sm text-error flex items-center gap-1">
             <Icon name="ExclamationCircleIcon" size={16} variant="solid" />
@@ -192,20 +201,11 @@ export default function QuickCreateForm({ onSubmit }: QuickCreateFormProps) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full md:w-auto px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg shadow-sm transition-all duration-250 ease-smooth hover:shadow-md hover:-translate-y-[1px] active:scale-[0.97] flex items-center justify-center gap-2"
+          className="w-full px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg shadow-sm transition-all duration-250 ease-smooth hover:shadow-md hover:-translate-y-[1px] active:scale-[0.97] flex items-center justify-center gap-2"
         >
           <Icon name={isSubmitting ? 'ArrowPathIcon' : 'PlusCircleIcon'} size={20} variant="solid" className={isSubmitting ? 'animate-spin' : ''} />
           {isSubmitting ? 'Creating...' : 'Create Short Link'}
         </button>
-
-        <QrStyleConfigurator
-          value={qrStyle}
-          onChange={setQrStyle}
-          previewUrl={`https://linklab.in/${customAlias.trim() || 'launch-2026'}`}
-          title="Styled QR builder"
-          description="Pick a preset, adjust colors, and save a branded QR with every new short link."
-          disabled={isSubmitting}
-        />
       </form>
     </div>
   );

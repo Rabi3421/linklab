@@ -139,7 +139,7 @@ const pricingFaqs = [
   {
     question: 'How much does a URL shortener cost?',
     answer:
-      'LinkLab starts free, monthly plans start at $1, and enterprise pricing is custom. If you do not want a recurring plan, you can also buy one-time link credit packs and use them whenever you want.',
+      'LinkLab starts free, monthly plans start at ₹99, and enterprise pricing is custom. If you do not want a recurring plan, you can also buy one-time link credit packs and use them whenever you want.',
   },
   {
     question: 'Do unused subscription links roll over?',
@@ -419,7 +419,7 @@ export default function PricingPage() {
                     background: 'rgba(255,255,255,0.03)',
                   }}
                 >
-                  Pro ($79) gives 100K links/mo · Enterprise is fully custom — unlimited links,
+                  Pro (₹6,499) gives 100K links/mo · Enterprise is fully custom — unlimited links,
                   custom SLA, dedicated support, and white-labelling.
                 </div>
               </div>

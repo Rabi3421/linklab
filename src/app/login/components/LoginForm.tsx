@@ -18,7 +18,7 @@ interface FormErrors {
 
 const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const router = useRouter();
-  const { signIn } = useAuth();
+  const { signIn, user } = useAuth();
   const [isHydrated, setIsHydrated] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -95,7 +95,18 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
 
       if (!error) {
         onSubmit?.(email, password, rememberMe);
-        router.push('/dashboard');
+        // fetch fresh user to get role (signIn updates context)
+        const meRes = await fetch('/api/auth/me', { credentials: 'include' });
+        if (meRes.ok) {
+          const meData = await meRes.json() as { user: { role?: string } };
+          if (meData.user?.role === 'superadmin') {
+            router.push('/admin');
+          } else {
+            router.push('/dashboard');
+          }
+        } else {
+          router.push('/dashboard');
+        }
       } else {
         setErrors({
           general: error.message,

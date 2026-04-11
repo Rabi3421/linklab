@@ -31,6 +31,7 @@ export const createAccessToken = async (user: AuthUser) => {
     {
       sub: user.id,
       email: user.email,
+      role: user.role ?? 'user',
       type: 'access',
     },
     getJwtSecret('JWT_ACCESS_SECRET'),

@@ -1,13 +1,14 @@
 import { ObjectId } from 'mongodb';
 import { getDatabase } from '@/lib/mongodb';
 import { USERS_COLLECTION_NAME } from './constants';
-import type { AuthUser } from './types';
+import type { AuthUser, UserRole } from './types';
 
 export interface UserDocument {
   _id: ObjectId;
   email: string;
   passwordHash: string;
   name?: string;
+  role?: UserRole;
   refreshTokenHash?: string;
   refreshTokenExpiresAt?: Date;
   rememberMe?: boolean;
@@ -28,6 +29,7 @@ export const toAuthUser = (user: UserDocument): AuthUser => ({
   id: user._id.toHexString(),
   email: user.email,
   name: user.name,
+  role: user.role ?? 'user',
   createdAt: user.createdAt.toISOString(),
 });
 

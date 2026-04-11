@@ -15,6 +15,9 @@ export default async function LoginPage() {
   const authenticatedUser = await getServerAuthenticatedUser();
 
   if (authenticatedUser) {
+    if (authenticatedUser.role === 'superadmin') {
+      redirect('/admin');
+    }
     redirect('/dashboard');
   }
 

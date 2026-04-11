@@ -24,7 +24,7 @@ export interface BillingPlanDefinition {
   id: SubscriptionPlanId;
   name: string;
   badge: string;
-  usd: string;
+  usd: string; // kept for compatibility — value is now in INR (e.g. "₹0", "₹99")
   cadence: string;
   isCustomPricing?: boolean;
   seats: string;

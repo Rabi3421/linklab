@@ -28,6 +28,7 @@ const MobileNavigationDrawer = ({
   const publicNavItems: NavigationItem[] = [
     { label: 'About', path: '/about', icon: 'InformationCircleIcon' },
     { label: 'QR Tools', path: '/qr-code-generator', icon: 'QrCodeIcon' },
+    { label: 'Barcode', path: '/barcode-generator', icon: 'Bars2Icon' },
     { label: 'Pricing', path: '/pricing', icon: 'CurrencyDollarIcon' },
     { label: 'Developers', path: '/developers', icon: 'CodeBracketIcon' },
     { label: 'Blog', path: '/blog', icon: 'DocumentTextIcon' },

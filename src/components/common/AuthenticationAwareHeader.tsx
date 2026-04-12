@@ -30,6 +30,7 @@ const AuthenticationAwareHeader = ({ isAuthenticated = false }: AuthenticationAw
   const publicNavItems: NavigationItem[] = [
     { label: 'About', path: '/about', requiresAuth: false },
     { label: 'QR Tools', path: '/qr-code-generator', requiresAuth: false },
+    { label: 'Barcode', path: '/barcode-generator', requiresAuth: false },
     { label: 'Pricing', path: '/pricing', requiresAuth: false },
     { label: 'Developers', path: '/developers', requiresAuth: false },
     { label: 'Blog', path: '/blog', requiresAuth: false },

@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${appUrl}/barcode-generator`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
       url: `${appUrl}/developers`,
       lastModified: now,
       changeFrequency: 'weekly',

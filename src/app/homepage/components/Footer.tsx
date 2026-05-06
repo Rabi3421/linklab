@@ -14,22 +14,31 @@ const Footer = () => {
 
   const links = {
     Product: [
-      { label: 'Features', href: '/' },
+      { label: 'Free URL Shortener', href: '/free-url-shortener' },
+      { label: 'Custom URL Shortener', href: '/custom-url-shortener' },
+      { label: 'Analytics Shortener', href: '/url-shortener-with-analytics' },
       { label: 'QR Generator', href: '/qr-code-generator' },
-      { label: 'Analytics', href: '/link-analytics' },
-      { label: 'API', href: '/developers' },
+      { label: 'Barcode Generator', href: '/barcode-generator' },
       { label: 'Pricing', href: '/pricing' },
+    ],
+    Solutions: [
+      { label: 'Branded Link Shortener', href: '/branded-link-shortener' },
+      { label: 'Short Link Generator', href: '/short-link-generator' },
+      { label: 'Website URL Shortener', href: '/website-url-shortener' },
+      { label: 'Bulk URL Shortener', href: '/bulk-url-shortener' },
+      { label: 'Link Management Tool', href: '/link-management-tool' },
+      { label: 'URL Shortener API', href: '/url-shortener-api' },
     ],
     Company: [
       { label: 'About', href: '/about' },
       { label: 'Developers', href: '/developers' },
       { label: 'Blog', href: '/blog' },
-      { label: 'Contact', href: '/' },
+      { label: 'Contact', href: '/contact' },
     ],
     Legal: [
-      { label: 'Privacy Policy', href: '/' },
-      { label: 'Terms of Service', href: '/' },
-      { label: 'Cookie Policy', href: '/' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms of Service', href: '/terms-of-service' },
+      { label: 'Cookie Policy', href: '/cookie-policy' },
     ],
   };
 
@@ -69,7 +78,7 @@ const Footer = () => {
       />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-4">

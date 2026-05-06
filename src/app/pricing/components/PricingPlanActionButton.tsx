@@ -6,11 +6,6 @@ import { useAuth } from '@/contexts/AuthContext';
 import type { SubscriptionPlanId } from '@/lib/billing/types';
 
 // ── Razorpay types ────────────────────────────────────────────────────────
-declare global {
-  interface Window {
-    Razorpay: new (options: RazorpayOptions) => { open(): void };
-  }
-}
 interface RazorpayOptions {
   key: string;
   name: string;
@@ -34,7 +29,7 @@ interface RazorpayResponse {
 
 function loadRazorpayScript(): Promise<boolean> {
   return new Promise((resolve) => {
-    if (typeof window !== 'undefined' && window.Razorpay) { resolve(true); return; }
+    if (typeof window !== 'undefined' && (window as any).Razorpay) { resolve(true); return; }
     const s = document.createElement('script');
     s.src = 'https://checkout.razorpay.com/v1/checkout.js';
     s.async = true;
@@ -153,7 +148,8 @@ export default function PricingPlanActionButton({
         modal: { ondismiss: () => setState('idle') },
       };
 
-      new window.Razorpay(options).open();
+      const RazorpayCtor = (window as any).Razorpay as new (options: RazorpayOptions) => { open(): void };
+      new RazorpayCtor(options).open();
     } catch {
       setMsg('Something went wrong starting the payment.');
       setState('error');

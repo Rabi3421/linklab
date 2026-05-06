@@ -5,11 +5,41 @@ import CTASection from '@/app/homepage/components/CTASection';
 import Footer from '@/app/homepage/components/Footer';
 import Icon from '@/components/ui/AppIcon';
 import { getAllBlogPosts } from './data';
+import { absoluteUrl, defaultOgImage, siteUrl } from '@/lib/seo/site';
+
+const blogUrl = absoluteUrl('/blog');
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Blog - LinkLab Insights on Analytics, SEO, and Growth',
   description:
     'Read practical LinkLab articles on URL analytics, campaign measurement, and growth workflows. Explore SEO-friendly, people-first insights for modern marketing teams.',
+  alternates: {
+    canonical: blogUrl,
+  },
+  openGraph: {
+    title: 'Blog - LinkLab Insights on Analytics, SEO, and Growth',
+    description:
+      'Read practical LinkLab articles on URL analytics, campaign measurement, and growth workflows.',
+    url: blogUrl,
+    siteName: 'LinkLab',
+    type: 'website',
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: 'LinkLab blog for URL shortener analytics and growth',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog - LinkLab Insights on Analytics, SEO, and Growth',
+    description:
+      'Practical articles on URL analytics, campaign measurement, and growth workflows.',
+    images: [defaultOgImage],
+  },
 };
 
 const noiseOverlayStyle = {

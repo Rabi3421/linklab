@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { siteUrl } from '@/lib/seo/site';
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.linklab.in';
+const appUrl = siteUrl;
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -14,6 +15,8 @@ export default function robots(): MetadataRoute.Robots {
         '/settings',
         '/create-link',
         '/link-analytics',
+        '/admin',
+        '/api-keys',
       ],
     },
     sitemap: `${appUrl}/sitemap.xml`,

@@ -59,22 +59,6 @@ const HomepageInteractive = () => {
     setShortenedLink(null);
   };
 
-  if (!isHydrated) {
-    return (
-      <div className="min-h-screen bg-[#1e2129]">
-        <div className="h-screen flex items-center justify-center">
-          <div className="animate-pulse text-center">
-            <div
-              className="w-12 h-12 rounded-xl mx-auto mb-4"
-              style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed)' }}
-            />
-            <div className="h-3 w-24 bg-white/10 rounded mx-auto" />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-[#1e2129]">
       <div className="pt-[60px]">

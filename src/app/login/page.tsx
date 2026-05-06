@@ -9,6 +9,10 @@ import { getServerAuthenticatedUser } from '@/lib/auth/server';
 export const metadata: Metadata = {
   title: 'Login - LinkLab',
   description: 'Sign in to your LinkLab account to access your dashboard, manage shortened links, and view detailed analytics for your URL campaigns.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function LoginPage() {
@@ -47,7 +51,7 @@ export default async function LoginPage() {
                 Privacy Policy
               </a>
               <a 
-                href="/terms" 
+                href="/terms-of-service"
                 className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-250 ease-smooth"
               >
                 Terms of Service

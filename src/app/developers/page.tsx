@@ -4,11 +4,49 @@ import Footer from '@/app/homepage/components/Footer';
 import CTASection from '@/app/homepage/components/CTASection';
 import Icon from '@/components/ui/AppIcon';
 import DevelopersDocsPanel from './components/DevelopersDocsPanel';
+import { absoluteUrl, defaultOgImage, siteUrl } from '@/lib/seo/site';
+
+const developersUrl = absoluteUrl('/developers');
 
 export const metadata: Metadata = {
-  title: 'Developers - LinkLab Documentation',
+  metadataBase: new URL(siteUrl),
+  title: 'URL Shortener API Documentation for Developers | LinkLab',
   description:
-    'Read LinkLab developer documentation for API key setup, link creation, analytics access, plan-based quotas, and production integration guidance.',
+    'Read LinkLab URL shortener API documentation for API key setup, short link creation, analytics access, plan-based quotas, and production integration guidance.',
+  keywords: [
+    'url shortener api',
+    'link shortener api',
+    'short link api',
+    'create short links api',
+    'link analytics api',
+    'developer url shortener',
+  ],
+  alternates: {
+    canonical: developersUrl,
+  },
+  openGraph: {
+    title: 'URL Shortener API Documentation for Developers | LinkLab',
+    description:
+      'Create short links, manage API keys, and retrieve analytics with LinkLab developer workflows.',
+    url: developersUrl,
+    siteName: 'LinkLab',
+    type: 'website',
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: 'LinkLab URL shortener API documentation',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'URL Shortener API Documentation for Developers | LinkLab',
+    description:
+      'Create short links, manage API keys, and retrieve analytics with LinkLab developer workflows.',
+    images: [defaultOgImage],
+  },
 };
 
 const noiseOverlayStyle = {
@@ -158,9 +196,34 @@ const errorRows = [
   { code: '500', meaning: 'Temporary platform issue — safe to retry with backoff' },
 ] as const;
 
+const developersStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'LinkLab URL Shortener API Documentation',
+  description:
+    'Developer documentation for creating short links, managing API keys, and retrieving owner-scoped link analytics with LinkLab.',
+  url: developersUrl,
+  author: {
+    '@type': 'Organization',
+    name: 'LinkLab',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'LinkLab',
+    logo: {
+      '@type': 'ImageObject',
+      url: absoluteUrl('/favicon.png'),
+    },
+  },
+};
+
 export default function DevelopersPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(developersStructuredData) }}
+      />
       <AuthenticationAwareHeader isAuthenticated={false} />
       <main className="min-h-screen bg-[#1e2129] pt-[60px] text-white">
         <section className="relative overflow-hidden">

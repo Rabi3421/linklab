@@ -7,6 +7,10 @@ import { getServerAuthenticatedUser } from '@/lib/auth/server';
 export const metadata: Metadata = {
   title: 'Create Account - LinkLab',
   description: 'Sign up for LinkLab to start shortening URLs, tracking link analytics, and managing your link portfolio with our comprehensive URL shortener platform.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function RegisterPage() {

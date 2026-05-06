@@ -1,7 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { blogPosts } from './blog/data';
+import { seoLandingPages } from '@/lib/seo/landing-pages';
+import { siteUrl } from '@/lib/seo/site';
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.linklab.in';
+const appUrl = siteUrl;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -26,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${appUrl}/barcode-generator`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
       url: `${appUrl}/developers`,
       lastModified: now,
       changeFrequency: 'weekly',
@@ -38,24 +46,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${appUrl}/contact`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.55,
+    },
+    {
       url: `${appUrl}/blog`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    {
-      url: `${appUrl}/login`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.4,
-    },
-    {
-      url: `${appUrl}/register`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
   ];
+
+  const seoLandingRoutes: MetadataRoute.Sitemap = seoLandingPages.map((page) => ({
+    url: `${appUrl}/${page.slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: page.slug === 'free-url-shortener' ? 0.92 : 0.86,
+  }));
 
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${appUrl}/blog/${post.slug}`,
@@ -64,5 +73,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  return [...staticRoutes, ...seoLandingRoutes, ...blogRoutes];
 }

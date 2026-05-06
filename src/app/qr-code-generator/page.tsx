@@ -43,42 +43,57 @@ const qrFaqs = [
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
-  title: 'QR Code Generator & Scanner Online | LinkLab',
+  title: 'QR Code Generator & Scanner Free Online | LinkLab',
   description:
-    'Create a QR code from a URL or text, customise the design, and scan QR codes from uploaded images online. Free QR code generator and QR code scanner for links, menus, campaigns, and more.',
+    'Free QR code generator and QR code scanner online. Create a QR code from a URL or text, customise the design, scan QR codes from images or screenshots, and download PNG — all in one workspace.',
   keywords: [
     'qr code generator',
+    'qrcode generator',
+    'free qr code generator',
+    'qr code generator free',
+    'qr code generator online',
+    'qr code maker',
+    'qr code creator',
     'qr code scanner',
     'scan qr code from image',
-    'free qr code generator',
-    'url to qr code',
+    'scan qr code from screenshot',
     'qr code reader online',
     'decode qr code from image',
-    'scan qr code from screenshot',
-    'create qr code for url',
-    'qr code generator for links',
     'upload qr code and read url',
     'qr code scanner from photo',
+    'url to qr code',
+    'create qr code for url',
+    'qr code generator for links',
+    'qr code for website link',
     'custom qr code generator',
     'branded qr code generator',
-    'qr code for website link',
+    'qr code design',
+    'qr code with logo',
+    'qr code download png',
+    'qr code for menu',
+    'qr code for marketing',
+    'qr code for restaurant',
+    'qr code analytics',
+    'dynamic qr code generator',
+    'qr code generator no sign up',
+    'qr code barcode generator',
   ],
   alternates: {
     canonical: pageUrl,
   },
   openGraph: {
-    title: 'QR Code Generator & Scanner Online | LinkLab',
+    title: 'QR Code Generator & Scanner Free Online | LinkLab',
     description:
-      'Generate QR codes for URLs or text, customise the design, and scan QR codes from uploaded images online with LinkLab.',
+      'Free QR code generator and QR code scanner online. Create a QR code from any URL or text, customise design, scan from images, download PNG — no account needed.',
     url: pageUrl,
     siteName: 'LinkLab',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'QR Code Generator & Scanner Online | LinkLab',
+    title: 'QR Code Generator & Scanner Free Online | LinkLab',
     description:
-      'Free QR code generator and QR code scanner for URLs, text, screenshots, menus, and campaign assets.',
+      'Free QR code generator and scanner. Create QR codes from URLs, scan from images, download PNG.',
   },
 };
 
@@ -492,7 +507,7 @@ export default function QrCodeGeneratorPage() {
               {[
                 {
                   name: 'Free',
-                  price: '$0',
+                  price: '₹0',
                   cadence: '/month',
                   badge: 'No card needed',
                   accent: 'border-white/10',
@@ -501,7 +516,7 @@ export default function QrCodeGeneratorPage() {
                 },
                 {
                   name: 'Launch',
-                  price: '$5',
+                  price: '₹399',
                   cadence: '/month',
                   badge: 'Most popular',
                   accent: 'border-amber-500/40',
@@ -510,7 +525,7 @@ export default function QrCodeGeneratorPage() {
                 },
                 {
                   name: 'Growth',
-                  price: '$10',
+                  price: '₹799',
                   cadence: '/month',
                   badge: 'For teams',
                   accent: 'border-white/10',
@@ -519,7 +534,7 @@ export default function QrCodeGeneratorPage() {
                 },
                 {
                   name: 'Scale',
-                  price: '$29',
+                  price: '₹2,399',
                   cadence: '/month',
                   badge: 'High volume',
                   accent: 'border-white/10',
@@ -549,7 +564,7 @@ export default function QrCodeGeneratorPage() {
             <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/8 bg-white/[0.03] px-6 py-5">
               <div>
                 <p className="font-semibold text-white">Need more links without a subscription?</p>
-                <p className="mt-1 text-sm text-white/50">Link packs start at $1.50 for 100 links — credits never expire and stack on any plan.</p>
+                <p className="mt-1 text-sm text-white/50">Link packs start at ₹129 for 100 links — credits never expire and stack on any plan.</p>
               </div>
               <a href="/pricing" className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-400">
                 <Icon name="ArrowRightIcon" size={15} variant="solid" />

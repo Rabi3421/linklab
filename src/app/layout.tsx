@@ -3,8 +3,9 @@ import type { Metadata, Viewport } from 'next';
 import '../styles/index.css';
 import { AuthProvider } from '@/contexts/AuthContext';
 import GoogleAnalytics from '@/components/common/GoogleAnalytics';
+import { defaultOgImage, siteUrl } from '@/lib/seo/site';
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.linklab.in';
+const appUrl = siteUrl;
 const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
 
 export const viewport: Viewport = {
@@ -17,12 +18,23 @@ export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: {
     default: 'LinkLab | URL Shortener, Branded Links & QR Code Analytics',
-    template: '%s | LinkLab',
+    template: '%s',
   },
   description:
     'LinkLab helps teams shorten URLs, create branded links, generate QR codes, track clicks, manage custom domains, and run link workflows from one platform.',
   applicationName: 'LinkLab',
   category: 'technology',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
   keywords: [
     'linklab',
     'url shortener',
@@ -40,12 +52,21 @@ export const metadata: Metadata = {
     title: 'LinkLab | URL Shortener, Branded Links & QR Code Analytics',
     description:
       'Shorten URLs, create branded links, generate QR codes, and track clicks with LinkLab.',
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: 'LinkLab URL shortener, branded links, QR codes, and analytics',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'LinkLab | URL Shortener, Branded Links & QR Code Analytics',
     description:
       'Shorten URLs, create branded links, generate QR codes, and track clicks with LinkLab.',
+    images: [defaultOgImage],
   },
   verification: {
     google: googleSiteVerification,

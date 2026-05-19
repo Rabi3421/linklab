@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: 'URL Shortener, Branded Links, QR Codes & Analytics | LinkLab',
   description:
-    'LinkLab is a URL shortener for branded links, custom domains, QR codes, short link analytics, and link management. Shorten URLs, track clicks, and scale campaigns from one platform.',
+    'LinkLab is a free URL shortener for branded links, QR codes, custom domains, and click analytics. Shorten URLs, track every click, and manage campaigns from one platform.',
   keywords: [
     'url shortener',
     'link shortener',
@@ -138,13 +138,6 @@ const homepageSoftwareStructuredData = {
     '@type': 'Audience',
     audienceType: 'Marketing teams, developers, agencies, content creators, e-commerce brands, and enterprise teams',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '500',
-    bestRating: '5',
-    worstRating: '1',
-  },
 };
 
 const homepageFaqStructuredData = {
@@ -165,7 +158,12 @@ const organizationStructuredData = {
   '@type': 'Organization',
   name: 'LinkLab',
   url: homepageUrl,
-  logo: `${appUrl}/favicon.ico`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${appUrl}/logo.png`,
+    width: 512,
+    height: 512,
+  },
   description:
     'LinkLab is a URL shortener and link management platform for branded links, custom domains, QR codes, analytics, and developer workflows.',
 };
@@ -180,6 +178,14 @@ const websiteStructuredData = {
   publisher: {
     '@type': 'Organization',
     name: 'LinkLab',
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${appUrl}/blog?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
   },
 };
 

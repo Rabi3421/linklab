@@ -224,8 +224,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 </div>
 
                 <div className="rounded-[30px] p-6 lg:p-8" style={glassCardStyle}>
-                  <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px] items-start">
-                    <div>
+                  <div>
                       <div className="font-body text-xs uppercase tracking-[0.16em] text-white/35 mb-3">Why readers save this article</div>
                       <div className="font-heading text-4xl lg:text-5xl font-bold leading-tight mb-5">{post.heroStat}</div>
                       <div className="grid gap-3 sm:grid-cols-2">
@@ -237,16 +236,6 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                         ))}
                       </div>
                     </div>
-                    <div className="rounded-3xl p-5 lg:p-6" style={glassCardSoftStyle}>
-                      <div className="font-body text-xs uppercase tracking-[0.16em] text-amber-300/75 mb-4">SEO notes</div>
-                      <div className="space-y-3 text-sm text-white/54">
-                        <p>Descriptive title with a clear benefit.</p>
-                        <p>People-first content focused on one audience problem.</p>
-                        <p>Scannable section headings and substantial, original explanation.</p>
-                        <p>Article metadata and structured data for better search understanding.</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
 

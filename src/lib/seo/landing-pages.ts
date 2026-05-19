@@ -41,6 +41,7 @@ export interface SeoLandingPage {
 const sharedRelatedLinks: SeoLandingLink[] = [
   { label: 'URL shortener homepage', href: '/' },
   { label: 'QR code generator', href: '/qr-code-generator' },
+  { label: 'Link tracking & analytics', href: '/link-tracking' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Developer API', href: '/developers' },
 ];

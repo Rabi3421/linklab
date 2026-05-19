@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: 'QR Code Generator & Scanner Free Online | LinkLab',
   description:
-    'Free QR code generator and QR code scanner online. Create a QR code from a URL or text, customise the design, scan QR codes from images or screenshots, and download PNG — all in one workspace.',
+    'Free QR code generator and scanner online. Create a QR code from any URL or text, customise the design, scan QR codes from images or screenshots, and download PNG instantly.',
   keywords: [
     'qr code generator',
     'qrcode generator',
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'QR Code Generator & Scanner Free Online | LinkLab',
     description:
-      'Free QR code generator and scanner. Create QR codes from URLs, scan from images, download PNG.',
+      'Free QR code generator and scanner. Create QR codes from any URL or text, scan QR codes from images, download PNG instantly.',
   },
 };
 

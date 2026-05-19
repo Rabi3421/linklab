@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Icon from '@/components/ui/AppIcon';
 import BrandLogo from '@/components/ui/BrandLogo';
 
 const Footer = () => {
@@ -16,7 +15,7 @@ const Footer = () => {
     Product: [
       { label: 'Free URL Shortener', href: '/free-url-shortener' },
       { label: 'Custom URL Shortener', href: '/custom-url-shortener' },
-      { label: 'Analytics Shortener', href: '/url-shortener-with-analytics' },
+      { label: 'Link Tracking & Analytics', href: '/link-tracking' },
       { label: 'QR Generator', href: '/qr-code-generator' },
       { label: 'Barcode Generator', href: '/barcode-generator' },
       { label: 'Pricing', href: '/pricing' },
@@ -24,7 +23,7 @@ const Footer = () => {
     Solutions: [
       { label: 'Branded Link Shortener', href: '/branded-link-shortener' },
       { label: 'Short Link Generator', href: '/short-link-generator' },
-      { label: 'Website URL Shortener', href: '/website-url-shortener' },
+      { label: 'URL Shortener with Analytics', href: '/url-shortener-with-analytics' },
       { label: 'Bulk URL Shortener', href: '/bulk-url-shortener' },
       { label: 'Link Management Tool', href: '/link-management-tool' },
       { label: 'URL Shortener API', href: '/url-shortener-api' },
@@ -84,26 +83,9 @@ const Footer = () => {
             <Link href="/" className="flex items-center gap-2.5 mb-4">
               <BrandLogo size="sm" labelClassName="text-white" />
             </Link>
-            <p className="font-body text-sm text-white/35 max-w-[240px] leading-relaxed mb-6">
+            <p className="font-body text-sm text-white/35 max-w-[240px] leading-relaxed">
               A URL shortener and link management platform for branded links, QR codes, analytics, custom domains, and team workflows.
             </p>
-            <div className="flex items-center gap-2">
-              {[
-                { label: 'Twitter', icon: 'XMarkIcon' },
-                { label: 'GitHub', icon: 'CodeBracketIcon' },
-                { label: 'LinkedIn', icon: 'LinkIcon' },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href="#"
-                  aria-label={s.label}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center text-white/40 transition-all duration-250 hover:text-amber-400 hover:border-amber-400/30"
-                  style={{ border: '1px solid rgba(200,205,220,0.14)', background: 'rgba(255,255,255,0.06)' }}
-                >
-                  <Icon name={s.icon as any} size={16} variant="outline" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Link columns */}

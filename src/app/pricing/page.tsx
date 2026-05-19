@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: 'URL Shortener Pricing & Link Credit Packs | LinkLab',
   description:
-    'Compare LinkLab URL shortener pricing for branded links, custom QR codes, short link analytics, API access, and custom domains. Choose monthly plans or no-expiry link credit packs.',
+    'Compare LinkLab pricing for branded links, QR codes, short link analytics, API access, and custom domains. Monthly plans from $1 or no-expiry link credit packs.',
   keywords: [
     'url shortener pricing',
     'link shortener pricing',

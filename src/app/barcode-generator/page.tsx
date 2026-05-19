@@ -57,9 +57,9 @@ const barcodeFaqs = [
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
-  title: 'Free Barcode Generator Online | Code 128, EAN-13, UPC, Code 39 | LinkLab',
+  title: 'Free Barcode Generator Online | Code 128, EAN-13 | LinkLab',
   description:
-    'Generate barcodes online free. Create Code 128, EAN-13, EAN-8, UPC-A, Code 39, and ITF-14 barcodes. Free barcode generator — customise colours, download PNG or SVG, bulk barcode generation via API.',
+    'Free barcode generator online. Create Code 128, EAN-13, UPC-A, Code 39, and ITF-14 barcodes. Customise colours, download PNG or SVG. Bulk barcode generation via API.',
   keywords: [
     'barcode generator',
     'barcode generator free',
@@ -97,16 +97,16 @@ export const metadata: Metadata = {
     canonical: pageUrl,
   },
   openGraph: {
-    title: 'Free Barcode Generator Online | Code 128, EAN-13, UPC, Code 39 | LinkLab',
+    title: 'Free Barcode Generator Online | Code 128, EAN-13 | LinkLab',
     description:
-      'Create barcodes in Code 128, EAN-13, EAN-8, UPC-A, Code 39, and ITF-14 formats. Free online barcode generator — customise colours, download PNG or SVG instantly.',
+      'Free online barcode generator. Create Code 128, EAN-13, UPC-A, Code 39, and ITF-14 barcodes. Customise colours and download PNG or SVG instantly.',
     url: pageUrl,
     siteName: 'LinkLab',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Barcode Generator Online | Code 128, EAN-13, UPC, Code 39 | LinkLab',
+    title: 'Free Barcode Generator Online | Code 128, EAN-13 | LinkLab',
     description:
       'Generate Code 128, EAN-13, UPC-A, Code 39, and ITF-14 barcodes online free. Download PNG or SVG instantly.',
   },

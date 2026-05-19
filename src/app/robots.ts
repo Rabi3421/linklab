@@ -17,6 +17,8 @@ export default function robots(): MetadataRoute.Robots {
         '/link-analytics',
         '/admin',
         '/api-keys',
+        '/login',
+        '/register',
       ],
     },
     sitemap: `${appUrl}/sitemap.xml`,

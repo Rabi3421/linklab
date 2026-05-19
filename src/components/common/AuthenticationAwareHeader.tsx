@@ -28,6 +28,7 @@ const AuthenticationAwareHeader = ({ isAuthenticated = false }: AuthenticationAw
   const profileMenuRef = useRef<HTMLDivElement | null>(null);
 
   const publicNavItems: NavigationItem[] = [
+    { label: 'URL Shortener', path: '/url-shortener', requiresAuth: false },
     { label: 'About', path: '/about', requiresAuth: false },
     { label: 'QR Tools', path: '/qr-code-generator', requiresAuth: false },
     { label: 'Barcode', path: '/barcode-generator', requiresAuth: false },

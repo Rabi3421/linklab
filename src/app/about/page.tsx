@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: 'About LinkLab | URL Shortener, Branded Links, Analytics & API',
   description:
-    'Learn about LinkLab, the team behind a modern URL shortener for branded links, QR codes, link analytics, custom domains, and API-driven link management with plans starting at $1.',
+    'Learn about LinkLab — a modern URL shortener for branded links, QR codes, link analytics, custom domains, and API workflows. Plans start free, paid from $1/month.',
   keywords: [
     'about linklab',
     'linklab company',
@@ -70,9 +70,9 @@ const labelChipStyle = {
 } as const;
 
 const stats = [
-  { value: '10M+', label: 'links shortened', detail: 'across campaigns, launches, and evergreen content' },
-  { value: '500K+', label: 'active teams', detail: 'from solo founders to globally distributed orgs' },
-  { value: '99.9%', label: 'uptime SLA', detail: 'supported by resilient infrastructure and observability' },
+  { value: 'Free', label: 'plan to get started', detail: 'No credit card needed — create short links, QR codes, and basic analytics immediately' },
+  { value: '$1/mo', label: 'starter plan', detail: 'Paid plans from $1/month for 100 links, analytics, branded links, and API access' },
+  { value: '8+', label: 'barcode formats', detail: 'Code 128, EAN-13, UPC-A, Code 39, ITF-14, EAN-8, MSI, and Pharmacode' },
 ];
 
 const values = [
@@ -204,7 +204,7 @@ const aboutPageStructuredData = {
     '@type': 'Organization',
     name: 'LinkLab',
     url: appUrl,
-    logo: `${appUrl}/favicon.ico`,
+    logo: `${appUrl}/logo.png`,
     description:
       'LinkLab is a link management platform for branded links, QR codes, analytics, custom domains, affordable pricing, and API automation.',
   },
@@ -240,7 +240,7 @@ const aboutOrganizationStructuredData = {
   '@type': 'Organization',
   name: 'LinkLab',
   url: appUrl,
-  logo: `${appUrl}/favicon.ico`,
+  logo: `${appUrl}/logo.png`,
   description:
     'LinkLab is a URL shortener and link management platform built for branded links, short link analytics, QR codes, custom domains, and developer-friendly API workflows.',
   sameAs: [appUrl],

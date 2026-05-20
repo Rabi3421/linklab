@@ -39,9 +39,9 @@ const FAQItem = ({ question, answer }: FAQItemProps) => {
         className="w-full px-6 py-5 flex items-start justify-between gap-4 text-left"
         aria-expanded={isOpen}
       >
-        <h3 className="font-heading font-semibold text-base text-white flex-1">
+        <span className="font-heading font-semibold text-base text-white flex-1">
           {question}
-        </h3>
+        </span>
         <Icon
           name="ChevronDownIcon"
           size={20}

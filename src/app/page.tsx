@@ -160,7 +160,7 @@ const organizationStructuredData = {
   url: homepageUrl,
   logo: {
     '@type': 'ImageObject',
-    url: `${appUrl}/logo.png`,
+    url: `${appUrl}/assets/brand/linklab-logo-mark.png`,
     width: 512,
     height: 512,
   },

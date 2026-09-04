@@ -212,7 +212,7 @@ const developersStructuredData = {
     name: 'LinkLab',
     logo: {
       '@type': 'ImageObject',
-      url: absoluteUrl('/favicon.png'),
+      url: absoluteUrl('/assets/brand/linklab-logo-mark.png'),
     },
   },
 };

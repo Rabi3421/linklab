@@ -210,7 +210,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     publisher: {
       '@type': 'Organization',
       name: 'LinkLab',
-      logo: { '@type': 'ImageObject', url: absoluteUrl('/favicon.png') },
+      logo: { '@type': 'ImageObject', url: absoluteUrl('/assets/brand/linklab-logo-mark.png') },
     },
     keywords: post.keywords.join(', '),
   };

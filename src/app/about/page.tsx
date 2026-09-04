@@ -204,7 +204,7 @@ const aboutPageStructuredData = {
     '@type': 'Organization',
     name: 'LinkLab',
     url: appUrl,
-    logo: `${appUrl}/logo.png`,
+    logo: `${appUrl}/assets/brand/linklab-logo-mark.png`,
     description:
       'LinkLab is a link management platform for branded links, QR codes, analytics, custom domains, affordable pricing, and API automation.',
   },
@@ -240,7 +240,7 @@ const aboutOrganizationStructuredData = {
   '@type': 'Organization',
   name: 'LinkLab',
   url: appUrl,
-  logo: `${appUrl}/logo.png`,
+  logo: `${appUrl}/assets/brand/linklab-logo-mark.png`,
   description:
     'LinkLab is a URL shortener and link management platform built for branded links, short link analytics, QR codes, custom domains, and developer-friendly API workflows.',
   sameAs: [appUrl],

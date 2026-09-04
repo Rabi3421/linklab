@@ -73,12 +73,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', type: 'image/x-icon', sizes: 'any' },
-      { url: '/favicon.png', type: 'image/png', sizes: '64x64' },
-      { url: '/icon', type: 'image/png', sizes: '512x512' },
+      { url: '/assets/brand/linklab-favicon-2026.ico', type: 'image/x-icon', sizes: '64x64' },
+      { url: '/assets/brand/linklab-favicon-2026.png', type: 'image/png', sizes: '64x64' },
+      { url: '/assets/brand/linklab-logo-mark.png', type: 'image/png', sizes: '512x512' },
     ],
-    apple: [{ url: '/apple-icon', type: 'image/png', sizes: '180x180' }],
-    shortcut: ['/favicon.ico'],
+    apple: [{ url: '/assets/brand/linklab-apple-touch-icon.png', type: 'image/png', sizes: '180x180' }],
+    shortcut: ['/assets/brand/linklab-favicon-2026.ico'],
   },
 };
 

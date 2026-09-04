@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2129"/>
+      <stop offset="100%" style="stop-color:#242833"/>
+    </linearGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <circle cx="22" cy="22" r="0.9" fill="rgba(200,205,220,0.07)"/>
+    </pattern>
+    <linearGradient id="amber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Ambient glow spots -->
+  <ellipse cx="200" cy="150" rx="300" ry="200" fill="rgba(245,158,11,0.06)"/>
+  <ellipse cx="1000" cy="480" rx="280" ry="200" fill="rgba(99,102,241,0.06)"/>
+
+  <!-- Header area -->
+  <text x="600" y="72" text-anchor="middle" font-size="13" fill="rgba(245,158,11,0.8)" font-weight="600" letter-spacing="3">TOOL COMPARISON · 2026</text>
+  <text x="600" y="118" text-anchor="middle" font-size="46" fill="white" font-weight="800" letter-spacing="-1">Best Rebrandly Alternatives</text>
+  <text x="600" y="158" text-anchor="middle" font-size="20" fill="rgba(255,255,255,0.45)">Better analytics, lower cost, custom domains — without the Rebrandly price tag</text>
+
+  <!-- Divider -->
+  <line x1="100" y1="186" x2="1100" y2="186" stroke="rgba(200,205,220,0.10)" stroke-width="1"/>
+
+  <!-- ── Tool cards row ── -->
+  <!-- Card 1: Rebrandly (muted — the incumbent) -->
+  <g transform="translate(60, 210)">
+    <rect width="195" height="340" rx="20" fill="rgba(255,255,255,0.04)" stroke="rgba(200,205,220,0.12)" stroke-width="1"/>
+    <rect x="0" y="0" width="195" height="6" rx="3" fill="rgba(150,150,160,0.3)"/>
+    <text x="97" y="46" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.5)" font-weight="700">Rebrandly</text>
+    <text x="97" y="66" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.28)">The one you're leaving</text>
+    <!-- Price -->
+    <rect x="24" y="80" width="147" height="38" rx="10" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+    <text x="97" y="99" text-anchor="middle" font-size="11" fill="#fca5a5" font-weight="600">FREE PLAN LIMITS</text>
+    <text x="97" y="113" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.3)">10 links · 1 domain</text>
+    <!-- Features -->
+    <g transform="translate(20, 134)">
+      <text x="0" y="0" font-size="11" fill="rgba(255,255,255,0.35)">✗  $24/mo to get 5 domains</text>
+      <text x="0" y="22" font-size="11" fill="rgba(255,255,255,0.35)">✗  Analytics on paid only</text>
+      <text x="0" y="44" font-size="11" fill="rgba(255,255,255,0.35)">✗  No API on free plan</text>
+      <text x="0" y="66" font-size="11" fill="rgba(255,255,255,0.35)">✓  Strong brand tools</text>
+      <text x="0" y="88" font-size="11" fill="rgba(255,255,255,0.35)">✓  Team workspaces</text>
+    </g>
+    <text x="97" y="318" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.25)">Best for: enterprises</text>
+  </g>
+
+  <!-- Arrow divider -->
+  <text x="272" y="392" text-anchor="middle" font-size="28" fill="rgba(245,158,11,0.5)">→</text>
+
+  <!-- Card 2: Short.io (Best free plan) -->
+  <g transform="translate(292, 210)">
+    <rect width="195" height="340" rx="20" fill="rgba(255,255,255,0.06)" stroke="rgba(16,185,129,0.3)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="195" height="6" rx="3" fill="rgba(16,185,129,0.7)"/>
+    <text x="97" y="46" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.85)" font-weight="700">Short.io</text>
+    <text x="97" y="66" text-anchor="middle" font-size="11" fill="rgba(16,185,129,0.7)">Best free plan</text>
+    <rect x="24" y="80" width="147" height="38" rx="10" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+    <text x="97" y="99" text-anchor="middle" font-size="11" fill="#6ee7b7" font-weight="600">FREE FOREVER</text>
+    <text x="97" y="113" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)">1,000 links · 5 domains</text>
+    <g transform="translate(20, 134)">
+      <text x="0" y="0" font-size="11" fill="rgba(255,255,255,0.65)">✓  5 custom domains free</text>
+      <text x="0" y="22" font-size="11" fill="rgba(255,255,255,0.65)">✓  API access on free tier</text>
+      <text x="0" y="44" font-size="11" fill="rgba(255,255,255,0.65)">✓  Click, device, country</text>
+      <text x="0" y="66" font-size="11" fill="rgba(255,255,255,0.65)">✓  QR codes included</text>
+      <text x="0" y="88" font-size="11" fill="rgba(255,255,255,0.65)">✓  No ads on redirects</text>
+    </g>
+    <text x="97" y="318" text-anchor="middle" font-size="11" fill="#6ee7b7">Best for: volume + domains</text>
+  </g>
+
+  <!-- Card 3: Dub.co (Developer pick) -->
+  <g transform="translate(506, 210)">
+    <rect width="195" height="340" rx="20" fill="rgba(255,255,255,0.06)" stroke="rgba(99,102,241,0.3)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="195" height="6" rx="3" fill="rgba(99,102,241,0.8)"/>
+    <text x="97" y="46" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.85)" font-weight="700">Dub.co</text>
+    <text x="97" y="66" text-anchor="middle" font-size="11" fill="rgba(99,102,241,0.8)">Developer's pick</text>
+    <rect x="24" y="80" width="147" height="38" rx="10" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+    <text x="97" y="99" text-anchor="middle" font-size="11" fill="#a5b4fc" font-weight="600">FREE + API</text>
+    <text x="97" y="113" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)">25 links · 3 domains</text>
+    <g transform="translate(20, 134)">
+      <text x="0" y="0" font-size="11" fill="rgba(255,255,255,0.65)">✓  API on free plan</text>
+      <text x="0" y="22" font-size="11" fill="rgba(255,255,255,0.65)">✓  Geo + device routing</text>
+      <text x="0" y="44" font-size="11" fill="rgba(255,255,255,0.65)">✓  Conversion tracking</text>
+      <text x="0" y="66" font-size="11" fill="rgba(255,255,255,0.65)">✓  Password-protected</text>
+      <text x="0" y="88" font-size="11" fill="rgba(255,255,255,0.65)">✓  Link expiry dates</text>
+    </g>
+    <text x="97" y="318" text-anchor="middle" font-size="11" fill="#a5b4fc">Best for: developers</text>
+  </g>
+
+  <!-- Card 4: Cuttly (Analytics pick) -->
+  <g transform="translate(720, 210)">
+    <rect width="195" height="340" rx="20" fill="rgba(255,255,255,0.06)" stroke="rgba(245,158,11,0.3)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="195" height="6" rx="3" fill="rgba(245,158,11,0.8)"/>
+    <text x="97" y="46" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.85)" font-weight="700">Cuttly</text>
+    <text x="97" y="66" text-anchor="middle" font-size="11" fill="rgba(245,158,11,0.8)">Best free analytics</text>
+    <rect x="24" y="80" width="147" height="38" rx="10" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+    <text x="97" y="99" text-anchor="middle" font-size="11" fill="#fcd34d" font-weight="600">FREE ANALYTICS</text>
+    <text x="97" y="113" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)">30 links/mo · 1 domain</text>
+    <g transform="translate(20, 134)">
+      <text x="0" y="0" font-size="11" fill="rgba(255,255,255,0.65)">✓  Full click breakdown</text>
+      <text x="0" y="22" font-size="11" fill="rgba(255,255,255,0.65)">✓  Device, OS, browser</text>
+      <text x="0" y="44" font-size="11" fill="rgba(255,255,255,0.65)">✓  Country + referrer</text>
+      <text x="0" y="66" font-size="11" fill="rgba(255,255,255,0.65)">✓  Link in Bio pages</text>
+      <text x="0" y="88" font-size="11" fill="rgba(255,255,255,0.65)">✓  No redirect ads</text>
+    </g>
+    <text x="97" y="318" text-anchor="middle" font-size="11" fill="#fcd34d">Best for: analytics-first</text>
+  </g>
+
+  <!-- Card 5: LinkLab (All-in-one) -->
+  <g transform="translate(934, 210)">
+    <rect width="206" height="340" rx="20" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.4)" stroke-width="2"/>
+    <rect x="0" y="0" width="206" height="6" rx="3" fill="url(#amber)"/>
+    <!-- "Recommended" badge -->
+    <rect x="42" y="14" width="122" height="22" rx="11" fill="url(#amber)"/>
+    <text x="103" y="29" text-anchor="middle" font-size="10" fill="#1e2129" font-weight="700">★ RECOMMENDED</text>
+    <text x="103" y="56" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.95)" font-weight="700">LinkLab</text>
+    <text x="103" y="76" text-anchor="middle" font-size="11" fill="rgba(245,158,11,0.9)">URL + QR + Barcode</text>
+    <rect x="24" y="90" width="158" height="38" rx="10" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.4)" stroke-width="1"/>
+    <text x="103" y="109" text-anchor="middle" font-size="11" fill="#fcd34d" font-weight="600">FREE TO START</text>
+    <text x="103" y="123" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)">No ads · No expiry</text>
+    <g transform="translate(20, 148)">
+      <text x="0" y="0" font-size="11" fill="rgba(255,255,255,0.75)">✓  URL shortener + analytics</text>
+      <text x="0" y="22" font-size="11" fill="rgba(255,255,255,0.75)">✓  Built-in QR generator</text>
+      <text x="0" y="44" font-size="11" fill="rgba(255,255,255,0.75)">✓  Barcode generator</text>
+      <text x="0" y="66" font-size="11" fill="rgba(255,255,255,0.75)">✓  Custom domains</text>
+      <text x="0" y="88" font-size="11" fill="rgba(255,255,255,0.75)">✓  One dashboard, all tools</text>
+    </g>
+    <text x="103" y="328" text-anchor="middle" font-size="11" fill="rgba(245,158,11,0.9)">Best for: all-in-one teams</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="100" y1="574" x2="1100" y2="574" stroke="rgba(200,205,220,0.08)" stroke-width="1"/>
+  <text x="600" y="600" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.2)" letter-spacing="2">LINKLAB.IN · FREE URL SHORTENER, QR GENERATOR &amp; BARCODE TOOL</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 320" width="860" height="320" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2129"/>
+      <stop offset="100%" style="stop-color:#252a35"/>
+    </linearGradient>
+    <pattern id="dp" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="0.7" fill="rgba(200,205,220,0.07)"/>
+    </pattern>
+  </defs>
+
+  <rect width="860" height="320" rx="20" fill="url(#bg2)"/>
+  <rect width="860" height="320" rx="20" fill="url(#dp)"/>
+
+  <!-- Title -->
+  <text x="430" y="42" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.9)" font-weight="700">Rebrandly Pricing vs Alternatives — At a Glance</text>
+  <line x1="40" y1="58" x2="820" y2="58" stroke="rgba(200,205,220,0.10)" stroke-width="1"/>
+
+  <!-- Column headers -->
+  <text x="85" y="84" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="1">TOOL</text>
+  <text x="230" y="84" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="1">FREE LINKS/MO</text>
+  <text x="370" y="84" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="1">CUSTOM DOMAINS</text>
+  <text x="510" y="84" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="1">FREE ANALYTICS</text>
+  <text x="650" y="84" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="1">PAID FROM</text>
+  <text x="790" y="84" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="1">API FREE</text>
+  <line x1="40" y1="92" x2="820" y2="92" stroke="rgba(200,205,220,0.08)" stroke-width="1"/>
+
+  <!-- Row 1: Rebrandly (muted) -->
+  <rect x="40" y="98" width="780" height="36" rx="8" fill="rgba(239,68,68,0.05)"/>
+  <text x="85" y="121" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.45)" font-weight="600">Rebrandly</text>
+  <text x="230" y="121" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.35)">10</text>
+  <text x="370" y="121" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.35)">1 (free)</text>
+  <text x="510" y="121" text-anchor="middle" font-size="13" fill="#fca5a5">Basic only</text>
+  <text x="650" y="121" text-anchor="middle" font-size="13" fill="#fca5a5">$24 / mo</text>
+  <text x="790" y="121" text-anchor="middle" font-size="13" fill="#fca5a5">No</text>
+
+  <!-- Row 2: Short.io -->
+  <rect x="40" y="140" width="780" height="36" rx="8" fill="rgba(255,255,255,0.03)"/>
+  <text x="85" y="163" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-weight="600">Short.io</text>
+  <text x="230" y="163" text-anchor="middle" font-size="13" fill="#6ee7b7">1,000 total</text>
+  <text x="370" y="163" text-anchor="middle" font-size="13" fill="#6ee7b7">5 domains</text>
+  <text x="510" y="163" text-anchor="middle" font-size="13" fill="#6ee7b7">Full</text>
+  <text x="650" y="163" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.6)">$5 / mo</text>
+  <text x="790" y="163" text-anchor="middle" font-size="13" fill="#6ee7b7">Yes</text>
+
+  <!-- Row 3: Dub.co -->
+  <rect x="40" y="182" width="780" height="36" rx="8" fill="rgba(255,255,255,0.03)"/>
+  <text x="85" y="205" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-weight="600">Dub.co</text>
+  <text x="230" y="205" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.6)">25 / mo</text>
+  <text x="370" y="205" text-anchor="middle" font-size="13" fill="#a5b4fc">3 domains</text>
+  <text x="510" y="205" text-anchor="middle" font-size="13" fill="#a5b4fc">Geo + device</text>
+  <text x="650" y="205" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.6)">$8 / mo</text>
+  <text x="790" y="205" text-anchor="middle" font-size="13" fill="#a5b4fc">Yes</text>
+
+  <!-- Row 4: Cuttly -->
+  <rect x="40" y="224" width="780" height="36" rx="8" fill="rgba(255,255,255,0.03)"/>
+  <text x="85" y="247" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.75)" font-weight="600">Cuttly</text>
+  <text x="230" y="247" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.6)">30 / mo</text>
+  <text x="370" y="247" text-anchor="middle" font-size="13" fill="#fcd34d">1 domain</text>
+  <text x="510" y="247" text-anchor="middle" font-size="13" fill="#fcd34d">Full (device, OS)</text>
+  <text x="650" y="247" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.6)">Free tier</text>
+  <text x="790" y="247" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.4)">Paid</text>
+
+  <!-- Row 5: LinkLab (highlighted) -->
+  <rect x="40" y="266" width="780" height="38" rx="8" fill="rgba(245,158,11,0.10)" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+  <text x="85" y="290" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.95)" font-weight="700">LinkLab ★</text>
+  <text x="230" y="290" text-anchor="middle" font-size="13" fill="#fcd34d">Free tier</text>
+  <text x="370" y="290" text-anchor="middle" font-size="13" fill="#fcd34d">Paid plans</text>
+  <text x="510" y="290" text-anchor="middle" font-size="13" fill="#fcd34d">Click, device, geo</text>
+  <text x="650" y="290" text-anchor="middle" font-size="13" fill="#fcd34d">Low cost</text>
+  <text x="790" y="290" text-anchor="middle" font-size="13" fill="#fcd34d">Paid plans</text>
+
+  <!-- Footer note -->
+  <text x="430" y="314" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.2)" letter-spacing="1">★ LinkLab also includes a built-in QR code generator and barcode generator — no separate tool needed   ·   linklab.in</text>
+</svg>

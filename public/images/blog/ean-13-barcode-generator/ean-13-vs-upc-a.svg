@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bgU" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2129"/>
+      <stop offset="100%" style="stop-color:#252b38"/>
+    </linearGradient>
+    <pattern id="dotU" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="0.7" fill="rgba(200,205,220,0.07)"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="300" rx="20" fill="url(#bgU)"/>
+  <rect width="900" height="300" rx="20" fill="url(#dotU)"/>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.85)" font-weight="700">EAN-13 vs UPC-A — Global vs North American Retail</text>
+  <line x1="50" y1="50" x2="850" y2="50" stroke="rgba(200,205,220,0.10)" stroke-width="1"/>
+
+  <!-- LEFT CARD: EAN-13 (amber) -->
+  <g transform="translate(40, 62)">
+    <rect width="382" height="208" rx="14" fill="rgba(245,158,11,0.09)" stroke="rgba(245,158,11,0.35)" stroke-width="1.5"/>
+    <!-- Header -->
+    <rect x="0" y="0" width="382" height="54" rx="14" fill="rgba(245,158,11,0.16)"/>
+    <rect x="0" y="40" width="382" height="14" fill="rgba(245,158,11,0.16)"/>
+    <text x="191" y="24" text-anchor="middle" font-size="16" fill="#fcd34d" font-weight="700">EAN-13</text>
+    <text x="191" y="44" text-anchor="middle" font-size="10" fill="rgba(252,211,77,0.65)" letter-spacing="1">GLOBAL STANDARD</text>
+    <!-- Digit display -->
+    <text x="191" y="84" text-anchor="middle" font-size="20" fill="#fcd34d" font-family="monospace" font-weight="700" letter-spacing="4">5 01234 5678 9 0</text>
+    <text x="191" y="100" text-anchor="middle" font-size="9" fill="rgba(252,211,77,0.5)">Example GTIN-13 (13 digits)</text>
+    <!-- Stats rows -->
+    <line x1="20" y1="112" x2="362" y2="112" stroke="rgba(245,158,11,0.15)" stroke-width="1"/>
+    <text x="24" y="130" font-size="10.5" fill="rgba(255,255,255,0.45)">Total digits</text>
+    <text x="358" y="130" text-anchor="end" font-size="11" fill="#fcd34d" font-weight="600">13</text>
+    <text x="24" y="150" font-size="10.5" fill="rgba(255,255,255,0.45)">Used in</text>
+    <text x="358" y="150" text-anchor="end" font-size="11" fill="rgba(255,255,255,0.7)">117+ countries globally</text>
+    <text x="24" y="170" font-size="10.5" fill="rgba(255,255,255,0.45)">Amazon support</text>
+    <text x="358" y="170" text-anchor="end" font-size="11" fill="#6ee7b7">✓ Full support</text>
+    <text x="24" y="190" font-size="10.5" fill="rgba(255,255,255,0.45)">Best for</text>
+    <text x="358" y="190" text-anchor="end" font-size="11" fill="rgba(255,255,255,0.7)">International products</text>
+    <!-- Pill -->
+    <rect x="24" y="198" width="130" height="18" rx="9" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.35)" stroke-width="1"/>
+    <text x="89" y="211" text-anchor="middle" font-size="9.5" fill="#fcd34d" font-weight="600">Recommended for all sellers</text>
+  </g>
+
+  <!-- VS DIVIDER -->
+  <g transform="translate(438, 148)">
+    <circle cx="12" cy="12" r="18" fill="rgba(255,255,255,0.06)" stroke="rgba(200,205,220,0.15)" stroke-width="1"/>
+    <text x="12" y="17" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.4)" font-weight="700">VS</text>
+  </g>
+
+  <!-- RIGHT CARD: UPC-A (indigo) -->
+  <g transform="translate(478, 62)">
+    <rect width="382" height="208" rx="14" fill="rgba(99,102,241,0.09)" stroke="rgba(99,102,241,0.30)" stroke-width="1.5"/>
+    <!-- Header -->
+    <rect x="0" y="0" width="382" height="54" rx="14" fill="rgba(99,102,241,0.15)"/>
+    <rect x="0" y="40" width="382" height="14" fill="rgba(99,102,241,0.15)"/>
+    <text x="191" y="24" text-anchor="middle" font-size="16" fill="#a5b4fc" font-weight="700">UPC-A</text>
+    <text x="191" y="44" text-anchor="middle" font-size="10" fill="rgba(165,180,252,0.65)" letter-spacing="1">NORTH AMERICAN STANDARD</text>
+    <!-- Digit display -->
+    <text x="191" y="84" text-anchor="middle" font-size="20" fill="#a5b4fc" font-family="monospace" font-weight="700" letter-spacing="4">0 12345 67890 1</text>
+    <text x="191" y="100" text-anchor="middle" font-size="9" fill="rgba(165,180,252,0.5)">Example UPC (12 digits)</text>
+    <!-- Stats rows -->
+    <line x1="20" y1="112" x2="362" y2="112" stroke="rgba(99,102,241,0.15)" stroke-width="1"/>
+    <text x="24" y="130" font-size="10.5" fill="rgba(255,255,255,0.45)">Total digits</text>
+    <text x="358" y="130" text-anchor="end" font-size="11" fill="#a5b4fc" font-weight="600">12</text>
+    <text x="24" y="150" font-size="10.5" fill="rgba(255,255,255,0.45)">Used in</text>
+    <text x="358" y="150" text-anchor="end" font-size="11" fill="rgba(255,255,255,0.7)">US and Canada</text>
+    <text x="24" y="170" font-size="10.5" fill="rgba(255,255,255,0.45)">Amazon support</text>
+    <text x="358" y="170" text-anchor="end" font-size="11" fill="#6ee7b7">✓ Full support</text>
+    <text x="24" y="190" font-size="10.5" fill="rgba(255,255,255,0.45)">Best for</text>
+    <text x="358" y="190" text-anchor="end" font-size="11" fill="rgba(255,255,255,0.7)">US domestic retail</text>
+    <!-- Pill -->
+    <rect x="24" y="198" width="130" height="18" rx="9" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+    <text x="89" y="211" text-anchor="middle" font-size="9.5" fill="#a5b4fc">EAN-13 with leading "0" = UPC-A</text>
+  </g>
+
+  <!-- BOTTOM NOTE -->
+  <rect x="40" y="280" width="820" height="0" rx="0"/>
+  <text x="450" y="292" text-anchor="middle" font-size="10.5" fill="rgba(245,158,11,0.7)">Any UPC-A is also a valid EAN-13 — just add a leading zero. Register EAN-13 (GTIN-13) for global compatibility.</text>
+</svg>

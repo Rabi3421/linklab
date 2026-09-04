@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bgF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2129"/>
+      <stop offset="100%" style="stop-color:#252b38"/>
+    </linearGradient>
+    <pattern id="dotF" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="0.7" fill="rgba(200,205,220,0.07)"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="340" rx="20" fill="url(#bgF)"/>
+  <rect width="900" height="340" rx="20" fill="url(#dotF)"/>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.85)" font-weight="700">Code 128 — Three Character Set Modes</text>
+  <line x1="50" y1="50" x2="850" y2="50" stroke="rgba(200,205,220,0.10)" stroke-width="1"/>
+
+  <!-- Card A: Code 128A (indigo) -->
+  <g transform="translate(44, 64)">
+    <rect width="248" height="220" rx="14" fill="rgba(99,102,241,0.10)" stroke="rgba(99,102,241,0.25)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="248" height="52" rx="14" fill="rgba(99,102,241,0.15)"/>
+    <rect x="0" y="38" width="248" height="14" fill="rgba(99,102,241,0.15)"/>
+    <text x="124" y="22" text-anchor="middle" font-size="15" fill="#a5b4fc" font-weight="700">Code 128A</text>
+    <text x="124" y="42" text-anchor="middle" font-size="10" fill="rgba(165,180,252,0.6)" letter-spacing="1">CHARACTER SET A</text>
+    <text x="20" y="76" font-size="11" fill="rgba(255,255,255,0.45)" font-weight="600">Encodes</text>
+    <text x="20" y="94" font-size="11" fill="rgba(255,255,255,0.75)">A–Z uppercase only</text>
+    <text x="20" y="110" font-size="11" fill="rgba(255,255,255,0.75)">Digits 0–9</text>
+    <text x="20" y="126" font-size="11" fill="rgba(255,255,255,0.75)">Control characters (NUL–US)</text>
+    <line x1="20" y1="140" x2="228" y2="140" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="20" y="158" font-size="11" fill="rgba(255,255,255,0.45)" font-weight="600">Common uses</text>
+    <text x="20" y="176" font-size="11" fill="rgba(255,255,255,0.6)">Manufacturing systems</text>
+    <text x="20" y="192" font-size="11" fill="rgba(255,255,255,0.6)">Older warehouse labels</text>
+    <text x="20" y="208" font-size="11" fill="rgba(255,255,255,0.6)">Systems using control chars</text>
+    <rect x="20" y="216" width="90" height="18" rx="9" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+    <text x="65" y="229" text-anchor="middle" font-size="9.5" fill="#a5b4fc">Less common today</text>
+  </g>
+
+  <!-- Card B: Code 128B (amber, recommended) -->
+  <g transform="translate(326, 64)">
+    <rect width="248" height="220" rx="14" fill="rgba(245,158,11,0.10)" stroke="rgba(245,158,11,0.40)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="248" height="52" rx="14" fill="rgba(245,158,11,0.18)"/>
+    <rect x="0" y="38" width="248" height="14" fill="rgba(245,158,11,0.18)"/>
+    <text x="124" y="22" text-anchor="middle" font-size="15" fill="#fcd34d" font-weight="700">Code 128B ★</text>
+    <text x="124" y="42" text-anchor="middle" font-size="10" fill="rgba(252,211,77,0.65)" letter-spacing="1">MOST WIDELY USED</text>
+    <text x="20" y="76" font-size="11" fill="rgba(255,255,255,0.45)" font-weight="600">Encodes</text>
+    <text x="20" y="94" font-size="11" fill="rgba(255,255,255,0.75)">All 95 printable ASCII chars</text>
+    <text x="20" y="110" font-size="11" fill="rgba(255,255,255,0.75)">A–Z, a–z, 0–9, symbols</text>
+    <text x="20" y="126" font-size="11" fill="rgba(255,255,255,0.75)">Space, !, @, #, $, and more</text>
+    <line x1="20" y1="140" x2="228" y2="140" stroke="rgba(245,158,11,0.2)" stroke-width="1"/>
+    <text x="20" y="158" font-size="11" fill="rgba(255,255,255,0.45)" font-weight="600">Common uses</text>
+    <text x="20" y="176" font-size="11" fill="rgba(255,255,255,0.6)">Inventory &amp; asset tracking</text>
+    <text x="20" y="192" font-size="11" fill="rgba(255,255,255,0.6)">Shipping labels (non-GS1)</text>
+    <text x="20" y="208" font-size="11" fill="rgba(255,255,255,0.6)">Healthcare, ID badges</text>
+    <rect x="20" y="216" width="110" height="18" rx="9" fill="rgba(245,158,11,0.2)" stroke="rgba(245,158,11,0.4)" stroke-width="1"/>
+    <text x="75" y="229" text-anchor="middle" font-size="9.5" fill="#fcd34d" font-weight="600">Best for most use cases</text>
+  </g>
+
+  <!-- Card C: Code 128C (emerald) -->
+  <g transform="translate(608, 64)">
+    <rect width="248" height="220" rx="14" fill="rgba(16,185,129,0.10)" stroke="rgba(16,185,129,0.25)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="248" height="52" rx="14" fill="rgba(16,185,129,0.15)"/>
+    <rect x="0" y="38" width="248" height="14" fill="rgba(16,185,129,0.15)"/>
+    <text x="124" y="22" text-anchor="middle" font-size="15" fill="#6ee7b7" font-weight="700">Code 128C</text>
+    <text x="124" y="42" text-anchor="middle" font-size="10" fill="rgba(110,231,183,0.6)" letter-spacing="1">CHARACTER SET C</text>
+    <text x="20" y="76" font-size="11" fill="rgba(255,255,255,0.45)" font-weight="600">Encodes</text>
+    <text x="20" y="94" font-size="11" fill="rgba(255,255,255,0.75)">Digit pairs 00–99 only</text>
+    <text x="20" y="110" font-size="11" fill="rgba(255,255,255,0.75)">2× denser than Code 128B</text>
+    <text x="20" y="126" font-size="11" fill="rgba(255,255,255,0.75)">Pure numeric strings</text>
+    <line x1="20" y1="140" x2="228" y2="140" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+    <text x="20" y="158" font-size="11" fill="rgba(255,255,255,0.45)" font-weight="600">Common uses</text>
+    <text x="20" y="176" font-size="11" fill="rgba(255,255,255,0.6)">GS1-128 / SSCC labels</text>
+    <text x="20" y="192" font-size="11" fill="rgba(255,255,255,0.6)">Long tracking numbers</text>
+    <text x="20" y="208" font-size="11" fill="rgba(255,255,255,0.6)">Dense numeric supply chain</text>
+    <rect x="20" y="216" width="100" height="18" rx="9" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+    <text x="70" y="229" text-anchor="middle" font-size="9.5" fill="#6ee7b7">Numeric data only</text>
+  </g>
+
+  <!-- Bottom note -->
+  <rect x="44" y="296" width="812" height="34" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(200,205,220,0.08)" stroke-width="1"/>
+  <text x="450" y="311" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,0.35)">Most barcode generators default to Code 128B — it handles any text or number without special configuration.</text>
+  <text x="450" y="325" text-anchor="middle" font-size="10.5" fill="rgba(245,158,11,0.65)">When in doubt, choose Code 128B. It will scan correctly on every modern scanner.</text>
+</svg>

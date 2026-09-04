@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 320" width="860" height="320" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bgT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2129"/>
+      <stop offset="100%" style="stop-color:#252a35"/>
+    </linearGradient>
+    <pattern id="dpT" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="0.7" fill="rgba(200,205,220,0.07)"/>
+    </pattern>
+  </defs>
+
+  <rect width="860" height="320" rx="20" fill="url(#bgT)"/>
+  <rect width="860" height="320" rx="20" fill="url(#dpT)"/>
+
+  <!-- Title -->
+  <text x="430" y="40" text-anchor="middle" font-size="15" fill="rgba(255,255,255,0.9)" font-weight="700">Code 128 vs Other Barcode Formats — At a Glance</text>
+  <line x1="40" y1="56" x2="820" y2="56" stroke="rgba(200,205,220,0.10)" stroke-width="1"/>
+
+  <!-- Column headers -->
+  <text x="88"  y="78" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="0.8">FORMAT</text>
+  <text x="218" y="78" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="0.8">ENCODES</text>
+  <text x="365" y="78" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="0.8">CHAR LIMIT</text>
+  <text x="500" y="78" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="0.8">GS1 NEEDED</text>
+  <text x="680" y="78" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,0.35)" font-weight="600" letter-spacing="0.8">TYPICAL USE CASE</text>
+  <line x1="40" y1="86" x2="820" y2="86" stroke="rgba(200,205,220,0.08)" stroke-width="1"/>
+
+  <!-- Row 1: Code 128 (highlighted) -->
+  <rect x="40" y="92" width="780" height="36" rx="8" fill="rgba(245,158,11,0.10)" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+  <text x="88"  y="115" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.95)" font-weight="700">Code 128 ★</text>
+  <text x="218" y="115" text-anchor="middle" font-size="12" fill="#fcd34d">Full ASCII (128 chars)</text>
+  <text x="365" y="115" text-anchor="middle" font-size="12" fill="#fcd34d">None</text>
+  <text x="500" y="115" text-anchor="middle" font-size="12" fill="#6ee7b7">No</text>
+  <text x="680" y="115" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.75)">Logistics, inventory, healthcare</text>
+
+  <!-- Row 2: EAN-13 -->
+  <rect x="40" y="134" width="780" height="36" rx="8" fill="rgba(255,255,255,0.03)"/>
+  <text x="88"  y="157" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.7)" font-weight="600">EAN-13</text>
+  <text x="218" y="157" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">Digits 0–9 only</text>
+  <text x="365" y="157" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">12 digits</text>
+  <text x="500" y="157" text-anchor="middle" font-size="12" fill="#fca5a5">Yes (GS1)</text>
+  <text x="680" y="157" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">Retail products, supermarket</text>
+
+  <!-- Row 3: Code 39 -->
+  <rect x="40" y="176" width="780" height="36" rx="8" fill="rgba(255,255,255,0.03)"/>
+  <text x="88"  y="199" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.7)" font-weight="600">Code 39</text>
+  <text x="218" y="199" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">A–Z, 0–9, 9 symbols</text>
+  <text x="365" y="199" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">No limit (low density)</text>
+  <text x="500" y="199" text-anchor="middle" font-size="12" fill="#6ee7b7">No</text>
+  <text x="680" y="199" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">Government, automotive, ID</text>
+
+  <!-- Row 4: UPC-A -->
+  <rect x="40" y="218" width="780" height="36" rx="8" fill="rgba(255,255,255,0.03)"/>
+  <text x="88"  y="241" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.7)" font-weight="600">UPC-A</text>
+  <text x="218" y="241" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">Digits 0–9 only</text>
+  <text x="365" y="241" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">11 digits</text>
+  <text x="500" y="241" text-anchor="middle" font-size="12" fill="#fca5a5">Yes (GS1)</text>
+  <text x="680" y="241" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">US retail, Amazon, grocery</text>
+
+  <!-- Row 5: ITF-14 -->
+  <rect x="40" y="260" width="780" height="36" rx="8" fill="rgba(255,255,255,0.03)"/>
+  <text x="88"  y="283" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.7)" font-weight="600">ITF-14</text>
+  <text x="218" y="283" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">Digits 0–9 only</text>
+  <text x="365" y="283" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">14 digits</text>
+  <text x="500" y="283" text-anchor="middle" font-size="12" fill="#6ee7b7">No</text>
+  <text x="680" y="283" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)">Outer shipping cartons</text>
+
+  <!-- Footer -->
+  <text x="430" y="312" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.2)" letter-spacing="0.5">★ Code 128B handles all text and numeric data — no GS1 registration required   ·   linklab.in</text>
+</svg>

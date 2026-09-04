@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bgMain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2129"/>
+      <stop offset="100%" style="stop-color:#252b38"/>
+    </linearGradient>
+    <linearGradient id="igGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#833ab4"/>
+      <stop offset="50%" style="stop-color:#fd1d1d"/>
+      <stop offset="100%" style="stop-color:#fcb045"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+    <pattern id="dotsBg" width="38" height="38" patternUnits="userSpaceOnUse">
+      <circle cx="19" cy="19" r="0.75" fill="rgba(200,205,220,0.07)"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="380" rx="20" fill="url(#bgMain)"/>
+  <rect width="960" height="380" rx="20" fill="url(#dotsBg)"/>
+
+  <!-- Title row -->
+  <text x="480" y="38" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.35)" letter-spacing="2.5" font-weight="600">HOW INSTAGRAM BIO LINK TRACKING WORKS</text>
+
+  <!-- ── WITHOUT TRACKING (left half) ── -->
+  <text x="220" y="70" text-anchor="middle" font-size="12" fill="rgba(239,68,68,0.8)" font-weight="600" letter-spacing="1">WITHOUT SHORT LINK</text>
+
+  <!-- Instagram phone mockup -->
+  <g transform="translate(60, 88)">
+    <rect width="130" height="210" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(200,205,220,0.15)" stroke-width="1"/>
+    <!-- IG gradient icon -->
+    <rect x="44" y="18" width="42" height="42" rx="12" fill="url(#igGrad)"/>
+    <rect x="51" y="25" width="28" height="28" rx="7" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
+    <circle cx="65" cy="39" r="6" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
+    <circle cx="79" cy="30" r="2" fill="rgba(255,255,255,0.9)"/>
+    <!-- Profile stub -->
+    <circle cx="65" cy="84" r="18" fill="rgba(255,255,255,0.08)" stroke="rgba(200,205,220,0.15)" stroke-width="1"/>
+    <text x="65" y="89" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.4)">@</text>
+    <!-- Bio text stubs -->
+    <rect x="16" y="112" width="98" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+    <rect x="24" y="123" width="82" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+    <!-- Raw URL in bio -->
+    <rect x="10" y="140" width="110" height="20" rx="5" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+    <text x="65" y="154" text-anchor="middle" font-size="8.5" fill="#a5b4fc">yoursite.com/page</text>
+    <!-- Zero data label -->
+    <rect x="10" y="172" width="110" height="22" rx="6" fill="rgba(239,68,68,0.12)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
+    <text x="65" y="187" text-anchor="middle" font-size="9" fill="#fca5a5" font-weight="600">0 click data</text>
+  </g>
+
+  <!-- Raw arrow (sad) -->
+  <g transform="translate(196, 168)">
+    <line x1="0" y1="15" x2="44" y2="15" stroke="rgba(239,68,68,0.4)" stroke-width="2" stroke-dasharray="5,4"/>
+    <polygon points="40,10 50,15 40,20" fill="rgba(239,68,68,0.5)"/>
+  </g>
+
+  <!-- Destination (no analytics) -->
+  <g transform="translate(248, 120)">
+    <rect width="140" height="116" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+    <text x="70" y="34" text-anchor="middle" font-size="28" fill="rgba(255,255,255,0.2)">🌐</text>
+    <text x="70" y="62" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.4)" font-weight="600">Your Website</text>
+    <rect x="16" y="74" width="108" height="8" rx="4" fill="rgba(239,68,68,0.08)"/>
+    <rect x="28" y="86" width="84" height="8" rx="4" fill="rgba(239,68,68,0.05)"/>
+    <text x="70" y="108" text-anchor="middle" font-size="9" fill="rgba(239,68,68,0.6)">No referrer data received</text>
+  </g>
+
+  <!-- X badge -->
+  <circle cx="388" cy="178" r="18" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.35)" stroke-width="1.5"/>
+  <text x="388" y="184" text-anchor="middle" font-size="16" fill="#f87171" font-weight="800">✗</text>
+
+  <!-- CENTER DIVIDER -->
+  <line x1="480" y1="58" x2="480" y2="342" stroke="rgba(200,205,220,0.10)" stroke-width="1" stroke-dasharray="6,5"/>
+  <text x="480" y="340" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.2)" letter-spacing="1">VS</text>
+
+  <!-- ── WITH TRACKING (right half) ── -->
+  <text x="740" y="70" text-anchor="middle" font-size="12" fill="rgba(16,185,129,0.9)" font-weight="600" letter-spacing="1">WITH SHORT LINK + ANALYTICS</text>
+
+  <!-- Instagram phone mockup (right) -->
+  <g transform="translate(510, 88)">
+    <rect width="130" height="210" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(200,205,220,0.15)" stroke-width="1"/>
+    <rect x="44" y="18" width="42" height="42" rx="12" fill="url(#igGrad)"/>
+    <rect x="51" y="25" width="28" height="28" rx="7" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
+    <circle cx="65" cy="39" r="6" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
+    <circle cx="79" cy="30" r="2" fill="rgba(255,255,255,0.9)"/>
+    <circle cx="65" cy="84" r="18" fill="rgba(255,255,255,0.08)" stroke="rgba(200,205,220,0.15)" stroke-width="1"/>
+    <text x="65" y="89" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.4)">@</text>
+    <rect x="16" y="112" width="98" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+    <rect x="24" y="123" width="82" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+    <!-- Short link in bio (branded) -->
+    <rect x="10" y="140" width="110" height="20" rx="5" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.4)" stroke-width="1"/>
+    <text x="65" y="154" text-anchor="middle" font-size="8.5" fill="#6ee7b7" font-weight="600">go.brand.com/ig</text>
+    <!-- Analytics label -->
+    <rect x="10" y="172" width="110" height="22" rx="6" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.35)" stroke-width="1"/>
+    <text x="65" y="187" text-anchor="middle" font-size="9" fill="#6ee7b7" font-weight="600">Analytics tracking ✓</text>
+  </g>
+
+  <!-- Arrow to short link platform -->
+  <g transform="translate(646, 168)">
+    <line x1="0" y1="15" x2="44" y2="15" stroke="rgba(245,158,11,0.6)" stroke-width="2"/>
+    <polygon points="40,10 50,15 40,20" fill="rgba(245,158,11,0.8)"/>
+  </g>
+
+  <!-- LinkLab analytics card -->
+  <g transform="translate(698, 100)">
+    <rect width="200" height="180" rx="16" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.3)" stroke-width="1.5"/>
+    <!-- Header -->
+    <rect x="0" y="0" width="200" height="44" rx="16" fill="rgba(245,158,11,0.12)"/>
+    <rect x="0" y="28" width="200" height="16" fill="rgba(245,158,11,0.12)"/>
+    <text x="100" y="26" text-anchor="middle" font-size="12" fill="#fcd34d" font-weight="700">Link Analytics Dashboard</text>
+
+    <!-- Metric rows -->
+    <g transform="translate(14, 54)">
+      <text x="0" y="0" font-size="10" fill="rgba(255,255,255,0.45)">Total clicks</text>
+      <text x="172" y="0" text-anchor="end" font-size="11" fill="#6ee7b7" font-weight="700">2,847</text>
+    </g>
+    <g transform="translate(14, 74)">
+      <text x="0" y="0" font-size="10" fill="rgba(255,255,255,0.45)">Unique clicks</text>
+      <text x="172" y="0" text-anchor="end" font-size="11" fill="#6ee7b7" font-weight="700">2,103</text>
+    </g>
+    <g transform="translate(14, 94)">
+      <text x="0" y="0" font-size="10" fill="rgba(255,255,255,0.45)">Top device</text>
+      <text x="172" y="0" text-anchor="end" font-size="11" fill="rgba(255,255,255,0.65)">iOS (74%)</text>
+    </g>
+    <g transform="translate(14, 114)">
+      <text x="0" y="0" font-size="10" fill="rgba(255,255,255,0.45)">Top country</text>
+      <text x="172" y="0" text-anchor="end" font-size="11" fill="rgba(255,255,255,0.65)">India (42%)</text>
+    </g>
+    <g transform="translate(14, 134)">
+      <text x="0" y="0" font-size="10" fill="rgba(255,255,255,0.45)">Referrer</text>
+      <text x="172" y="0" text-anchor="end" font-size="11" fill="rgba(255,255,255,0.65)">instagram.com</text>
+    </g>
+    <!-- Mini bar chart -->
+    <g transform="translate(14, 152)">
+      <rect x="0" y="0" width="14" height="18" rx="2" fill="rgba(245,158,11,0.5)"/>
+      <rect x="18" y="4" width="14" height="14" rx="2" fill="rgba(245,158,11,0.4)"/>
+      <rect x="36" y="2" width="14" height="16" rx="2" fill="rgba(245,158,11,0.6)"/>
+      <rect x="54" y="6" width="14" height="12" rx="2" fill="rgba(245,158,11,0.35)"/>
+      <rect x="72" y="0" width="14" height="18" rx="2" fill="rgba(245,158,11,0.7)"/>
+      <rect x="90" y="3" width="14" height="15" rx="2" fill="rgba(245,158,11,0.5)"/>
+      <rect x="108" y="1" width="14" height="17" rx="2" fill="rgba(245,158,11,0.8)"/>
+      <rect x="126" y="5" width="14" height="13" rx="2" fill="rgba(245,158,11,0.45)"/>
+      <rect x="144" y="0" width="14" height="18" rx="2" fill="rgba(245,158,11,0.9)"/>
+    </g>
+  </g>
+
+  <!-- Checkmark badge -->
+  <circle cx="905" cy="178" r="18" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.4)" stroke-width="1.5"/>
+  <text x="905" y="184" text-anchor="middle" font-size="16" fill="#34d399" font-weight="800">✓</text>
+
+  <!-- Bottom caption row -->
+  <rect x="40" y="316" width="880" height="42" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(200,205,220,0.08)" stroke-width="1"/>
+  <text x="480" y="332" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.35)">Instagram shows you zero data about who clicks your bio link.</text>
+  <text x="480" y="350" text-anchor="middle" font-size="11" fill="rgba(245,158,11,0.75)">A short link with analytics fixes that — every click is logged with device, country, and time data.</text>
+</svg>

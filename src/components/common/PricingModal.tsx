@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Icon from '@/components/ui/AppIcon';
-import { billingPlans, linkPacks } from '@/lib/billing/plans';
-import type { BillingPlanDefinition, LinkPackDefinition, SubscriptionPlanId } from '@/lib/billing/types';
+import { billingPlans, creditPacks } from '@/lib/billing/plans';
+import type { BillingPlanDefinition, CreditPackDefinition, SubscriptionPlanId } from '@/lib/billing/types';
 
 // ── Razorpay window type ──────────────────────────────────────────────────
 
@@ -241,7 +241,7 @@ function PackButton({
   pack,
   onSuccess,
 }: {
-  pack: LinkPackDefinition;
+  pack: CreditPackDefinition;
   onSuccess: () => void;
 }) {
   const [state, setState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -580,7 +580,7 @@ export default function PricingModal({
 
                   <div className="mb-5">
                     <div className="flex items-end gap-1.5 mb-0.5">
-                      <span className="font-heading text-4xl font-bold leading-none text-white">{plan.usd}</span>
+                      <span className="font-heading text-4xl font-bold leading-none text-white">{plan.price}</span>
                       {!plan.isCustomPricing && (
                         <span className="font-body text-sm text-white/40 mb-0.5">{plan.cadence}</span>
                       )}
@@ -637,7 +637,7 @@ export default function PricingModal({
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {linkPacks.map((pack) => (
+                {creditPacks.map((pack) => (
                   <div
                     key={pack.id}
                     className="rounded-[24px] p-6 flex flex-col"

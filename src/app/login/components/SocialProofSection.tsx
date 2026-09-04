@@ -7,21 +7,22 @@ interface StatItem {
 }
 
 const SocialProofSection = () => {
+  // TODO: replace with real metrics once available.
   const stats: StatItem[] = [
     {
-      value: '50K+',
-      label: 'Active Users',
-      icon: 'UsersIcon'
+      value: 'Free',
+      label: 'No credit card required',
+      icon: 'CreditCardIcon'
     },
     {
-      value: '2M+',
-      label: 'Links Created',
-      icon: 'LinkIcon'
+      value: 'SSL',
+      label: 'Secure links',
+      icon: 'ShieldCheckIcon'
     },
     {
-      value: '99.9%',
-      label: 'Uptime',
-      icon: 'CheckCircleIcon'
+      value: 'INR',
+      label: 'India-first pricing',
+      icon: 'CurrencyRupeeIcon'
     }
   ];
 
@@ -29,7 +30,7 @@ const SocialProofSection = () => {
     <div className="w-full max-w-4xl mx-auto mt-12">
       <div className="bg-card rounded-lg shadow-md p-8 border border-border">
         <h2 className="font-heading font-semibold text-xl text-foreground text-center mb-6">
-          Trusted by thousands of professionals worldwide
+          Start with practical link-management essentials
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -61,11 +62,11 @@ const SocialProofSection = () => {
             </div>
             <div className="flex items-center gap-2">
               <Icon name="LockClosedIcon" size={20} variant="solid" className="text-success" />
-              <span className="font-body text-sm text-foreground">GDPR Compliant</span>
+              <span className="font-body text-sm text-foreground">Secure authentication</span>
             </div>
             <div className="flex items-center gap-2">
               <Icon name="ClockIcon" size={20} variant="solid" className="text-success" />
-              <span className="font-body text-sm text-foreground">24/7 Support</span>
+              <span className="font-body text-sm text-foreground">No-expiry credit packs</span>
             </div>
           </div>
         </div>

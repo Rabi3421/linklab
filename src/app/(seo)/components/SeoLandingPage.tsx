@@ -75,8 +75,8 @@ export default function SeoLandingPage({ page }: SeoLandingPageProps) {
     offers: {
       '@type': 'AggregateOffer',
       lowPrice: '0',
-      highPrice: '79',
-      priceCurrency: 'USD',
+      highPrice: '6499',
+      priceCurrency: 'INR',
       url: absoluteUrl('/pricing'),
     },
   };
@@ -278,4 +278,3 @@ export default function SeoLandingPage({ page }: SeoLandingPageProps) {
     </>
   );
 }
-

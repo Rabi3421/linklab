@@ -3,7 +3,7 @@
 import { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import type { LinkPackDefinition } from '@/lib/billing/types';
+import type { CreditPackDefinition } from '@/lib/billing/types';
 
 function loadRazorpayScript(): Promise<boolean> {
   return new Promise((resolve) => {
@@ -18,7 +18,7 @@ function loadRazorpayScript(): Promise<boolean> {
   });
 }
 
-export default function PricingPackButton({ pack }: { pack: LinkPackDefinition }) {
+export default function PricingPackButton({ pack }: { pack: CreditPackDefinition }) {
   const router = useRouter();
   const { isAuthenticated, loading, user } = useAuth();
   const [state, setState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');

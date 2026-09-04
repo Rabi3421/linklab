@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import AuthenticationAwareHeader from '@/components/common/AuthenticationAwareHeader';
 import HomepageInteractive from './homepage/components/HomepageInteractive';
 import { homepageFaqs } from './homepage/components/FAQSection';
+import { billingPlans } from '@/lib/billing/plans';
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.linklab.in';
 const homepageUrl = new URL('/', appUrl).toString();
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     'url shortener api',
     'track clicks',
     'link shortener for free',
-    'url shortener starting at $1',
+    'url shortener starting at ₹99',
     'how to shorten a url',
     'link analytics dashboard',
     'url shortener for marketing teams',
@@ -79,61 +80,21 @@ const homepageSoftwareStructuredData = {
     'Link expiry and scheduled deactivation',
     'Team workspace with shared link management',
     'Real-time click data and traffic reports',
-    'Geographic click distribution across 150+ countries',
+    'Geographic click distribution reporting',
     'Device and browser analytics',
     'No-expiry one-time link credit packs',
     'Enterprise custom pricing and SLA',
   ],
-  offers: [
-    {
+  offers: billingPlans
+    .filter((plan) => !plan.isCustomPricing)
+    .map((plan) => ({
       '@type': 'Offer',
-      name: 'Free plan',
-      price: '0',
-      priceCurrency: 'USD',
-      description: '10 shortened links per month with basic analytics and custom aliases.',
-      url: `${appUrl}/register`,
-    },
-    {
-      '@type': 'Offer',
-      name: 'Starter plan',
-      price: '1',
-      priceCurrency: 'USD',
-      description: '100 shortened links per month with full analytics, branded links, and API access.',
-      url: `${appUrl}/pricing`,
-    },
-    {
-      '@type': 'Offer',
-      name: 'Launch plan',
-      price: '5',
-      priceCurrency: 'USD',
-      description: '500 shortened links per month with analytics and branded links.',
-      url: `${appUrl}/pricing`,
-    },
-    {
-      '@type': 'Offer',
-      name: 'Growth plan',
-      price: '10',
-      priceCurrency: 'USD',
-      description: '2,000 shortened links per month with advanced analytics and custom domains.',
-      url: `${appUrl}/pricing`,
-    },
-    {
-      '@type': 'Offer',
-      name: 'Scale plan',
-      price: '29',
-      priceCurrency: 'USD',
-      description: '10,000 shortened links per month for high-volume teams.',
-      url: `${appUrl}/pricing`,
-    },
-    {
-      '@type': 'Offer',
-      name: 'Pro plan',
-      price: '79',
-      priceCurrency: 'USD',
-      description: '100,000 shortened links per month for agencies and enterprise-scale usage.',
-      url: `${appUrl}/pricing`,
-    },
-  ],
+      name: `${plan.name} plan`,
+      price: String((plan.priceInPaise ?? 0) / 100),
+      priceCurrency: 'INR',
+      description: `${plan.monthlyLinkLimit.toLocaleString('en-IN')} shortened links and ${plan.trackedClicksLabel} tracked clicks per month.`,
+      url: `${appUrl}/${plan.id === 'free' ? 'register' : 'pricing'}`,
+    })),
   audience: {
     '@type': 'Audience',
     audienceType: 'Marketing teams, developers, agencies, content creators, e-commerce brands, and enterprise teams',
@@ -229,16 +190,12 @@ const pricingListStructuredData = {
   '@type': 'ItemList',
   name: 'LinkLab URL shortener pricing plans',
   description:
-    'LinkLab offers URL shortener plans starting at $0 for free and $1 per month for the Starter plan, up to enterprise custom pricing.',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Free plan — $0/month — 10 links/month' },
-    { '@type': 'ListItem', position: 2, name: 'Starter plan — $1/month — 100 links/month' },
-    { '@type': 'ListItem', position: 3, name: 'Launch plan — $5/month — 500 links/month' },
-    { '@type': 'ListItem', position: 4, name: 'Growth plan — $10/month — 2,000 links/month' },
-    { '@type': 'ListItem', position: 5, name: 'Scale plan — $29/month — 10,000 links/month' },
-    { '@type': 'ListItem', position: 6, name: 'Pro plan — $79/month — 100,000 links/month' },
-    { '@type': 'ListItem', position: 7, name: 'Enterprise plan — Custom pricing — unlimited links' },
-  ],
+    'LinkLab offers a free URL shortener plan and paid monthly plans starting at ₹99, with custom enterprise pricing.',
+  itemListElement: billingPlans.map((plan, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: `${plan.name} plan — ${plan.price}${plan.isCustomPricing ? '' : '/month'} — ${plan.monthlyLinkLimit === Infinity ? 'unlimited' : plan.monthlyLinkLimit.toLocaleString('en-IN')} links/month`,
+  })),
 };
 
 export default function Homepage() {

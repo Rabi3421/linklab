@@ -1,11 +1,12 @@
-import type { BillingPlanDefinition, LinkPackDefinition, SubscriptionPlanId } from './types';
+import type { BillingPlanDefinition, CreditPackDefinition, SubscriptionPlanId } from './types';
 
 export const billingPlans: BillingPlanDefinition[] = [
   {
     id: 'free',
     name: 'Free',
     badge: 'Explore the product',
-    usd: '₹0',
+    price: '₹0',
+    priceInPaise: 0,
     cadence: '/month',
     seats: '1 user',
     cta: 'Start free',
@@ -29,7 +30,8 @@ export const billingPlans: BillingPlanDefinition[] = [
     id: 'starter',
     name: 'Starter',
     badge: 'For casual users',
-    usd: '₹99',
+    price: '₹99',
+    priceInPaise: 9900,
     cadence: '/month',
     seats: '1 user',
     cta: 'Get Starter',
@@ -53,7 +55,8 @@ export const billingPlans: BillingPlanDefinition[] = [
     id: 'launch',
     name: 'Launch',
     badge: 'Most popular',
-    usd: '₹399',
+    price: '₹399',
+    priceInPaise: 39900,
     cadence: '/month',
     seats: '2 users',
     cta: 'Choose Launch',
@@ -77,7 +80,8 @@ export const billingPlans: BillingPlanDefinition[] = [
     id: 'growth',
     name: 'Growth',
     badge: 'For growing teams',
-    usd: '₹799',
+    price: '₹799',
+    priceInPaise: 79900,
     cadence: '/month',
     seats: '5 users',
     cta: 'Choose Growth',
@@ -101,7 +105,8 @@ export const billingPlans: BillingPlanDefinition[] = [
     id: 'scale',
     name: 'Scale',
     badge: 'For agencies & power users',
-    usd: '₹2,399',
+    price: '₹2,399',
+    priceInPaise: 239900,
     cadence: '/month',
     seats: '10 users',
     cta: 'Choose Scale',
@@ -125,7 +130,8 @@ export const billingPlans: BillingPlanDefinition[] = [
     id: 'pro',
     name: 'Pro',
     badge: 'For large-scale operations',
-    usd: '₹6,499',
+    price: '₹6,499',
+    priceInPaise: 649900,
     cadence: '/month',
     seats: '20 users',
     cta: 'Choose Pro',
@@ -149,7 +155,8 @@ export const billingPlans: BillingPlanDefinition[] = [
     id: 'enterprise',
     name: 'Enterprise',
     badge: 'Custom everything',
-    usd: 'Custom',
+    price: 'Custom',
+    priceInPaise: null,
     cadence: '',
     seats: 'Unlimited users',
     cta: 'Talk to us',
@@ -179,13 +186,15 @@ export const billingPlanMap = new Map<SubscriptionPlanId, BillingPlanDefinition>
 export const getBillingPlan = (planId: SubscriptionPlanId) =>
   billingPlanMap.get(planId) ?? billingPlanMap.get('free')!;
 
-export const linkPacks: LinkPackDefinition[] = [
+export const creditPacks: CreditPackDefinition[] = [
   {
     id: 'pack-100',
     name: 'Micro Pack',
     badge: 'Just getting started',
     price: '₹129',
+    priceInPaise: 12900,
     links: '100',
+    expiry: 'Never',
     cta: 'Buy 100 links',
     description:
       'A small top-up for occasional use. Great for trying out the platform or covering a one-off campaign without any commitment.',
@@ -201,7 +210,9 @@ export const linkPacks: LinkPackDefinition[] = [
     name: 'Starter Pack',
     badge: 'Most flexible',
     price: '₹499',
+    priceInPaise: 49900,
     links: '500',
+    expiry: 'Never',
     cta: 'Buy 500 links',
     description:
       'Enough for a product launch, seasonal campaign, or a few months of light use — all without locking into a monthly charge.',
@@ -217,7 +228,9 @@ export const linkPacks: LinkPackDefinition[] = [
     name: 'Growth Pack',
     badge: 'Best value',
     price: '₹1,499',
+    priceInPaise: 149900,
     links: '2,000',
+    expiry: 'Never',
     cta: 'Buy 2,000 links',
     description:
       'The sweet spot for agencies and teams running periodic campaigns. Buy once, spread across projects, top up when needed.',
@@ -233,7 +246,9 @@ export const linkPacks: LinkPackDefinition[] = [
     name: 'Bulk Pack',
     badge: 'High volume, no commitment',
     price: '₹4,999',
+    priceInPaise: 499900,
     links: '10,000',
+    expiry: 'Never',
     cta: 'Buy 10,000 links',
     description:
       "For large campaigns or platforms that spike in link creation but don't want a recurring bill. Use across months or years.",

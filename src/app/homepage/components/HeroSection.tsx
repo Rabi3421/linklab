@@ -8,6 +8,7 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
+  // TODO: copy is repetitive with FeaturesSection and UseCasesSection — needs human rewrite.
   const [isHydrated, setIsHydrated] = useState(false);
   const [url, setUrl] = useState('');
   const [error, setError] = useState('');
@@ -283,13 +284,12 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
               Free URL shortener · No credit card · SSL on every link
             </p>
 
-            {/* Stats row */}
-            <div className="anim-5 flex items-center gap-0">
+            {/* TODO: replace with real metrics once available. */}
+            <div className="anim-5 flex flex-wrap items-center gap-x-0 gap-y-4">
               {[
-                { value: '10M+', label: 'Links created' },
-                { value: '500K+', label: 'Active users' },
-                { value: '99.9%', label: 'Uptime SLA' },
-                { value: '150+', label: 'Countries' },
+                { value: 'India-first', label: 'INR pricing' },
+                { value: 'SSL', label: 'Every link' },
+                { value: 'Free', label: 'No card required' },
               ].map((s, i) => (
                 <div
                   key={i}
@@ -299,7 +299,7 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
                     className="font-bold leading-none mb-1"
                     style={{
                       fontFamily: 'DM Sans, sans-serif',
-                      fontSize: '1.5rem',
+                      fontSize: '1.15rem',
                       color: '#f5f5f0',
                     }}
                   >

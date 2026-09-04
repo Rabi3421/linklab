@@ -37,7 +37,7 @@ const FeatureHighlights = () => {
           Why Choose LinkLab?
         </h2>
         <p className="font-body text-base text-muted-foreground max-w-2xl mx-auto">
-          Join thousands of professionals who trust LinkLab for their link management needs
+          Shorten, organize, and understand your links from one workspace
         </p>
       </div>
 

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: 'About LinkLab | URL Shortener, Branded Links, Analytics & API',
   description:
-    'Learn about LinkLab — a modern URL shortener for branded links, QR codes, link analytics, custom domains, and API workflows. Plans start free, paid from $1/month.',
+    'Learn about LinkLab — a modern URL shortener for branded links, QR codes, link analytics, custom domains, and API workflows. Plans start free, paid from ₹99/month.',
   keywords: [
     'about linklab',
     'linklab company',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     'custom domains for short links',
     'qr code link generator',
     'low cost url shortener',
-    'url shortener starting at $1',
+    'url shortener starting at ₹99',
     'link management platform',
     'link analytics software',
     'enterprise url shortener',
@@ -71,7 +71,7 @@ const labelChipStyle = {
 
 const stats = [
   { value: 'Free', label: 'plan to get started', detail: 'No credit card needed — create short links, QR codes, and basic analytics immediately' },
-  { value: '$1/mo', label: 'starter plan', detail: 'Paid plans from $1/month for 100 links, analytics, branded links, and API access' },
+  { value: '₹99/mo', label: 'starter plan', detail: 'Paid plans from ₹99/month for 100 links, analytics, and branded links' },
   { value: '8+', label: 'barcode formats', detail: 'Code 128, EAN-13, UPC-A, Code 39, ITF-14, EAN-8, MSI, and Pharmacode' },
 ];
 
@@ -152,7 +152,7 @@ const platformCapabilities = [
   {
     title: 'Affordable pricing',
     description:
-      'We believe modern link management should be accessible. LinkLab includes a free tier, paid plans starting at $1 per month, and no-expiry one-time link credit packs for occasional use.',
+      'We believe modern link management should be accessible. LinkLab includes a free tier, paid plans starting at ₹99 per month, and no-expiry one-time link credit packs for occasional use.',
     icon: 'CurrencyDollarIcon',
     gradient: 'linear-gradient(135deg, #fb923c, #f59e0b)',
   },
@@ -477,7 +477,7 @@ export default function AboutPage() {
                     <div>
                       <h3 className="font-heading text-2xl font-bold text-white mb-2">Accessible pricing is part of the mission</h3>
                       <p className="font-body text-base leading-relaxed text-white/52">
-                        Many teams need link tracking and branded URLs without expensive software overhead. That is why LinkLab starts free, monthly plans start at $1, and one-time link credit packs are available for occasional or seasonal usage.
+                        Many teams need link tracking and branded URLs without expensive software overhead. That is why LinkLab starts free, monthly plans start at ₹99, and one-time link credit packs are available for occasional or seasonal usage.
                       </p>
                     </div>
                   </div>

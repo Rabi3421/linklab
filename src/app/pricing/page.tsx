@@ -4,6 +4,8 @@ import CTASection from '@/app/homepage/components/CTASection';
 import Footer from '@/app/homepage/components/Footer';
 import FAQItem from '@/app/homepage/components/FAQItem';
 import PricingTabSwitcher from './components/PricingTabSwitcher';
+import { billingPlanMap, creditPacks } from '@/lib/billing/plans';
+import type { SubscriptionPlanId } from '@/lib/billing/types';
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.linklab.in';
 const pricingPageUrl = new URL('/pricing', appUrl).toString();
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title: 'URL Shortener Pricing & Link Credit Packs | LinkLab',
   description:
-    'Compare LinkLab pricing for branded links, QR codes, short link analytics, API access, and custom domains. Monthly plans from $1 or no-expiry link credit packs.',
+    'Compare LinkLab pricing for branded links, QR codes, short link analytics, API access, and custom domains. Monthly plans from ₹99 or no-expiry link credit packs.',
   keywords: [
     'url shortener pricing',
     'link shortener pricing',
@@ -93,42 +95,33 @@ const benchmarkNotes = [
   },
 ] as const;
 
+const comparePlanIds: SubscriptionPlanId[] = ['free', 'starter', 'launch', 'growth', 'scale'];
+const comparePlans = comparePlanIds.map((planId) => billingPlanMap.get(planId)!);
+
 const compareRows = [
-  { feature: 'New links / month', free: '10', starter: '100', launch: '500', growth: '2K', scale: '10K', pro: '100K', enterprise: 'Unlimited' },
-  { feature: 'Tracked clicks / month', free: '500', starter: '5K', launch: '25K', growth: '100K', scale: '500K', pro: '1.5M', enterprise: 'Unlimited' },
   {
-    feature: 'Link analytics',
-    free: 'Basic',
-    starter: 'Basic',
-    launch: 'Advanced',
-    growth: 'Advanced',
-    scale: 'Priority',
-    pro: 'Advanced',
-    enterprise: 'Custom',
+    feature: 'New links / month',
+    values: comparePlans.map((plan) => plan.monthlyLinkLimit.toLocaleString('en-IN')),
+  },
+  {
+    feature: 'Tracked clicks / month',
+    values: comparePlans.map((plan) => plan.trackedClicksLabel),
   },
   {
     feature: 'Analytics retention',
-    free: '30 days',
-    starter: '60 days',
-    launch: '90 days',
-    growth: '1 year',
-    scale: '2 years',
-    pro: '3 years',
-    enterprise: 'Custom',
+    values: comparePlans.map((plan) => plan.analyticsRetentionLabel),
   },
-  { feature: 'Custom / branded domains', free: '—', starter: '—', launch: '1', growth: '3', scale: '10', pro: 'Unlimited', enterprise: 'Custom' },
-  { feature: 'Team members', free: '1', starter: '1', launch: '2', growth: '5', scale: '10', pro: '20', enterprise: 'Unlimited' },
   {
-    feature: 'API & webhooks',
-    free: '—',
-    starter: '—',
-    launch: 'Basic API',
-    growth: 'Included',
-    scale: 'Priority limits',
-    pro: 'Full access',
-    enterprise: 'Custom limits',
+    feature: 'Custom / branded domains',
+    values: comparePlans.map((plan) => plan.customDomainsLabel),
+  },
+  {
+    feature: 'Team members',
+    values: comparePlans.map((plan) => plan.seats),
   },
 ] as const;
+
+const proPlan = billingPlanMap.get('pro')!;
 
 const pricingFaqs = [
   {
@@ -154,7 +147,7 @@ const pricingFaqs = [
   {
     question: 'What currency are the prices in?',
     answer:
-      'All prices are in USD. This keeps pricing simple and predictable for global teams buying branded links, QR codes, and short link analytics.',
+      'All LinkLab prices are in INR. Checkout is processed in Indian rupees so the amount shown on the pricing page matches the amount charged.',
   },
   {
     question: 'Can enterprises get custom volumes, security, and support?',
@@ -188,9 +181,9 @@ const pricingPageStructuredData = {
   offers: {
     '@type': 'AggregateOffer',
     lowPrice: '0',
-    highPrice: '79',
-    priceCurrency: 'USD',
-    offerCount: '11',
+    highPrice: String((proPlan.priceInPaise ?? 0) / 100),
+    priceCurrency: 'INR',
+    offerCount: String(billingPlanMap.size + creditPacks.length),
   },
   featureList: [
     'URL shortener plans',
@@ -205,6 +198,7 @@ const pricingPageStructuredData = {
 };
 
 export default function PricingPage() {
+  // TODO: copy is repetitive with homepage HeroSection, FeaturesSection, and UseCasesSection — needs human rewrite.
   return (
     <>
       <script
@@ -343,6 +337,43 @@ export default function PricingPage() {
           </div>
         </section>
 
+        <section className="relative overflow-hidden py-16 lg:py-20" style={sectionDividerStyle}>
+          <div className="max-w-[1080px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center">
+              <p className="font-body text-sm font-semibold uppercase tracking-[0.18em] text-indigo-300 mb-3">
+                One-time credit packs
+              </p>
+              <h2 className="font-heading text-3xl lg:text-4xl font-bold mb-3">
+                Buy link credits that never expire
+              </h2>
+              <p className="font-body text-base text-white/50">
+                Clear INR prices for campaign top-ups without a recurring subscription.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {creditPacks.map((pack) => (
+                <div key={pack.id} className="rounded-2xl p-5" style={glassCardSoftStyle}>
+                  <div className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-white/35 mb-2">
+                    {pack.name}
+                  </div>
+                  <div className="font-heading text-3xl font-bold text-white mb-3">{pack.price}</div>
+                  <dl className="space-y-2 font-body text-sm">
+                    <div className="flex items-center justify-between gap-4">
+                      <dt className="text-white/40">Credits</dt>
+                      <dd className="font-semibold text-white/75">{pack.links}</dd>
+                    </div>
+                    <div className="flex items-center justify-between gap-4">
+                      <dt className="text-white/40">Expiry</dt>
+                      <dd className="font-semibold text-emerald-300/80">{pack.expiry}</dd>
+                    </div>
+                  </dl>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="relative overflow-hidden py-24 lg:py-28" style={sectionDividerStyle}>
           <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-[640px] mb-14">
@@ -387,11 +418,7 @@ export default function PricingPage() {
                   style={{ borderBottom: '1px solid rgba(200,205,220,0.10)' }}
                 >
                   <div className="col-span-2">Feature</div>
-                  <div>Free</div>
-                  <div>Starter</div>
-                  <div>Launch</div>
-                  <div>Growth</div>
-                  <div>Scale+</div>
+                  {comparePlans.map((plan) => <div key={plan.id}>{plan.name}</div>)}
                 </div>
                 {compareRows.map((row, index) => (
                   <div
@@ -405,11 +432,14 @@ export default function PricingPage() {
                     }}
                   >
                     <div className="col-span-2 font-body text-white/58">{row.feature}</div>
-                    <div className="font-body text-white/42">{row.free}</div>
-                    <div className="font-body text-white/42">{row.starter}</div>
-                    <div className="font-body text-amber-300/88">{row.launch}</div>
-                    <div className="font-body text-white/68">{row.growth}</div>
-                    <div className="font-body text-cyan-300/68">{row.scale}</div>
+                    {row.values.map((value, valueIndex) => (
+                      <div
+                        key={`${row.feature}-${comparePlans[valueIndex].id}`}
+                        className={valueIndex === 2 ? 'font-body text-amber-300/88' : 'font-body text-white/52'}
+                      >
+                        {value}
+                      </div>
+                    ))}
                   </div>
                 ))}
                 <div
@@ -419,7 +449,7 @@ export default function PricingPage() {
                     background: 'rgba(255,255,255,0.03)',
                   }}
                 >
-                  Pro (₹6,499) gives 100K links/mo · Enterprise is fully custom — unlimited links,
+                  {proPlan.name} ({proPlan.price}) gives {proPlan.monthlyLinkLimit.toLocaleString('en-IN')} links/mo · Enterprise is fully custom — unlimited links,
                   custom SLA, dedicated support, and white-labelling.
                 </div>
               </div>

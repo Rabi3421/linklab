@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2129"/>
+      <stop offset="100%" style="stop-color:#252b38"/>
+    </linearGradient>
+    <pattern id="dotP" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="0.7" fill="rgba(200,205,220,0.07)"/>
+    </pattern>
+    <linearGradient id="urlGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0.08"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="340" rx="20" fill="url(#bg3)"/>
+  <rect width="900" height="340" rx="20" fill="url(#dotP)"/>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.85)" font-weight="700">Step-by-Step: Build Your Instagram Bio Tracking Link</text>
+  <line x1="50" y1="50" x2="850" y2="50" stroke="rgba(200,205,220,0.10)" stroke-width="1"/>
+
+  <!-- Step 1: Destination URL -->
+  <g transform="translate(36, 68)">
+    <circle cx="18" cy="18" r="18" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" stroke-width="1.5"/>
+    <text x="18" y="23" text-anchor="middle" font-size="13" fill="#a5b4fc" font-weight="700">1</text>
+    <text x="48" y="14" font-size="12" fill="rgba(255,255,255,0.7)" font-weight="600">Your destination URL</text>
+    <rect x="44" y="24" width="340" height="28" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(200,205,220,0.12)" stroke-width="1"/>
+    <text x="56" y="43" font-size="11.5" fill="rgba(255,255,255,0.5)" font-family="monospace">https://yoursite.com/landing</text>
+  </g>
+
+  <!-- Arrow down -->
+  <g transform="translate(52, 128)">
+    <line x1="0" y1="0" x2="0" y2="24" stroke="rgba(245,158,11,0.4)" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="-5,20 0,30 5,20" fill="rgba(245,158,11,0.5)"/>
+  </g>
+
+  <!-- Step 2: Add UTM params -->
+  <g transform="translate(36, 164)">
+    <circle cx="18" cy="18" r="18" fill="rgba(245,158,11,0.2)" stroke="rgba(245,158,11,0.4)" stroke-width="1.5"/>
+    <text x="18" y="23" text-anchor="middle" font-size="13" fill="#fcd34d" font-weight="700">2</text>
+    <text x="48" y="14" font-size="12" fill="rgba(255,255,255,0.7)" font-weight="600">Add UTM parameters</text>
+    <!-- UTM URL box -->
+    <rect x="44" y="24" width="796" height="36" rx="8" fill="url(#urlGrad)" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+    <text x="56" y="37" font-size="11" fill="rgba(255,255,255,0.4)" font-family="monospace">https://yoursite.com/landing</text>
+    <!-- Coloured UTM parts -->
+    <text x="270" y="37" font-size="11" fill="#a5b4fc" font-family="monospace" font-weight="600">?utm_source=instagram</text>
+    <text x="474" y="37" font-size="11" fill="#6ee7b7" font-family="monospace" font-weight="600">&amp;utm_medium=social</text>
+    <text x="644" y="37" font-size="11" fill="#fcd34d" font-family="monospace" font-weight="600">&amp;utm_campaign=bio</text>
+    <!-- Labels below each UTM -->
+    <text x="350" y="54" text-anchor="middle" font-size="9" fill="#a5b4fc">source</text>
+    <text x="540" y="54" text-anchor="middle" font-size="9" fill="#6ee7b7">medium</text>
+    <text x="720" y="54" text-anchor="middle" font-size="9" fill="#fcd34d">campaign</text>
+  </g>
+
+  <!-- Arrow down -->
+  <g transform="translate(52, 250)">
+    <line x1="0" y1="0" x2="0" y2="24" stroke="rgba(245,158,11,0.4)" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="-5,20 0,30 5,20" fill="rgba(245,158,11,0.5)"/>
+  </g>
+
+  <!-- Step 3: Shorten to branded short link -->
+  <g transform="translate(36, 280)">
+    <circle cx="18" cy="18" r="18" fill="rgba(16,185,129,0.2)" stroke="rgba(16,185,129,0.4)" stroke-width="1.5"/>
+    <text x="18" y="23" text-anchor="middle" font-size="13" fill="#6ee7b7" font-weight="700">3</text>
+    <text x="48" y="14" font-size="12" fill="rgba(255,255,255,0.7)" font-weight="600">Shorten to a clean branded link → paste in Instagram bio</text>
+    <rect x="44" y="24" width="240" height="28" rx="8" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+    <text x="56" y="43" font-size="12" fill="#34d399" font-family="monospace" font-weight="600">go.yourbrand.com/ig</text>
+    <!-- result note -->
+    <text x="304" y="41" font-size="11" fill="rgba(255,255,255,0.35)">↳ Clean, trustworthy URL for the bio — UTMs hidden inside the redirect</text>
+  </g>
+</svg>

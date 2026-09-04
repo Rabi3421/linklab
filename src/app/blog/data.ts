@@ -87,6 +87,1164 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'how-to-convert-link-to-qr-code',
+    title: 'How to Convert a Link to a QR Code for Free',
+    description:
+      'You have a URL. You need a QR code. It should take about 30 seconds. This guide walks you through exactly how to convert any link into a scannable QR code for free — and what to think about before you print it anywhere.',
+    category: 'QR Codes',
+    author: 'Rabi Narayan Pradhan',
+    authorRole: 'Product & Growth Research',
+    publishedAt: '2026-05-21',
+    updatedAt: '2026-05-21',
+    readTime: '8 min read',
+    coverLabel: 'Free QR code guide',
+    keywords: [
+      'link to qr code',
+      'url to qr code',
+      'convert link to qr',
+      'qr code generator free',
+      'create qr code from url',
+      'how to make a qr code',
+    ],
+    heroStat: '2.9 billion people use QR codes — yet most are created without a single thought about tracking',
+    intro: [
+      'You have a link. You want a QR code. The actual conversion should take less than a minute.',
+      "QR codes have become one of the most practical ways to share a web address offline — on a business card, a product label, a printed flyer, a restaurant table card, even a billboard. And the process of turning a URL into a scannable code is genuinely simple when you use the right tool.",
+      'But there are a few things worth knowing before you generate and print. The file format you download matters for print quality. The length of your URL affects how dense — and how reliable — the code is to scan. And if you ever want to know how many people actually scan your code, you need to set that up before generating, not after.',
+      'This guide covers all of it, in the order you actually need it.',
+    ],
+    takeaways: [
+      'Converting a link to a QR code takes under a minute — paste the URL, customise if needed, download PNG or SVG.',
+      'Download SVG for anything printed — it scales to any size without blurring. Use PNG for digital surfaces like websites and emails.',
+      'Shortening the URL first creates a simpler, more reliable QR pattern — and gives you scan analytics as a bonus.',
+      'Dynamic QR codes let you update the destination after printing, which is essential for packaging, signage, and long-lived print materials.',
+      'Always test the QR code on a real phone before committing to a print run — a 10-second check that prevents expensive mistakes.',
+    ],
+    sections: [
+      {
+        title: 'What "converting a link to a QR code" actually means',
+        paragraphs: [
+          "A QR code is just a visual encoding of data. In this case, the data is your URL. When someone points their phone camera at the code, the device reads the pattern and opens the link automatically — no typing required.",
+          "The process of \"converting a link to a QR code\" is really just encoding your URL into a QR pattern and downloading an image file of that pattern. The image is what you print, share, or embed. The QR code doesn't store the website itself — it stores the address, and the browser does the rest.",
+          "This is important to understand because it explains two things: why the length of your URL affects the QR code's complexity, and why changing the URL after printing requires a new code (unless you use a dynamic QR code, which we cover below).",
+        ],
+      },
+      {
+        title: 'How to convert a link to a QR code — step by step',
+        type: 'steps',
+        paragraphs: [],
+        steps: [
+          {
+            number: 1,
+            heading: 'Copy your full URL',
+            body: 'Start with the complete web address you want people to reach. This can be a homepage, a product page, a Google Form, a PDF link, or any web address starting with https://. Before anything else, open the link in a browser and confirm it works. A QR code that points to a broken link is useless — and if you\'ve already printed it, it\'s an expensive mistake.',
+          },
+          {
+            number: 2,
+            heading: 'Open a free QR code generator',
+            body: "Go to a free online QR code generator — LinkLab's works directly in your browser, no account required for basic generation. You don't need to install anything or create an account to convert a standard URL into a QR code.",
+          },
+          {
+            number: 3,
+            heading: 'Paste your link and preview the code',
+            body: 'Paste the full URL into the input field. Most generators update the preview in real time as you type. What you see in the preview is exactly what you\'ll download — the pattern, the size, the colours.',
+          },
+          {
+            number: 4,
+            heading: 'Customise if needed (optional)',
+            body: "Basic QR codes are black and white, which works fine for almost every use case. If you want to match your brand, you can adjust foreground and background colour, size, and quiet zone (the white border). Some generators let you embed a logo. Keep in mind that heavy customisation can reduce scan reliability if contrast is too low or the logo covers too much of the pattern. Test on a real phone before distributing.",
+          },
+          {
+            number: 5,
+            heading: 'Download PNG or SVG',
+            body: "Choose PNG if you're using the QR code digitally — on a website, in an email, or in a presentation. Choose SVG for anything that will be printed. SVG is a vector format that stays sharp at any size, from a business card to a billboard. PNG at small sizes looks fine on screen but can blur when enlarged for print.",
+          },
+        ],
+        image: {
+          src: '/images/blog/how-to-convert-link-to-qr-code/url-to-qr-code-flow-diagram.svg',
+          alt: 'URL to QR code conversion flow — four steps from link to scannable QR code showing the complete process',
+          caption: 'The four-step process: copy your URL → paste into generator → customise → download PNG or SVG',
+          width: 900,
+          height: 340,
+        },
+      },
+      {
+        title: 'PNG or SVG — which format should you download?',
+        paragraphs: [
+          "This is the most common question people get wrong, so it's worth a clear answer.",
+          "Download SVG if the QR code is going anywhere it will be printed. SVG is a vector format — it scales to any size without losing sharpness. Whether you print it on a business card at 2.5 cm or a retail banner at 100 cm, the code stays perfectly crisp. This is the format graphic designers, printers, and packaging studios work with.",
+          "Download PNG if you're using the QR code digitally — on a website, in an email signature, in a slide deck, or posted to social media. PNG is a fixed-resolution raster image. It looks fine on screen at the right size, but it can look blurry if you enlarge it significantly for print.",
+          "The practical rule: if you're unsure, download SVG. It works everywhere PNG works, and it handles print without any quality loss.",
+        ],
+        image: {
+          src: '/images/blog/how-to-convert-link-to-qr-code/png-vs-svg-qr-code-formats.svg',
+          alt: 'PNG vs SVG QR code format comparison — PNG for digital use, SVG for print at any size',
+          caption: 'PNG is for screens. SVG is for everything else. When in doubt, download SVG.',
+          width: 860,
+          height: 300,
+        },
+      },
+      {
+        title: 'Should you shorten the URL before creating the QR code?',
+        paragraphs: [
+          "You don't have to, but it's often worth doing — especially if your URL is long or has tracking parameters attached.",
+          "Here's why: the QR code encodes every character of your URL as part of the pattern. A longer URL means more data, which translates to a denser grid of black and white modules. Dense patterns are harder to scan reliably, particularly at small sizes or in poor lighting.",
+          "Shortening the URL before generating the code creates a simpler pattern that scans more reliably at smaller print sizes. But there's a second benefit that matters more for most business use cases: link tracking.",
+          "When you use a short link for your QR code, every scan is recorded as a click in your analytics dashboard. You can see total scans, unique scans, device type, country, and time patterns. None of that is possible if your QR code points directly to a long URL with no redirect in the middle.",
+          "For any QR code you plan to print at scale — on packaging, flyers, event materials — using a short link from LinkLab before generating the QR code is the better setup. It takes 30 extra seconds and gives you a completely measurable campaign.",
+        ],
+        callout: {
+          variant: 'tip',
+          title: 'Quick tip: short links make better QR codes',
+          body: 'A URL like linklab.in/abc123 creates a QR code with far fewer modules than https://yourdomain.com/products/category/item?utm_source=flyer&utm_medium=print. The simpler the URL, the simpler and more reliable the QR code — and a short link gives you scan analytics for free.',
+        },
+        cta: {
+          heading: 'Convert your link to a QR code free',
+          subtext: 'No sign-up needed for basic generation. Download PNG or SVG instantly.',
+          buttonLabel: 'Open QR generator',
+          href: '/qr-code-generator',
+        },
+      },
+      {
+        title: 'Static vs dynamic QR codes — which should you use?',
+        paragraphs: [
+          "A standard QR code (also called a static code) encodes the destination URL directly into the pattern. Once printed, the destination is fixed. If your URL ever changes — your domain moves, you update a landing page, your promotional offer expires — you need to reprint everything carrying that code.",
+          "A dynamic QR code encodes a short redirect URL instead. The visual pattern stays the same, but you can update the destination anytime through your QR platform. The person scanning still reaches the right page instantly — the redirect happens in a fraction of a second.",
+          "Dynamic QR codes also collect scan analytics automatically. Every scan is logged with device type, location, and timestamp before the redirect completes.",
+          "The decision is straightforward: if you're printing QR codes on materials with any kind of lifespan — packaging, signage, business cards, branded merchandise — use a dynamic code. The small cost of a subscription is almost always less than the cost of reprinting when something changes.",
+          "Static codes are fine for truly one-time use: a QR code on an event handout pointing to a schedule that won't change, or a personal business card where the vCard contact data is permanent.",
+        ],
+        table: {
+          headers: ['', 'Static QR Code', 'Dynamic QR Code'],
+          rows: [
+            ['Destination URL', 'Fixed at creation', 'Can be updated anytime'],
+            ['Pattern changes needed', 'Yes, if URL changes', 'No — pattern stays the same'],
+            ['Scan analytics', 'None', 'Scans, device, location, time'],
+            ['Pattern density', 'Dense (full URL encoded)', 'Simple (short URL only)'],
+            ['Best for', 'One-time, permanent use', 'Print campaigns, packaging, signage'],
+            ['Cost', 'Free', 'Requires platform subscription'],
+          ],
+          caption: 'For anything with a lifespan longer than the campaign, dynamic is almost always the right choice.',
+        },
+      },
+      {
+        title: 'Where to use your QR code',
+        paragraphs: [
+          'Once you have the image file, you can use it almost anywhere a printed or digital image can appear.',
+        ],
+        bullets: [
+          'Business cards — link to your website, LinkedIn profile, portfolio, or contact page',
+          'Product packaging — link to setup guides, tutorials, a warranty registration page, or a review prompt',
+          'Restaurant table cards — link to your digital menu or a tip/review prompt',
+          'Flyers and posters — link to event registration, a special offer, or a landing page',
+          'Email signatures — give mobile readers a scannable way to open a link',
+          'Presentation slides — for conference talks where you want the audience to follow a link',
+          'Receipts and invoices — link to loyalty programmes, feedback forms, or repeat purchase flows',
+        ],
+        callout: {
+          variant: 'warning',
+          title: 'QR codes on screens are harder to scan than QR codes on print',
+          body: "Glossy screens, brightness variations, and viewing angle all affect scan reliability. For digital surfaces — websites, apps, slide decks — a clickable link usually works better. Save QR codes for contexts where clicking isn't an option: printed materials and physical objects.",
+        },
+      },
+      {
+        title: 'Common mistakes to avoid before you print',
+        paragraphs: [
+          "Most QR code problems are completely preventable. Here are the ones that come up most often — and each of them is easy to avoid.",
+        ],
+        bullets: [
+          'Making it too small — minimum 2.5 cm (1 inch) per side for standard reading distance. Scale up for any code viewed from further away.',
+          'Low contrast colours — the camera needs to distinguish the dark and light areas clearly. Avoid colours that are similar in brightness, even if they look different to the eye.',
+          'Not testing before printing — scan the code on a real phone and confirm it opens the right page. This takes 10 seconds and can save a full reprint run.',
+          'Using static codes on long-lived materials — if there\'s any chance the URL might change, use a dynamic code. A static code on product packaging is a permanent commitment.',
+          'Same code for different placements — if you put the same QR code on a business card and a flyer, you can\'t tell which drove more scans. Create a separate short link (with its own slug) for each placement so your analytics stay clean.',
+          'Not verifying the destination first — paste your URL into the browser and confirm the page loads correctly before encoding it into a QR code.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is it free to convert a link to a QR code?',
+        answer:
+          "Yes. Basic QR code generation from a URL is free on most platforms, including LinkLab. You can paste a URL, generate a QR code, and download PNG or SVG without creating an account or paying anything. Features like dynamic codes, custom branding, and scan analytics may require a paid plan.",
+      },
+      {
+        question: 'What is the difference between a static and dynamic QR code?',
+        answer:
+          "A static QR code encodes the destination URL directly into the pattern — the destination is fixed and cannot be changed after printing. A dynamic QR code encodes a short redirect URL; the destination behind that redirect can be updated at any time without reprinting the code. Dynamic codes also collect scan analytics (device type, location, scan count) while static codes collect nothing.",
+      },
+      {
+        question: 'Should I download PNG or SVG for my QR code?',
+        answer:
+          "Download SVG for anything printed — business cards, flyers, packaging, signage. SVG is a vector format that scales to any size without blurring. Download PNG for digital use — websites, emails, presentations, social media. PNG is a raster image that looks clean at screen resolution but can blur when enlarged for print.",
+      },
+      {
+        question: 'Does shortening the URL before making a QR code actually matter?',
+        answer:
+          "It matters in two ways. First, shorter URLs create simpler QR patterns that are more reliable at small sizes and in poor lighting. Second, when you generate a QR code from a short link, every scan is recorded as a click in your analytics dashboard — giving you scan volume, device type, geographic data, and time patterns. Neither of those benefits is available if the QR code encodes a long URL directly.",
+      },
+      {
+        question: 'Can I track who scans my QR code?',
+        answer:
+          "Not by identity — QR codes don't capture personal information. However, a QR code built from a dynamic short link records every scan event with device type, operating system, approximate location (city and country), and timestamp. You can see how many people scanned, when, and from where — but not who specifically.",
+      },
+      {
+        question: 'How small can a QR code be and still scan reliably?',
+        answer:
+          "A minimum of 2.5 cm (1 inch) per side is the standard recommendation for print materials at normal reading distance. For signage or materials viewed from further away, increase the size proportionally. Simpler QR codes — like those generated from short URLs — remain scannable at smaller sizes than codes generated from long URLs.",
+      },
+    ],
+    relatedPosts: [
+      'static-vs-dynamic-qr-code',
+      'how-to-track-qr-code-scans',
+      'how-to-add-utm-parameters-to-qr-codes',
+    ],
+  },
+  {
+    slug: 'rebrandly-alternatives',
+    title: 'Best Rebrandly Alternatives for Branded Short Links in 2026',
+    description:
+      "Rebrandly is powerful — but at $24 a month just to get 5 custom domains and basic analytics, it's genuinely expensive for most small teams. Here are the best Rebrandly alternatives that give you branded links, click analytics, and API access without the price premium.",
+    category: 'URL Shortener',
+    author: 'Rabi Narayan Pradhan',
+    authorRole: 'Product & Growth Research',
+    publishedAt: '2026-05-21',
+    updatedAt: '2026-05-21',
+    readTime: '11 min read',
+    coverLabel: 'Tool comparison guide',
+    keywords: [
+      'rebrandly alternative',
+      'rebrandly alternatives',
+      'branded short links',
+      'custom domain url shortener',
+      'rebrandly vs',
+      'cheap rebrandly alternative',
+    ],
+    heroStat: "Rebrandly charges $24/mo for what competitors give away for free",
+    intro: [
+      "Rebrandly built its name on branded short links — the idea that your short URLs should carry your domain instead of some generic shortener. That core value proposition is sound. Branded links genuinely do get more clicks, build more trust, and give you better attribution data.",
+      "The problem is the price. Rebrandly's free plan gives you 10 links per month and 1 custom domain. The paid Starter plan jumps to $24 per month for 5 custom domains and 5,000 links. For freelancers, small businesses, and early-stage teams, that's a lot to pay for a link management tool when the market has moved on.",
+      "Several alternatives now offer branded links, full analytics, and API access — some at a fraction of Rebrandly's cost, some completely free. This guide compares the best options, explains exactly what Rebrandly's limitations are, and helps you choose the right fit for your actual workflow.",
+    ],
+    takeaways: [
+      "Rebrandly's $24/mo Starter plan is now easily beaten on price and features by newer platforms — you don't have to pay that much for branded short links.",
+      'Short.io offers 1,000 branded links across 5 custom domains completely free — more than Rebrandly Starter gives you at $24/mo.',
+      'Dub.co has the strongest developer API and attribution features; free tier includes 3 domains and API access.',
+      'Cuttly gives you the deepest analytics on the free tier — device, OS, browser, country, and referrer with no monthly cost.',
+      'LinkLab is the only alternative that bundles URL shortening, QR codes, and barcodes in one dashboard — useful if your team needs all three tools.',
+    ],
+    sections: [
+      {
+        title: "What Rebrandly's free and paid plans actually give you",
+        paragraphs: [
+          "Before switching tools, it's worth understanding exactly what you're leaving behind — and what you're paying for on Rebrandly's paid tiers.",
+          "The free plan includes 10 short links per month, 1 custom domain, basic click counting, and a UTM builder. There's no access to detailed analytics like device breakdown, referrer source, or geographic data on the free tier. API access is not included. For a platform built around branded links, the 1-domain limit on the free plan is genuinely restrictive for teams managing more than one brand or product.",
+          "The Starter plan at $24 per month increases this to 5,000 links per month and 5 custom domains, adds 1 year of analytics retention, team collaboration features, and link retargeting. The Basics plan at $39 per month increases to 15 custom domains. Enterprise pricing goes higher from there.",
+          "Where Rebrandly genuinely earns its cost is in brand governance features: consistent link naming conventions, team permissions, audit logs, and deep integration with marketing automation platforms. If you run a large team where compliance and link governance matter, Rebrandly's tools are legitimately useful. For most other use cases, you're paying for infrastructure that doesn't match your scale.",
+        ],
+        bullets: [
+          'Free plan: 10 links/mo, 1 custom domain, basic click count only, no API access.',
+          'Starter ($24/mo): 5,000 links/mo, 5 custom domains, 1-year analytics retention.',
+          'Basics ($39/mo): 15 custom domains, team features, link retargeting.',
+          'No free plan includes device, country, referrer, or OS analytics breakdowns.',
+        ],
+      },
+      {
+        title: 'Five things to check before choosing a Rebrandly alternative',
+        paragraphs: [
+          "The right alternative depends on why Rebrandly isn't working for you. Before comparing tools, identify the specific gap — because the best answer for a developer team is different from the best answer for a solo marketer.",
+          "First, how many custom domains do you actually need? If the answer is one, many platforms give you that for free. If you manage links across several brands, you need a platform that supports multiple domains on an accessible plan.",
+          "Second, what analytics do you actually use? Some teams need device breakdown and referrer data to make creative decisions. Others just need total click counts. The right analytics tier depends on what you're measuring.",
+        ],
+        bullets: [
+          'Custom domains: how many do you need, and does the free or cheapest paid tier cover that?',
+          'Analytics depth: click count only, or do you need device, country, referrer, and time patterns?',
+          'API access: are you building integrations or using the tool manually through a dashboard?',
+          'Link volume: how many new short links does your team create per month?',
+          'Toolset: do you also need QR codes or barcodes, or only link shortening?',
+        ],
+        image: {
+          src: '/images/blog/rebrandly-alternatives/rebrandly-pricing-reality-check.svg',
+          alt: 'Rebrandly alternatives comparison table showing free plan limits, custom domains, analytics, and pricing for Short.io, Dub.co, Cuttly, and LinkLab',
+          caption: "Every alternative on this list beats Rebrandly's free plan on at least one dimension that matters for everyday marketing use.",
+          width: 860,
+          height: 320,
+        },
+      },
+      {
+        title: 'Short.io — the most generous free plan for branded links',
+        paragraphs: [
+          "If Rebrandly's primary pain point is the price, Short.io is the most direct upgrade. The free tier includes 1,000 branded short links in total (not per month — a cumulative cap), 5 custom domains, 50,000 tracked clicks per month, QR codes, a UTM builder, and full API access. No credit card required to start.",
+          "To put that in context: Rebrandly charges $24 per month for 5 custom domains with 5,000 links per month. Short.io gives you 5 custom domains with 1,000 links total, completely free. For teams that create links in batches for campaigns rather than continuously generating new links, the 1,000 total cap often lasts months before a paid upgrade is needed.",
+          "Short.io's analytics include real-time clickstream data, geographic breakdown by country and city, device type, OS, referrer source, and UTM campaign grouping. The custom domain setup takes about 5 minutes — you add a CNAME or A record in your DNS provider and links start resolving through your domain immediately.",
+          "Paid plans start at $5 per month for the Hobby tier, which raises link volume and tracked clicks considerably. For teams moving off Rebrandly Starter at $24/mo, Short.io's paid plans represent significant savings with comparable or better features.",
+        ],
+        bullets: [
+          'Free: 1,000 total branded links, 5 custom domains, 50K tracked clicks/mo, QR codes, API.',
+          'Analytics on free tier: real-time clicks, device, country, city, OS, referrer.',
+          'Paid from $5/mo — far lower than Rebrandly Starter at $24/mo.',
+          'API on free tier: good for developers and teams that automate link creation.',
+          'No redirect ads on any plan.',
+        ],
+      },
+      {
+        title: 'Dub.co — best for developers and teams who need advanced attribution',
+        paragraphs: [
+          "Dub.co is the alternative that's grown the fastest in the last two years, and it's done so by targeting developers and growth teams who want more than a basic branded link tool. The free plan includes 25 new links per month, 3 custom domains, QR code generation, UTM templates, full API access, and 30-day analytics retention.",
+          "What genuinely differentiates Dub from Rebrandly — even at paid tiers — is the attribution layer. Dub supports geo-targeting (different destinations for different countries), device routing (different landing pages for iOS vs Android), password-protected links, link expiry dates, and conversion tracking. These are features Rebrandly offers only at higher enterprise tiers, and Dub includes several of them on the paid plan from $8 per month annually.",
+          "For development teams, Dub's REST API is well-documented with SDKs for JavaScript, Python, and Ruby, plus a Zapier integration for no-code automation. If you're building a product that creates short links programmatically, or if you need to route different audiences to different landing pages from one short link, Dub is the strongest technical alternative to Rebrandly in this list.",
+        ],
+        bullets: [
+          'Free: 25 links/mo, 3 custom domains, QR codes, full API access, 30-day analytics.',
+          'Geo-targeting and device routing on paid tiers — route iOS users differently to Android.',
+          'Password-protected links and link expiry available on all paid plans.',
+          'REST API with SDKs for major languages; Zapier for no-code workflows.',
+          'Paid from $8/mo annually — significantly cheaper than Rebrandly Starter at $24/mo.',
+        ],
+        callout: {
+          variant: 'tip',
+          title: 'Dub.co vs Rebrandly on developer features',
+          body: "Rebrandly's API is available from the Starter plan at $24/mo. Dub.co's API is available on the free plan. For teams building link-creation automation or integrating short links into their product, Dub's free API access alone can justify the switch before even comparing analytics or pricing.",
+        },
+      },
+      {
+        title: 'Cuttly — best free analytics without paying anything',
+        paragraphs: [
+          "Cuttly sits in an interesting position in this comparison. It doesn't have the brand governance depth of Rebrandly or the developer features of Dub, but it offers the most comprehensive analytics on a completely free plan — with no credit card, no link ads, and no analytics gating.",
+          "The free tier includes 30 new links per month, 1 branded custom domain, and a full analytics breakdown from the very first link: total clicks, unique clicks, device type, operating system, browser, device brand, country, referrer source, and time-of-day patterns. That is analytics depth that Rebrandly reserves for paid tiers and that most other free plans don't match.",
+          "Cuttly also includes a Link in Bio page builder and QR code generation on the free tier — useful if you need a simple landing page for social media profiles alongside your branded links. For freelancers, solo marketers, and small agencies who want professional-grade analytics without a monthly commitment, Cuttly covers the core use case.",
+        ],
+        bullets: [
+          'Free: 30 links/mo, 1 custom domain, QR codes, Link in Bio, no redirect ads.',
+          'Analytics on free tier: device type, OS, browser, country, referrer, time patterns — all included.',
+          'No ads shown to people who click your links, even on the free plan.',
+          'Paid plans add link volume, more domains, and team features at reasonable prices.',
+          'Best for: marketers who want analytics depth without paying for it.',
+        ],
+      },
+      {
+        title: 'Rebrandly vs alternatives — free plan comparison',
+        type: 'comparison',
+        paragraphs: [],
+        table: {
+          headers: ['Tool', 'Free links/mo', 'Custom domains', 'Free analytics', 'API free', 'Paid from'],
+          rows: [
+            ['Rebrandly', '10', '1 domain', 'Basic clicks only', 'No', '$24/mo'],
+            ['Short.io', '1,000 total', '5 domains', 'Full (device, geo, referrer)', 'Yes', '$5/mo'],
+            ['Dub.co', '25', '3 domains', 'Geo, device, referrer', 'Yes', '$8/mo'],
+            ['Cuttly', '30', '1 domain', 'Full (OS, browser, country)', 'Paid only', 'Free tier'],
+            ['LinkLab', 'Free tier', 'Paid plans', 'Clicks, device, referrer', 'Paid plans', 'Low cost'],
+          ],
+          caption: 'Every alternative gives you more on the free plan than Rebrandly — especially on analytics and domain count.',
+        },
+      },
+      {
+        title: 'LinkLab — URL shortener, QR codes, and barcodes in one tool',
+        paragraphs: [
+          "LinkLab fills a different gap from the other alternatives on this list. Where Short.io, Dub, and Cuttly focus entirely on link shortening and analytics, LinkLab combines URL shortening with a full QR code generator and barcode generator in a single dashboard. If your team regularly creates campaign short links, QR codes for print materials, and barcodes for product packaging, that consolidation has real practical value.",
+          "Every short link includes click analytics — referrer, device type, country, and time data — without needing to configure anything separately. Custom domains are available on paid plans so your links carry your brand. The API gives developers programmatic access to link creation, QR generation, and analytics retrieval. No-expiry links mean your campaign links don't break after a set period, which is a real risk with some free platforms.",
+          "For teams currently managing three separate tool subscriptions — a link shortener, a QR code platform, and a barcode generator — consolidating to LinkLab can simplify both the workflow and the billing significantly.",
+        ],
+        bullets: [
+          'URL shortening + QR generator + barcode generator in one dashboard.',
+          'Analytics: referrer, device, country, and time patterns on all plans.',
+          'Custom domain support on paid plans for branded short links.',
+          'API access for programmatic link, QR, and barcode creation.',
+          'No-expiry links — campaign links stay live without a renewal requirement.',
+          'No redirect ads on any plan.',
+        ],
+        cta: {
+          heading: 'Try LinkLab free — no credit card required',
+          subtext: 'URL shortening, QR codes, and barcodes in one place. Branded links on paid plans.',
+          buttonLabel: 'Start for free',
+          href: '/register',
+        },
+      },
+      {
+        title: 'When it still makes sense to stay on Rebrandly',
+        paragraphs: [
+          "Being honest about this matters: Rebrandly is not a bad product. It has genuine strengths that certain teams genuinely need.",
+          "If you're managing branded links at scale across a large marketing team — with strict naming conventions, role-based permissions, approval workflows, and deep integration into your marketing automation stack — Rebrandly's governance features are the most mature in the market. These are capabilities that Short.io and Dub.co don't match at any price point.",
+          "Rebrandly also has integrations with Salesforce, Zapier, and several enterprise-grade marketing platforms that smaller alternatives haven't prioritised. If your branded links need to flow through complex CRM or automation workflows, verify that your chosen alternative supports the integrations you depend on before migrating.",
+          "The practical test: if you're managing fewer than 50 branded links per month, don't need complex team permissions, and aren't embedded in an enterprise marketing stack — the alternatives above will serve you better at lower cost.",
+        ],
+      },
+      {
+        title: 'How to choose the right Rebrandly alternative for your situation',
+        paragraphs: [
+          "The correct choice depends on which Rebrandly limitation is actually affecting your work right now.",
+          "If the price is the issue and you need branded links in volume for free, Short.io's free plan — 1,000 total links across 5 custom domains with full analytics — is the clearest like-for-like upgrade from Rebrandly Starter without the $24/mo commitment.",
+          "If you're a developer or your team creates links programmatically, Dub.co's free API tier is meaningfully more accessible than Rebrandly's API access (which requires a paid plan). Dub's geo-targeting and conversion tracking also give you attribution features that Rebrandly charges enterprise rates for.",
+          "If analytics depth is the gap — you want device, OS, browser, country, and referrer data without paying for it — Cuttly's free plan is the strongest option. It covers more analytics dimensions than Rebrandly's paid tiers in most categories.",
+          "If you also need QR codes and barcodes for the same campaigns and products, LinkLab is the only tool that covers all three workflows under one subscription.",
+        ],
+        bullets: [
+          'Price too high, need branded links in volume: Short.io (1,000 free branded links, 5 domains).',
+          'Need API access without paying: Dub.co (API on free tier, 3 custom domains).',
+          'Need deep analytics on free plan: Cuttly (device, OS, browser, country, referrer — all free).',
+          'Need URL shortening + QR + barcodes in one tool: LinkLab.',
+          'Need enterprise governance, deep integrations, large team: stay on Rebrandly.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is there a free Rebrandly alternative with custom domains?',
+        answer:
+          "Yes. Short.io offers 5 custom domains and 1,000 total branded links completely free — significantly more generous than Rebrandly's free plan (1 domain, 10 links/mo). Dub.co includes 3 custom domains on its free plan. Cuttly includes 1 branded custom domain on the free tier. All three are more useful than Rebrandly free for branded link creation.",
+      },
+      {
+        question: "What are Rebrandly's main limitations?",
+        answer:
+          "Rebrandly's free plan caps you at 10 links per month and 1 custom domain, with only basic click counts and no device, country, or referrer analytics. API access requires a paid plan. The Starter plan at $24/mo is expensive relative to competitors — Short.io and Dub.co both offer more generous features at a fraction of the cost.",
+      },
+      {
+        question: 'Which Rebrandly alternative has the best analytics?',
+        answer:
+          "Cuttly has the most comprehensive free analytics — device type, operating system, browser, country, and referrer source are all included on the free plan. Short.io offers real-time clickstream data on the free tier. Dub.co includes geolocation, device, and referrer analytics on the free plan, plus conversion tracking on paid tiers.",
+      },
+      {
+        question: 'Can I migrate my Rebrandly links to another platform?',
+        answer:
+          "Yes, but existing short links will continue to resolve through Rebrandly's domain until you change DNS or cancel. Before migrating, export your link data from Rebrandly. For critical campaign links, recreate them on your new platform and test they resolve correctly before pointing your custom domain DNS to the new provider.",
+      },
+      {
+        question: 'What is the cheapest Rebrandly alternative with branded links and analytics?',
+        answer:
+          "Short.io's free plan is the most cost-effective — 5 custom domains, 1,000 total branded links, and full analytics (device, country, referrer) at zero cost. Cuttly's free plan offers 1 custom domain with full analytics at no cost. Both are better than Rebrandly's free tier, which gives only basic click counts on 1 domain.",
+      },
+      {
+        question: 'Does LinkLab support branded short links?',
+        answer:
+          "Yes. LinkLab supports custom domains on paid plans, so your short links carry your brand domain instead of a generic shortener URL. Unlike Rebrandly, LinkLab also includes a QR code generator and barcode generator in the same dashboard — useful if your team creates branded links alongside QR codes for print campaigns or product barcodes.",
+      },
+    ],
+    relatedPosts: [
+      'best-bitly-alternatives',
+      'tinyurl-alternatives',
+      'branded-short-links-guide',
+    ],
+  },
+  {
+    slug: 'how-to-track-instagram-link-clicks',
+    title: 'How to Track Instagram Bio Link Clicks',
+    description:
+      'Instagram gives you zero click data on your bio link. Here\'s how to fix that in under 10 minutes — using a UTM-tagged short link that logs every click with device, location, and referrer data.',
+    category: 'Link Analytics',
+    author: 'Rabi Narayan Pradhan',
+    authorRole: 'Product & Growth Research',
+    publishedAt: '2026-05-21',
+    updatedAt: '2026-05-21',
+    readTime: '7 min read',
+    coverLabel: 'Instagram link tracking guide',
+    keywords: [
+      'track instagram link clicks',
+      'instagram bio link tracking',
+      'instagram utm parameters',
+      'instagram link analytics',
+      'how to track instagram bio link',
+      'instagram click tracking',
+    ],
+    heroStat: 'Instagram shows you exactly 0 data about who clicks your bio link — unless you set up tracking yourself',
+    intro: [
+      "You can see reach, impressions, profile visits, and story views inside Instagram Insights. But click the \"website\" field in your bio? Nothing. Instagram tells you that people visited your profile. It doesn't tell you how many of them actually clicked through.",
+      "This is one of the most frustrating data gaps in social media marketing. Your bio link is often the only clickable link you have on Instagram. It's the bridge between your audience and your product, your content, your email list — whatever you're driving people toward. And yet you have no idea how many people are crossing it.",
+      "The fix is a short URL with UTM parameters — a link that looks clean in your bio but quietly logs every single click behind the scenes. Here's exactly how to set it up.",
+    ],
+    takeaways: [
+      'Instagram provides zero native click data for bio links — you need external tracking to see who clicks and when.',
+      'UTM parameters tag every click with source, medium, and campaign so your analytics tool can attribute the traffic correctly.',
+      'Shorten the UTM-tagged URL into a branded short link — it hides the ugly parameter string and lets you see click data from two places at once.',
+      'You\'ll get device type, country, referrer, and time-of-click data from your short link analytics — without touching GA4.',
+      'Set up once, track forever — you never need to update the short link even if you change your landing page.',
+    ],
+    sections: [
+      {
+        title: 'Why Instagram hides your bio link data',
+        paragraphs: [
+          "Instagram doesn't share referrer data the way other platforms do. When someone clicks your bio link and lands on your website, their browser typically strips or blocks the referrer header — the signal that tells your website \"this visit came from instagram.com.\" As a result, your Google Analytics or any other tool just labels the visit as Direct traffic, which is basically a black hole.",
+          "Instagram also doesn't expose link click data in its native Insights dashboard. You can see how many people tapped your profile link in the context of a story or reel, but the bio link itself? It's invisible to the platform's own analytics.",
+          "This isn't an accident. Instagram wants people to stay on Instagram. Sharing detailed outbound click data would make it easier for creators and brands to measure exactly how much value they're getting from the platform — which is a complicated conversation for Meta.",
+          "The workaround is simple: you intercept the click before it lands on your site, using a short URL that logs the event the moment someone taps it.",
+        ],
+        image: {
+          src: '/images/blog/how-to-track-instagram-link-clicks/instagram-bio-link-tracking-flow.svg',
+          alt: 'Side-by-side comparison of Instagram bio link without tracking (zero data) versus with a short link showing full analytics dashboard',
+          caption: 'Without a short link, you get zero click data. With one, every tap is logged.',
+          width: 960,
+          height: 380,
+        },
+      },
+      {
+        title: 'What you actually need: a UTM-tagged short link',
+        paragraphs: [
+          "The setup has two parts — UTM parameters and a short link. They do different jobs, and you need both.",
+          "UTM parameters are tags you add to your URL so that Google Analytics (or whatever tool you use) knows where the traffic came from. They look like this: `?utm_source=instagram&utm_medium=social&utm_campaign=bio`. When someone arrives at your site with those tags in the URL, your analytics tool reads them and attributes the session correctly instead of dumping it into Direct.",
+          "A short link solves a separate problem. If you paste a raw URL with UTM parameters into your Instagram bio, it looks terrible — a wall of text that users immediately distrust. A short link wraps the whole thing in a clean, brandable address like `go.yoursite.com/ig`. When someone taps it, they're redirected to your full UTM-tagged destination, and your short link platform logs the click independently of your website analytics.",
+          "That means you get data from two sources: your short link dashboard (clicks, devices, countries) and your website analytics (sessions with UTM attribution). It's belt-and-braces tracking.",
+        ],
+      },
+      {
+        title: 'How to set it up — step by step',
+        type: 'steps',
+        paragraphs: [],
+        steps: [
+          {
+            number: 1,
+            heading: 'Start with your destination URL',
+            body: 'Write down the exact page you want people to land on when they click your bio link. This should be a specific landing page, product page, or homepage — not a redirect. Example: https://yoursite.com/shop or https://yoursite.com/newsletter.',
+          },
+          {
+            number: 2,
+            heading: 'Build the UTM-tagged version',
+            body: 'Add three UTM parameters to the end of your URL. Use utm_source=instagram, utm_medium=social, and utm_campaign= followed by a label that describes your current goal (e.g. bio, spring-promo, launch). Your full tagged URL might look like: https://yoursite.com/shop?utm_source=instagram&utm_medium=social&utm_campaign=bio. You can use LinkLab\'s UTM builder or Google\'s Campaign URL Builder — both generate the string automatically from a form.',
+          },
+          {
+            number: 3,
+            heading: 'Shorten it into a clean branded link',
+            body: 'Paste the full UTM URL into a link shortener. In LinkLab, you can paste the URL, add a custom alias (like /ig or /instagram-bio), and optionally connect your own domain. You\'ll end up with something like lnk.bio/ig or go.yourbrand.com/ig — a clean link that hides all the UTM parameters but preserves them in the redirect.',
+          },
+          {
+            number: 4,
+            heading: 'Paste the short link into your Instagram bio',
+            body: 'Go to Edit Profile on Instagram and replace whatever is in your website field with the new short link. That\'s it. Every tap from that point forward is logged in your short link analytics, and every visit that reaches your site will carry UTM attribution.',
+          },
+          {
+            number: 5,
+            heading: 'Verify it\'s working',
+            body: 'Click the link yourself (ideally from a different device or in incognito). Check your short link dashboard — you should see a click appear within seconds. Then check GA4 or your analytics tool: go to Reports > Acquisition > Traffic Acquisition and look for a session with source/medium = instagram / social. If both show up, you\'re tracking correctly.',
+          },
+        ],
+        image: {
+          src: '/images/blog/how-to-track-instagram-link-clicks/instagram-utm-setup-diagram.svg',
+          alt: 'Three-step diagram showing how to build an Instagram tracking link: destination URL, add UTM parameters with colour-coded source/medium/campaign, shorten to a branded short link',
+          caption: 'The three-step build: destination URL → UTM tags → branded short link ready for your bio.',
+          width: 900,
+          height: 340,
+        },
+      },
+      {
+        title: 'What you\'ll see in your analytics',
+        paragraphs: [
+          "Once you've set up the link and verified it works, here's the data you can expect to see in different places.",
+        ],
+        type: 'comparison',
+        table: {
+          headers: ['Data point', 'Short link dashboard', 'GA4 / Analytics'],
+          rows: [
+            ['Total clicks', '✓ — all clicks logged', '✓ — sessions with utm_source=instagram'],
+            ['Unique clicks', '✓ — deduped by device/IP', '✓ — unique users'],
+            ['Device type', '✓ — iOS vs Android vs desktop', '✓ — via device category'],
+            ['Country / city', '✓ — geolocated per click', '✓ — via geographic report'],
+            ['Referrer source', '✓ — instagram.com shown', 'Needs UTM (otherwise Direct)'],
+            ['Click time / trend', '✓ — hourly / daily chart', '✓ — in date comparison'],
+            ['Conversion goal', '✗ — short link only tracks clicks', '✓ — if goal events are set up'],
+          ],
+          caption: 'Short link analytics and GA4 complement each other — clicks vs. on-site behaviour.',
+        },
+      },
+      {
+        title: 'Mistakes that break your tracking',
+        type: 'callout',
+        paragraphs: [],
+        callout: {
+          variant: 'mistake',
+          title: 'Three things that silently kill your data',
+          body: "1. Pasting the raw UTM URL directly (without shortening it) — it works technically but looks untrustworthy and some Instagram UIs truncate it. Always shorten. 2. Using the same campaign value for every link (e.g. always utm_campaign=bio) — if you run multiple Instagram promos, label them differently so you can separate the data. 3. Not verifying before publishing — test the link yourself before swapping it into the bio. A typo in the UTM string just routes people to your site with no attribution, silently.",
+        },
+      },
+      {
+        title: 'What if you have multiple links in your bio?',
+        paragraphs: [
+          "If you're using a link-in-bio tool like Linktree, Beacons, or a similar multi-link page, the same principles apply — but at a different level. The link you put in your bio should be to your multi-link page, and each individual link on that page should be UTM-tagged separately.",
+          "For example, if your link-in-bio page has three links — your shop, your latest blog post, and a free download — each one should have its own utm_campaign value: utm_campaign=shop, utm_campaign=blog-may, utm_campaign=free-guide. That way you can see in GA4 which specific link drove the visit, not just that it came from Instagram.",
+          "If your link-in-bio page is hosted on a third-party platform, you might not be able to customise the UTM parameters. In that case, use a smart short link that redirects to a UTM-tagged version of your multi-link page — this at least captures the top-level attribution.",
+          "Alternatively, consider replacing the multi-link page entirely with a single, well-chosen landing page. A focused destination often converts better than a menu of options, and it makes your tracking much simpler.",
+        ],
+      },
+      {
+        title: 'Track your Instagram bio link with LinkLab',
+        type: 'cta',
+        paragraphs: [],
+        cta: {
+          heading: 'Set up your Instagram tracking link — free',
+          subtext: 'Build a UTM-tagged short link for your Instagram bio in under a minute. Every click logged, no GA4 required.',
+          buttonLabel: 'Create your tracking link',
+          href: '/free-url-shortener',
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can you see how many people click your Instagram bio link?',
+        answer: 'Not natively. Instagram Insights only shows profile visits, not bio link clicks. To track clicks, you need to replace your bio link with a short link that has its own click analytics — then every tap is logged in the short link dashboard regardless of what happens on your website.',
+      },
+      {
+        question: 'What are UTM parameters and why do I need them for Instagram?',
+        answer: 'UTM parameters are short tags added to a URL — like ?utm_source=instagram&utm_medium=social — that tell your analytics tool where a visit came from. Instagram strips referrer data by default, so without UTMs, your website sees Instagram traffic as Direct (unknown source). UTMs fix that attribution gap.',
+      },
+      {
+        question: 'Does adding UTM parameters break the link on Instagram?',
+        answer: 'No — UTM parameters are a standard part of any URL and work fine on Instagram. However, a long UTM-tagged URL looks messy in your bio and may be truncated on some devices. The solution is to shorten it first with a URL shortener like LinkLab, which hides the parameters inside the redirect while preserving them.',
+      },
+      {
+        question: 'Can I use Google\'s Campaign URL Builder instead of LinkLab for UTMs?',
+        answer: 'Yes, Google\'s Campaign URL Builder generates UTM-tagged URLs for free. The difference is that it only handles the UTM tagging — you still need a URL shortener if you want a clean bio link, and you\'d need a separate analytics tool to see per-click data (like device type and country) independently of GA4. LinkLab combines both in one step.',
+      },
+      {
+        question: 'If I change my landing page, do I need to update my Instagram bio link?',
+        answer: 'If you use a dynamic short link (one that you can redirect to a different URL without changing the short link itself), no — you just update the destination in your short link dashboard and the bio link stays the same. This is one of the main reasons to use a link shortener rather than pasting URLs directly.',
+      },
+      {
+        question: 'Will my Instagram followers see the UTM parameters?',
+        answer: 'Not if you use a short link. When you shorten the UTM URL, your followers see only the short link address (like go.yourbrand.com/ig). The UTM parameters are hidden inside the redirect and only appear in the destination URL after the redirect completes — by which point they\'re in your landing page address bar, not Instagram.',
+      },
+    ],
+    relatedPosts: [
+      'how-to-track-link-clicks',
+      'how-to-add-utm-parameters-to-qr-codes',
+      'branded-short-links-guide',
+    ],
+  },
+  {
+    slug: 'code-128-barcode-generator',
+    title: 'Code 128 Barcode: What It Is and How to Generate One Free',
+    description:
+      'Code 128 is the most versatile barcode format in use today — on every Amazon shipping label, hospital wristband, and warehouse inventory tag. Here\'s what makes it different from EAN-13, how to pick the right sub-type, and how to generate one free.',
+    category: 'Barcode Generator',
+    author: 'Rabi Narayan Pradhan',
+    authorRole: 'Product & Growth Research',
+    publishedAt: '2026-05-21',
+    updatedAt: '2026-05-21',
+    readTime: '8 min read',
+    coverLabel: 'Code 128 barcode guide',
+    keywords: [
+      'code 128 barcode',
+      'code 128 barcode generator',
+      'code 128 vs ean-13',
+      'code 128 vs code 39',
+      'generate code 128 barcode free',
+      'code 128 format guide',
+    ],
+    heroStat: 'Code 128 is on every Amazon shipping label, hospital wristband, and warehouse shelf tag — and most people have never heard its name',
+    intro: [
+      "Every Amazon package you've received has a Code 128 barcode on the shipping label. So does the wristband they gave you at the hospital, the shelf tag at your local warehouse store, and the inventory sticker on the back of every laptop in a corporate office.",
+      "Most people think of barcodes as those striped things on product packaging at the supermarket. Those are EAN-13 or UPC-A — a completely different format with strict rules about who can use them and what they can encode. Code 128 is different: it's the workhorse of internal logistics, more flexible than EAN-13, encodable for any text or number, and completely free to use without registration.",
+      "This guide explains what Code 128 is, how its three sub-types differ, how it compares to other formats, and how to generate one in under a minute.",
+    ],
+    takeaways: [
+      'Code 128 can encode any of the 128 ASCII characters — letters, digits, and symbols — making it the most versatile common barcode format.',
+      'There are three Code 128 sub-types: A (uppercase + control chars), B (all printable ASCII, most common), and C (numeric pairs, very dense).',
+      'Code 128B is the right choice for almost every inventory, logistics, and healthcare label use case.',
+      'Unlike EAN-13 and UPC-A, Code 128 requires no GS1 registration — you can use any data you choose, including your own internal IDs.',
+      'Always download SVG for print labels — it scales to any size without blurring and is accepted by most professional label software.',
+    ],
+    sections: [
+      {
+        title: 'What is a Code 128 barcode?',
+        paragraphs: [
+          "Code 128 was developed in 1981 by Computer Identics Corporation and published as a standard in 1987. The name comes from its ability to encode all 128 characters of the ASCII character set — the same character set used by computers to represent text. That's what makes it so flexible compared to older formats like Code 39, which only supports 43 characters.",
+          "Unlike EAN-13 and UPC-A (the barcodes used at retail checkouts), Code 128 has no fixed length. It can encode a 3-character internal code or a 40-character alphanumeric serial number — the barcode just gets wider. There's no registration required, no organization to apply to, and no fee. You define what data goes in it, and you generate it.",
+          "This combination of flexibility and zero registration overhead is why Code 128 became the dominant format for logistics, supply chain, healthcare, and internal inventory systems. It's everywhere — you just never knew what to call it.",
+        ],
+      },
+      {
+        title: 'Code 128A, 128B, and 128C — which one do you need?',
+        paragraphs: [
+          "Code 128 has three character set modes, each designed for a different type of data. Most barcode generators handle this automatically, but it's worth understanding the difference — especially if your software asks you to choose.",
+        ],
+        image: {
+          src: '/images/blog/code-128-barcode-generator/code-128-format-guide.svg',
+          alt: 'Code 128 three character set modes: Code 128A (uppercase + control characters), Code 128B (all printable ASCII, most common), Code 128C (digit pairs only, highest density)',
+          caption: 'Code 128B is the default for most use cases — it handles any combination of letters, numbers, and symbols.',
+          width: 900,
+          height: 340,
+        },
+      },
+      {
+        title: 'How Code 128 compares to other barcode formats',
+        paragraphs: [
+          "Code 128 is not the only barcode format — it's just the most capable general-purpose one. Here's how it stacks up against the formats you're most likely to encounter.",
+        ],
+        type: 'comparison',
+        table: {
+          headers: ['Format', 'Encodes', 'Character limit', 'GS1 required', 'Typical use'],
+          rows: [
+            ['Code 128', 'Full ASCII (128 chars)', 'None', 'No', 'Logistics, inventory, healthcare'],
+            ['EAN-13', 'Digits 0–9 only', '12 digits', 'Yes', 'Retail products, supermarket'],
+            ['Code 39', 'A–Z, 0–9, 9 symbols', 'No limit (low density)', 'No', 'Government, automotive, ID cards'],
+            ['UPC-A', 'Digits 0–9 only', '11 digits', 'Yes', 'US retail, Amazon, grocery'],
+            ['ITF-14', 'Digits 0–9 only', '14 digits', 'No', 'Outer shipping cartons'],
+          ],
+          caption: 'Code 128 is the only common format with no character limit and no GS1 registration requirement.',
+        },
+        image: {
+          src: '/images/blog/code-128-barcode-generator/code-128-vs-other-formats.svg',
+          alt: 'Barcode format comparison table showing Code 128, EAN-13, Code 39, UPC-A, and ITF-14 compared by character encoding, limits, GS1 requirements, and use cases',
+          caption: 'If you need to encode letters and numbers together, Code 128 is almost always the right choice.',
+          width: 860,
+          height: 320,
+        },
+      },
+      {
+        title: 'When should you use Code 128?',
+        paragraphs: [
+          "Code 128 is the right choice whenever you need a barcode for internal use — not for products going to retail shelves (which require EAN-13 or UPC-A with GS1 registration). Specifically, it works well for:",
+        ],
+        bullets: [
+          'Inventory management — label products, bins, or shelves with alphanumeric stock codes',
+          'Asset tracking — tag laptops, equipment, furniture, or tools with unique identifiers',
+          'Internal shipping labels — route packages within a warehouse or distribution centre',
+          'Healthcare — patient wristbands, medication labels, sample tube tracking',
+          'Employee ID cards and access control badges',
+          'Document management — tag folders or files with case or reference numbers',
+          'Library systems — encode book ISBNs plus additional metadata',
+          'Any system where the data includes both letters and numbers',
+        ],
+      },
+      {
+        title: 'How to generate a Code 128 barcode — step by step',
+        type: 'steps',
+        paragraphs: [],
+        steps: [
+          {
+            number: 1,
+            heading: 'Decide what data to encode',
+            body: 'Write out the exact text string you want the barcode to contain. This could be a product SKU like "WH-2847-BLK", a serial number like "SN20260521-003", or any combination of letters, digits, and symbols up to whatever length your system uses. Code 128 has no character limit — keep the string as short as is practical to keep the barcode compact and reliable.',
+          },
+          {
+            number: 2,
+            heading: 'Open a free barcode generator',
+            body: 'Go to a free barcode generator online. LinkLab\'s free barcode generator supports Code 128 alongside EAN-13, UPC-A, and ITF-14. No account is required for basic generation.',
+          },
+          {
+            number: 3,
+            heading: 'Select Code 128 as the format',
+            body: 'From the format dropdown, choose "Code 128". If you see sub-type options (A, B, C), choose Code 128B unless your data is purely numeric and very long (in which case Code 128C is more compact). Most generators default to Code 128B automatically and handle the sub-type selection internally.',
+          },
+          {
+            number: 4,
+            heading: 'Enter your data and preview',
+            body: 'Type or paste your data string into the input field. The barcode preview will update in real time. Check that the human-readable text below the barcode (if shown) matches your input exactly — this is the quickest way to spot a typo before generating the final file.',
+          },
+          {
+            number: 5,
+            heading: 'Download as SVG or PNG',
+            body: 'Download SVG if the barcode will be printed — it\'s a vector format that stays sharp at any size, from a 1cm label to a full-page poster. Download PNG if you\'re embedding the barcode digitally (email, spreadsheet, web page). For physical labels, always use SVG.',
+          },
+        ],
+      },
+      {
+        title: 'Before you print: two things to check',
+        type: 'callout',
+        paragraphs: [],
+        callout: {
+          variant: 'warning',
+          title: 'Quiet zones and minimum bar width matter',
+          body: "1. Quiet zone — every Code 128 barcode needs a clear white margin (quiet zone) on both sides, at least 10 times the width of the narrowest bar. If you crop or place the barcode too close to other elements, scanners will fail to read it. Most label software handles this automatically, but check your final print layout. 2. Minimum size — the narrowest bar in a Code 128 barcode should be at least 0.19mm wide at print time. Below that, scanners struggle. At standard label sizes (50mm × 25mm or larger), you're well within this limit. For very small labels, test the scan before a print run.",
+        },
+      },
+      {
+        title: 'Generate your Code 128 barcode free with LinkLab',
+        type: 'cta',
+        paragraphs: [],
+        cta: {
+          heading: 'Generate a Code 128 barcode — free, no sign-up',
+          subtext: 'Enter any text or number, pick your format, and download PNG or SVG in seconds. Works for inventory labels, asset tags, and shipping barcodes.',
+          buttonLabel: 'Open the free barcode generator',
+          href: '/barcode-generator',
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is Code 128 used for?',
+        answer: 'Code 128 is used primarily for internal logistics, inventory management, asset tracking, healthcare labels, and shipping. It appears on Amazon warehouse labels, hospital wristbands, and employee ID systems. Unlike retail barcodes (EAN-13, UPC-A), it doesn\'t require GS1 registration — you can encode any text or number you choose.',
+      },
+      {
+        question: 'What\'s the difference between Code 128A, 128B, and 128C?',
+        answer: 'Code 128A encodes uppercase letters, digits, and ASCII control characters. Code 128B encodes all 95 printable ASCII characters — uppercase, lowercase, digits, and symbols — and is the most commonly used sub-type. Code 128C encodes digit pairs only, making it twice as dense as 128B for long numeric strings. Most generators default to 128B automatically.',
+      },
+      {
+        question: 'Can I generate a Code 128 barcode for free?',
+        answer: 'Yes. Code 128 is a public standard with no licensing fee. Any online barcode generator can create Code 128 barcodes for free. LinkLab\'s barcode generator creates them without requiring an account — just enter your data and download PNG or SVG.',
+      },
+      {
+        question: 'Is Code 128 the same as GS1-128?',
+        answer: 'Not exactly. GS1-128 (formerly UCC/EAN-128) is a specific application of Code 128 that uses GS1\'s Application Identifiers — structured data fields with defined meanings, like expiry dates and lot numbers. Standard Code 128 is just the encoding format; GS1-128 adds a layer of data structure on top. If your trading partner requires GS1-128, you need a GS1 company prefix and specific data formatting.',
+      },
+      {
+        question: 'How do I know if my Code 128 barcode is correct?',
+        answer: 'Test it with a barcode scanner app on your phone (or a hardware scanner if you have one) before committing to a print run. The scanned result should exactly match the text you entered. If the generator shows human-readable text below the barcode, compare that to your input as a quick pre-print check.',
+      },
+      {
+        question: 'What is the minimum print size for a Code 128 barcode to scan reliably?',
+        answer: 'The narrowest bar should be at least 0.19mm wide when printed. In practice, a Code 128 barcode printed at 50mm × 25mm or larger will scan reliably at this bar width. For very small labels (under 30mm wide), test with a scanner before printing in bulk — bar density increases with longer data strings.',
+      },
+    ],
+    relatedPosts: [
+      'barcode-generator-guide',
+      'how-to-generate-product-barcodes',
+      'qr-code-vs-barcode',
+    ],
+  },
+  {
+    slug: 'ean-13-barcode-generator',
+    title: 'EAN-13 Barcode: What It Is and How to Generate One for Your Products',
+    description:
+      'EAN-13 is the global standard barcode on every retail product — from supermarket shelves to Amazon listings. Here\'s what the 13 digits actually mean, when you need GS1 registration, and how to generate one free.',
+    category: 'Barcode Generator',
+    author: 'Rabi Narayan Pradhan',
+    authorRole: 'Product & Growth Research',
+    publishedAt: '2026-05-21',
+    updatedAt: '2026-05-21',
+    readTime: '9 min read',
+    coverLabel: 'EAN-13 barcode guide',
+    keywords: [
+      'ean-13 barcode',
+      'ean-13 barcode generator',
+      'ean 13 for products',
+      'ean-13 vs upc-a',
+      'generate ean-13 barcode free',
+      'gtin retail barcode',
+    ],
+    heroStat: 'Every product sold in a global retail store carries an EAN-13 barcode — yet most sellers don\'t know what the 13 digits inside it actually mean',
+    intro: [
+      "Walk into any supermarket, scan any product at checkout, and you're reading an EAN-13 barcode. It's been the global standard for retail product identification since 1976. Amazon uses it. Walmart uses it. Every major retailer across Europe, Asia, and increasingly North America uses it.",
+      "If you're selling products — online or offline — you need to understand EAN-13. Not because generating the barcode is complicated (it isn't), but because the number inside has specific meaning and structure. Using a random 13-digit number that isn't assigned to your company can cause scanner failures, Amazon listing rejections, and retailer compliance problems.",
+      "This guide explains how EAN-13 works, what each of the 13 digits means, how it relates to UPC-A, when you need GS1 registration, and how to generate one for free.",
+    ],
+    takeaways: [
+      'EAN-13 is a 13-digit global product identifier managed by GS1 — the nonprofit that runs the world\'s product numbering system.',
+      'The 13 digits break down into: GS1 Prefix (3) + Company Prefix (5) + Item Reference (4) + Check Digit (1).',
+      'The GS1 Prefix identifies where the barcode was registered, not where the product was manufactured.',
+      'UPC-A (12 digits, used in the US) is a subset of EAN-13 — any UPC-A is a valid EAN-13 with a leading zero added.',
+      'For internal inventory, you can generate EAN-13 barcodes without GS1 registration. For retail sale (Amazon, supermarkets), you need a genuine GS1-issued GTIN.',
+    ],
+    sections: [
+      {
+        title: 'What is EAN-13?',
+        paragraphs: [
+          "EAN stands for European Article Number — though the format is now used globally and the \"European\" label is largely historical. EAN-13 was developed in 1976 by a European consortium as a way to standardize product identification across retail chains, replacing a patchwork of country-specific systems.",
+          "The \"13\" simply means 13 digits. Each barcode encodes a number that globally and uniquely identifies a specific product in a specific variation — a 250ml bottle of olive oil and a 500ml bottle of the same brand get different EAN-13 numbers, even if everything else about them is the same.",
+          "EAN-13 is managed today by GS1, a global nonprofit that licenses company prefixes, maintains the numbering system, and ensures that no two companies share the same product identification range. If you've bought anything at a supermarket, pharmacy, or electronics store, you've read thousands of EAN-13 barcodes without knowing the name.",
+        ],
+      },
+      {
+        title: 'What each of the 13 digits means',
+        paragraphs: [
+          "The 13 digits aren't random — they follow a precise structure that tells every scanner, retailer, and inventory system exactly who made the product and which product it is.",
+        ],
+        image: {
+          src: '/images/blog/ean-13-barcode-generator/ean-13-barcode-structure.svg',
+          alt: 'EAN-13 barcode digit structure diagram showing the 13 digits broken into GS1 Prefix (3 digits), Company Prefix (5 digits), Item Reference (4 digits), and Check Digit (1 digit)',
+          caption: 'The 13 digits aren\'t random — each section has a specific, GS1-assigned meaning.',
+          width: 900,
+          height: 340,
+        },
+        bullets: [
+          'GS1 Prefix (digits 1–3): Identifies the GS1 member organisation — often corresponds to a country, but it\'s the country where the barcode was registered, not where the product was made. A UK company manufacturing in China registers with GS1 UK and gets a "50" prefix.',
+          'Company Prefix (digits 4–8): A 5-digit number assigned exclusively to your company by GS1. Every barcode you issue will share this prefix — it\'s your unique namespace in the global product numbering system.',
+          'Item Reference (digits 9–12): 4 digits you assign to each individual product or variant. You control this numbering — 0001, 0002, 0003, and so on, or any system that makes sense for your inventory.',
+          'Check Digit (digit 13): The final digit is automatically calculated from the other 12 using an alternating-weight formula. It verifies the barcode was read correctly by the scanner. Your barcode generator computes this — you never type it manually.',
+        ],
+      },
+      {
+        title: 'EAN-13 vs UPC-A: what\'s the actual difference?',
+        paragraphs: [
+          "If you've sold on Amazon in the US, you've probably seen both EAN and UPC mentioned. The relationship is simple: UPC-A is an older 12-digit format developed in the United States in the 1970s, while EAN-13 is the internationally extended version developed shortly after.",
+          "The practical connection: any UPC-A barcode is automatically a valid EAN-13 — just add a leading zero in front of the 12 UPC digits to get the 13-digit EAN. That's why modern scanners everywhere (including Amazon) accept both formats without issue.",
+        ],
+        image: {
+          src: '/images/blog/ean-13-barcode-generator/ean-13-vs-upc-a.svg',
+          alt: 'EAN-13 vs UPC-A comparison showing 13-digit global standard versus 12-digit North American format with key differences in usage and compatibility',
+          caption: 'EAN-13 and UPC-A are the same system — EAN-13 added a leading digit to extend UPC-A globally.',
+          width: 900,
+          height: 300,
+        },
+      },
+      {
+        title: 'Do you need GS1 registration to use EAN-13?',
+        paragraphs: [],
+        type: 'callout',
+        callout: {
+          variant: 'tip',
+          title: 'It depends entirely on where the barcode will be scanned',
+          body: "FOR RETAIL SALE (supermarkets, Amazon, major retailers): Yes. You need a genuine GS1 Company Prefix and a GTIN (Global Trade Item Number) issued by GS1. Retailers verify GTINs against the GS1 database. A random number will fail verification and get your listing rejected or your product refused. Register at gs1.org — a US company prefix starts at $250/year. FOR INTERNAL USE ONLY (your own warehouse, inventory tracking, in-house systems): No. You can generate any 13-digit number without GS1 registration. The barcode will work perfectly in your internal systems — it just can't be verified in the global GS1 database.",
+        },
+      },
+      {
+        title: 'How to generate an EAN-13 barcode — step by step',
+        type: 'steps',
+        paragraphs: [],
+        steps: [
+          {
+            number: 1,
+            heading: 'Have your 12-digit product number ready',
+            body: 'For retail sale: use the 12-digit GTIN assigned to your product by GS1 (your Company Prefix + your Item Reference). The barcode generator will calculate the check digit (digit 13) automatically. For internal use: you can use any 12-digit number — the generator will compute the 13th digit.',
+          },
+          {
+            number: 2,
+            heading: 'Open a free barcode generator',
+            body: 'Go to a free online barcode generator that supports EAN-13. LinkLab\'s free barcode generator supports EAN-13 alongside Code 128, UPC-A, and ITF-14 — no account needed for basic generation.',
+          },
+          {
+            number: 3,
+            heading: 'Select EAN-13 as the format',
+            body: 'From the barcode format dropdown, choose EAN-13. Enter your 12-digit number (not 13 — the generator adds the check digit automatically). The preview will show the full 13-digit barcode with the human-readable number below it.',
+          },
+          {
+            number: 4,
+            heading: 'Check the preview carefully',
+            body: 'Confirm the 12 digits you entered appear correctly in the human-readable text below the barcode. Even one transposed digit will produce a completely different barcode that may scan to the wrong product — or fail the GS1 database lookup entirely.',
+          },
+          {
+            number: 5,
+            heading: 'Download SVG for print, PNG for digital',
+            body: 'Download SVG if the barcode is going on product packaging, labels, or any printed surface. SVG is a vector format that stays sharp at any size — essential for labels where the barcode needs to scan reliably. Download PNG for digital applications (spreadsheets, inventory management software screenshots, online listings).',
+          },
+        ],
+      },
+      {
+        title: 'Before you print: test and size it correctly',
+        type: 'callout',
+        paragraphs: [],
+        callout: {
+          variant: 'warning',
+          title: 'Two checks before sending to print',
+          body: "1. Scan test — before printing a full batch, test the barcode image on a phone camera (or a barcode scanner app). The scanned number must match the number you entered. If it doesn't, your barcode generator made an error. 2. Minimum size — the standard minimum size for an EAN-13 barcode is 37.29mm × 26.26mm (at 100% magnification). At minimum magnification of 80%, that's roughly 29.8mm × 21mm. Below this, some scanners will struggle at point of sale. Most product labels are well above this threshold, but verify before printing small-format labels.",
+        },
+      },
+      {
+        title: 'Generate your EAN-13 barcode free with LinkLab',
+        type: 'cta',
+        paragraphs: [],
+        cta: {
+          heading: 'Generate an EAN-13 barcode — free, instant download',
+          subtext: 'Enter your 12-digit product number, select EAN-13, and download PNG or SVG in seconds. Works for product packaging, inventory labels, and Amazon listings.',
+          buttonLabel: 'Open the free barcode generator',
+          href: '/barcode-generator',
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is EAN-13 used for?',
+        answer: 'EAN-13 is used for retail product identification globally. Every product sold in a supermarket, on Amazon, or in most online and offline retail contexts carries an EAN-13 barcode (or UPC-A, which is a subset of EAN-13). It uniquely identifies a specific product and its variant across the entire supply chain.',
+      },
+      {
+        question: 'Do I need to register with GS1 to use an EAN-13 barcode?',
+        answer: 'For retail sale — yes. Major retailers including Amazon, Walmart, and supermarket chains verify barcodes against the GS1 database. A random number not registered with GS1 will fail this check and your product may be rejected. For internal inventory use only, you don\'t need GS1 registration — the barcode will work in your own systems.',
+      },
+      {
+        question: 'Can I generate an EAN-13 barcode for free?',
+        answer: 'Generating the barcode image is free — any online barcode generator can create EAN-13 from a 12-digit number. The cost, if any, is in obtaining a valid GS1-issued product number if you need one for retail. Generating the barcode file itself has no fee.',
+      },
+      {
+        question: 'What\'s the difference between EAN-13 and EAN-8?',
+        answer: 'EAN-8 is a shorter, 8-digit version of EAN-13 designed for small products where a full 13-digit barcode wouldn\'t fit — like lipstick tubes or small candy packaging. EAN-8 requires a special application to GS1. For most products, EAN-13 is the correct format.',
+      },
+      {
+        question: 'Does Amazon accept EAN-13 barcodes?',
+        answer: 'Yes. Amazon accepts EAN-13 (GTIN-13) as a valid product identifier for its marketplace globally. Amazon also requires the GTIN to be registered with GS1 — they verify GTINs against the GS1 database to prevent counterfeit or duplicate listings. If your GTIN fails verification, your listing may be suppressed.',
+      },
+      {
+        question: 'How is the check digit in EAN-13 calculated?',
+        answer: 'The check digit (digit 13) is calculated using an alternating-weight formula: multiply odd-position digits by 1 and even-position digits by 3, sum all results, then subtract the last digit of that sum from 10. If the result is 10, the check digit is 0. Your barcode generator handles this automatically — you never need to compute it manually.',
+      },
+    ],
+    relatedPosts: [
+      'code-128-barcode-generator',
+      'how-to-generate-product-barcodes',
+      'barcode-generator-guide',
+    ],
+  },
+  {
+    slug: 'itf-14-barcode-generator',
+    title: 'ITF-14 Barcode: What It Is and How to Generate One Free',
+    description:
+      'Learn what an ITF-14 barcode is, how its 14 digits are structured, when you need one vs EAN-13 or Code 128, and how to generate an ITF-14 barcode free — including bearer bar setup for corrugated carton printing.',
+    category: 'Barcode Generator',
+    author: 'Rabi Narayan Pradhan',
+    authorRole: 'Product & Growth Research',
+    publishedAt: '2026-05-21',
+    updatedAt: '2026-05-21',
+    readTime: '7 min read',
+    coverLabel: 'Barcode Generator',
+    keywords: [
+      'itf-14 barcode',
+      'itf-14 barcode generator',
+      'itf 14 barcode',
+      'shipping carton barcode',
+      'gtin-14 barcode',
+      'outer packaging barcode',
+      'itf-14 vs ean-13',
+      'bearer bar barcode',
+      'warehouse barcode',
+      'interleaved 2 of 5',
+    ],
+    heroStat: '14 digits — the barcode standard built for outer shipping cartons',
+    intro: [
+      'Your retail product has an EAN-13 barcode on the label. But the moment you pack 12 of them into a cardboard shipping carton, that carton needs its own barcode — and that\'s exactly what ITF-14 is for.',
+      'ITF-14 (Interleaved 2 of 5, 14 digits) is the international standard for barcoding outer packaging. It tells warehouse scanners, 3PLs, and retail distribution centers exactly what\'s inside the box and how many units it contains — without opening it.',
+      'This guide explains how ITF-14 works, how its 14 digits are structured, when you need one (and when you don\'t), and how to generate a valid ITF-14 barcode free using LinkLab.',
+    ],
+    takeaways: [
+      'ITF-14 is a 14-digit barcode for outer cartons — not individual retail products',
+      'It\'s derived from your product\'s EAN-13: add a Packaging Indicator digit (0–8) in front',
+      'A bearer bar (rectangular frame) is required for printing on corrugated cardboard',
+      'You need a GS1-registered GTIN to build a valid ITF-14',
+      'Most products need three barcodes: EAN-13 (item), ITF-14 (case), Code 128 (shipping label)',
+    ],
+    sections: [
+      {
+        title: 'What is an ITF-14 barcode?',
+        paragraphs: [
+          'ITF-14 stands for Interleaved 2 of 5 with 14 digits. It\'s a linear (1D) barcode format specifically designed for marking outer packaging — shipping cases, corrugated cartons, and pallet-level containers in supply chains.',
+          'Unlike EAN-13 (which encodes a single retail product), ITF-14 encodes a GTIN-14: a 14-digit number that identifies a grouping of products at a specific packaging level. A case of 12 water bottles, a pallet of 48 cereal boxes — each gets its own GTIN-14 and its own ITF-14 barcode.',
+          'The Interleaved 2 of 5 symbology is popular for outer packaging because it\'s rugged. Wide bars and spaces make it readable on rough, slightly distorted corrugated cardboard surfaces that would trip up a more delicate format like EAN-13.',
+          'You\'ll find ITF-14 barcodes on virtually every product carton sitting in supermarket warehouses, Amazon FBA receiving docks, and 3PL distribution centres worldwide.',
+        ],
+      },
+      {
+        title: 'ITF-14 barcode structure: what each of the 14 digits means',
+        paragraphs: [
+          'An ITF-14 barcode encodes exactly 14 digits. The structure is straightforward once you understand where the number comes from.',
+          'Digit 1 is the Packaging Indicator (PI). This single digit (0 through 8) tells the supply chain what packaging level the barcode represents. "0" is typically used for a loose or non-standard grouping. "1" might be an inner pack of 6, "2" a master case of 12, and so on — the exact meaning is agreed on between you and your trading partners. Most small businesses simply use "0" or "1".',
+          'Digits 2–13 are your product\'s GTIN-13 without the check digit. You take your EAN-13 barcode number, strip its last digit (the check digit), and use the first 12 digits here.',
+          'Digit 14 is a new check digit, calculated fresh from all 13 preceding digits. Your barcode generator handles this automatically.',
+          'The whole thing looks like: [PI][12 digits from your GTIN-13][new check digit]. A typical ITF-14 might be 05012345678905.',
+        ],
+        image: {
+          src: '/images/blog/itf-14-barcode-generator/itf-14-barcode-structure.svg',
+          alt: 'ITF-14 barcode digit structure diagram showing Packaging Indicator, GTIN-13 inner product data, and check digit',
+          width: 900,
+          height: 340,
+        },
+      },
+      {
+        title: 'The bearer bar: why ITF-14 has a frame',
+        paragraphs: [
+          'If you\'ve ever seen an ITF-14 barcode, you may have noticed something EAN-13 and Code 128 don\'t have: a solid rectangular frame around the entire barcode. That frame is called a bearer bar.',
+          'The bearer bar solves a real problem. Corrugated cardboard is not a flat, uniform surface. It warps, gets damp, and develops texture variations that can cause a scanner\'s edge-detection algorithm to misread the quiet zone (the blank space at either end of the barcode) as a valid bar. When that happens, the scan fails.',
+          'The bearer bar acts as a hard boundary. By drawing a solid line along the top and bottom of the barcode, it removes any ambiguity about where the symbol starts and ends — preventing partial scans and misreads on rough surfaces.',
+          'GS1 specifies that ITF-14 barcodes intended for corrugated packaging should always include bearer bars. LinkLab\'s ITF-14 generator includes the bearer bar by default. Don\'t remove it.',
+        ],
+      },
+      {
+        title: 'How to generate an ITF-14 barcode free',
+        type: 'steps',
+        paragraphs: ['Generating an ITF-14 barcode takes less than two minutes if you already have your product\'s GTIN-13.'],
+        steps: [
+          {
+            number: 1,
+            heading: 'Find your product\'s GTIN-13',
+            body: 'This is your EAN-13 barcode number — the 13-digit number printed below your product\'s retail barcode. You need a GS1-registered GTIN. If you don\'t have one yet, register at gs1.org.',
+          },
+          {
+            number: 2,
+            heading: 'Choose your Packaging Indicator digit',
+            body: 'Decide which packaging level this carton represents and assign it a PI digit (0–8). Most small businesses use "0" for a loose or mixed case, or "1" for a standard inner pack. Agree on the convention with your retail buyer or 3PL.',
+          },
+          {
+            number: 3,
+            heading: 'Open the ITF-14 generator on LinkLab',
+            body: 'Navigate to the Barcode Generator on LinkLab, select ITF-14 as the format, enter your 13-digit GTIN (the tool prepends the PI and calculates the check digit), and enable the bearer bar option.',
+          },
+          {
+            number: 4,
+            heading: 'Preview and download',
+            body: 'Review the barcode preview. Download as SVG for professional print use or PNG for digital submissions. SVG is recommended for any physical label or carton print — it scales to any size without quality loss.',
+          },
+          {
+            number: 5,
+            heading: 'Verify before printing at scale',
+            body: 'Scan the downloaded barcode with a dedicated barcode scanner (not just a phone camera app) before committing to a full print run. Confirm the decoded number matches your intended GTIN-14.',
+          },
+        ],
+      },
+      {
+        title: 'ITF-14 vs EAN-13 vs Code 128: which one goes where?',
+        type: 'comparison',
+        paragraphs: [
+          'These three barcodes are not alternatives to each other — they operate at different levels of the supply chain. Understanding which goes where prevents costly relabelling and scan failures at warehouse intake.',
+          'ITF-14 goes on the outer shipping carton or master case. EAN-13 goes on the individual retail unit. Code 128 goes on internal documents, shipping labels, pick tickets, and any data that doesn\'t need GS1 registration.',
+          'A fully compliant retail product typically carries all three: an EAN-13 on the item, an ITF-14 on the case, and a Code 128 on the address label or delivery note.',
+        ],
+        image: {
+          src: '/images/blog/itf-14-barcode-generator/itf-14-vs-ean13-code128.svg',
+          alt: 'ITF-14 vs EAN-13 vs Code 128 — side-by-side comparison showing which barcode format to use at which packaging level',
+          width: 900,
+          height: 300,
+        },
+      },
+      {
+        title: 'Do not use random 14-digit numbers',
+        paragraphs: [],
+        callout: {
+          variant: 'warning',
+          title: 'GS1 registration is required',
+          body: 'ITF-14 barcodes must be derived from a genuine GS1-registered GTIN. Inventing a random 14-digit number and encoding it as an ITF-14 will produce a barcode that scans — but the GTIN it encodes will not validate against any global product database. Major retailers and Amazon verify GTINs against GS1\'s database before accepting product listings. A carton barcode built on a fake GTIN will cause the entire shipment to be rejected at warehouse intake.',
+        },
+      },
+      {
+        title: 'ITF-14 barcode size and print requirements',
+        paragraphs: [
+          'GS1 specifies minimum and recommended sizes for ITF-14 barcodes on corrugated packaging. In practical terms, the barcode should be at least 32mm tall (excluding the bearer bar) and 108mm wide.',
+          'Larger is better when printing on corrugated cardboard. Cardboard surfaces introduce more scan variability than flat labels, and a bigger barcode gives the scanner more signal to work with.',
+          'Always print ITF-14 barcodes in black on a white or light background. Avoid printing directly on natural kraft brown cardboard — the contrast is insufficient for reliable scanning. Use a white label or print on a white-coated area of the carton.',
+          'Resolution matters. For inkjet or thermal printing, use at least 300 DPI. For flexographic printing on carton surfaces, work with your print vendor to confirm their minimum bar width tolerance.',
+        ],
+      },
+      {
+        title: 'When you don\'t need an ITF-14',
+        paragraphs: [],
+        callout: {
+          variant: 'tip',
+          title: 'Not every product needs a carton barcode',
+          body: 'If you sell directly to consumers through your own website, through marketplaces where you ship individual units (rather than bulk cases to a warehouse), or through channels that don\'t use automated scanning at a case level, you may only ever need EAN-13. ITF-14 becomes necessary when you supply to major retailers, use a 3PL, sell to Amazon FBA in case packs, or operate a distribution system that moves goods in bulk packaging.',
+        },
+      },
+      {
+        title: 'Generate your ITF-14 barcode free on LinkLab',
+        paragraphs: [],
+        cta: {
+          heading: 'Free ITF-14 barcode generator — no account required',
+          subtext: 'Enter your GTIN-13, choose your Packaging Indicator, and download an SVG or PNG with bearer bar — ready for carton printing or digital submission.',
+          buttonLabel: 'Generate ITF-14 Barcode',
+          href: '/barcode-generator',
+        },
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the difference between ITF-14 and EAN-13?',
+        answer: 'EAN-13 is a 13-digit barcode for individual retail products scanned at checkout. ITF-14 is a 14-digit barcode for outer shipping cartons scanned at warehouse intake. They operate at different levels of the supply chain and are not interchangeable. Most products need both: EAN-13 on the unit, ITF-14 on the case.',
+      },
+      {
+        question: 'Do I need a GS1 registration for an ITF-14 barcode?',
+        answer: 'Yes. ITF-14 encodes a GTIN-14, which must be derived from a GS1-registered GTIN. You can\'t invent a random 14-digit number — it won\'t validate against retailer or Amazon GTIN databases. Register at gs1.org to get a company prefix and generate valid GTINs.',
+      },
+      {
+        question: 'What is a bearer bar and is it required?',
+        answer: 'A bearer bar is a solid rectangular frame printed around the ITF-14 barcode. It\'s required for printing on corrugated cardboard because it prevents the scanner from misreading the quiet zone edges on a rough, uneven surface. GS1 specifies bearer bars for all ITF-14 barcodes on corrugated packaging. Always enable it.',
+      },
+      {
+        question: 'How do I calculate the GTIN-14 from my EAN-13?',
+        answer: 'Take your 13-digit EAN-13 number. Remove the last digit (the check digit). Prepend your chosen Packaging Indicator digit (0–8) to the front of the remaining 12 digits. You now have 13 digits. Calculate a new GS1 check digit from these 13 digits and append it. The result is your GTIN-14. Your ITF-14 barcode generator does all of this automatically.',
+      },
+      {
+        question: 'Can I print an ITF-14 barcode on brown cardboard directly?',
+        answer: 'Technically yes, but it\'s not recommended. Natural brown kraft cardboard does not provide enough contrast for consistent scanning. GS1 recommends printing on a white label or a white-coated area of the carton. If printing directly, ensure the cardboard background is light enough to achieve at least a 70% contrast ratio between the bars and the background.',
+      },
+    ],
+    relatedPosts: [
+      'ean-13-barcode-generator',
+      'code-128-barcode-generator',
+      'barcode-generator-guide',
+    ],
+  },
+  {
     slug: 'how-to-track-whatsapp-clicks-with-short-links-utms-and-ga4',
     title: 'How to Track WhatsApp Clicks With Short Links, UTMs, and GA4',
     description:

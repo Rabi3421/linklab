@@ -9,6 +9,108 @@ export interface BlogExtendedMeta {
 }
 
 export const blogMetadata: Record<string, BlogExtendedMeta> = {
+  'how-to-convert-link-to-qr-code': {
+    metaTitle: 'How to Convert a Link to a QR Code for Free (2026)',
+    focusKeyword: 'link to qr code',
+    tags: ['QR Code', 'URL', 'Free Tool', 'Print', 'Generator'],
+    relatedPosts: [
+      'static-vs-dynamic-qr-code',
+      'how-to-track-qr-code-scans',
+      'how-to-add-utm-parameters-to-qr-codes',
+    ],
+    featuredImage: {
+      src: '/images/blog/how-to-convert-link-to-qr-code/url-to-qr-code-flow-diagram.svg',
+      alt: 'How to convert a URL to a QR code — four-step flow from link to scannable QR code using LinkLab',
+      width: 900,
+      height: 340,
+    },
+  },
+
+  'rebrandly-alternatives': {
+    metaTitle: 'Best Rebrandly Alternatives for Branded Short Links 2026 | LinkLab',
+    focusKeyword: 'rebrandly alternatives',
+    tags: ['URL Shortener', 'Rebrandly', 'Branded Links', 'Comparison', 'Custom Domain'],
+    relatedPosts: [
+      'best-bitly-alternatives',
+      'tinyurl-alternatives',
+      'branded-short-links-guide',
+    ],
+    featuredImage: {
+      src: '/images/blog/rebrandly-alternatives/rebrandly-alternatives-comparison-hero.svg',
+      alt: 'Best Rebrandly alternatives comparison showing Short.io, Dub.co, Cuttly and LinkLab side by side with free plan details',
+      width: 1200,
+      height: 630,
+    },
+  },
+
+  'itf-14-barcode-generator': {
+    metaTitle: 'ITF-14 Barcode Generator: Outer Carton Barcodes Explained | LinkLab',
+    focusKeyword: 'itf-14 barcode',
+    tags: ['Barcode', 'ITF-14', 'Shipping', 'GTIN-14', 'Supply Chain'],
+    relatedPosts: [
+      'ean-13-barcode-generator',
+      'code-128-barcode-generator',
+      'barcode-generator-guide',
+    ],
+    featuredImage: {
+      src: '/images/blog/itf-14-barcode-generator/itf-14-barcode-structure.svg',
+      alt: 'ITF-14 barcode digit structure diagram showing Packaging Indicator, GTIN-13 inner product data, and check digit',
+      width: 900,
+      height: 340,
+    },
+  },
+
+  'ean-13-barcode-generator': {
+    metaTitle: 'EAN-13 Barcode Generator: Guide for Product and Retail Barcodes | LinkLab',
+    focusKeyword: 'ean-13 barcode generator',
+    tags: ['Barcode', 'EAN-13', 'Retail', 'GS1', 'Product Labels'],
+    relatedPosts: [
+      'code-128-barcode-generator',
+      'how-to-generate-product-barcodes',
+      'barcode-generator-guide',
+    ],
+    featuredImage: {
+      src: '/images/blog/ean-13-barcode-generator/ean-13-barcode-structure.svg',
+      alt: 'EAN-13 barcode digit structure diagram showing GS1 prefix, company prefix, item reference, and check digit breakdown',
+      width: 900,
+      height: 340,
+    },
+  },
+
+  'code-128-barcode-generator': {
+    metaTitle: 'Code 128 Barcode Generator: What It Is and How to Use It | LinkLab',
+    focusKeyword: 'code 128 barcode generator',
+    tags: ['Barcode', 'Code 128', 'Inventory', 'Logistics', 'Free Tool'],
+    relatedPosts: [
+      'barcode-generator-guide',
+      'how-to-generate-product-barcodes',
+      'qr-code-vs-barcode',
+    ],
+    featuredImage: {
+      src: '/images/blog/code-128-barcode-generator/code-128-format-guide.svg',
+      alt: 'Code 128 barcode format guide showing the three character set modes: 128A, 128B, and 128C',
+      width: 900,
+      height: 340,
+    },
+  },
+
+  'how-to-track-instagram-link-clicks': {
+    metaTitle: 'How to Track Instagram Bio Link Clicks (UTMs + Short Links) | LinkLab',
+    focusKeyword: 'track instagram link clicks',
+    tags: ['Instagram', 'UTM', 'Analytics', 'Short Links', 'Social Media'],
+    relatedPosts: [
+      'how-to-track-link-clicks',
+      'how-to-add-utm-parameters-to-qr-codes',
+      'branded-short-links-guide',
+    ],
+    featuredImage: {
+      src: '/images/blog/how-to-track-instagram-link-clicks/instagram-bio-link-tracking-flow.svg',
+      alt: 'Instagram bio link tracking setup showing UTM-tagged short links and click analytics dashboard',
+      width: 960,
+      height: 380,
+    },
+  },
+
   'how-to-track-whatsapp-clicks-with-short-links-utms-and-ga4': {
     metaTitle: 'Track WhatsApp Link Clicks with UTMs | LinkLab',
     focusKeyword: 'track whatsapp clicks',

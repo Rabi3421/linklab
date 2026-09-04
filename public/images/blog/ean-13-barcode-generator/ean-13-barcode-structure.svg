@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bgE" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2129"/>
+      <stop offset="100%" style="stop-color:#252b38"/>
+    </linearGradient>
+    <pattern id="dotE" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="0.7" fill="rgba(200,205,220,0.07)"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="340" rx="20" fill="url(#bgE)"/>
+  <rect width="900" height="340" rx="20" fill="url(#dotE)"/>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.85)" font-weight="700">EAN-13 Barcode — What Each of the 13 Digits Means</text>
+  <line x1="50" y1="50" x2="850" y2="50" stroke="rgba(200,205,220,0.10)" stroke-width="1"/>
+
+  <!-- GROUP 1: GS1 Prefix (digits 1-3), x=70-234 -->
+  <rect x="70"  y="66" width="52" height="70" rx="8" fill="rgba(99,102,241,0.22)" stroke="rgba(99,102,241,0.45)" stroke-width="1"/>
+  <text x="96"  y="110" text-anchor="middle" font-size="28" fill="#a5b4fc" font-weight="700">5</text>
+  <rect x="126" y="66" width="52" height="70" rx="8" fill="rgba(99,102,241,0.22)" stroke="rgba(99,102,241,0.45)" stroke-width="1"/>
+  <text x="152" y="110" text-anchor="middle" font-size="28" fill="#a5b4fc" font-weight="700">0</text>
+  <rect x="182" y="66" width="52" height="70" rx="8" fill="rgba(99,102,241,0.22)" stroke="rgba(99,102,241,0.45)" stroke-width="1"/>
+  <text x="208" y="110" text-anchor="middle" font-size="28" fill="#a5b4fc" font-weight="700">1</text>
+
+  <!-- GROUP 2: Company Prefix (digits 4-8), x=250-526 -->
+  <rect x="250" y="66" width="52" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="276" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">2</text>
+  <rect x="306" y="66" width="52" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="332" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">3</text>
+  <rect x="362" y="66" width="52" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="388" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">4</text>
+  <rect x="418" y="66" width="52" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="444" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">5</text>
+  <rect x="474" y="66" width="52" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="500" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">6</text>
+
+  <!-- GROUP 3: Item Reference (digits 9-12), x=542-762 -->
+  <rect x="542" y="66" width="52" height="70" rx="8" fill="rgba(16,185,129,0.16)" stroke="rgba(16,185,129,0.4)" stroke-width="1"/>
+  <text x="568" y="110" text-anchor="middle" font-size="28" fill="#6ee7b7" font-weight="700">7</text>
+  <rect x="598" y="66" width="52" height="70" rx="8" fill="rgba(16,185,129,0.16)" stroke="rgba(16,185,129,0.4)" stroke-width="1"/>
+  <text x="624" y="110" text-anchor="middle" font-size="28" fill="#6ee7b7" font-weight="700">8</text>
+  <rect x="654" y="66" width="52" height="70" rx="8" fill="rgba(16,185,129,0.16)" stroke="rgba(16,185,129,0.4)" stroke-width="1"/>
+  <text x="680" y="110" text-anchor="middle" font-size="28" fill="#6ee7b7" font-weight="700">9</text>
+  <rect x="710" y="66" width="52" height="70" rx="8" fill="rgba(16,185,129,0.16)" stroke="rgba(16,185,129,0.4)" stroke-width="1"/>
+  <text x="736" y="110" text-anchor="middle" font-size="28" fill="#6ee7b7" font-weight="700">0</text>
+
+  <!-- GROUP 4: Check Digit (digit 13), x=778-830 -->
+  <rect x="778" y="66" width="52" height="70" rx="8" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.38)" stroke-width="1"/>
+  <text x="804" y="110" text-anchor="middle" font-size="28" fill="#fca5a5" font-weight="700">3</text>
+
+  <!-- BRACKET LINES at y=148 -->
+  <!-- Group 1 bracket (x=70-234) -->
+  <line x1="70"  y1="148" x2="234" y2="148" stroke="rgba(99,102,241,0.65)" stroke-width="1.5"/>
+  <line x1="70"  y1="140" x2="70"  y2="148" stroke="rgba(99,102,241,0.65)" stroke-width="1.5"/>
+  <line x1="234" y1="140" x2="234" y2="148" stroke="rgba(99,102,241,0.65)" stroke-width="1.5"/>
+  <text x="152" y="166" text-anchor="middle" font-size="11.5" fill="#a5b4fc" font-weight="700">GS1 Prefix</text>
+  <text x="152" y="182" text-anchor="middle" font-size="9.5" fill="rgba(165,180,252,0.6)">3 digits — registration country</text>
+
+  <!-- Group 2 bracket (x=250-526) -->
+  <line x1="250" y1="148" x2="526" y2="148" stroke="rgba(245,158,11,0.65)" stroke-width="1.5"/>
+  <line x1="250" y1="140" x2="250" y2="148" stroke="rgba(245,158,11,0.65)" stroke-width="1.5"/>
+  <line x1="526" y1="140" x2="526" y2="148" stroke="rgba(245,158,11,0.65)" stroke-width="1.5"/>
+  <text x="388" y="166" text-anchor="middle" font-size="11.5" fill="#fcd34d" font-weight="700">Company Prefix</text>
+  <text x="388" y="182" text-anchor="middle" font-size="9.5" fill="rgba(252,211,77,0.6)">5 digits — assigned to your company by GS1</text>
+
+  <!-- Group 3 bracket (x=542-762) -->
+  <line x1="542" y1="148" x2="762" y2="148" stroke="rgba(16,185,129,0.65)" stroke-width="1.5"/>
+  <line x1="542" y1="140" x2="542" y2="148" stroke="rgba(16,185,129,0.65)" stroke-width="1.5"/>
+  <line x1="762" y1="140" x2="762" y2="148" stroke="rgba(16,185,129,0.65)" stroke-width="1.5"/>
+  <text x="652" y="166" text-anchor="middle" font-size="11.5" fill="#6ee7b7" font-weight="700">Item Reference</text>
+  <text x="652" y="182" text-anchor="middle" font-size="9.5" fill="rgba(110,231,183,0.6)">4 digits — your unique product ID</text>
+
+  <!-- Group 4 bracket (x=778-830) -->
+  <line x1="778" y1="148" x2="830" y2="148" stroke="rgba(239,68,68,0.55)" stroke-width="1.5"/>
+  <line x1="778" y1="140" x2="778" y2="148" stroke="rgba(239,68,68,0.55)" stroke-width="1.5"/>
+  <line x1="830" y1="140" x2="830" y2="148" stroke="rgba(239,68,68,0.55)" stroke-width="1.5"/>
+  <text x="804" y="166" text-anchor="middle" font-size="11.5" fill="#fca5a5" font-weight="700">Check</text>
+  <text x="804" y="182" text-anchor="middle" font-size="9.5" fill="rgba(252,165,165,0.6)">Auto-calculated</text>
+
+  <!-- SEPARATOR -->
+  <line x1="40" y1="200" x2="860" y2="200" stroke="rgba(200,205,220,0.08)" stroke-width="1"/>
+
+  <!-- BOTTOM FACT BOXES -->
+  <!-- Fact 1 -->
+  <g transform="translate(44, 212)">
+    <rect width="254" height="114" rx="12" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="127" y="26" text-anchor="middle" font-size="11.5" fill="#a5b4fc" font-weight="700">Prefix ≠ Country of Origin</text>
+    <text x="127" y="46" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">A "50" prefix means the barcode was</text>
+    <text x="127" y="62" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">registered in the UK — not that the</text>
+    <text x="127" y="78" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">product was manufactured there.</text>
+    <text x="127" y="100" text-anchor="middle" font-size="10" fill="rgba(165,180,252,0.55)">The prefix tracks GS1 registration, not factory.</text>
+  </g>
+  <!-- Fact 2 -->
+  <g transform="translate(322, 212)">
+    <rect width="256" height="114" rx="12" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.2)" stroke-width="1"/>
+    <text x="128" y="26" text-anchor="middle" font-size="11.5" fill="#fcd34d" font-weight="700">GS1 Required for Retail Sale</text>
+    <text x="128" y="46" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">Selling in supermarkets, on Amazon,</text>
+    <text x="128" y="62" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">or through major retailers requires</text>
+    <text x="128" y="78" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">a genuine GS1-issued GTIN.</text>
+    <text x="128" y="100" text-anchor="middle" font-size="10" fill="rgba(252,211,77,0.55)">Random numbers fail scanner verification.</text>
+  </g>
+  <!-- Fact 3 -->
+  <g transform="translate(602, 212)">
+    <rect width="254" height="114" rx="12" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+    <text x="127" y="26" text-anchor="middle" font-size="11.5" fill="#6ee7b7" font-weight="700">Check Digit is Automatic</text>
+    <text x="127" y="46" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">Digit 13 is computed from the first 12</text>
+    <text x="127" y="62" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">using a weighted alternating formula.</text>
+    <text x="127" y="78" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">You never type it — the barcode</text>
+    <text x="127" y="94" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">generator computes it automatically.</text>
+    <text x="127" y="110" text-anchor="middle" font-size="10" fill="rgba(110,231,183,0.55)">Wrong check digit = barcode won't scan.</text>
+  </g>
+</svg>

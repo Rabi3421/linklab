@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="bgI" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2129"/>
+      <stop offset="100%" style="stop-color:#252b38"/>
+    </linearGradient>
+    <pattern id="dotI" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="0.7" fill="rgba(200,205,220,0.07)"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="340" rx="20" fill="url(#bgI)"/>
+  <rect width="900" height="340" rx="20" fill="url(#dotI)"/>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.85)" font-weight="700">ITF-14 Barcode — How 14 Digits Map to Your Supply Chain</text>
+  <line x1="50" y1="50" x2="850" y2="50" stroke="rgba(200,205,220,0.10)" stroke-width="1"/>
+
+  <!-- GROUP 1: Packaging Indicator (digit 1), x=44 -->
+  <rect x="44"  y="66" width="54" height="70" rx="8" fill="rgba(99,102,241,0.22)" stroke="rgba(99,102,241,0.50)" stroke-width="1.5"/>
+  <text x="71"  y="110" text-anchor="middle" font-size="28" fill="#a5b4fc" font-weight="700">0</text>
+
+  <!-- GROUP 2: GTIN-13 inner product (digits 2-13), x=108-778 -->
+  <rect x="108" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="135" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">5</text>
+  <rect x="168" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="195" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">0</text>
+  <rect x="228" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="255" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">1</text>
+  <rect x="288" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="315" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">2</text>
+  <rect x="348" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="375" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">3</text>
+  <rect x="408" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="435" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">4</text>
+  <rect x="468" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="495" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">5</text>
+  <rect x="528" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="555" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">6</text>
+  <rect x="588" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="615" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">7</text>
+  <rect x="648" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="675" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">8</text>
+  <rect x="708" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="735" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">9</text>
+  <rect x="768" y="66" width="54" height="70" rx="8" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.45)" stroke-width="1"/>
+  <text x="795" y="110" text-anchor="middle" font-size="28" fill="#fcd34d" font-weight="700">0</text>
+
+  <!-- GROUP 3: Check Digit (digit 14), x=832 -->
+  <rect x="832" y="66" width="24" height="70" rx="6" fill="rgba(239,68,68,0.18)" stroke="rgba(239,68,68,0.45)" stroke-width="1.5"/>
+  <text x="844" y="110" text-anchor="middle" font-size="18" fill="#fca5a5" font-weight="700">5</text>
+
+  <!-- BRACKET LINES at y=148 -->
+  <!-- Group 1 bracket: Packaging Indicator (x=44-98) -->
+  <line x1="44"  y1="148" x2="98"  y2="148" stroke="rgba(99,102,241,0.65)" stroke-width="1.5"/>
+  <line x1="44"  y1="140" x2="44"  y2="148" stroke="rgba(99,102,241,0.65)" stroke-width="1.5"/>
+  <line x1="98"  y1="140" x2="98"  y2="148" stroke="rgba(99,102,241,0.65)" stroke-width="1.5"/>
+  <text x="71"  y="166" text-anchor="middle" font-size="11" fill="#a5b4fc" font-weight="700">Pack. Indicator</text>
+  <text x="71"  y="182" text-anchor="middle" font-size="9" fill="rgba(165,180,252,0.6)">1 digit (0–8)</text>
+
+  <!-- Group 2 bracket: GTIN-13 (x=108-822) -->
+  <line x1="108" y1="148" x2="822" y2="148" stroke="rgba(245,158,11,0.65)" stroke-width="1.5"/>
+  <line x1="108" y1="140" x2="108" y2="148" stroke="rgba(245,158,11,0.65)" stroke-width="1.5"/>
+  <line x1="822" y1="140" x2="822" y2="148" stroke="rgba(245,158,11,0.65)" stroke-width="1.5"/>
+  <text x="465" y="166" text-anchor="middle" font-size="11.5" fill="#fcd34d" font-weight="700">Inner Product GTIN-13</text>
+  <text x="465" y="182" text-anchor="middle" font-size="9.5" fill="rgba(252,211,77,0.6)">12 digits — your EAN-13 without its check digit, padded to 12</text>
+
+  <!-- Group 3 bracket: Check Digit (x=832-856) -->
+  <line x1="832" y1="148" x2="856" y2="148" stroke="rgba(239,68,68,0.55)" stroke-width="1.5"/>
+  <line x1="832" y1="140" x2="832" y2="148" stroke="rgba(239,68,68,0.55)" stroke-width="1.5"/>
+  <line x1="856" y1="140" x2="856" y2="148" stroke="rgba(239,68,68,0.55)" stroke-width="1.5"/>
+  <text x="844" y="166" text-anchor="middle" font-size="10" fill="#fca5a5" font-weight="700">Check</text>
+  <text x="844" y="182" text-anchor="middle" font-size="8.5" fill="rgba(252,165,165,0.6)">Auto</text>
+
+  <!-- SEPARATOR -->
+  <line x1="40" y1="200" x2="860" y2="200" stroke="rgba(200,205,220,0.08)" stroke-width="1"/>
+
+  <!-- BOTTOM FACT BOXES -->
+  <!-- Fact 1 -->
+  <g transform="translate(44, 212)">
+    <rect width="254" height="114" rx="12" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    <text x="127" y="26" text-anchor="middle" font-size="11.5" fill="#a5b4fc" font-weight="700">Packaging Indicator (PI)</text>
+    <text x="127" y="46" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">PI "0" = loose / unpackaged case.</text>
+    <text x="127" y="62" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">PI "1–8" = different pack levels</text>
+    <text x="127" y="78" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">(inner packs, cases, pallets).</text>
+    <text x="127" y="100" text-anchor="middle" font-size="10" fill="rgba(165,180,252,0.55)">Choose PI based on your supply chain hierarchy.</text>
+  </g>
+  <!-- Fact 2 -->
+  <g transform="translate(322, 212)">
+    <rect width="256" height="114" rx="12" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.2)" stroke-width="1"/>
+    <text x="128" y="26" text-anchor="middle" font-size="11.5" fill="#fcd34d" font-weight="700">Bearer Bar Frame</text>
+    <text x="128" y="46" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">ITF-14 is almost always printed</text>
+    <text x="128" y="62" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">with a rectangular border called</text>
+    <text x="128" y="78" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">a bearer bar to prevent misreads</text>
+    <text x="128" y="94" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">on corrugated cardboard surfaces.</text>
+    <text x="128" y="110" text-anchor="middle" font-size="10" fill="rgba(252,211,77,0.55)">Standard for all outer carton printing.</text>
+  </g>
+  <!-- Fact 3 -->
+  <g transform="translate(602, 212)">
+    <rect width="254" height="114" rx="12" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+    <text x="127" y="26" text-anchor="middle" font-size="11.5" fill="#6ee7b7" font-weight="700">Derived from EAN-13 / GTIN</text>
+    <text x="127" y="46" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">You don't invent new numbers.</text>
+    <text x="127" y="62" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">Prepend your PI digit to your</text>
+    <text x="127" y="78" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">product's GTIN-13 (drop its check</text>
+    <text x="127" y="94" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.45)">digit), then recalculate check digit.</text>
+    <text x="127" y="110" text-anchor="middle" font-size="10" fill="rgba(110,231,183,0.55)">LinkLab's generator handles this for you.</text>
+  </g>
+</svg>

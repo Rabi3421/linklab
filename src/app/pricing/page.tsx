@@ -311,7 +311,7 @@ export default function PricingPage() {
                     ],
                     [
                       '🏢  Enterprise on your terms',
-                      'Need enterprise URL shortener pricing, SSO, SLA-backed uptime, white-labelling, or high-volume API throughput? We will tailor it around your workflow.',
+                      'Need enterprise URL shortener pricing, SSO, white-labelling, or high-volume API throughput? We will tailor it around your workflow.',
                       'violet',
                     ],
                   ].map(([label, detail, color]) => (

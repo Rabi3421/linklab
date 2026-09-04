@@ -77,7 +77,7 @@ export default function OpenGraphImage() {
               maxWidth: 850,
             }}
           >
-            URL shortener, branded links, QR codes and analytics
+            Branded links & QR, organized around your clients
           </div>
 
           <div
@@ -89,11 +89,11 @@ export default function OpenGraphImage() {
               fontSize: 24,
             }}
           >
-            <span>Custom links</span>
+            <span>For marketing agencies</span>
             <span style={{ color: 'rgba(245,158,11,0.8)' }}>|</span>
-            <span>Click tracking</span>
+            <span>Dynamic QR</span>
             <span style={{ color: 'rgba(245,158,11,0.8)' }}>|</span>
-            <span>Developer API</span>
+            <span>Client reporting</span>
           </div>
         </div>
       </div>

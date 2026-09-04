@@ -9,52 +9,52 @@ const homepageUrl = new URL('/', appUrl).toString();
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
-  title: 'URL Shortener, Branded Links, QR Codes & Analytics | LinkLab',
+  title: 'Branded Link & QR Platform for Marketing Agencies | LinkLab',
   description:
-    'LinkLab is a free URL shortener for branded links, QR codes, custom domains, and click analytics. Shorten URLs, track every click, and manage campaigns from one platform.',
+    'LinkLab is the branded link and QR platform for small marketing agencies running WhatsApp, Instagram, and offline campaigns for multiple clients. Dynamic QR codes and per-client reporting, priced per agency.',
   keywords: [
+    'link management for agencies',
+    'url shortener for agencies',
+    'branded links for clients',
+    'client link management',
+    'agency link tracking',
+    'multi client link management',
+    'dynamic qr codes',
+    'qr code for packaging',
+    'whatsapp campaign links',
+    'instagram bio link tracking',
+    'offline campaign tracking',
+    'branded short links',
+    'client campaign reporting',
+    'white label link reports',
     'url shortener',
     'link shortener',
-    'branded links',
-    'branded short links',
-    'short url',
-    'custom short links',
     'short link analytics',
-    'link analytics',
     'qr code generator',
-    'custom qr codes',
     'custom domains',
-    'link management',
-    'bulk short urls',
     'url shortener api',
-    'track clicks',
-    'link shortener for free',
+    'bulk short urls',
     'url shortener starting at ₹99',
-    'how to shorten a url',
-    'link analytics dashboard',
-    'url shortener for marketing teams',
-    'url shortener for developers',
     'no expiry link credits',
-    'one time link packs',
-    'link management platform',
-    'enterprise url shortener',
+    'bitly alternative for agencies',
+    'rebrandly alternative',
   ],
   alternates: {
     canonical: homepageUrl,
   },
   openGraph: {
-    title: 'URL Shortener, Branded Links, QR Codes & Analytics | LinkLab',
+    title: 'Branded Link & QR Platform for Marketing Agencies | LinkLab',
     description:
-      'Shorten URLs, create branded links, generate QR codes, track clicks, and manage campaigns with LinkLab.',
+      'Run every client\'s branded links and QR codes without the mix-ups. Built for small marketing agencies on WhatsApp, Instagram, and offline campaigns — priced per agency, not per enterprise seat.',
     url: homepageUrl,
     siteName: 'LinkLab',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'URL Shortener, Branded Links, QR Codes & Analytics | LinkLab',
+    title: 'Branded Link & QR Platform for Marketing Agencies | LinkLab',
     description:
-      'A modern URL shortener for branded links, QR codes, analytics, custom domains, and developer workflows.',
+      'Unlike Bitly, Dub, or Rebrandly, LinkLab is organized around your clients, not your links. Branded links, dynamic QR codes, and per-client reporting for small agencies.',
   },
 };
 
@@ -66,24 +66,26 @@ const homepageSoftwareStructuredData = {
   operatingSystem: 'Web',
   url: homepageUrl,
   description:
-    'LinkLab is a URL shortener and link management platform for branded links, custom domains, QR codes, short link analytics, team collaboration, and API-driven workflows.',
+    'LinkLab is a branded link and QR platform for small marketing agencies managing multiple clients\' WhatsApp, Instagram, and offline campaigns.',
   featureList: [
     'URL shortener – shorten any URL into a clean branded short link',
     'Branded short links with custom aliases and vanity URLs',
     'Custom domain support – use your own domain for short links',
     'QR code generator – auto-generate QR codes for every short link',
     'Short link analytics – track clicks, locations, devices, and referrers',
-    'Link management dashboard – create, edit, disable, and organise links',
+    'Link management dashboard – create, edit, disable, and organise client campaign links',
     'Bulk short URL creation via API',
     'REST API for programmatic link creation and analytics retrieval',
     'Campaign UTM tracking integration',
+    'Dynamic QR codes – repoint a printed code without reprinting it',
+    'WhatsApp, Instagram, and offline campaign link tracking',
     'Link expiry and scheduled deactivation',
     'Team workspace with shared link management',
     'Real-time click data and traffic reports',
     'Geographic click distribution reporting',
     'Device and browser analytics',
     'No-expiry one-time link credit packs',
-    'Enterprise custom pricing and SLA',
+    'Custom pricing for larger client rosters',
   ],
   offers: billingPlans
     .filter((plan) => !plan.isCustomPricing)
@@ -97,7 +99,7 @@ const homepageSoftwareStructuredData = {
     })),
   audience: {
     '@type': 'Audience',
-    audienceType: 'Marketing teams, developers, agencies, content creators, e-commerce brands, and enterprise teams',
+    audienceType: 'Small marketing agencies managing branded links, QR codes, and campaign reporting for multiple clients',
   },
 };
 
@@ -126,7 +128,7 @@ const organizationStructuredData = {
     height: 512,
   },
   description:
-    'LinkLab is a URL shortener and link management platform for branded links, custom domains, QR codes, analytics, and developer workflows.',
+    'LinkLab is a branded link and QR platform built for small marketing agencies managing campaigns for multiple clients.',
 };
 
 const websiteStructuredData = {
@@ -135,7 +137,7 @@ const websiteStructuredData = {
   name: 'LinkLab',
   url: homepageUrl,
   description:
-    'Shorten URLs, create branded links, generate QR codes, and track clicks with LinkLab.',
+    'Create branded links and dynamic QR codes for every client campaign, and track the clicks that go into your client reports.',
   publisher: {
     '@type': 'Organization',
     name: 'LinkLab',
@@ -153,34 +155,34 @@ const websiteStructuredData = {
 const howToStructuredData = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
-  name: 'How to shorten a URL with LinkLab',
+  name: 'How to run a client campaign link with LinkLab',
   description:
-    'Create a branded short link, generate a QR code, and track click analytics in under 60 seconds using the LinkLab URL shortener.',
+    'Create a branded short link for a client campaign, generate its QR code, and track the clicks you report back — the first link takes under 60 seconds.',
   totalTime: 'PT1M',
   step: [
     {
       '@type': 'HowToStep',
       position: 1,
-      name: 'Paste your long URL',
-      text: 'Copy any long URL and paste it into the LinkLab URL shortener input field.',
+      name: 'Paste the client\'s destination',
+      text: 'Copy the campaign destination — a client landing page, product listing, booking form, or catalogue — and paste it into LinkLab.',
     },
     {
       '@type': 'HowToStep',
       position: 2,
-      name: 'Customise your short link',
-      text: 'Set a custom alias for a branded short link, add UTM parameters, or choose a link expiry date.',
+      name: 'Name it for the client',
+      text: 'Set a client-prefixed custom alias, add an expiry date for a seasonal offer, or attach UTM parameters for the client\'s own analytics.',
     },
     {
       '@type': 'HowToStep',
       position: 3,
-      name: 'Share on any channel',
-      text: 'Share your branded short link via social media, email, SMS, or embed it as a QR code for print campaigns.',
+      name: 'Ship it to the campaign',
+      text: 'Share the link in a WhatsApp broadcast, an Instagram bio or story, an email or SMS blast, or print its QR code onto packaging and signage.',
     },
     {
       '@type': 'HowToStep',
       position: 4,
-      name: 'Track every click in real time',
-      text: 'View click counts, geographic locations, devices, browsers, and referral sources from your short link analytics dashboard.',
+      name: 'Report back to the client',
+      text: 'Pull clicks, QR scans, locations, devices, browsers, and referral sources for that campaign from the link analytics view.',
     },
   ],
 };

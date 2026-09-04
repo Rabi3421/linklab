@@ -6,9 +6,9 @@ const steps = [
     icon: 'ClipboardDocumentIcon',
     color: '#f59e0b',
     gradient: 'linear-gradient(135deg, #f59e0b, #d97706)',
-    title: 'Paste your long URL',
+    title: 'Paste the client’s destination',
     description:
-      'Copy any long URL — a landing page, product link, blog post, file share, or campaign destination — and paste it into the LinkLab URL shortener.',
+      'Take whatever the campaign points at — a client’s landing page, product listing, booking form, catalogue, or WhatsApp catalogue link — and paste it into LinkLab.',
     detail: 'Works with any URL from any website or platform.',
   },
   {
@@ -16,19 +16,19 @@ const steps = [
     icon: 'PencilSquareIcon',
     color: '#0ea5e9',
     gradient: 'linear-gradient(135deg, #0ea5e9, #2563eb)',
-    title: 'Customise your short link',
+    title: 'Name it for the client',
     description:
-      'Set a custom alias to create a branded short link, choose an expiry date, add UTM parameters for campaign tracking, or let LinkLab generate a short code automatically.',
-    detail: 'Example: linklab.in/summer-sale or linklab.in/launch-2026',
+      'Set a custom alias that says whose campaign this is, add an expiry date for a seasonal offer, or attach UTM parameters so the click lands in the client’s own analytics too.',
+    detail: 'Example: linklab.in/acme-diwali or linklab.in/nova-launch',
   },
   {
     number: '03',
     icon: 'ShareIcon',
     color: '#10b981',
     gradient: 'linear-gradient(135deg, #10b981, #059669)',
-    title: 'Share on any channel',
+    title: 'Ship it to the campaign',
     description:
-      'Share your branded short link in social media posts, email campaigns, SMS messages, paid ads, printed materials, or embed it as a QR code for offline campaigns.',
+      'Drop the link into a WhatsApp broadcast, an Instagram bio or story, an email or SMS blast, or print its QR code onto the client’s packaging, menu, or signage.',
     detail: 'One link works everywhere — online and offline.',
   },
   {
@@ -36,10 +36,10 @@ const steps = [
     icon: 'ChartBarIcon',
     color: '#a78bfa',
     gradient: 'linear-gradient(135deg, #a78bfa, #7c3aed)',
-    title: 'Track every click in real time',
+    title: 'Report back to the client',
     description:
-      'Monitor click counts, geographic locations, devices, browsers, referral sources, and time-based traffic patterns from your link analytics dashboard. No extra tools needed.',
-    detail: 'Real-time short link analytics for every link you create.',
+      'Pull clicks, QR scans, locations, devices, browsers, and referral sources for that campaign — the figures that answer “did it work?” without a spreadsheet rebuild.',
+    detail: 'Per-link analytics on every link you create for every client.',
   },
 ];
 
@@ -86,10 +86,11 @@ const HowItWorksSection = () => {
             How it works
           </p>
           <h2 className="font-heading font-bold text-4xl lg:text-5xl text-white leading-tight mb-4">
-            Shorten, share, and track in 4 simple steps
+            From client brief to client report in 4 steps
           </h2>
           <p className="font-body text-lg text-white/45">
-            From pasting a URL to reading real-time click analytics — the full workflow takes under a minute.
+            The same loop for every campaign you run, for every client on your roster — and the first
+            link takes under a minute.
           </p>
         </div>
 

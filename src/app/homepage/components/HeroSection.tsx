@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Icon from '@/components/ui/AppIcon';
+import { USP_LINE } from '@/lib/marketing/positioning';
 
 interface HeroSectionProps {
   onShortenUrl: (url: string) => Promise<void>;
 }
 
 const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
-  // TODO: copy is repetitive with FeaturesSection and UseCasesSection — needs human rewrite.
   const [isHydrated, setIsHydrated] = useState(false);
   const [url, setUrl] = useState('');
   const [error, setError] = useState('');
@@ -64,10 +64,13 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
     if (error) setError('');
   };
 
-  const recentLinks = [
-    { original: 'figma.com/design/xK9mP2...', short: 'lnk.lab/figma-q4', clicks: 2841, trend: '+18%' },
-    { original: 'notion.so/workspace/product...', short: 'lnk.lab/notion-prd', clicks: 1204, trend: '+7%' },
-    { original: 'docs.google.com/spreadsheets...', short: 'lnk.lab/q4-metrics', clicks: 5670, trend: '+34%' },
+  // Illustrative sample data for the dashboard preview below. These are not LinkLab
+  // usage figures and are not tied to any customer or campaign. Replace only with a
+  // screenshot/recording of the real dashboard, never with invented account numbers.
+  const sampleLinks = [
+    { original: 'your-site.com/spring-campaign', short: 'linklab.in/spring', clicks: 1240, trend: '+8%' },
+    { original: 'your-site.com/product-launch', short: 'linklab.in/launch', clicks: 860, trend: '+5%' },
+    { original: 'your-site.com/newsletter', short: 'linklab.in/news', clicks: 415, trend: '+3%' },
   ];
 
   return (
@@ -193,7 +196,7 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
             <div className="anim-1 inline-flex items-center gap-2.5 self-start px-3.5 py-1.5 rounded-full label-chip mb-7">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 glow-pulse" />
               <span className="text-amber-300/80 text-xs font-medium tracking-wide uppercase" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                URL shortener, branded links & analytics
+                Branded links & QR for marketing agencies
               </span>
             </div>
 
@@ -206,7 +209,7 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
                 color: '#f5f5f0',
               }}
             >
-              URL shortener for{' '}
+              Run every client's links{' '}
               <span
                 style={{
                   background: 'linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #ef4444 100%)',
@@ -215,11 +218,11 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
                   backgroundClip: 'text',
                 }}
               >
-                branded links.
+                without the mix-ups.
               </span>
               <br />
-              Track every click with{' '}
-              <span style={{ color: 'rgba(245,245,240,0.45)' }}>clarity.</span>
+              Branded links & QR,{' '}
+              <span style={{ color: 'rgba(245,245,240,0.45)' }}>client by client.</span>
             </h1>
 
             {/* Sub-copy */}
@@ -231,9 +234,23 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
                 color: 'rgba(245,245,240,0.45)',
               }}
             >
-              Shorten URLs, create branded short links, generate QR-code-ready links, and use
-              short link analytics to track clicks, devices, locations, and campaign performance
-              from one link management dashboard.
+              LinkLab is the branded link and QR platform for small marketing agencies
+              running WhatsApp, Instagram, and offline campaigns for a roster of clients —
+              dynamic QR codes you can repoint after printing, and per-client reporting,
+              priced per agency instead of per enterprise seat.
+            </p>
+
+            {/* USP — the one line that separates us from the incumbents. */}
+            <p
+              className="anim-3 mb-9 max-w-[520px] border-l-2 pl-4 leading-relaxed"
+              style={{
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: '0.95rem',
+                color: 'rgba(245,245,240,0.62)',
+                borderColor: 'rgba(245,158,11,0.5)',
+              }}
+            >
+              {USP_LINE}
             </p>
 
             {/* URL Input */}
@@ -281,43 +298,23 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
               className="anim-4 mb-12 pl-2"
               style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', color: 'rgba(245,245,240,0.28)' }}
             >
-              Free URL shortener · No credit card · SSL on every link
+              Free to start · No credit card · SSL on every link
             </p>
 
-            {/* TODO: replace with real metrics once available. */}
-            <div className="anim-5 flex flex-wrap items-center gap-x-0 gap-y-4">
-              {[
-                { value: 'India-first', label: 'INR pricing' },
-                { value: 'SSL', label: 'Every link' },
-                { value: 'Free', label: 'No card required' },
-              ].map((s, i) => (
-                <div
-                  key={i}
-                  className={`flex flex-col px-6 first:pl-0 ${i > 0 ? 'stat-divider' : ''}`}
-                >
-                  <span
-                    className="font-bold leading-none mb-1"
-                    style={{
-                      fontFamily: 'DM Sans, sans-serif',
-                      fontSize: '1.15rem',
-                      color: '#f5f5f0',
-                    }}
-                  >
-                    {s.value}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: 'DM Sans, sans-serif',
-                      fontSize: '0.72rem',
-                      color: 'rgba(245,245,240,0.35)',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em',
-                    }}
-                  >
-                    {s.label}
-                  </span>
-                </div>
-              ))}
+            {/* One concrete, verifiable claim instead of a stat row. Anyone can time this:
+                paste a URL, hit Shorten, and the link exists — no signup wall in the way. */}
+            <div className="anim-5 flex items-start gap-3 max-w-[520px]">
+              <Icon name="ClockIcon" size={18} variant="solid" className="mt-0.5 flex-shrink-0 text-emerald-400/80" />
+              <p
+                style={{
+                  fontFamily: 'DM Sans, sans-serif',
+                  fontSize: '0.95rem',
+                  color: 'rgba(245,245,240,0.6)',
+                  lineHeight: 1.5,
+                }}
+              >
+                Create your first branded link in under 60 seconds — no credit card required.
+              </p>
             </div>
           </div>
 
@@ -327,26 +324,35 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
               {/* Panel header */}
               <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: '1px solid rgba(200,205,220,0.12)' }}>
                 <div className="flex items-center gap-2.5">
-                  <div className="w-2 h-2 rounded-full bg-amber-400 glow-pulse" />
+                  <div className="w-2 h-2 rounded-full" style={{ background: 'rgba(200,205,220,0.3)' }} />
                   <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', color: 'rgba(245,245,240,0.5)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                    Live Dashboard
+                    Dashboard preview
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(200,205,220,0.25)' }} />
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(200,205,220,0.25)' }} />
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'rgba(200,205,220,0.25)' }} />
-                </div>
+                <span
+                  className="px-2.5 py-1 rounded-md"
+                  style={{
+                    fontFamily: 'DM Sans, sans-serif',
+                    fontSize: '0.65rem',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(245,245,240,0.45)',
+                    background: 'rgba(255,255,255,0.06)',
+                    border: '1px solid rgba(200,205,220,0.18)',
+                  }}
+                >
+                  Sample data
+                </span>
               </div>
 
               {/* Mini sparkline chart */}
               <div className="px-5 pt-5 pb-4">
                 <div className="flex items-end justify-between mb-1">
                   <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', color: 'rgba(245,245,240,0.35)', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Clicks this week</span>
-                  <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', color: '#4ade80' }}>↑ 24% vs last week</span>
+                  <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', color: 'rgba(245,245,240,0.3)' }}>Example view</span>
                 </div>
                 <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.8rem', fontWeight: 700, color: '#f5f5f0', lineHeight: 1.1 }} className="mb-3">
-                  48,291
+                  2,515
                 </div>
                 {/* SVG sparkline */}
                 <svg viewBox="0 0 320 60" className="w-full" style={{ height: 56 }}>
@@ -371,7 +377,7 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
                   <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', color: 'rgba(245,245,240,0.3)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Recent Links</span>
                   <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', color: 'rgba(245,245,240,0.3)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Clicks</span>
                 </div>
-                {recentLinks.map((link, i) => (
+                {sampleLinks.map((link, i) => (
                   <div key={i} className="link-row flex items-center justify-between py-3 gap-3">
                     <div className="flex-1 min-w-0">
                       <div
@@ -406,9 +412,9 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
                 </div>
                 <div className="flex flex-col gap-2">
                   {[
-                    { region: 'United States', pct: 42, color: '#f59e0b' },
-                    { region: 'United Kingdom', pct: 18, color: '#ef4444' },
-                    { region: 'Germany', pct: 11, color: '#a78bfa' },
+                    { region: 'Region 1', pct: 42, color: '#f59e0b' },
+                    { region: 'Region 2', pct: 18, color: '#ef4444' },
+                    { region: 'Region 3', pct: 11, color: '#a78bfa' },
                   ].map((r, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem', color: 'rgba(245,245,240,0.45)', width: 110, flexShrink: 0 }}>{r.region}</span>
@@ -425,17 +431,11 @@ const HeroSection = ({ onShortenUrl }: HeroSectionProps) => {
               </div>
             </div>
 
-            {/* Floating badge below card */}
-            <div className="flex items-center justify-center mt-4 gap-2">
-              <div
-                className="flex items-center gap-2 px-4 py-2 rounded-full"
-                style={{ background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.15)' }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 glow-pulse" />
-                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem', color: 'rgba(74,222,128,0.7)' }}>
-                  All systems operational
-                </span>
-              </div>
+            {/* Caption: keeps the mockup honest — it is an illustration, not live data. */}
+            <div className="flex items-center justify-center mt-4">
+              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem', color: 'rgba(245,245,240,0.3)' }}>
+                Illustrative preview of the LinkLab analytics dashboard
+              </span>
             </div>
           </div>
 

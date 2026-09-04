@@ -8,59 +8,54 @@ interface FAQ {
 
 export const homepageFaqs: FAQ[] = [
   {
-    question: 'How does LinkLab URL shortener work?',
+    question: 'Can I organize my links by client?',
     answer:
-      'LinkLab converts long URLs into short, shareable links using unique short codes. You can create custom aliases, branded short links, and QR-code-ready URLs, then track clicks, locations, devices, and referral sources from one dashboard.',
+      'Today you organize by naming convention: give every link a client-prefixed custom alias such as linklab.in/acme-diwali or linklab.in/nova-launch, so each client\'s links read clearly in your dashboard and in the link itself. Grouped client workspaces — a folder per client with roll-up totals across their campaigns — are in development and not available yet. Every link already carries its own analytics, so per-campaign numbers are available now.',
   },
   {
-    question: 'Is LinkLab free to use?',
+    question: 'Can I white-label reports for my clients?',
     answer:
-      'Yes. LinkLab includes a free tier with 10 new shortened links every month, basic analytics, and custom aliases. If you need higher monthly limits, branded domains, richer workspace controls, or API workflows, monthly plans start at ₹99 per month, and no-expiry link credit packs are also available.',
+      'Not yet. White-label client reports carrying your agency\'s branding are on the build list, and we would rather say so than imply they exist. What works today: every link has a full analytics view with clicks, QR scans, locations, devices, browsers, referrers, and time patterns, which you can pull the figures from when you assemble a client update. Custom domains on Launch plans and above also let the links themselves carry a branded domain rather than a generic one.',
   },
   {
-    question: 'What is the cheapest paid plan for a URL shortener?',
+    question: 'What happens to a client\'s links if they leave?',
     answer:
-      'The LinkLab Starter plan costs ₹99 per month for 100 shortened links, 5,000 tracked clicks, a shared short domain, 60-day analytics, and basic QR exports. There is also a free plan with 10 links per month.',
+      'The links keep working and stay in your account, because they belong to your LinkLab account rather than to the client. Nothing breaks or expires when an engagement ends. If a departing client should no longer receive traffic, you can disable or delete those links, or repoint them somewhere else — the short code stays the same, so a QR code already printed on their packaging can be redirected rather than stranded. If you are handing the work to another agency, share the destination URLs and let them recreate the links on their own account.',
   },
   {
-    question: 'Can I track clicks on my shortened links?',
+    question: 'Can each client have their own domain?',
     answer:
-      'Absolutely. Every shortened link comes with link analytics including total clicks, geographic location, device types, referral sources, and time-based patterns. You can use this short link analytics data to measure campaign performance and optimize traffic sources.',
+      'Not per client yet. Custom domains are a plan entitlement — one on Launch, three on Growth, ten on Scale — and per-client domain routing, where each client\'s links resolve on their own branded domain, is on the roadmap rather than live. Right now the practical approach is one branded domain for your agency, with client-prefixed aliases distinguishing the campaigns underneath it.',
   },
   {
-    question: 'Does LinkLab support QR code generation?',
+    question: 'Do you charge per seat like the enterprise tools?',
     answer:
-      'Yes. Every short link you create on LinkLab automatically generates a matching QR code. You can download and use the QR code on printed materials, product packaging, event signage, and offline campaigns. QR scan data is tracked the same way as regular link clicks.',
+      'No. Plans are priced for the agency, not per user added. Each tier includes a set number of users — one on Free and Starter, two on Launch, five on Growth, ten on Scale — alongside the link volume, so growing your roster does not mean paying an enterprise seat price for every person who needs access. Paid plans start at ₹99 per month, and no-expiry link credit packs cover occasional or seasonal campaign work without a subscription.',
   },
   {
-    question: 'Can I use LinkLab\'s URL shortener API to create links programmatically?',
+    question: 'Can I repoint a QR code after it has been printed?',
     answer:
-      'Yes. LinkLab provides a REST API for creating short links, retrieving click analytics, and managing links programmatically. This is useful for developers who need to automate link generation in their applications, e-commerce platforms, CRM systems, or marketing automation tools. API access is available on paid plans.',
+      'Yes, and this is the single most useful thing for offline client work. The QR code encodes the short link rather than the final destination, so you can change where that link goes at any time and every code already printed on a client\'s packaging, poster, menu, or standee follows the change. A Diwali offer becomes a New Year offer without a reprint, and the scan data keeps accumulating on the same link.',
   },
   {
-    question: 'Are shortened links permanent?',
+    question: 'Does LinkLab work for WhatsApp and Instagram campaigns?',
     answer:
-      'Yes. Shortened links are permanent by default and continue working unless you delete them, disable them, or set an expiration rule. That makes LinkLab suitable for long-term campaigns, printed QR codes, and evergreen branded links.',
+      'Those are the channels it is built around. A short branded link in a WhatsApp broadcast reads as legitimate rather than as spam, and an Instagram bio or story link can be repointed when the campaign changes without editing every post. Clicks from both are tracked the same way as any other link, so you can see how a client\'s WhatsApp list performed against their Instagram audience.',
   },
   {
-    question: 'Can I use custom domains with LinkLab?',
+    question: 'How much does LinkLab cost and is there a free plan?',
     answer:
-      'Yes. Custom domain support is available on Launch plans and above, with higher tiers unlocking more branded domains and advanced controls. This lets you create branded short links such as go.yourbrand.com instead of using the default short-link domain.',
+      'There is a free plan with 10 new links per month, basic analytics, and custom aliases — enough to run a first client campaign end to end. Paid plans start at ₹99 per month for 100 links, 5,000 tracked clicks, and 60-day analytics, and scale up through Launch, Growth, Scale, and Pro as your roster grows. One-time link credit packs start at ₹129 for 100 credits and never expire.',
   },
   {
-    question: 'What are one-time link credit packs?',
+    question: 'Can I create links in bulk or through an API?',
     answer:
-      'Link credit packs are a non-subscription option for teams with occasional or seasonal link needs. You buy a fixed number of link credits once — such as 100, 500, 2,000, or 10,000 — and they never expire. Use them whenever you need without a monthly commitment. Packs start at ₹129 for 100 credits.',
+      'Yes. LinkLab provides a REST API for creating short links, retrieving analytics, and managing links programmatically, which is how agencies generate campaign links in batches rather than one at a time. API access is included from the Growth plan upward, with full documentation in the developer docs.',
   },
   {
-    question: 'Can I create bulk short links with LinkLab?',
+    question: 'Are the links permanent, and are they secure?',
     answer:
-      'Yes. LinkLab supports bulk link creation through the REST API and higher-tier plans. You can generate hundreds or thousands of short links programmatically in a single workflow, making it ideal for agencies, e-commerce platforms, and marketing automation pipelines.',
-  },
-  {
-    question: 'How secure are LinkLab shortened links?',
-    answer:
-      'Security is a priority. LinkLab uses SSL-protected redirects, spam protection, malware checks, and reliable global infrastructure. Advanced plans can support stronger controls for teams that need enterprise-grade link management.',
+      'Links are permanent by default and keep resolving unless you delete them, disable them, or set an expiry rule — which matters when a client\'s QR code is printed on something with a long shelf life. Every redirect is served over SSL, with spam and malware checks on destinations.',
   },
 ];
 
@@ -73,10 +68,11 @@ const FAQSection = () => {
             FAQ
           </p>
           <h2 className="font-heading font-bold text-4xl lg:text-5xl text-white leading-tight mb-4">
-            Common URL shortener questions
+            Questions agencies ask us
           </h2>
           <p className="font-body text-lg text-white/45">
-            Everything you need to know about branded links, analytics, QR-code-ready short URLs, and LinkLab
+            How client organization, reporting, domains, and pricing actually work — including what is
+            not built yet.
           </p>
         </div>
 

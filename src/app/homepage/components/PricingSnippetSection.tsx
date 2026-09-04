@@ -12,6 +12,8 @@ const planColors: Partial<Record<SubscriptionPlanId, string>> = {
 
 const plans = homepagePlanIds.map((planId) => billingPlans.find((plan) => plan.id === planId)!);
 
+// NOTE: tiers and pricing copy still come from src/lib/billing/plans.ts (and must stay in sync
+// with Razorpay). The agency-oriented tiers are Phase 3 — only the framing is updated here.
 const PricingSnippetSection = () => {
   return (
     <section
@@ -71,7 +73,7 @@ const PricingSnippetSection = () => {
             Pricing
           </p>
           <h2 className="font-heading font-bold text-4xl lg:text-5xl text-white leading-tight mb-4">
-            URL shortener plans starting at{' '}
+            Priced per agency, starting at{' '}
             <span
               style={{
                 background: 'linear-gradient(135deg, #fbbf24 0%, #ef4444 100%)',
@@ -84,7 +86,8 @@ const PricingSnippetSection = () => {
             </span>
           </h2>
           <p className="font-body text-lg text-white/45 mb-3">
-            Start free, scale on your terms. No long contracts, no setup fees. Pay only for the volume of short links and features you actually need.
+            Start free and grow with your roster. No long contracts, no setup fees, and no per-seat
+            enterprise tax — you pay for the volume of links your clients actually need.
           </p>
         </div>
 
@@ -98,7 +101,7 @@ const PricingSnippetSection = () => {
               'Free tier forever',
               'Paid plans from ₹99/month',
               'No-expiry link credit packs available',
-              'Enterprise custom pricing',
+              'Custom pricing for larger rosters',
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2">
                 <Icon name="CheckCircleIcon" size={14} variant="solid" className="text-emerald-400" />

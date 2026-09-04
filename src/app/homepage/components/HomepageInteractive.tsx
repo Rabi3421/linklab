@@ -3,12 +3,13 @@
 import { useState, useEffect } from 'react';
 import HeroSection from './HeroSection';
 import ShortenedResult from './ShortenedResult';
-import FeaturesSection from './FeaturesSection';
-import HowItWorksSection from './HowItWorksSection';
-import UseCasesSection from './UseCasesSection';
-import PricingSnippetSection from './PricingSnippetSection';
+import ProblemFramingSection from './ProblemFramingSection';
 import HomepageComparisonSection from './HomepageComparisonSection';
-import SocialProofSection from './SocialProofSection';
+import HowItWorksSection from './HowItWorksSection';
+import ClientWorkspacesSection from './ClientWorkspacesSection';
+import QrOfflineSection from './QrOfflineSection';
+import ClientReportingSection from './ClientReportingSection';
+import PricingSnippetSection from './PricingSnippetSection';
 import FAQSection from './FAQSection';
 import CTASection from './CTASection';
 import Footer from './Footer';
@@ -74,13 +75,23 @@ const HomepageInteractive = () => {
             />
           </div>
         )}
+        {/* Section order follows the agency positioning: name the pain, prove we are
+            different from the incumbents, show the loop, then the three capability
+            blocks, price, and answer objections.
+
+            FeaturesSection, UseCasesSection and SocialProofSection are intentionally
+            out of the flow — ClientWorkspacesSection, QrOfflineSection and
+            ClientReportingSection replace their generic, all-audiences copy. The files
+            are still on disk if any of that content needs to come back. */}
         <HeroSection onShortenUrl={handleShortenUrl} />
-        <FeaturesSection />
-        <HowItWorksSection />
-        <UseCasesSection />
-        <PricingSnippetSection />
+        <ProblemFramingSection />
         <HomepageComparisonSection />
-        <SocialProofSection />
+        <HowItWorksSection />
+        <ClientWorkspacesSection />
+        <QrOfflineSection />
+        <ClientReportingSection />
+        <PricingSnippetSection />
+        {/* Testimonials section removed — re-add only with real customer quotes and verified results. */}
         <FAQSection />
         <CTASection />
         <Footer />

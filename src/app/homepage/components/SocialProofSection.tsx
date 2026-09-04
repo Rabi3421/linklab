@@ -23,6 +23,8 @@ const trustBadges = [
   },
 ] as const;
 
+// Testimonials section removed — re-add only with real customer quotes and verified results.
+
 export default function SocialProofSection() {
   return (
     <section className="relative overflow-hidden border-y border-white/10 bg-[#1e2129] py-16">

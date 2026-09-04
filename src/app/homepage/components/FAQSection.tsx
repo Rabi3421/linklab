@@ -15,12 +15,12 @@ export const homepageFaqs: FAQ[] = [
   {
     question: 'Is LinkLab free to use?',
     answer:
-      'Yes. LinkLab includes a free tier with 10 new shortened links every month, basic analytics, and custom aliases. If you need higher monthly limits, branded domains, richer workspace controls, or API workflows, monthly plans start at $1 per month, and no-expiry link credit packs are also available.',
+      'Yes. LinkLab includes a free tier with 10 new shortened links every month, basic analytics, and custom aliases. If you need higher monthly limits, branded domains, richer workspace controls, or API workflows, monthly plans start at ₹99 per month, and no-expiry link credit packs are also available.',
   },
   {
     question: 'What is the cheapest paid plan for a URL shortener?',
     answer:
-      'LinkLab offers one of the lowest-cost URL shortener plans available. The Starter plan starts at just $1 per month for 100 shortened links, full click analytics, branded short links, custom aliases, and API access. There is also a free plan with 10 links per month for getting started at no cost.',
+      'The LinkLab Starter plan costs ₹99 per month for 100 shortened links, 5,000 tracked clicks, a shared short domain, 60-day analytics, and basic QR exports. There is also a free plan with 10 links per month.',
   },
   {
     question: 'Can I track clicks on my shortened links?',
@@ -50,7 +50,7 @@ export const homepageFaqs: FAQ[] = [
   {
     question: 'What are one-time link credit packs?',
     answer:
-      'Link credit packs are a non-subscription option for teams with occasional or seasonal link needs. You buy a fixed number of link credits once — such as 100, 500, 2,000, or 10,000 — and they never expire. Use them whenever you need without a monthly commitment. Packs start at $1.50 for 100 credits.',
+      'Link credit packs are a non-subscription option for teams with occasional or seasonal link needs. You buy a fixed number of link credits once — such as 100, 500, 2,000, or 10,000 — and they never expire. Use them whenever you need without a monthly commitment. Packs start at ₹129 for 100 credits.',
   },
   {
     question: 'Can I create bulk short links with LinkLab?',

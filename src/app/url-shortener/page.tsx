@@ -99,8 +99,8 @@ const structuredData = {
       offers: {
         '@type': 'Offer',
         price: '0',
-        priceCurrency: 'USD',
-        description: 'Free plan available. Paid plans from $1/month.',
+        priceCurrency: 'INR',
+        description: 'Free plan available. Paid plans from ₹99/month.',
       },
       description:
         'Free URL shortener with click analytics, custom domains, branded links, QR code generation, and UTM tracking. Shorten links and track every click from one platform.',
@@ -293,7 +293,7 @@ export default function UrlShortenerPage() {
             <div className="mt-16 flex flex-wrap gap-8">
               {[
                 { value: 'Free', label: 'plan to start' },
-                { value: '$1/mo', label: 'starter paid plan' },
+                { value: '₹99/mo', label: 'starter paid plan' },
                 { value: '8+', label: 'analytics dimensions' },
                 { value: 'REST', label: 'API for developers' },
               ].map((stat) => (

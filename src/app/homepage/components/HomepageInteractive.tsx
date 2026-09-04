@@ -7,6 +7,7 @@ import FeaturesSection from './FeaturesSection';
 import HowItWorksSection from './HowItWorksSection';
 import UseCasesSection from './UseCasesSection';
 import PricingSnippetSection from './PricingSnippetSection';
+import HomepageComparisonSection from './HomepageComparisonSection';
 import SocialProofSection from './SocialProofSection';
 import FAQSection from './FAQSection';
 import CTASection from './CTASection';
@@ -78,6 +79,7 @@ const HomepageInteractive = () => {
         <HowItWorksSection />
         <UseCasesSection />
         <PricingSnippetSection />
+        <HomepageComparisonSection />
         <SocialProofSection />
         <FAQSection />
         <CTASection />

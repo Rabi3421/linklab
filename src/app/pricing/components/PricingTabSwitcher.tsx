@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Icon from '@/components/ui/AppIcon';
-import { billingPlans, linkPacks } from '@/lib/billing/plans';
+import { billingPlans, creditPacks } from '@/lib/billing/plans';
 import PricingPlanActionButton from './PricingPlanActionButton';
 import PricingPackButton from './PricingPackButton';
 
@@ -173,7 +173,7 @@ export default function PricingTabSwitcher() {
 
               <div className="mb-6">
                 <div className="flex items-end gap-2 mb-1">
-                  <span className="font-heading text-5xl font-bold leading-none">{plan.usd}</span>
+                  <span className="font-heading text-5xl font-bold leading-none">{plan.price}</span>
                   {!plan.isCustomPricing && (
                     <span className="font-body text-base text-white/45 mb-1">{plan.cadence}</span>
                   )}
@@ -245,7 +245,7 @@ export default function PricingTabSwitcher() {
 
           {/* Pack cards */}
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {linkPacks.map((pack) => (
+            {creditPacks.map((pack) => (
               <div
                 key={pack.id}
                 className="rounded-[28px] p-6 lg:p-7 h-full flex flex-col"

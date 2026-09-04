@@ -24,7 +24,8 @@ export interface BillingPlanDefinition {
   id: SubscriptionPlanId;
   name: string;
   badge: string;
-  usd: string; // kept for compatibility — value is now in INR (e.g. "₹0", "₹99")
+  price: string;
+  priceInPaise: number | null;
   cadence: string;
   isCustomPricing?: boolean;
   seats: string;
@@ -50,12 +51,14 @@ export interface SubscriptionActivationResult {
   message: string;
 }
 
-export interface LinkPackDefinition {
+export interface CreditPackDefinition {
   id: string;
   name: string;
   badge: string;
   price: string;
+  priceInPaise: number;
   links: string;
+  expiry: 'Never';
   cta: string;
   description: string;
   perks: string[];

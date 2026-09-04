@@ -1,27 +1,9 @@
 import { NextResponse } from 'next/server';
 import Razorpay from 'razorpay';
 import { getServerAuthenticatedUser } from '@/lib/auth/server';
-import { billingPlans, linkPacks } from '@/lib/billing/plans';
+import { billingPlans, creditPacks } from '@/lib/billing/plans';
 
 export const runtime = 'nodejs';
-
-// ── Pack prices in INR paise (one-time orders) ───────────────────────────
-// Razorpay only supports INR for Indian accounts
-const PACK_PRICE_PAISE: Record<string, number> = {
-  'pack-100':   12900,   // ₹129
-  'pack-500':   49900,   // ₹499
-  'pack-2000':  149900,  // ₹1,499
-  'pack-10000': 499900,  // ₹4,999
-};
-
-// ── Plan prices in INR paise for Razorpay Plan creation ──────────────────
-const PLAN_PRICE_PAISE: Record<string, number> = {
-  starter: 9900,    // ₹99/month
-  launch:  39900,   // ₹399/month
-  growth:  79900,   // ₹799/month
-  scale:   239900,  // ₹2,399/month
-  pro:     649900,  // ₹6,499/month
-};
 
 const CURRENCY = 'INR';
 
@@ -92,7 +74,7 @@ export async function POST(request: Request) {
       if (plan.id === 'free') return NextResponse.json({ message: 'Free plan does not require payment.' }, { status: 400 });
       if (plan.isCustomPricing) return NextResponse.json({ message: 'Enterprise pricing requires a custom quote.' }, { status: 400 });
 
-      const amountCents = PLAN_PRICE_PAISE[planId];
+      const amountCents = plan.priceInPaise;
       if (!amountCents) return NextResponse.json({ message: 'Unable to determine price for this plan.' }, { status: 400 });
 
       // Step 1: Get or create a Razorpay Plan
@@ -124,10 +106,10 @@ export async function POST(request: Request) {
 
     // ── Link credit pack → one-time Razorpay order ────────────────────────
     if (packId) {
-      const pack = linkPacks.find((p) => p.id === packId);
+      const pack = creditPacks.find((p) => p.id === packId);
       if (!pack) return NextResponse.json({ message: 'Unknown link pack.' }, { status: 400 });
 
-      const amountCents = PACK_PRICE_PAISE[packId];
+      const amountCents = pack.priceInPaise;
       if (!amountCents) return NextResponse.json({ message: 'Unable to determine price for this pack.' }, { status: 400 });
 
       const order = await razorpay.orders.create({

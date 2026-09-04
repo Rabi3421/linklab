@@ -71,6 +71,7 @@ const useCases = [
 ];
 
 const UseCasesSection = () => {
+  // TODO: copy is repetitive with HeroSection and FeaturesSection — needs human rewrite.
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden" style={{ background: '#181b22' }}>
       <style jsx>{`

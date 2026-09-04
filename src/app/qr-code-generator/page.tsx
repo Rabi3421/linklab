@@ -3,10 +3,45 @@ import AuthenticationAwareHeader from '@/components/common/AuthenticationAwareHe
 import CTASection from '@/app/homepage/components/CTASection';
 import Footer from '@/app/homepage/components/Footer';
 import Icon from '@/components/ui/AppIcon';
+import { billingPlanMap, creditPacks } from '@/lib/billing/plans';
+import type { SubscriptionPlanId } from '@/lib/billing/types';
 import QrToolsWorkspace from './components/QrToolsWorkspace';
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.linklab.in';
 const pageUrl = new URL('/qr-code-generator', appUrl).toString();
+
+const qrPricingPlanIds: SubscriptionPlanId[] = ['free', 'launch', 'growth', 'scale'];
+const qrPricingPlans = qrPricingPlanIds.map((planId) => billingPlanMap.get(planId)!);
+const smallestCreditPack = creditPacks[0];
+
+const qrPricingPresentation: Record<
+  (typeof qrPricingPlanIds)[number],
+  { badge: string; accent: string; badgeColor: string }
+> = {
+  free: {
+    badge: 'No card needed',
+    accent: 'border-white/10',
+    badgeColor: 'bg-white/8 text-white/55',
+  },
+  launch: {
+    badge: 'Most popular',
+    accent: 'border-amber-500/40',
+    badgeColor: 'bg-amber-500/15 text-amber-300',
+  },
+  growth: {
+    badge: 'For teams',
+    accent: 'border-white/10',
+    badgeColor: 'bg-white/8 text-white/55',
+  },
+  scale: {
+    badge: 'High volume',
+    accent: 'border-white/10',
+    badgeColor: 'bg-white/8 text-white/55',
+  },
+  starter: { badge: '', accent: '', badgeColor: '' },
+  pro: { badge: '', accent: '', badgeColor: '' },
+  enterprise: { badge: '', accent: '', badgeColor: '' },
+};
 
 const qrFaqs = [
   {
@@ -504,48 +539,14 @@ export default function QrCodeGeneratorPage() {
               </p>
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {[
-                {
-                  name: 'Free',
-                  price: '₹0',
-                  cadence: '/month',
-                  badge: 'No card needed',
-                  accent: 'border-white/10',
-                  badgeColor: 'bg-white/8 text-white/55',
-                  features: ['Basic QR exports', '10 links/month', '30-day analytics', 'Shared short domain'],
-                },
-                {
-                  name: 'Launch',
-                  price: '₹399',
-                  cadence: '/month',
-                  badge: 'Most popular',
-                  accent: 'border-amber-500/40',
-                  badgeColor: 'bg-amber-500/15 text-amber-300',
-                  features: ['Styled QR downloads', '500 links/month', '1 custom domain', '90-day analytics + UTM'],
-                },
-                {
-                  name: 'Growth',
-                  price: '₹799',
-                  cadence: '/month',
-                  badge: 'For teams',
-                  accent: 'border-white/10',
-                  badgeColor: 'bg-white/8 text-white/55',
-                  features: ['All QR features', '2K links/month', '3 custom domains', 'API + webhooks'],
-                },
-                {
-                  name: 'Scale',
-                  price: '₹2,399',
-                  cadence: '/month',
-                  badge: 'High volume',
-                  accent: 'border-white/10',
-                  badgeColor: 'bg-white/8 text-white/55',
-                  features: ['All QR features', '10K links/month', '10 custom domains', 'A/B testing + priority support'],
-                },
-              ].map((plan) => (
-                <div key={plan.name} className={`rounded-2xl border ${plan.accent} bg-white/[0.03] p-6`}>
+              {qrPricingPlans.map((plan) => {
+                const presentation = qrPricingPresentation[plan.id];
+
+                return (
+                <div key={plan.id} className={`rounded-2xl border ${presentation.accent} bg-white/[0.03] p-6`}>
                   <div className="mb-4 flex items-center justify-between gap-2">
                     <p className="text-lg font-bold text-white">{plan.name}</p>
-                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${plan.badgeColor}`}>{plan.badge}</span>
+                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${presentation.badgeColor}`}>{presentation.badge}</span>
                   </div>
                   <p className="mb-5 text-3xl font-bold text-white">
                     {plan.price}<span className="text-sm font-normal text-white/40">{plan.cadence}</span>
@@ -559,12 +560,13 @@ export default function QrCodeGeneratorPage() {
                     ))}
                   </ul>
                 </div>
-              ))}
+                );
+              })}
             </div>
             <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/8 bg-white/[0.03] px-6 py-5">
               <div>
                 <p className="font-semibold text-white">Need more links without a subscription?</p>
-                <p className="mt-1 text-sm text-white/50">Link packs start at ₹129 for 100 links — credits never expire and stack on any plan.</p>
+                <p className="mt-1 text-sm text-white/50">Link packs start at {smallestCreditPack.price} for {smallestCreditPack.links} links — credits never expire and stack on any plan.</p>
               </div>
               <a href="/pricing" className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-400">
                 <Icon name="ArrowRightIcon" size={15} variant="solid" />
@@ -656,4 +658,3 @@ export default function QrCodeGeneratorPage() {
     </>
   );
 }
-

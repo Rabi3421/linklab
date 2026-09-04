@@ -1,6 +1,7 @@
 import Icon from '@/components/ui/AppIcon';
 
 const FeaturesSection = () => {
+  // TODO: copy is repetitive with HeroSection and UseCasesSection — needs human rewrite.
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden" style={{ background: '#1e2129' }}>
       <style jsx>{`
@@ -182,7 +183,7 @@ const FeaturesSection = () => {
                   Protect branded links and QR-code campaigns with SSL on every redirect, spam checks, phishing protection, and reliable global uptime.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {['SSL', 'SOC 2', 'GDPR', '99.9% SLA']?.map(tag => (
+                  {['SSL', 'Secure cookies', 'Access controls', 'Link controls']?.map(tag => (
                     <span key={tag} className="px-2.5 py-1 rounded-md text-xs font-body font-medium text-white/60" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(200,205,220,0.15)' }}>
                       {tag}
                     </span>
@@ -227,7 +228,7 @@ const FeaturesSection = () => {
                 <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: 'rgba(200,205,220,0.15)' }}>
                   <div className="h-full rounded-full w-[92%]" style={{ background: 'linear-gradient(90deg, #f97316, #fbbf24)' }} />
                 </div>
-                <span className="font-mono text-sm text-orange-400 font-bold">&lt;50ms</span>
+                <span className="font-mono text-sm text-orange-400 font-bold">Optimized</span>
               </div>
             </div>
           </div>

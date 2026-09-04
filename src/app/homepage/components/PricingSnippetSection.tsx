@@ -1,56 +1,16 @@
 import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
+import { billingPlans } from '@/lib/billing/plans';
+import type { SubscriptionPlanId } from '@/lib/billing/types';
 
-const plans = [
-  {
-    name: 'Free',
-    price: '$0',
-    period: '/month',
-    description: 'Perfect for individuals trying URL shortening for the first time.',
-    links: '10 links/month',
-    highlight: false,
-    features: ['10 shortened links/month', 'Basic click analytics', 'Custom aliases', 'QR code per link', 'SSL on every redirect'],
-    cta: 'Start free',
-    href: '/register',
-    color: 'rgba(200,205,220,0.14)',
-  },
-  {
-    name: 'Starter',
-    price: '$1',
-    period: '/month',
-    description: 'Great for creators, bloggers, and small teams just getting started.',
-    links: '100 links/month',
-    highlight: false,
-    features: ['100 shortened links/month', 'Full click analytics', 'Branded short links', 'Custom aliases', 'API access'],
-    cta: 'Get Starter',
-    href: '/register',
-    color: '#0ea5e9',
-  },
-  {
-    name: 'Growth',
-    price: '$10',
-    period: '/month',
-    description: 'For growing marketing teams running regular campaigns.',
-    links: '2,000 links/month',
-    highlight: true,
-    features: ['2,000 shortened links/month', 'Advanced analytics', 'Custom domains', 'Bulk link creation', 'Priority support'],
-    cta: 'Get Growth',
-    href: '/register',
-    color: '#f59e0b',
-  },
-  {
-    name: 'Pro',
-    price: '$79',
-    period: '/month',
-    description: 'High-volume agencies and platforms with 100K monthly links.',
-    links: '100,000 links/month',
-    highlight: false,
-    features: ['100,000 shortened links/month', 'Full analytics suite', 'Multiple custom domains', 'Full API access', 'SLA guarantee'],
-    cta: 'Get Pro',
-    href: '/register',
-    color: '#a78bfa',
-  },
-];
+const homepagePlanIds: SubscriptionPlanId[] = ['free', 'launch', 'pro'];
+const planColors: Partial<Record<SubscriptionPlanId, string>> = {
+  free: 'rgba(200,205,220,0.55)',
+  launch: '#f59e0b',
+  pro: '#34d399',
+};
+
+const plans = homepagePlanIds.map((planId) => billingPlans.find((plan) => plan.id === planId)!);
 
 const PricingSnippetSection = () => {
   return (
@@ -120,7 +80,7 @@ const PricingSnippetSection = () => {
                 backgroundClip: 'text',
               }}
             >
-              $1 per month
+              ₹99 per month
             </span>
           </h2>
           <p className="font-body text-lg text-white/45 mb-3">
@@ -136,7 +96,7 @@ const PricingSnippetSection = () => {
           >
             {[
               'Free tier forever',
-              'Plans from $1/month',
+              'Paid plans from ₹99/month',
               'No-expiry link credit packs available',
               'Enterprise custom pricing',
             ].map((item, i) => (
@@ -149,13 +109,13 @@ const PricingSnippetSection = () => {
         </div>
 
         {/* Plan cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-2xl p-6 flex flex-col relative ${plan.highlight ? 'plan-card-highlight' : 'plan-card'}`}
+              className={`rounded-2xl p-6 flex flex-col relative ${plan.featured ? 'plan-card-highlight' : 'plan-card'}`}
             >
-              {plan.highlight && (
+              {plan.featured && (
                 <div
                   className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-semibold font-body text-white"
                   style={{ background: 'linear-gradient(135deg, #f59e0b, #ef4444)', whiteSpace: 'nowrap' }}
@@ -167,13 +127,13 @@ const PricingSnippetSection = () => {
               <div className="mb-5">
                 <p
                   className="font-body text-xs font-bold uppercase tracking-widest mb-2"
-                  style={{ color: plan.color }}
+                  style={{ color: planColors[plan.id] }}
                 >
                   {plan.name}
                 </p>
                 <div className="flex items-end gap-1 mb-1">
                   <span className="font-heading font-bold text-4xl text-white">{plan.price}</span>
-                  <span className="font-body text-sm text-white/35 mb-1.5">{plan.period}</span>
+                  <span className="font-body text-sm text-white/35 mb-1.5">{plan.cadence}</span>
                 </div>
                 <p className="font-body text-sm text-white/40 leading-relaxed">{plan.description}</p>
               </div>
@@ -186,7 +146,7 @@ const PricingSnippetSection = () => {
                       size={14}
                       variant="solid"
                       className="mt-0.5 flex-shrink-0"
-                      style={{ color: plan.color } as React.CSSProperties}
+                      style={{ color: planColors[plan.id] } as React.CSSProperties}
                     />
                     <span className="font-body text-sm text-white/55 leading-snug">{feature}</span>
                   </li>
@@ -194,14 +154,14 @@ const PricingSnippetSection = () => {
               </ul>
 
               <Link
-                href={plan.href}
+                href={plan.id === 'free' ? '/register' : '/pricing'}
                 className={`block w-full py-3 rounded-xl text-center font-body font-semibold text-sm transition-all ${
-                  plan.highlight
+                  plan.featured
                     ? 'cta-btn text-white'
                     : 'text-white/75 hover:text-white'
                 }`}
                 style={
-                  plan.highlight
+                  plan.featured
                     ? {}
                     : { border: '1px solid rgba(200,205,220,0.18)', background: 'rgba(255,255,255,0.07)' }
                 }
@@ -219,7 +179,7 @@ const PricingSnippetSection = () => {
             <Link href="/pricing" className="text-amber-400/80 hover:text-amber-400 transition-colors">
               See all plans
             </Link>{' '}
-            including the Scale ($29) plan, 100K Pro plan, and no-expiry one-time link credit packs.
+            including the Scale (₹2,399) plan, 100K Pro plan, and no-expiry one-time link credit packs.
           </p>
           <p className="font-body text-sm text-white/25">
             High-volume teams and enterprises can{' '}

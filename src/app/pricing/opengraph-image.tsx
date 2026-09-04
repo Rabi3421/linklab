@@ -77,7 +77,7 @@ export default function OpenGraphImage() {
               maxWidth: 850,
             }}
           >
-            LinkLab Pricing — Free Plan & Paid from $1/month
+            LinkLab Pricing — Free Plan & Paid from INR 99/month
           </div>
 
           <div
